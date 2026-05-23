@@ -1,0 +1,2188 @@
+<!-- Carnegie LEE Foundation — 지구 힐링 특별전 신인 아티스트 공모 참가신청 -->
+<!-- 전시회.html — Imweb 코드 위젯에 붙여넣기 -->
+
+<style>
+.clf-dir {
+  --gold:#C9A84C; --gold2:#A8872A; --gold-pale:#FBF5E2;
+  --teal:#0C3D40; --teal2:#0F5258; --teal-pale:#EAF3F3;
+  --text:#111111; --text2:#444444; --text3:#888888;
+  --bg:#F8F9FA; --border:#E4E4E4;
+  --warn:#B54E3A;
+  --radius:14px;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  color:#111 !important;
+}
+
+/* ── 헤더 ── */
+.clf-dir .clf-phero {
+  background:#fff !important; padding:48px 6vw 0 !important;
+  max-width:1400px !important; margin:0 auto !important;
+}
+.clf-dir .clf-breadcrumb {
+  font-size:12px !important; color:#aaa !important;
+  margin-bottom:20px !important;
+  display:flex !important; align-items:center !important; gap:6px !important;
+  list-style:none !important; padding:0 !important;
+}
+.clf-dir .clf-breadcrumb a { color:#888 !important; text-decoration:none !important; }
+.clf-dir .clf-breadcrumb a:hover { color:#0C3D40 !important; }
+.clf-dir .clf-breadcrumb .clf-bc-cur { color:#0C3D40 !important; font-weight:600 !important; }
+.clf-dir .clf-page-title-wrap { padding-bottom:28px !important; border-bottom:2px solid #111 !important; }
+.clf-dir .clf-page-title {
+  font-size:clamp(28px,4vw,42px) !important; font-weight:700 !important;
+  color:#111 !important; letter-spacing:-.02em !important;
+  line-height:1.2 !important; margin:0 !important;
+}
+.clf-dir .clf-page-sub {
+  font-size:14px !important; color:#888 !important; margin-top:12px !important;
+}
+
+/* ── 서브 내비 ── */
+.clf-dir .clf-subnav {
+  display:flex !important; align-items:center !important; flex-wrap:wrap !important;
+  padding:0 6vw !important; background:#fff !important;
+  border-bottom:1px solid #E4E4E4 !important;
+  max-width:1400px !important; margin:0 auto !important;
+  list-style:none !important;
+}
+.clf-dir .clf-subnav-item {
+  display:flex !important; align-items:center !important; padding:16px 20px !important;
+  font-size:14px !important; font-weight:500 !important; color:#888 !important;
+  text-decoration:none !important; white-space:nowrap !important;
+  border-bottom:2px solid transparent !important; margin-bottom:-1px !important;
+  transition:color .2s !important; cursor:pointer !important;
+}
+.clf-dir .clf-subnav-item:hover { color:#0C3D40 !important; }
+.clf-dir .clf-subnav-item.clf-active { color:#0C3D40 !important; font-weight:700 !important; border-bottom-color:#0C3D40 !important; }
+.clf-dir .clf-snav-dot { width:4px !important; height:4px !important; border-radius:50% !important; background:#ddd !important; flex-shrink:0 !important; margin:0 2px !important; }
+
+/* ── 콘텐츠 래퍼 ── */
+.clf-dir .clf-wrap {
+  max-width:1400px !important; margin:0 auto !important;
+  padding:72px 6vw !important;
+}
+
+/* ── 인트로 레이아웃 ── */
+.clf-dir .clf-profile-layout {
+  display:grid !important;
+  grid-template-columns:300px 1fr !important;
+  gap:72px !important;
+  align-items:start !important;
+  margin-bottom:72px !important;
+}
+.clf-dir .clf-photo-col {}
+.clf-dir .clf-photo-frame {
+  width:100% !important;
+  aspect-ratio:3/4 !important;
+  background:linear-gradient(145deg, #0C3D40 0%, #0F5258 100%) !important;
+  border-radius:20px !important;
+  display:flex !important; flex-direction:column !important;
+  align-items:center !important; justify-content:center !important;
+  color:#fff !important;
+  text-align:center !important; line-height:1.5 !important;
+  margin-bottom:20px !important;
+  padding:32px 24px !important;
+}
+.clf-dir .clf-photo-frame .clf-card-en {
+  font-size:11px !important; font-weight:600 !important;
+  letter-spacing:.3em !important; color:#C9A84C !important;
+  margin-bottom:24px !important;
+}
+.clf-dir .clf-photo-frame .clf-card-roman {
+  font-size:56px !important; font-weight:300 !important;
+  color:#C9A84C !important;
+  font-family:'Times New Roman',serif !important;
+  letter-spacing:.08em !important;
+  margin-bottom:20px !important;
+  line-height:1 !important;
+}
+.clf-dir .clf-photo-frame .clf-card-ko {
+  font-size:15px !important; font-weight:600 !important;
+  color:#fff !important; line-height:1.7 !important;
+  margin-bottom:24px !important;
+}
+.clf-dir .clf-photo-frame .clf-card-div {
+  width:30px !important; height:1px !important;
+  background:rgba(201,168,76,.5) !important;
+  margin:0 auto 18px !important;
+}
+.clf-dir .clf-photo-frame .clf-card-meta {
+  font-size:12px !important; color:rgba(255,255,255,.85) !important;
+  line-height:1.9 !important;
+}
+.clf-dir .clf-photo-frame .clf-card-meta strong { color:#C9A84C !important; font-weight:600 !important; }
+
+.clf-dir .clf-name-badge { text-align:center !important; }
+.clf-dir .clf-name-badge .clf-name-ko {
+  display:block !important;
+  font-size:22px !important; font-weight:700 !important; color:#0C3D40 !important;
+  margin-bottom:4px !important;
+}
+.clf-dir .clf-name-badge .clf-name-nick {
+  display:block !important;
+  font-size:13px !important; color:#C9A84C !important;
+  font-weight:600 !important; letter-spacing:.05em !important;
+  margin-bottom:12px !important;
+}
+.clf-dir .clf-name-badge .clf-name-title {
+  display:inline-block !important;
+  font-size:11px !important; font-weight:600 !important;
+  letter-spacing:.2em !important; text-transform:uppercase !important;
+  color:#fff !important;
+  background:#0C3D40 !important;
+  padding:5px 14px !important; border-radius:20px !important;
+}
+
+.clf-dir .clf-greeting-col {}
+.clf-dir .clf-greeting-h2 {
+  font-size:clamp(18px,2.2vw,26px) !important; font-weight:700 !important;
+  color:#111 !important; margin:0 0 32px !important;
+  line-height:1.55 !important; word-break:keep-all !important;
+}
+.clf-dir .clf-greeting-p {
+  font-size:15px !important; color:#444 !important;
+  line-height:1.9 !important; margin:0 0 18px !important;
+  word-break:keep-all !important;
+}
+.clf-dir .clf-sig {
+  margin-top:36px !important; padding-top:28px !important;
+  border-top:1px solid #E4E4E4 !important;
+  display:flex !important; flex-direction:column !important; gap:4px !important;
+}
+.clf-dir .clf-sig-role {
+  font-size:11px !important; font-weight:500 !important;
+  color:#C9A84C !important; letter-spacing:.2em !important; text-transform:uppercase !important;
+}
+.clf-dir .clf-sig-name {
+  font-size:18px !important; font-weight:700 !important; color:#0C3D40 !important;
+}
+
+/* ── 상세 ── */
+.clf-dir .clf-profile-detail {
+  border-top:1px solid #E4E4E4 !important;
+  padding-top:64px !important;
+  margin-bottom:80px !important;
+}
+.clf-dir .clf-detail-grid {
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:48px 64px !important;
+}
+.clf-dir .clf-detail-label {
+  display:flex !important; align-items:center !important; gap:10px !important;
+  margin-bottom:20px !important;
+}
+.clf-dir .clf-detail-label-en {
+  font-size:10px !important; font-weight:700 !important;
+  letter-spacing:.3em !important; text-transform:uppercase !important;
+  color:#C9A84C !important;
+}
+.clf-dir .clf-detail-label-ko {
+  font-size:16px !important; font-weight:700 !important; color:#0C3D40 !important;
+}
+.clf-dir .clf-detail-label-divider {
+  flex:1 !important; height:1px !important; background:#E4E4E4 !important;
+}
+.clf-dir .clf-detail-list {
+  list-style:none !important; padding:0 !important; margin:0 !important;
+  display:flex !important; flex-direction:column !important; gap:8px !important;
+}
+.clf-dir .clf-detail-item {
+  display:flex !important; align-items:flex-start !important; gap:12px !important;
+  padding:12px 16px !important;
+  background:#F8F9FA !important; border-radius:10px !important;
+  border-left:3px solid #EAF3F3 !important;
+  transition:border-color .2s !important;
+}
+.clf-dir .clf-detail-item:hover { border-left-color:#C9A84C !important; }
+.clf-dir .clf-detail-dot {
+  width:6px !important; height:6px !important; border-radius:50% !important;
+  background:#C9A84C !important; flex-shrink:0 !important; margin-top:7px !important;
+}
+.clf-dir .clf-detail-text {
+  font-size:13.5px !important; color:#333 !important;
+  line-height:1.65 !important; word-break:keep-all !important;
+}
+.clf-dir .clf-detail-text strong { font-weight:700 !important; color:#0C3D40 !important; }
+.clf-dir .clf-detail-text .sub {
+  display:block !important;
+  font-size:12px !important; color:#888 !important;
+  margin-top:3px !important; font-weight:400 !important;
+}
+
+/* ── 특전 배지 (전원 보장 / 10인 한정) ── */
+.clf-dir .clf-benefit-tag {
+  display:inline-block !important;
+  padding:3px 9px !important;
+  border-radius:6px !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+  letter-spacing:.06em !important;
+  margin-right:8px !important;
+  vertical-align:1px !important;
+  white-space:nowrap !important;
+}
+.clf-dir .clf-benefit-tag-all {
+  background:#E8F4F1 !important;
+  color:#0C3D40 !important;
+  border:1px solid #C2D9D2 !important;
+}
+.clf-dir .clf-benefit-tag-top {
+  background:#FAF0D6 !important;
+  color:#A8872A !important;
+  border:1px solid #E8DDB5 !important;
+}
+
+/* ── 폼 ── */
+.clf-dir .clf-form-section {
+  border-top:1px solid #E4E4E4 !important;
+  padding-top:64px !important;
+}
+.clf-dir .clf-form-intro {
+  text-align:center !important;
+  margin-bottom:56px !important;
+}
+.clf-dir .clf-form-intro-en {
+  font-size:11px !important; font-weight:700 !important;
+  letter-spacing:.3em !important; text-transform:uppercase !important;
+  color:#C9A84C !important;
+  margin-bottom:12px !important;
+}
+.clf-dir .clf-form-intro-ko {
+  font-size:clamp(22px,2.6vw,30px) !important; font-weight:700 !important;
+  color:#111 !important; margin:0 !important;
+  letter-spacing:-.02em !important;
+}
+.clf-dir .clf-form-intro-ko::after {
+  content:"" !important;
+  display:block !important;
+  width:36px !important; height:2px !important;
+  background:#C9A84C !important;
+  margin:18px auto 0 !important;
+}
+.clf-dir .clf-form-intro-desc {
+  font-size:14px !important; color:#666 !important;
+  max-width:560px !important;
+  margin:16px auto 0 !important;
+  line-height:1.8 !important;
+}
+
+.clf-dir .clf-form-wrap { max-width:880px !important; margin:0 auto !important; }
+
+.clf-dir .clf-form-block { margin-bottom:56px !important; }
+.clf-dir .clf-form-block-desc {
+  font-size:13px !important; color:#888 !important;
+  margin:-12px 0 20px !important;
+}
+
+.clf-dir .clf-fg { display:grid !important; grid-template-columns:1fr 1fr !important; gap:18px 20px !important; }
+.clf-dir .clf-field { display:flex !important; flex-direction:column !important; gap:8px !important; }
+.clf-dir .clf-field.clf-full { grid-column:1 / -1 !important; }
+.clf-dir .clf-field-label {
+  font-size:13px !important; font-weight:600 !important; color:#111 !important;
+  padding-left:2px !important;
+}
+.clf-dir .clf-field-label .clf-req { color:#B54E3A !important; margin-left:4px !important; }
+.clf-dir .clf-field-help {
+  font-size:12px !important; color:#888 !important;
+  margin-top:4px !important; padding-left:2px !important;
+}
+
+/* ── 에러 메시지 ── */
+.clf-dir .clf-error-msg {
+  color:#B54E3A !important;
+  font-size:12.5px !important;
+  font-weight:600 !important;
+  margin-top:6px !important;
+  padding-left:2px !important;
+  animation:clfFadeIn .2s ease !important;
+}
+.clf-dir .clf-input.clf-input-error,
+.clf-dir .clf-select.clf-input-error,
+.clf-dir .clf-textarea.clf-input-error {
+  border-color:#B54E3A !important;
+  border-left-color:#B54E3A !important;
+  background:#FFF5F5 !important;
+}
+
+/* ── 기타 입력 필드 (드롭다운/라디오 아래) ── */
+.clf-dir .clf-etc-input {
+  margin-top:10px !important;
+  display:none !important;
+  animation:clfFadeIn .25s ease !important;
+}
+.clf-dir .clf-etc-input.clf-show { display:block !important; }
+@keyframes clfFadeIn {
+  from { opacity:0; transform:translateY(-4px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.clf-dir .clf-input,
+.clf-dir .clf-select {
+  width:100% !important;
+  background:#F8F9FA !important;
+  border:1px solid #E4E4E4 !important;
+  border-left:3px solid #EAF3F3 !important;
+  border-radius:10px !important;
+  color:#111 !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  font-size:14px !important;
+  padding:13px 16px !important;
+  outline:none !important;
+  transition:border-color .2s !important;
+  box-sizing:border-box !important;
+}
+.clf-dir .clf-input:focus,
+.clf-dir .clf-select:focus {
+  border-color:#C9A84C !important;
+  border-left-color:#C9A84C !important;
+  background:#fff !important;
+}
+.clf-dir .clf-input::placeholder { color:#aaa !important; }
+.clf-dir .clf-select {
+  appearance:none !important;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23C9A84C' stroke-width='1.5' fill='none'/></svg>") !important;
+  background-repeat:no-repeat !important;
+  background-position:right 16px center !important;
+  padding-right:38px !important;
+  cursor:pointer !important;
+}
+.clf-dir .clf-textarea {
+  width:100% !important;
+  background:#F8F9FA !important;
+  border:1px solid #E4E4E4 !important;
+  border-left:3px solid #EAF3F3 !important;
+  border-radius:10px !important;
+  color:#111 !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  font-size:14px !important;
+  padding:14px 16px !important;
+  outline:none !important;
+  min-height:110px !important;
+  resize:vertical !important;
+  line-height:1.75 !important;
+  box-sizing:border-box !important;
+  transition:border-color .2s !important;
+}
+.clf-dir .clf-textarea:focus { border-color:#C9A84C !important; border-left-color:#C9A84C !important; background:#fff !important; }
+.clf-dir .clf-textarea::placeholder { color:#aaa !important; }
+
+.clf-dir .clf-pill-group { display:flex !important; flex-wrap:wrap !important; gap:8px !important; }
+.clf-dir .clf-pill input { display:none !important; }
+.clf-dir .clf-pill label {
+  display:inline-block !important;
+  cursor:pointer !important;
+  padding:10px 22px !important;
+  background:#F8F9FA !important;
+  border:1px solid #E4E4E4 !important;
+  color:#555 !important;
+  font-size:13.5px !important;
+  border-radius:30px !important;
+  transition:all .15s !important;
+}
+.clf-dir .clf-pill label:hover { border-color:#C9A84C !important; color:#0C3D40 !important; }
+.clf-dir .clf-pill input:checked + label {
+  background:#0C3D40 !important;
+  border-color:#0C3D40 !important;
+  color:#fff !important;
+  font-weight:600 !important;
+}
+
+/* 업로드 */
+.clf-dir .clf-upload {
+  position:relative !important;
+  background:#F8F9FA !important;
+  border:1.5px dashed #C9A84C !important;
+  border-radius:14px !important;
+  padding:36px 20px !important;
+  text-align:center !important;
+  cursor:pointer !important;
+  transition:background .15s !important;
+}
+.clf-dir .clf-upload:hover { background:#FBF5E2 !important; }
+.clf-dir .clf-upload.clf-dragover { background:#fff !important; border-color:#A8872A !important; }
+.clf-dir .clf-upload input[type="file"] {
+  position:absolute !important; inset:0 !important; opacity:0 !important; cursor:pointer !important;
+}
+.clf-dir .clf-upload-icon {
+  width:42px !important; height:42px !important;
+  margin:0 auto 12px !important;
+  background:#fff !important;
+  border:1px solid #FBF5E2 !important;
+  border-radius:50% !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  color:#C9A84C !important; font-size:18px !important; font-weight:600 !important;
+}
+.clf-dir .clf-upload-title {
+  font-size:14px !important; font-weight:600 !important; color:#0C3D40 !important;
+  margin-bottom:4px !important;
+}
+.clf-dir .clf-upload-hint { font-size:12px !important; color:#888 !important; }
+.clf-dir .clf-upload-status {
+  margin-top:10px !important; font-size:12.5px !important; color:#0C3D40 !important; font-weight:600 !important;
+}
+
+/* ── 구글 드라이브 제출 박스 ── */
+.clf-dir .clf-gdrive {
+  background:#F8F9FA !important;
+  border:1px solid #E4E4E4 !important;
+  border-left:3px solid #C9A84C !important;
+  border-radius:14px !important;
+  padding:28px !important;
+}
+.clf-dir .clf-gdrive-head {
+  display:flex !important; align-items:center !important; gap:14px !important;
+  margin-bottom:18px !important;
+}
+.clf-dir .clf-gdrive-logo {
+  width:44px !important; height:44px !important;
+  background:#fff !important;
+  border:1px solid #E4E4E4 !important;
+  border-radius:10px !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  flex-shrink:0 !important;
+}
+.clf-dir .clf-gdrive-head .clf-gdrive-titles { display:flex !important; flex-direction:column !important; gap:2px !important; }
+.clf-dir .clf-gdrive-title {
+  font-size:15px !important; font-weight:700 !important; color:#0C3D40 !important;
+}
+.clf-dir .clf-gdrive-sub { font-size:12.5px !important; color:#888 !important; }
+.clf-dir .clf-gdrive-steps {
+  list-style:none !important; padding:0 !important; margin:0 0 20px !important;
+  display:flex !important; flex-direction:column !important; gap:12px !important;
+}
+.clf-dir .clf-gdrive-steps li {
+  display:flex !important; align-items:flex-start !important; gap:12px !important;
+  font-size:13px !important; color:#444 !important; line-height:1.65 !important;
+}
+.clf-dir .clf-gdrive-num {
+  flex-shrink:0 !important;
+  width:22px !important; height:22px !important;
+  background:#C9A84C !important; color:#fff !important;
+  border-radius:50% !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  font-size:12px !important; font-weight:700 !important;
+}
+.clf-dir .clf-gdrive-steps li strong { color:#0C3D40 !important; font-weight:700 !important; }
+.clf-dir .clf-gdrive-steps li code {
+  background:#fff !important; color:#A8872A !important;
+  padding:1px 8px !important; border-radius:8px !important;
+  font-family:'Pretendard Variable',Pretendard,monospace !important;
+  font-size:12px !important; font-weight:600 !important; margin:0 2px !important;
+}
+.clf-dir .clf-gdrive-btn {
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  gap:10px !important;
+  width:100% !important;
+  background:#0C3D40 !important;
+  color:#fff !important;
+  text-decoration:none !important;
+  padding:15px 24px !important;
+  border-radius:30px !important;
+  font-size:14px !important; font-weight:700 !important;
+  letter-spacing:.02em !important;
+  transition:all .2s !important;
+  box-sizing:border-box !important;
+}
+.clf-dir .clf-gdrive-btn:hover {
+  background:#0F5258 !important;
+  transform:translateY(-1px) !important;
+  box-shadow:0 8px 18px -8px rgba(12,61,64,.4) !important;
+}
+
+/* ── 아코디언 ── */
+.clf-dir .clf-accordion {
+  background:#F8F9FA !important;
+  border-radius:12px !important;
+  margin-bottom:12px !important;
+  overflow:hidden !important;
+  border-left:3px solid #EAF3F3 !important;
+  transition:border-color .2s !important;
+}
+.clf-dir .clf-accordion.clf-open { border-left-color:#C9A84C !important; }
+.clf-dir .clf-acc-trigger {
+  display:flex !important; align-items:center !important; justify-content:space-between !important;
+  width:100% !important;
+  background:transparent !important;
+  border:none !important;
+  padding:16px 20px !important;
+  cursor:pointer !important;
+  font-family:inherit !important;
+  text-align:left !important;
+  transition:background .15s !important;
+}
+.clf-dir .clf-acc-trigger:hover { background:rgba(201,168,76,.06) !important; }
+.clf-dir .clf-acc-title {
+  display:flex !important; align-items:center !important; gap:10px !important;
+  font-size:13.5px !important; font-weight:600 !important; color:#0C3D40 !important;
+}
+.clf-dir .clf-acc-icon {
+  width:22px !important; height:22px !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  border:1px solid #C9A84C !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  color:#C9A84C !important; font-size:11px !important; font-weight:700 !important;
+  flex-shrink:0 !important;
+}
+.clf-dir .clf-acc-arrow {
+  color:#C9A84C !important;
+  font-size:12px !important;
+  transition:transform .25s !important;
+}
+.clf-dir .clf-accordion.clf-open .clf-acc-arrow { transform:rotate(180deg) !important; }
+.clf-dir .clf-acc-body {
+  max-height:0 !important;
+  overflow:hidden !important;
+  transition:max-height .35s ease !important;
+}
+.clf-dir .clf-accordion.clf-open .clf-acc-body { max-height:1200px !important; }
+.clf-dir .clf-acc-inner {
+  padding:0 20px 20px 20px !important;
+  border-top:1px solid #E4E4E4 !important;
+  padding-top:18px !important;
+}
+.clf-dir .clf-acc-list {
+  list-style:none !important; padding:0 !important; margin:0 !important;
+  display:flex !important; flex-direction:column !important; gap:10px !important;
+}
+.clf-dir .clf-acc-list li {
+  display:flex !important; align-items:flex-start !important; gap:10px !important;
+  font-size:13px !important; color:#444 !important;
+  line-height:1.7 !important;
+}
+.clf-dir .clf-acc-list li::before {
+  content:"" !important;
+  width:5px !important; height:5px !important;
+  background:#C9A84C !important; border-radius:50% !important;
+  margin-top:8px !important; flex-shrink:0 !important;
+}
+.clf-dir .clf-acc-list li strong { color:#0C3D40 !important; font-weight:700 !important; }
+.clf-dir .clf-acc-list li code {
+  background:#fff !important;
+  color:#A8872A !important;
+  padding:1px 8px !important;
+  border-radius:8px !important;
+  font-family:'Pretendard Variable',Pretendard,monospace !important;
+  font-size:12px !important;
+  font-weight:600 !important;
+  margin:0 2px !important;
+}
+
+/* ── 핵심 공지 박스 ── */
+.clf-dir .clf-callout {
+  background:#FBF5E2 !important;
+  border-radius:12px !important;
+  padding:16px 20px !important;
+  margin-bottom:20px !important;
+  border-left:3px solid #C9A84C !important;
+  font-size:13.5px !important;
+  color:#444 !important;
+  line-height:1.75 !important;
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:12px !important;
+}
+.clf-dir .clf-callout-icon {
+  flex-shrink:0 !important;
+  width:24px !important; height:24px !important;
+  border-radius:50% !important;
+  background:#C9A84C !important;
+  color:#fff !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  font-size:12px !important; font-weight:700 !important;
+}
+.clf-dir .clf-callout strong { color:#0C3D40 !important; font-weight:700 !important; }
+
+/* ── 결제 박스 ── */
+.clf-dir .clf-pay-box {
+  background:#F8F9FA !important;
+  border-radius:14px !important;
+  padding:32px !important;
+  border-left:3px solid #C9A84C !important;
+}
+.clf-dir .clf-pay-amount {
+  display:flex !important;
+  align-items:baseline !important;
+  justify-content:space-between !important;
+  padding-bottom:20px !important;
+  border-bottom:1px solid #E4E4E4 !important;
+  margin-bottom:20px !important;
+  gap:16px !important;
+}
+.clf-dir .clf-pay-amount-label {
+  font-size:10px !important; font-weight:700 !important;
+  letter-spacing:.3em !important; text-transform:uppercase !important;
+  color:#C9A84C !important;
+  margin-bottom:6px !important;
+}
+.clf-dir .clf-pay-amount-sub { font-size:12.5px !important; color:#888 !important; }
+.clf-dir .clf-pay-amount-value {
+  font-size:30px !important; font-weight:700 !important;
+  color:#0C3D40 !important; letter-spacing:-.02em !important;
+}
+.clf-dir .clf-pay-amount-value .clf-unit {
+  font-size:14px !important; color:#888 !important;
+  margin-left:6px !important; font-weight:500 !important;
+}
+.clf-dir .clf-pay-info {
+  display:grid !important;
+  grid-template-columns:90px 1fr !important;
+  gap:12px 20px !important;
+  font-size:13.5px !important;
+  margin:0 0 20px !important;
+}
+.clf-dir .clf-pay-info dt { color:#888 !important; font-weight:500 !important; margin:0 !important; }
+.clf-dir .clf-pay-info dd { color:#111 !important; margin:0 !important; font-weight:500 !important; }
+.clf-dir .clf-pay-info dd .clf-code {
+  background:#fff !important;
+  color:#A8872A !important;
+  padding:3px 12px !important;
+  border-radius:20px !important;
+  font-family:'Pretendard Variable',Pretendard,monospace !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  letter-spacing:.02em !important;
+}
+.clf-dir .clf-pay-deadline {
+  background:#fff !important;
+  border-radius:10px !important;
+  padding:14px 18px !important;
+  margin-bottom:14px !important;
+  display:flex !important; align-items:center !important;
+  justify-content:space-between !important; gap:12px !important;
+  border:1px solid #FBF5E2 !important;
+}
+.clf-dir .clf-pay-deadline-label {
+  font-size:11px !important; font-weight:700 !important;
+  color:#888 !important; letter-spacing:.2em !important; text-transform:uppercase !important;
+}
+.clf-dir .clf-pay-deadline-date {
+  font-size:16px !important; font-weight:700 !important; color:#B54E3A !important;
+  letter-spacing:-.01em !important;
+}
+.clf-dir .clf-pay-note {
+  background:#fff !important;
+  border-radius:10px !important;
+  padding:14px 18px !important;
+  font-size:13px !important;
+  color:#444 !important;
+  line-height:1.85 !important;
+  border-left:3px solid #B54E3A !important;
+  margin-bottom:12px !important;
+}
+.clf-dir .clf-pay-note + .clf-pay-note { margin-bottom:0 !important; }
+.clf-dir .clf-pay-note strong.clf-warn { color:#B54E3A !important; font-weight:700 !important; }
+.clf-dir .clf-pay-note strong { color:#0C3D40 !important; font-weight:700 !important; }
+
+/* ── 동의 ── */
+.clf-dir .clf-agree {
+  background:#F8F9FA !important;
+  border-radius:14px !important;
+  padding:8px 24px !important;
+}
+.clf-dir .clf-agree-item {
+  display:flex !important; align-items:flex-start !important; gap:12px !important;
+  padding:16px 0 !important;
+}
+.clf-dir .clf-agree-item input[type="checkbox"] {
+  appearance:none !important;
+  width:20px !important; height:20px !important;
+  border:1.5px solid #C9A84C !important;
+  background:#fff !important;
+  cursor:pointer !important;
+  position:relative !important;
+  flex-shrink:0 !important;
+  margin-top:2px !important;
+  border-radius:50% !important;
+}
+.clf-dir .clf-agree-item input[type="checkbox"]:checked {
+  background:#C9A84C !important;
+  border-color:#C9A84C !important;
+}
+.clf-dir .clf-agree-item input[type="checkbox"]:checked::after {
+  content:"" !important;
+  position:absolute !important;
+  left:5px !important; top:1px !important;
+  width:6px !important; height:11px !important;
+  border:solid #fff !important;
+  border-width:0 2px 2px 0 !important;
+  transform:rotate(45deg) !important;
+}
+.clf-dir .clf-agree-item label {
+  cursor:pointer !important;
+  font-size:13.5px !important;
+  color:#444 !important;
+  line-height:1.75 !important;
+}
+.clf-dir .clf-agree-item label strong { color:#0C3D40 !important; font-weight:700 !important; }
+.clf-dir .clf-agree-item label .clf-req { color:#B54E3A !important; }
+.clf-dir .clf-agree-detail {
+  background:#fff !important;
+  border-radius:10px !important;
+  padding:14px 18px !important;
+  margin-top:10px !important;
+  font-size:12.5px !important;
+  color:#666 !important;
+  line-height:1.8 !important;
+  border:1px solid #E4E4E4 !important;
+}
+.clf-dir .clf-agree-master {
+  background:#FBF5E2 !important;
+  border:1px solid #E9DCA6 !important;
+  border-radius:10px !important;
+  padding:14px 18px !important;
+  margin-bottom:8px !important;
+}
+.clf-dir .clf-agree-master label strong { font-size:14.5px !important; }
+.clf-dir .clf-agree-master-sub {
+  display:block !important;
+  font-size:12px !important; color:#888 !important;
+  margin-top:4px !important; font-weight:500 !important;
+}
+.clf-dir .clf-agree-optional-tag {
+  display:inline-block !important;
+  padding:1px 8px !important;
+  border-radius:4px !important;
+  font-size:10.5px !important; font-weight:700 !important;
+  letter-spacing:.04em !important;
+  background:#EAF3F3 !important; color:#0C3D40 !important;
+  border:1px solid #C2D9D2 !important;
+  margin-right:6px !important;
+}
+
+/* ── 제출 ── */
+.clf-dir .clf-submit-area {
+  margin-top:56px !important;
+  text-align:center !important;
+}
+.clf-dir .clf-submit {
+  background:#0C3D40 !important;
+  color:#fff !important;
+  border:none !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  letter-spacing:.3em !important;
+  padding:18px 72px !important;
+  cursor:pointer !important;
+  border-radius:30px !important;
+  transition:all .2s !important;
+  box-shadow:0 6px 16px -6px rgba(12,61,64,.4) !important;
+}
+.clf-dir .clf-submit:hover {
+  background:#0F5258 !important;
+  transform:translateY(-2px) !important;
+  box-shadow:0 12px 24px -8px rgba(12,61,64,.5) !important;
+}
+.clf-dir .clf-submit-hint {
+  margin-top:14px !important;
+  font-size:12.5px !important;
+  color:#aaa !important;
+}
+
+/* 모달 */
+.clf-dir .clf-modal-bd {
+  position:fixed !important; inset:0 !important;
+  background:rgba(17,17,17,.5) !important;
+  backdrop-filter:blur(6px) !important;
+  display:none !important;
+  align-items:center !important; justify-content:center !important;
+  z-index:9999 !important; padding:24px !important;
+}
+.clf-dir .clf-modal-bd.clf-show { display:flex !important; }
+.clf-dir .clf-modal {
+  background:#fff !important;
+  border-radius:16px !important;
+  max-width:460px !important; width:100% !important;
+  padding:48px 36px !important;
+  text-align:center !important;
+  border-top:4px solid #C9A84C !important;
+  box-shadow:0 20px 60px -10px rgba(0,0,0,.3) !important;
+}
+.clf-dir .clf-modal h3 {
+  font-size:11px !important; font-weight:700 !important;
+  letter-spacing:.3em !important; text-transform:uppercase !important;
+  color:#C9A84C !important;
+  margin:0 0 12px !important;
+}
+.clf-dir .clf-modal-title {
+  font-size:20px !important; font-weight:700 !important; color:#0C3D40 !important;
+  margin-bottom:20px !important;
+}
+.clf-dir .clf-modal p {
+  color:#666 !important; font-size:14px !important;
+  margin:10px 0 !important; line-height:1.8 !important;
+}
+.clf-dir .clf-modal-ref {
+  margin-top:22px !important;
+  padding:12px !important;
+  background:#F8F9FA !important;
+  color:#A8872A !important;
+  font-family:'Pretendard Variable',monospace !important;
+  font-size:13.5px !important;
+  letter-spacing:.1em !important;
+  border-radius:30px !important;
+  font-weight:700 !important;
+}
+.clf-dir .clf-modal-close {
+  margin-top:24px !important;
+  background:#0C3D40 !important;
+  border:none !important;
+  color:#fff !important;
+  padding:12px 36px !important;
+  cursor:pointer !important;
+  font-family:inherit !important;
+  letter-spacing:.2em !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  border-radius:30px !important;
+}
+
+/* ── 사진 파일명 가이드 박스 ── */
+.clf-dir .clf-filename-guide {
+  background:#F8F9FA !important;
+  border:1px solid #E4E4E4 !important;
+  border-left:3px solid #C9A84C !important;
+  border-radius:12px !important;
+  padding:18px 20px !important;
+  margin:0 0 14px !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:18px !important;
+  flex-wrap:wrap !important;
+}
+.clf-dir .clf-filename-guide-text { flex:1 1 260px !important; min-width:0 !important; }
+.clf-dir .clf-filename-guide-label {
+  font-size:11px !important;
+  font-weight:700 !important;
+  letter-spacing:.18em !important;
+  color:#C9A84C !important;
+  text-transform:uppercase !important;
+  margin-bottom:6px !important;
+}
+.clf-dir .clf-filename-guide-rule {
+  font-size:13.5px !important;
+  color:#0C3D40 !important;
+  font-weight:700 !important;
+  margin-bottom:4px !important;
+}
+.clf-dir .clf-filename-guide-rule code {
+  background:#fff !important;
+  color:#A8872A !important;
+  padding:2px 10px !important;
+  border-radius:8px !important;
+  font-family:'Pretendard Variable',Pretendard,monospace !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  margin:0 2px !important;
+  border:1px solid #E8DDB5 !important;
+}
+.clf-dir .clf-filename-guide-ex {
+  font-size:12.5px !important;
+  color:#888 !important;
+  line-height:1.6 !important;
+}
+.clf-dir .clf-help-btn {
+  flex-shrink:0 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  background:#fff !important;
+  border:1px solid #0C3D40 !important;
+  color:#0C3D40 !important;
+  padding:9px 16px !important;
+  border-radius:24px !important;
+  font-family:inherit !important;
+  font-size:12.5px !important;
+  font-weight:700 !important;
+  letter-spacing:.02em !important;
+  cursor:pointer !important;
+  transition:all .2s !important;
+  white-space:nowrap !important;
+}
+.clf-dir .clf-help-btn:hover {
+  background:#0C3D40 !important;
+  color:#fff !important;
+  transform:translateY(-1px) !important;
+}
+.clf-dir .clf-help-btn svg { width:14px !important; height:14px !important; }
+
+/* ── 업로드 방법 모달 (와이드) ── */
+.clf-dir .clf-modal.clf-modal-wide {
+  max-width:560px !important;
+  text-align:left !important;
+  padding:40px 36px !important;
+}
+.clf-dir .clf-modal-wide h3 { text-align:center !important; }
+.clf-dir .clf-modal-wide .clf-modal-title {
+  text-align:center !important;
+  margin-bottom:8px !important;
+}
+.clf-dir .clf-modal-wide .clf-modal-desc {
+  text-align:center !important;
+  font-size:13px !important;
+  color:#888 !important;
+  margin-bottom:24px !important;
+  line-height:1.6 !important;
+}
+.clf-dir .clf-modal-wide .clf-gdrive-steps {
+  list-style:none !important;
+  padding:0 !important;
+  margin:0 0 22px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:12px !important;
+}
+.clf-dir .clf-modal-wide .clf-gdrive-steps li {
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:12px !important;
+  font-size:13.5px !important;
+  color:#444 !important;
+  line-height:1.65 !important;
+}
+.clf-dir .clf-modal-wide .clf-gdrive-steps li strong {
+  color:#0C3D40 !important;
+  font-weight:700 !important;
+}
+.clf-dir .clf-modal-wide .clf-gdrive-steps li code {
+  background:#F8F9FA !important;
+  color:#A8872A !important;
+  padding:1px 8px !important;
+  border-radius:6px !important;
+  font-family:'Pretendard Variable',Pretendard,monospace !important;
+  font-size:12.5px !important;
+  font-weight:700 !important;
+  margin:0 2px !important;
+  border:1px solid #E8DDB5 !important;
+}
+.clf-dir .clf-modal-wide .clf-gdrive-num {
+  flex-shrink:0 !important;
+  width:24px !important;
+  height:24px !important;
+  background:#C9A84C !important;
+  color:#fff !important;
+  border-radius:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  margin-top:1px !important;
+}
+.clf-dir .clf-modal-wide .clf-modal-actions {
+  display:flex !important;
+  gap:10px !important;
+  margin-top:8px !important;
+}
+.clf-dir .clf-modal-wide .clf-modal-actions > * { flex:1 !important; }
+.clf-dir .clf-modal-wide .clf-modal-open-drive {
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  background:#0C3D40 !important;
+  color:#fff !important;
+  text-decoration:none !important;
+  padding:13px 20px !important;
+  border-radius:28px !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  letter-spacing:.02em !important;
+  border:none !important;
+  cursor:pointer !important;
+  transition:all .2s !important;
+  font-family:inherit !important;
+  box-sizing:border-box !important;
+}
+.clf-dir .clf-modal-wide .clf-modal-open-drive:hover {
+  background:#0F5258 !important;
+  transform:translateY(-1px) !important;
+}
+.clf-dir .clf-modal-wide .clf-modal-secondary {
+  background:#fff !important;
+  border:1px solid #DADADA !important;
+  color:#666 !important;
+  padding:13px 20px !important;
+  border-radius:28px !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  letter-spacing:.02em !important;
+  cursor:pointer !important;
+  font-family:inherit !important;
+  transition:all .2s !important;
+  box-sizing:border-box !important;
+}
+.clf-dir .clf-modal-wide .clf-modal-secondary:hover {
+  border-color:#0C3D40 !important;
+  color:#0C3D40 !important;
+}
+
+@media (max-width: 600px) {
+  .clf-dir .clf-filename-guide {
+    flex-direction:column !important;
+    align-items:stretch !important;
+  }
+  .clf-dir .clf-help-btn { width:100% !important; justify-content:center !important; }
+}
+
+[data-dir-anim]{opacity:0!important;transform:translateY(22px)!important;transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)!important}
+[data-dir-anim].dir-visible{opacity:1!important;transform:translateY(0)!important}
+[data-dir-delay="1"]{transition-delay:.1s!important}
+[data-dir-delay="2"]{transition-delay:.2s!important}
+[data-dir-delay="3"]{transition-delay:.3s!important}
+
+/* ── 참가신청 버튼 ── */
+.clf-dir .clf-apply-btn-wrap {
+  text-align:center !important;
+  margin-top:48px !important;
+  padding-top:48px !important;
+  border-top:1px solid #E4E4E4 !important;
+}
+.clf-dir .clf-apply-open-btn {
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  background:linear-gradient(135deg, #0C3D40, #0F5258) !important;
+  color:#fff !important;
+  border:none !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  letter-spacing:.12em !important;
+  padding:20px 56px !important;
+  border-radius:50px !important;
+  cursor:pointer !important;
+  box-shadow:0 8px 24px -6px rgba(12,61,64,.45) !important;
+  transition:all .25s !important;
+}
+.clf-dir .clf-apply-open-btn:hover {
+  transform:translateY(-3px) !important;
+  box-shadow:0 14px 32px -8px rgba(12,61,64,.55) !important;
+}
+.clf-dir .clf-apply-open-btn svg { flex-shrink:0 !important; }
+
+/* ── 마감 배너 ── */
+.clf-dir .clf-closed-banner {
+  display:none !important;
+  background:linear-gradient(135deg,#1a1a1a,#2d2d2d) !important;
+  color:#fff !important;
+  border-radius:16px !important;
+  padding:40px 32px !important;
+  text-align:center !important;
+  margin-top:48px !important;
+}
+.clf-dir .clf-closed-banner .clf-closed-icon {
+  font-size:40px !important;
+  margin-bottom:16px !important;
+}
+.clf-dir .clf-closed-banner .clf-closed-title {
+  font-size:22px !important;
+  font-weight:700 !important;
+  margin-bottom:8px !important;
+  color:#C9A84C !important;
+}
+.clf-dir .clf-closed-banner .clf-closed-desc {
+  font-size:14px !important;
+  color:rgba(255,255,255,.7) !important;
+  line-height:1.8 !important;
+}
+
+/* 폼 섹션 기본 hidden */
+.clf-dir .clf-form-section {
+  display:none !important;
+}
+.clf-dir .clf-form-section.clf-form-visible {
+  display:block !important;
+}
+
+@media(max-width:960px){
+  .clf-dir .clf-profile-layout{grid-template-columns:1fr!important;gap:40px!important}
+  .clf-dir .clf-photo-frame{aspect-ratio:3/4!important; min-height:unset !important; width:100% !important;}
+  .clf-dir .clf-detail-grid{grid-template-columns:1fr!important;gap:36px!important}
+  .clf-dir .clf-fg{grid-template-columns:1fr!important}
+  .clf-dir .clf-pay-amount{flex-direction:column!important; align-items:flex-start!important;}
+  .clf-dir .clf-pay-amount-value{font-size:24px!important}
+  .clf-dir .clf-pay-deadline{flex-direction:column!important; align-items:flex-start!important; gap:6px!important;}
+  .clf-dir .clf-submit{padding:16px 32px!important; width:100%!important; letter-spacing:.2em!important;}
+}
+@media(max-width:600px){
+  .clf-dir .clf-wrap{padding:48px 5vw!important}
+  .clf-dir .clf-pay-box{padding:22px!important}
+  .clf-dir .clf-pay-info{grid-template-columns:80px 1fr!important; font-size:13px!important;}
+  .clf-dir .clf-apply-open-btn{padding:18px 36px!important; width:100%!important; font-size:14px!important;}
+}
+</style>
+
+<div class="clf-dir">
+
+  <!-- ① 헤더 -->
+  <div class="clf-phero">
+    <nav class="clf-breadcrumb">
+      <a href="/">홈</a>
+      <span>›</span>
+      <a href="#">알림마당</a>
+      <span>›</span>
+      <a href="#">전시 공모전</a>
+      <span>›</span>
+      <span class="clf-bc-cur">참가신청</span>
+    </nav>
+    <div class="clf-page-title-wrap">
+      <h1 class="clf-page-title">전시 공모 신청</h1>
+      <div class="clf-page-sub">조수미 데뷔 40주년 기념 연계 &lt;지구 힐링 특별전&gt; 신인 아티스트 100인 공모전 · 2026</div>
+    </div>
+  </div>
+
+
+
+  <!-- ③ 본문 -->
+  <div class="clf-wrap">
+
+    <!-- 인트로 -->
+    <div class="clf-profile-layout" data-dir-anim>
+
+      <div class="clf-photo-col">
+        <div class="clf-photo-frame" style="padding:0!important; overflow:hidden!important; background:none!important;">
+          <img src="사진/Group 25.png" alt="Healing Exhibition 2026" style="width:100%!important; height:100%!important; object-fit:cover!important; display:block!important; border-radius:20px!important;">
+        </div>
+        <div class="clf-name-badge">
+          <span class="clf-name-ko">지구 힐링 특별전 2026</span>
+          <span class="clf-name-nick">Healing Exhibition · 7th Anniversary</span>
+          <span class="clf-name-title">Carnegie LEE Foundation</span>
+        </div>
+      </div>
+
+      <div class="clf-greeting-col">
+        <h2 class="clf-greeting-h2">
+          신인 아티스트 100인,<br>지구 힐링의 순간을 캔버스 위에 새깁니다
+        </h2>
+        <p class="clf-greeting-p">카네기리 재단은 한국이 낳은 세계적인 소프라노 조수미 님의 데뷔 40주년을 기념하여, 전국의 청년 및 신인 아티스트들과 함께 일상의 위로와 마음의 안식을 시각예술로 풀어내는 &lt;지구 힐링 특별전&gt;을 개최합니다. 본 공모는 <strong>자율 주제</strong>로 진행되며, 기존에 작업해 온 본인의 작품을 출품하셔도 무방합니다.</p>
+        <p class="clf-greeting-p">본 프로젝트는 수천 명의 관객과 정·재계 VIP, 문화예술계 주요 인사들이 집결하는 경희대학교 평화의 전당 특별 무대와 연계하여, 아티스트의 독창적인 예술 세계를 대중에 널리 소개하고자 합니다.</p>
+        <p class="clf-greeting-p"><strong>본 공모에 참여하시는 작가 전원</strong>은 일회성 행사에 그치지 않고, 재단의 영구적인 아티스트 풀(Pool)에 등재되어 지속적인 매니지먼트 및 기업인 대상 작품 판매 기회를 얻게 됩니다. 그 중 심사를 거쳐 선정된 <strong>10인</strong>은 조수미 40주년 콘서트 당일, 경희대 평화의 전당 대로비에서 실물 전시 기회를 추가로 부여받습니다. 미래 문화예술계를 이끌어갈 역량 있는 신인 작가분들의 많은 참여를 바랍니다.</p>
+
+      </div>
+
+    </div>
+
+    <!-- 상세 -->
+    <div class="clf-profile-detail" id="guide" data-dir-anim>
+      <div class="clf-detail-grid">
+
+        <div class="clf-detail-block" data-dir-delay="1">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Categories</span>
+            <span class="clf-detail-label-ko">모집 부문</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <ul class="clf-detail-list">
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>시각예술 전 부문</strong> (평면회화 · 일러스트 · 조소 · 입체공예 · 업사이클링 아트 등)</span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">공모 주제: <strong>자율 주제</strong> (기존 본인 작품 출품 가능 · 재료 및 표현 방식 자유)</span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>신인 아티스트 (Solo)</strong> · 지원 자격에 학력 및 경력 제한이 없습니다<span class="sub">재학·졸업·개인 강사 등 신상 정보는 모집 요건이 아닌, 작가 프로필 구성을 위한 참고 자료로만 수집됩니다.</span></span></li>
+          </ul>
+        </div>
+
+        <div class="clf-detail-block" data-dir-delay="2">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Submission</span>
+            <span class="clf-detail-label-ko">제출 자료</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <ul class="clf-detail-list">
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">온라인 <strong>참가신청서</strong> (작가 공식 프로필 및 비상 연락처)</span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">출품작 <strong>고화질 사진 1매</strong> (심사 평가 및 특별 도록 제작·인쇄용)</span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">작품 <strong>설명문</strong> (작품 콘셉트·메시지 및 사용 재료 명시 필수)</span></li>
+          </ul>
+        </div>
+
+        <div class="clf-detail-block" data-dir-delay="3">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Schedule</span>
+            <span class="clf-detail-label-ko">공식 일정</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <ul class="clf-detail-list">
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.06.30</strong> 참가 신청 마감<span class="sub">16:00 (화) · 신청서 · 작품 사진 · 설명문 일괄 제출 · 기간 연장 없음</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.20</strong> 공식 아티스트 발표<span class="sub">18:00 (월) · 참여 작가 100인 전원 재단 풀 등재 확정 / 로비 실물 전시 10인 동시 발표 · 재단 홈페이지 공지 및 개별 통보</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.08.11</strong> 조수미 콘서트 및 오프닝 특별전 개막<span class="sub">19:30 (화) · 경희대 평화의 전당 로비</span></span></li>
+          </ul>
+        </div>
+
+        <div class="clf-detail-block" data-dir-delay="3">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Benefits</span>
+            <span class="clf-detail-label-ko">특전 및 혜택</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <ul class="clf-detail-list">
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-all">참여자 전원</span><strong>재단 아티스트 풀 영구 등재</strong><span class="sub">하반기 기획전 · 협약 갤러리 전시 100% 후속 보장 + 언론 홍보 지원 · 신청 작가 전원 자동 등재</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">선정 10인 한정</span><strong>실물 전시 (대로비 특별전)</strong><span class="sub">경희대 평화의 전당 대로비 · 조수미 40주년 콘서트 당일, 수천 명 관객 및 정·재계 VIP 노출</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">선정 10인 한정</span><strong>VIP 컬렉터 매칭</strong><span class="sub">대기업 임원진·자산가 대상 작품 판매 연계 · 현장 프로모션 및 재단 비즈니스 매칭 전폭 지원</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">선정 10인 한정</span><strong>최고급 VIP석 티켓</strong><span class="sub">조수미 콘서트 인당 4매 무상 지급 · 120만원 상당</span></span></li>
+          </ul>
+        </div>
+
+        <div class="clf-detail-block" data-dir-delay="3" style="grid-column:1/-1 !important;">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Artwork Photo</span>
+            <span class="clf-detail-label-ko">출품작 사진 제출</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <p style="font-size:13.5px !important; color:#555 !important; margin:0 0 16px !important; line-height:1.7 !important;">출품작 1점. 아래 촬영 · 파일 가이드를 반드시 확인 후 제출해 주세요.</p>
+
+          <div class="clf-callout" style="margin-bottom:20px !important;">
+            <div class="clf-callout-icon">!</div>
+            <div><strong>출품작 사진은 도록 인쇄에 그대로 사용됩니다.</strong><br>고화질·정면 촬영을 원칙으로 하며, 사진 화질이 낮을 경우 심사 평가 및 도록 인쇄 품질에 영향을 줄 수 있습니다.</div>
+          </div>
+
+          <!-- 촬영 가이드 -->
+          <div class="clf-accordion" data-acc>
+            <button type="button" class="clf-acc-trigger" onclick="clfToggleAcc(this)">
+              <span class="clf-acc-title">
+                <span class="clf-acc-icon">1</span>
+                촬영 가이드 (Photography Guide)
+              </span>
+              <span class="clf-acc-arrow">▼</span>
+            </button>
+            <div class="clf-acc-body">
+              <div class="clf-acc-inner">
+                <ul class="clf-acc-list">
+                  <li><strong>작품 전체 촬영 필수</strong> — 작품의 외곽(테두리) 전체가 화면 안에 모두 들어오도록 촬영해 주세요. 일부분만 보이거나 잘린 사진은 제외될 수 있습니다.</li>
+                  <li><strong>정면 촬영 원칙</strong> — 평면작은 작품과 카메라가 수평·수직 평행이 되도록 정면에서 촬영. 비스듬한 각도(원근 왜곡) 금지.</li>
+                  <li><strong>입체 · 조소 · 공예 작품</strong> — 가능한 한 정면 1컷을 대표 이미지로 사용하되, 작품을 가장 잘 보여주는 각도를 선택해 주세요.</li>
+                  <li><strong>해상도</strong> — 도록 인쇄 기준 <code>300dpi</code> 이상 권장. 디지털 기준 <code>3000×2400px</code> (가로 또는 세로 기준) 이상 권장.</li>
+                  <li><strong>밝기 · 조명</strong> — 작품 본래의 색감이 가장 잘 표현되는 자연광 또는 균일한 인공조명을 권장합니다. 그림자 · 반사광 · 색번짐 최소화.</li>
+                  <li><strong>배경</strong> — 흰색 또는 무채색 배경 권장. 작품 외 다른 사물(액자 받침대, 손, 캡션 등)이 함께 찍히지 않도록 주의해 주세요.</li>
+                  <li><strong>색 보정 금지</strong> — 작품 본래의 색감과 다르게 보이는 과도한 보정(채도·필터·합성 등)은 금지. 최소한의 밝기·각도 보정만 허용됩니다.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 파일 규격 -->
+          <div class="clf-accordion" data-acc>
+            <button type="button" class="clf-acc-trigger" onclick="clfToggleAcc(this)">
+              <span class="clf-acc-title">
+                <span class="clf-acc-icon">2</span>
+                파일 규격 (File Specification)
+              </span>
+              <span class="clf-acc-arrow">▼</span>
+            </button>
+            <div class="clf-acc-body">
+              <div class="clf-acc-inner">
+                <ul class="clf-acc-list">
+                  <li><strong>파일 형식</strong> — <code>.jpg</code> 권장 (<code>.png</code> · <code>.tiff</code> 가능)</li>
+                  <li><strong>용량 제한</strong> — 매당 <code>20MB</code> 이내 권장. 20MB 초과 시 Google Drive · Dropbox 등 공유 링크 제출 가능.</li>
+                  <li><strong>파일명 규칙</strong> — <code>부문_작가명_작품명.jpg</code> 형식으로 작성<br><span style="color:#888 !important; font-size:12px !important;">예시) 평면회화_홍길동_지구의숨결.jpg</span></li>
+                  <li><strong>매수</strong> — 출품작 대표 사진 <strong>1매 필수</strong>. (입체 · 조소의 경우 보조 각도 사진 추가 가능)</li>
+                  <li><strong>클라우드 링크 제출 시</strong> — <code>'링크가 있는 모든 사용자'</code> 또는 <code>'공개'</code> 권한으로 설정해야 하며, 권한이 닫혀 있는 경우 심사 불가합니다.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 작품 설명문 가이드 -->
+          <div class="clf-accordion" data-acc>
+            <button type="button" class="clf-acc-trigger" onclick="clfToggleAcc(this)">
+              <span class="clf-acc-title">
+                <span class="clf-acc-icon">3</span>
+                작품 설명문 작성 가이드
+              </span>
+              <span class="clf-acc-arrow">▼</span>
+            </button>
+            <div class="clf-acc-body">
+              <div class="clf-acc-inner">
+                <ul class="clf-acc-list">
+                  <li><strong>작품 콘셉트 · 메시지</strong> — 작품이 전하고자 하는 감정·이야기·메시지를 자유롭게 서술해 주세요. <strong>주제는 자율 주제이며, 기존 본인 작품 출품도 가능합니다.</strong> <strong>필수 기재</strong>.</li>
+                  <li><strong>사용 재료 명시</strong> — 사용한 매체·재료(예: 캔버스 위 유채, 폐플라스틱, 종이 콜라주 등)를 구체적으로 기재해 주세요. <strong>필수 기재</strong>.</li>
+                  <li><strong>작품 크기</strong> — <code>가로 × 세로 × 깊이 (cm)</code> 단위로 기재. 입체 작품의 경우 무게도 함께 기재 권장.</li>
+                  <li><strong>분량</strong> — 300자 ~ 800자 권장. 너무 짧거나 길지 않게, 작품의 핵심 메시지가 잘 전달되도록 작성해 주세요.</li>
+                  <li><strong>주의</strong> — 도록에 그대로 인쇄됩니다. 오탈자 · 비속어 · 타인 비방 등이 포함되지 않도록 검토 후 제출해 주세요.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- 참가신청 버튼 / 마감 배너 -->
+    <div class="clf-apply-btn-wrap" id="clf-applyBtnWrap" data-dir-anim>
+      <div id="clf-closedBanner" class="clf-closed-banner">
+        <div class="clf-closed-icon">🔒</div>
+        <div class="clf-closed-title">전시 공모 신청이 마감되었습니다</div>
+        <div class="clf-closed-desc">접수 기간: ~ 2026년 6월 30일 16:00<br>문의: 카네기리 재단 사무국</div>
+      </div>
+      <div id="clf-ddayTimer" style="margin-bottom:14px !important; font-weight:600 !important; color:#B54E3A !important; font-size:15.5px !important; text-align:center !important; display:none !important;">
+        마감까지 <span id="clf-ddayText"></span> 남았습니다
+      </div>
+      <button id="clf-applyOpenBtn" class="clf-apply-open-btn" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><polyline points="16 2 22 8 12 18 9 18 9 15"/></svg>
+        전시 공모 신청서 작성하기
+      </button>
+    </div>
+
+    <!-- 참가 신청 폼 -->
+    <div class="clf-form-section" id="apply" data-dir-anim>
+
+      <div class="clf-form-intro">
+        <div class="clf-form-intro-en">APPLICATION FORM</div>
+        <h2 class="clf-form-intro-ko">전시 공모 신청서</h2>
+        <p class="clf-form-intro-desc">아래 항목을 정확히 입력하신 후 출품작 사진 링크까지 함께 업로드해 주세요. 신청서 접수 및 등록비 납부 확인 후 정식 작가 등록 및 심사 절차가 진행됩니다.</p>
+      </div>
+
+      <form id="clf-applyForm" class="clf-form-wrap" novalidate>
+
+        <!-- 01 작품 분야 -->
+        <div class="clf-form-block">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Category</span>
+            <span class="clf-detail-label-ko">작품 분야</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+
+          <div class="clf-field clf-full" style="margin-bottom:18px !important;">
+            <div class="clf-field-label">출품 부문 <span class="clf-req">*</span></div>
+            <div class="clf-pill-group">
+              <span class="clf-pill"><input type="radio" id="div1" name="division" value="평면회화" required><label for="div1">평면회화 (Painting)</label></span>
+              <span class="clf-pill"><input type="radio" id="div2" name="division" value="일러스트"><label for="div2">일러스트 (Illustration)</label></span>
+              <span class="clf-pill"><input type="radio" id="div3" name="division" value="조소"><label for="div3">조소 (Sculpture)</label></span>
+              <span class="clf-pill"><input type="radio" id="div4" name="division" value="입체공예"><label for="div4">입체공예 (Crafts)</label></span>
+              <span class="clf-pill"><input type="radio" id="div5" name="division" value="업사이클링 아트"><label for="div5">업사이클링 아트 (Upcycling)</label></span>
+              <span class="clf-pill"><input type="radio" id="div6" name="division" value="기타"><label for="div6">기타</label></span>
+            </div>
+            <!-- 분야 기타 입력란 -->
+            <div id="divisionEtcBox" class="clf-etc-input">
+              <input class="clf-input" type="text" id="divisionEtc" name="divisionEtc" placeholder="기타 분야를 직접 입력해 주세요 (예: 사진, 미디어아트, 설치미술 등)">
+              <div class="clf-field-help">분야가 명확치 않은 경우 재단 사무국으로 사전 문의 바랍니다.</div>
+            </div>
+          </div>
+
+          <div class="clf-field clf-full">
+            <div class="clf-field-label">주된 매체 · 기법 <span class="clf-req">*</span></div>
+            <select class="clf-select clf-with-etc" id="medium" name="medium" data-etc="mediumEtcBox" required>
+              <option value="">— 선택해 주세요 —</option>
+              <optgroup label="회화 · 드로잉">
+                <option>유화 (Oil)</option>
+                <option>아크릴 (Acrylic)</option>
+                <option>수채 (Watercolor)</option>
+                <option>한국화 · 동양화</option>
+                <option>드로잉 · 펜화</option>
+                <option>혼합매체 (Mixed Media)</option>
+              </optgroup>
+              <optgroup label="디지털 · 일러스트">
+                <option>디지털 일러스트</option>
+                <option>판화 · 프린트</option>
+              </optgroup>
+              <optgroup label="입체 · 조소">
+                <option>조소 (점토 · 석고 등)</option>
+                <option>금속 · 철 조각</option>
+                <option>나무 · 목조</option>
+                <option>도예 · 세라믹</option>
+              </optgroup>
+              <optgroup label="업사이클링 · 친환경">
+                <option>폐플라스틱 · 폐자재 활용</option>
+                <option>업사이클링 패브릭</option>
+                <option>자연 소재 (식물 · 흙 · 돌 등)</option>
+              </optgroup>
+              <option value="기타">기타 (직접 입력)</option>
+            </select>
+            <div id="mediumEtcBox" class="clf-etc-input">
+              <input class="clf-input" type="text" id="mediumEtc" name="mediumEtc" placeholder="매체 · 기법을 직접 입력해 주세요">
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 참가자 정보 -->
+        <div class="clf-form-block">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Participant</span>
+            <span class="clf-detail-label-ko">작가 정보</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+
+          <div class="clf-fg">
+            <div class="clf-field clf-full" style="margin-bottom:8px !important;">
+              <div class="clf-field-label">작가 프로필 사진 (정면) <span class="clf-req">*</span></div>
+              <input class="clf-input" type="file" id="profilePhoto" accept="image/*" required style="padding:10px !important;">
+              <div class="clf-field-help">스마트폰으로 촬영한 정면 사진도 가능합니다. (작가 본인 확인 · 도록 작가 소개용)</div>
+              <!-- 압축된 이미지 데이터를 담을 숨김 필드 -->
+              <input type="hidden" id="photoData" name="photoData">
+            </div>
+
+            <div class="clf-field">
+              <div class="clf-field-label">성명 (작가명) <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="nameKo" name="nameKo" placeholder="홍길동" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">생년월일 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="date" id="birth" name="birth" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">성별</div>
+              <div class="clf-pill-group">
+                <span class="clf-pill"><input type="radio" id="g1" name="gender" value="여"><label for="g1">여</label></span>
+                <span class="clf-pill"><input type="radio" id="g2" name="gender" value="남"><label for="g2">남</label></span>
+                <span class="clf-pill"><input type="radio" id="g3" name="gender" value="기재안함"><label for="g3">기재 안 함</label></span>
+              </div>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">국적</div>
+              <input class="clf-input" type="text" id="nationality" name="nationality" placeholder="대한민국" value="대한민국">
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">휴대전화 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">비상 연락처</div>
+              <input class="clf-input" type="tel" id="emergencyPhone" name="emergencyPhone" placeholder="가족 · 지인 연락처 (선택)">
+              <div class="clf-field-help">본인과 연락 불가 시 사용됩니다.</div>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">이메일 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="email" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">시 · 도 <span class="clf-req">*</span></div>
+              <select class="clf-select" id="addressCity" name="addressCity" required>
+                <option value="">— 시·도 선택 —</option>
+                <option>서울특별시</option>
+                <option>부산광역시</option>
+                <option>대구광역시</option>
+                <option>인천광역시</option>
+                <option>광주광역시</option>
+                <option>대전광역시</option>
+                <option>울산광역시</option>
+                <option>세종특별자치시</option>
+                <option>경기도</option>
+                <option>강원특별자치도</option>
+                <option>충청남도</option>
+                <option>충청북도</option>
+                <option>전라남도</option>
+                <option>전라북도</option>
+                <option>경상남도</option>
+                <option>경상북도</option>
+                <option>제주특별자치도</option>
+                <option>해외 (Overseas)</option>
+              </select>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">구 · 군 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="addressDistrict" name="addressDistrict" placeholder="예) 강남구, 수원시 장안구" required>
+            </div>
+            <div class="clf-field clf-full">
+              <div class="clf-field-label">SNS · 포트폴리오 링크</div>
+              <input class="clf-input" type="url" id="snsLink" name="snsLink" placeholder="https://instagram.com/... 또는 https://... (선택)">
+              <div class="clf-field-help">인스타그램 · 개인 홈페이지 · 비핸스 · 포트폴리오 사이트 등 (있는 경우)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 현재 신분 & 학력 -->
+        <div class="clf-form-block">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Status &amp; Education</span>
+            <span class="clf-detail-label-ko">현재 신분 · 학력</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+
+          <div class="clf-fg">
+            <div class="clf-field">
+              <div class="clf-field-label">현재 신분 <span class="clf-req">*</span></div>
+              <select class="clf-select clf-with-etc" id="status" name="status" data-etc="statusEtcBox" required>
+                <option value="">— 선택해 주세요 —</option>
+                <option>미술대학(원) 재학 중</option>
+                <option>미술대학(원) 휴학 중</option>
+                <option>미술대학(원) 졸업</option>
+                <option>신인 아티스트 (Solo Artist)</option>
+                <option>개인 강사 · 작가 활동 중</option>
+                <option>예술고등학교 재학 / 졸업</option>
+                <option>독학 · 비전공 아티스트</option>
+                <option value="기타">기타 (직접 입력)</option>
+              </select>
+              <div id="statusEtcBox" class="clf-etc-input">
+                <input class="clf-input" type="text" id="statusEtc" name="statusEtc" placeholder="현재 신분을 직접 입력해 주세요">
+              </div>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">최종 학력 <span class="clf-req">*</span></div>
+              <select class="clf-select clf-with-etc" id="lastEducation" name="lastEducation" data-etc="lastEducationEtcBox" required>
+                <option value="">— 선택해 주세요 —</option>
+                <option>고등학교 재학 / 졸업</option>
+                <option>예술고등학교 재학 / 졸업</option>
+                <option>대학교 학사 재학</option>
+                <option>대학교 학사 졸업</option>
+                <option>대학원 석사 재학</option>
+                <option>대학원 석사 졸업</option>
+                <option>대학원 박사 재학</option>
+                <option>대학원 박사 졸업 / 수료</option>
+                <option>해외 미술학교 · Art School 재학 / 졸업</option>
+                <option value="기타">기타 (직접 입력)</option>
+              </select>
+              <div id="lastEducationEtcBox" class="clf-etc-input">
+                <input class="clf-input" type="text" id="lastEducationEtc" name="lastEducationEtc" placeholder="최종 학력을 직접 입력해 주세요">
+              </div>
+            </div>
+            <div class="clf-field clf-full">
+              <div class="clf-field-label">학교명 · 전공 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="schoolName" name="schoolName" placeholder="예) 홍익대학교 미술대학 회화과 / 서울예술대학교 조소과" required>
+            </div>
+            <div class="clf-field clf-full">
+              <div class="clf-field-label">활동 경력 (전시 · 소속 단체 등) <span class="clf-req">*</span></div>
+              <textarea class="clf-textarea" id="career" name="career" placeholder="• 2025 개인전 'OOO' (OO 갤러리, 서울)&#10;• 2024 단체전 'OOO' 참여 (OO 미술관)&#10;• 2023~ OO 작가 협회 소속&#10;• 전시 경력이 없는 경우 '없음'으로 기재" required></textarea>
+              <div class="clf-field-help">개인전 · 단체전 · 아트페어 · 레지던시 · 소속 단체 등 자유롭게 기재해 주세요. 신인 작가는 '없음'도 무관합니다.</div>
+            </div>
+            <div class="clf-field clf-full">
+              <div class="clf-field-label">주요 수상 · 선정 내역</div>
+              <textarea class="clf-textarea" id="awards" name="awards" placeholder="• 2025 OOO 미술 공모전 입선&#10;• 2024 OOO 영아티스트 선정&#10;• 수상 · 선정 내역이 없는 경우 '없음'으로 기재"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 출품작 정보 -->
+        <div class="clf-form-block">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Artwork</span>
+            <span class="clf-detail-label-ko">출품작 정보</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <p class="clf-form-block-desc">출품작 사진과 작품 설명은 도록 인쇄에 그대로 사용됩니다. 위 가이드를 반드시 확인 후 제출해 주세요.</p>
+
+          <div class="clf-fg">
+            <div class="clf-field">
+              <div class="clf-field-label">작품 제목 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="artworkTitle" name="artworkTitle" placeholder="예) 어느 봄날의 위로 (A Spring Comfort)" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">제작 연도 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="artworkYear" name="artworkYear" placeholder="예) 2025" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">작품 크기 (가로 × 세로 × 깊이 / cm) <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="artworkSize" name="artworkSize" placeholder="예) 90 × 120 × 5 (cm)" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">사용 재료 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="artworkMaterials" name="artworkMaterials" placeholder="예) 캔버스 위 유채 / 종이에 수채와 잉크" required>
+            </div>
+          </div>
+
+          <div class="clf-field clf-full" style="margin-top:18px !important;">
+            <div class="clf-field-label">출품작 사진 공유 링크 <span class="clf-req">*</span></div>
+
+            <div class="clf-filename-guide">
+              <div class="clf-filename-guide-text">
+                <div class="clf-filename-guide-label">사진 파일명 규칙</div>
+                <div class="clf-filename-guide-rule"><code>부문_작가명_작품명.jpg</code></div>
+                <div class="clf-filename-guide-ex">예) <code style="background:#fff;color:#A8872A;padding:1px 8px;border-radius:6px;font-family:'Pretendard Variable',Pretendard,monospace;font-size:12.5px;font-weight:700;border:1px solid #E8DDB5;">평면회화_홍길동_지구의숨결.jpg</code> · 항목 사이는 언더바(_)로 연결</div>
+              </div>
+              <button type="button" class="clf-help-btn" id="clf-howToUploadBtn" aria-label="구글 드라이브 업로드 방법 보기">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                업로드 방법 알아보기
+              </button>
+            </div>
+
+            <input class="clf-input" type="url" id="artworkPhotoLink" name="artworkPhotoLink" placeholder="https://drive.google.com/..." required>
+            <div class="clf-field-help">위 촬영 가이드에 맞게 촬영한 고화질 사진을 <strong>구글 드라이브</strong>에 업로드한 뒤 공유 링크를 입력해 주세요. 제출 전 <strong style="color:#0C3D40 !important;">시크릿(비로그인) 창에서 링크가 정상적으로 열리는지</strong> 반드시 확인해 주세요.</div>
+          </div>
+
+          <div class="clf-field clf-full" style="margin-top:18px !important;">
+            <div class="clf-field-label">작품 설명문 <span class="clf-req">*</span></div>
+            <textarea class="clf-textarea" id="artworkDescription" name="artworkDescription" placeholder="• 작품이 전하고자 하는 콘셉트·메시지·이야기를 자유롭게 서술해 주세요.&#10;• 사용한 재료와 작품의 의미를 구체적으로 기재해 주세요.&#10;• 주제는 자율 주제이며, 기존 본인 작품 출품도 가능합니다.&#10;• 분량: 300자 ~ 800자 권장 · 도록에 그대로 인쇄됩니다." required style="min-height:160px !important;"></textarea>
+            <div class="clf-field-help">작품 콘셉트·메시지 및 사용 재료 명시 <strong style="color:#B54E3A !important;">필수</strong>. 작성된 그대로 도록에 인쇄됩니다.</div>
+          </div>
+        </div>
+
+        <!-- 05 유입 경로 -->
+        <div class="clf-form-block">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Referral</span>
+            <span class="clf-detail-label-ko">유입 경로</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <p class="clf-form-block-desc">본 공모전을 어떤 경로로 알게 되셨나요? 향후 안내에 참고됩니다.</p>
+
+          <div class="clf-fg">
+            <div class="clf-field clf-full">
+              <div class="clf-field-label">알게 된 경로 <span class="clf-req">*</span></div>
+              <select class="clf-select clf-with-etc" id="referral" name="referral" data-etc="referralEtcBox" required>
+                <option value="">— 선택해 주세요 —</option>
+                <option>카네기리 재단 공식 홈페이지</option>
+                <option>재단 SNS (인스타그램 · 페이스북 등)</option>
+                <option>유튜브 영상 · 광고</option>
+                <option>네이버 · 구글 등 검색</option>
+                <option>미술 · 아트 커뮤니티 · 카페</option>
+                <option>학교 · 미술학원 안내</option>
+                <option>지도교수 · 선생님 추천</option>
+                <option>지인 · 동료 작가 추천</option>
+                <option>언론 보도 · 기사</option>
+                <option>포스터 · 전단지</option>
+                <option value="기타">기타 (직접 입력)</option>
+              </select>
+              <div id="referralEtcBox" class="clf-etc-input">
+                <input class="clf-input" type="text" id="referralEtc" name="referralEtc" placeholder="어떤 경로로 알게 되셨는지 직접 입력해 주세요">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 06 아티스트 등록비 안내 -->
+        <div class="clf-form-block" id="payment">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Payment</span>
+            <span class="clf-detail-label-ko">아티스트 등록비 안내</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <p class="clf-form-block-desc">신청서 제출 후 아래와 같이 아티스트 등록비를 납부해 주세요. 입금 확인 완료 후 정식 작가 등록 및 심사 절차가 순차 진행됩니다.</p>
+
+          <div class="clf-pay-box">
+            <div class="clf-pay-amount">
+              <div>
+                <div class="clf-pay-amount-label">ARTIST REGISTRATION FEE</div>
+                <div class="clf-pay-amount-sub">재단 정식 아티스트 풀 연간 등록비</div>
+              </div>
+              <div class="clf-pay-amount-value">
+                80,000<span class="clf-unit">원 / 1인</span>
+              </div>
+            </div>
+
+            <div class="clf-pay-deadline">
+              <div>
+                <div class="clf-pay-deadline-label">접수 마감</div>
+                <div class="clf-pay-amount-sub" style="margin-top:4px !important;">기간 연장 없음 · 시간 엄수</div>
+              </div>
+              <div class="clf-pay-deadline-date">2026. 06. 30 (화) 16:00</div>
+            </div>
+
+            <dl class="clf-pay-info">
+              <dt>은행명</dt><dd>농협</dd>
+              <dt>계좌번호</dt><dd><span class="clf-code">302-1509-5177-81</span></dd>
+              <dt>예금주</dt><dd>이예영 (카네기리퀘이츠)</dd>
+              <dt>포함 항목</dt><dd>재단 정식 아티스트 풀 연간 등록비 · 8/11 부대 전시 심사비 · 특별 도록 수록 비용 일체</dd>
+            </dl>
+
+            <div class="clf-pay-note">
+              <strong class="clf-warn">⚠ 환불 불가 안내</strong><br>
+              출품 원서 접수 완료 및 재단 아티스트 풀 정식 등록·심사 행정 절차가 시작된 이후에는
+              어떠한 사유로도 <strong>등록비는 반환되지 않습니다.</strong>
+              반드시 <strong>참가자 본인(작가) 성명</strong>으로 입금해 주세요.
+            </div>
+
+            <div class="clf-pay-note" style="border-left-color:#0C3D40 !important;">
+              <strong>📜 공식 작가 등록 효력</strong><br>
+              <strong>등록비 납입 시점부터 카네기리 재단 정식 아티스트 풀에 등록</strong>되며,
+              본 요강에 명시된 규정에 따라 <strong>작가와 재단 간의 공식 계약 관계가 성립</strong>됩니다.
+              심사 결과와 관계없이 100인 작가 전원은 하반기 재단 기획전 · 협약 갤러리 전시 기회가 100% 보장됩니다.
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 약관 동의 -->
+        <div class="clf-form-block">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Agreement</span>
+            <span class="clf-detail-label-ko">약관 동의</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+
+          <div class="clf-agree">
+            <!-- 전체 동의 마스터 -->
+            <div class="clf-agree-item clf-agree-master">
+              <input type="checkbox" id="agreeAll">
+              <label for="agreeAll">
+                <strong>모든 약관에 동의합니다</strong>
+                <span class="clf-agree-master-sub">필수 항목 4개와 선택 항목 1개에 일괄 동의합니다.</span>
+              </label>
+            </div>
+
+            <!-- 1. 개인정보 수집·이용 -->
+            <div class="clf-agree-item">
+              <input type="checkbox" id="agree1" required>
+              <label for="agree1">
+                <strong>[필수] <span class="clf-req">*</span> 개인정보 수집·이용에 동의합니다</strong>
+                <div class="clf-agree-detail">
+                  <strong style="color:#0C3D40 !important;">▸ 수집 항목</strong><br>
+                  성명, 생년월일, 성별, 국적, 연락처(휴대전화·비상연락처), 이메일, 주소, 학력, 활동 경력, 수상 내역, 작품 정보(제목·재료·크기·설명·사진), SNS·포트폴리오 링크, 프로필 사진<br><br>
+                  <strong style="color:#0C3D40 !important;">▸ 수집·이용 목적</strong><br>
+                  본 공모전의 작가 식별, 심사, 선정 작가 발표, 특별 도록 인쇄, 8/11 평화의 전당 실물 전시 운영, 재단 아티스트 풀 등록·관리, 향후 매니지먼트 및 작품 판매 매칭 안내<br><br>
+                  <strong style="color:#0C3D40 !important;">▸ 보유 및 이용 기간</strong><br>
+                  재단 아티스트 풀 등재 기간 동안 보관. 등재 해지 또는 작가 본인의 파기 요청 시 즉시 파기 (관계 법령에 따라 보존 의무가 있는 경우 해당 기간 동안 보관)<br><br>
+                  <strong style="color:#0C3D40 !important;">▸ 동의 거부 권리</strong><br>
+                  본 개인정보 수집·이용에 대한 동의를 거부할 수 있으며, 동의 거부 시 공모전 참가가 불가합니다.
+                </div>
+              </label>
+            </div>
+
+            <!-- 2. 작품 이미지 사용권 -->
+            <div class="clf-agree-item">
+              <input type="checkbox" id="agree2" required>
+              <label for="agree2">
+                <strong>[필수] <span class="clf-req">*</span> 작품 이미지 사용권에 동의합니다</strong>
+                <div class="clf-agree-detail">
+                  <strong style="color:#0C3D40 !important;">▸ 저작권 귀속</strong><br>
+                  제출 및 출품된 모든 작품의 원 저작권은 <strong>작가 본인에게 귀속</strong>됩니다.<br><br>
+                  <strong style="color:#0C3D40 !important;">▸ 재단 사용권 범위</strong><br>
+                  주최·주관 측(카네기리 재단)은 행사의 대외 홍보, 특별 도록 인쇄, 언론 보도, 추후 기업인 대상 작품 판매 매칭, 재단 SNS·홈페이지 게시 등 목적에 한하여 작가의 작품 이미지를 합법적으로 사용할 수 있습니다.<br><br>
+                  <strong style="color:#0C3D40 !important;">▸ 제3자 제공</strong><br>
+                  작품 판매 매칭이 성사된 경우, 매칭 컬렉터·구매자에게 작품 정보(이미지·설명·재료·크기·가격 등)를 제공할 수 있습니다.
+                </div>
+              </label>
+            </div>
+
+            <!-- 3. 초상권 사용 -->
+            <div class="clf-agree-item">
+              <input type="checkbox" id="agree3" required>
+              <label for="agree3">
+                <strong>[필수] <span class="clf-req">*</span> 초상권 사용에 동의합니다</strong>
+                <div class="clf-agree-detail">
+                  <strong style="color:#0C3D40 !important;">▸ 동의 범위</strong><br>
+                  전시 오프닝, 행사 현장, 작가 인터뷰 등 본 공모전 관련 현장에서 촬영된 본인의 사진·영상에 대한 사용에 동의합니다.<br><br>
+                  <strong style="color:#0C3D40 !important;">▸ 활용 매체</strong><br>
+                  재단 공식 홈페이지·SNS, 보도자료, 도록, 영상 기록물, 향후 재단 행사 홍보물 등.
+                </div>
+              </label>
+            </div>
+
+            <!-- 4. 등록비 환불 불가 -->
+            <div class="clf-agree-item">
+              <input type="checkbox" id="agree4" required>
+              <label for="agree4">
+                <strong>[필수] <span class="clf-req">*</span> 등록비 환불 불가 규정에 동의합니다</strong>
+                <div class="clf-agree-detail">
+                  출품 원서 접수 완료 및 재단 아티스트 풀 정식 등록·심사 행정 절차가 시작된 이후에는 어떠한 사유로도 <strong>등록비(80,000원)</strong>가 반환되지 않음을 충분히 인지하고 동의합니다.
+                </div>
+              </label>
+            </div>
+
+            <!-- 5. 마케팅 (선택) -->
+            <div class="clf-agree-item">
+              <input type="checkbox" id="agree5">
+              <label for="agree5">
+                <span class="clf-agree-optional-tag">선택</span><strong>마케팅 정보 수신에 동의합니다</strong>
+                <div class="clf-agree-detail">
+                  향후 카네기리 재단의 공모전·콘서트·전시 등 행사 안내 및 뉴스레터를 이메일·문자로 수신함에 동의합니다. 거부 시 마케팅 정보는 발송되지 않으나, 본 공모전 운영 안내 메일은 정상 발송됩니다.
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 제출 -->
+        <div class="clf-submit-area">
+          <button type="submit" class="clf-submit">전 시  공 모  신 청  제 출</button>
+          <div class="clf-submit-hint">제출 후 입력하신 이메일로 접수 확인 메일이 발송됩니다.</div>
+        </div>
+
+      </form>
+    </div>
+
+  </div><!-- /clf-wrap -->
+
+  <!-- 모달 -->
+  <div class="clf-modal-bd" id="successModal">
+    <div class="clf-modal">
+      <h3>Application Received</h3>
+      <div class="clf-modal-title">전시 공모 신청이 정상 접수되었습니다</div>
+      <p>입력하신 이메일로 접수 확인 메일이 발송됩니다.<br>등록비 입금 확인 완료 후 정식 작가 등록 및 심사 절차가 진행됩니다.</p>
+      <div class="clf-modal-ref" id="refNumber">접수번호 · CLF-EXH-2026-000000</div>
+      <button type="button" class="clf-modal-close" id="modalClose">확 인</button>
+    </div>
+  </div>
+
+  <!-- 업로드 방법 모달 -->
+  <div class="clf-modal-bd" id="howToUploadModal" role="dialog" aria-modal="true" aria-labelledby="howToUploadTitle">
+    <div class="clf-modal clf-modal-wide">
+      <h3>How to Upload</h3>
+      <div class="clf-modal-title" id="howToUploadTitle">구글 드라이브 사진 업로드 방법</div>
+      <p class="clf-modal-desc">아래 순서대로 진행하시면 도록 인쇄용 사진 링크를 만드실 수 있습니다.</p>
+      <ol class="clf-gdrive-steps">
+        <li><span class="clf-gdrive-num">1</span><div><strong>drive.google.com</strong> 접속 후 본인 구글 계정으로 로그인합니다.</div></li>
+        <li><span class="clf-gdrive-num">2</span><div>좌측 상단 <strong>[+ 새로 만들기]</strong> → <strong>[파일 업로드]</strong> 클릭 후 사진 파일을 선택합니다.<br><span style="color:#888;font-size:12.5px;">파일명은 반드시 <code>부문_작가명_작품명.jpg</code> 형식으로 저장해 주세요. 예) <code>평면회화_홍길동_지구의숨결.jpg</code></span></div></li>
+        <li><span class="clf-gdrive-num">3</span><div>업로드가 완료되면 해당 파일을 <strong>우클릭 → [공유]</strong>를 선택합니다.</div></li>
+        <li><span class="clf-gdrive-num">4</span><div><strong>일반 액세스</strong> 항목을 <code>제한됨</code> → <code>링크가 있는 모든 사용자</code>로 변경합니다.</div></li>
+        <li><span class="clf-gdrive-num">5</span><div>권한은 <code>뷰어</code>로 유지하고, 우측 하단 <strong>[링크 복사]</strong>를 클릭합니다.</div></li>
+        <li><span class="clf-gdrive-num">6</span><div>복사된 링크를 <strong>출품작 사진 공유 링크</strong> 입력란에 붙여넣기 합니다.<br><span style="color:#888;font-size:12.5px;">제출 전 시크릿 창에서 사진이 정상적으로 열리는지 꼭 확인해 주세요.</span></div></li>
+      </ol>
+      <div class="clf-modal-actions">
+        <button type="button" class="clf-modal-secondary" id="howToUploadClose">닫 기</button>
+        <a class="clf-modal-open-drive" href="https://drive.google.com" target="_blank" rel="noopener noreferrer">
+          구글 드라이브 열기
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /clf-dir -->
+
+<script>
+/* ── UTM 및 랜딩 정보 저장 ── */
+(function saveLandingInfo(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('utm_campaign') || params.get('utm_source')) {
+    sessionStorage.setItem('utm_campaign', params.get('utm_campaign') || 'exhibition');
+    sessionStorage.setItem('utm_medium',   params.get('utm_medium') || 'free');
+    sessionStorage.setItem('utm_source',   params.get('utm_source') || 'site');
+    sessionStorage.setItem('landedAt',     new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'}));
+  }
+})();
+
+(function(){
+  /* ── 접수 기간 체크 ── */
+  var DEADLINE = new Date('2026-06-30T16:00:00+09:00');
+  var openBtn  = document.getElementById('clf-applyOpenBtn');
+  var closedBanner = document.getElementById('clf-closedBanner');
+  var formSection  = document.getElementById('apply');
+  var ddayTimer    = document.getElementById('clf-ddayTimer');
+  var ddayText     = document.getElementById('clf-ddayText');
+
+  function updateTimer() {
+    var diff = DEADLINE - new Date();
+    if (diff <= 0) {
+      if (openBtn) openBtn.style.setProperty('display','none','important');
+      if (ddayTimer) ddayTimer.style.setProperty('display','none','important');
+      if (closedBanner) closedBanner.style.setProperty('display','block','important');
+      return false;
+    }
+
+    if (ddayTimer) ddayTimer.style.setProperty('display','block','important');
+
+    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    var m = Math.floor((diff / 1000 / 60) % 60);
+    var s = Math.floor((diff / 1000) % 60);
+
+    var txt = '';
+    if (d > 0) txt += d + '일 ';
+    txt += String(h).padStart(2,'0') + '시간 ' + String(m).padStart(2,'0') + '분 ' + String(s).padStart(2,'0') + '초';
+    if (ddayText) ddayText.textContent = txt;
+    return true;
+  }
+
+  var timerInterval;
+  if (updateTimer()) {
+    timerInterval = setInterval(updateTimer, 1000);
+
+    if (openBtn) {
+      openBtn.addEventListener('click', function(){
+        /* 아임웹 로그인 체크 */
+        var isLoggedOut = (typeof window.MEMBER_HASH !== 'undefined' && window.MEMBER_HASH === '') || (typeof MEMBER_HASH !== 'undefined' && MEMBER_HASH === '');
+        if (isLoggedOut) {
+          if (typeof SITE_LOGIN === 'function') {
+            SITE_LOGIN();
+          } else {
+            if (confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?')) {
+              window.location.href = '/login?back_url=' + encodeURIComponent(window.location.pathname + window.location.search);
+            }
+          }
+          return;
+        }
+
+        if (formSection) {
+          formSection.classList.add('clf-form-visible');
+          var btnWrap = document.getElementById('clf-applyBtnWrap');
+          if (btnWrap) btnWrap.style.setProperty('display','none','important');
+          if (timerInterval) clearInterval(timerInterval);
+          setTimeout(function(){
+            formSection.scrollIntoView({behavior:'smooth', block:'start'});
+          }, 100);
+        }
+      });
+    }
+  }
+
+  /* 스크롤 인 애니메이션 */
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('dir-visible');});
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('[data-dir-anim]').forEach(function(el){obs.observe(el);});
+
+
+  /* 분야 토글 — 기타 선택 시 직접 입력란 노출 */
+  document.querySelectorAll('input[name="division"]').forEach(function(r){
+    r.addEventListener('change', function(e){
+      var etc = document.getElementById('divisionEtcBox');
+      var etcInp = document.getElementById('divisionEtc');
+      etc.classList.remove('clf-show');
+      etcInp.removeAttribute('required');
+
+      if (e.target.value === '기타') {
+        etc.classList.add('clf-show');
+        etcInp.setAttribute('required','');
+      }
+    });
+  });
+
+  /* 모든 select 의 '기타' 옵션 처리 — data-etc 속성으로 매핑된 입력란 표시 */
+  document.querySelectorAll('.clf-with-etc').forEach(function(sel){
+    sel.addEventListener('change', function(){
+      var etcBoxId = sel.getAttribute('data-etc');
+      var etcBox = document.getElementById(etcBoxId);
+      if (!etcBox) return;
+      if (sel.value === '기타') {
+        etcBox.classList.add('clf-show');
+        var inp = etcBox.querySelector('input');
+        if (inp && sel.hasAttribute('required')) inp.setAttribute('required','');
+      } else {
+        etcBox.classList.remove('clf-show');
+        var inp = etcBox.querySelector('input');
+        if (inp) inp.removeAttribute('required');
+      }
+    });
+  });
+
+  /* 드래그 앤 드롭 (잔여 업로드 영역 대응) */
+  document.querySelectorAll('.clf-upload').forEach(function(zone){
+    zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.classList.add('clf-dragover'); });
+    zone.addEventListener('dragleave', function(){ zone.classList.remove('clf-dragover'); });
+    zone.addEventListener('drop', function(){ zone.classList.remove('clf-dragover'); });
+  });
+
+  /* 프로필 사진 압축 (Base64 변환) */
+  var photoInput = document.getElementById('profilePhoto');
+  var photoDataInput = document.getElementById('photoData');
+  if (photoInput) {
+    photoInput.addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      if (!file) {
+        photoDataInput.value = '';
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        var img = new Image();
+        img.onload = function() {
+          var canvas = document.createElement('canvas');
+          var max_size = 800; // 가로세로 최대 800px로 압축
+          var width = img.width;
+          var height = img.height;
+
+          if (width > height) {
+            if (width > max_size) {
+              height *= max_size / width;
+              width = max_size;
+            }
+          } else {
+            if (height > max_size) {
+              width *= max_size / height;
+              height = max_size;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // 압축 후 Base64로 변환 (Quality 0.7)
+          photoDataInput.value = canvas.toDataURL('image/jpeg', 0.7);
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* 전화번호 포맷 */
+  function formatPhoneInput(e){
+    var v = e.target.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.slice(0, 11);
+    if (v.length >= 8) e.target.value = v.replace(/(\d{3})(\d{4})(\d{1,4})/, '$1-$2-$3');
+    else if (v.length >= 4) e.target.value = v.replace(/(\d{3})(\d{1,4})/, '$1-$2');
+    else e.target.value = v;
+  }
+  document.getElementById('phone').addEventListener('input', formatPhoneInput);
+  var emergencyEl = document.getElementById('emergencyPhone');
+  if (emergencyEl) emergencyEl.addEventListener('input', formatPhoneInput);
+
+  /* 제출 */
+  /* ===========================================================
+     Google Apps Script 연동 설정
+     아래 GAS_URL 을 본인의 Apps Script 웹앱 배포 URL로 교체하세요.
+     (배포 방법은 별도 안내 참고)
+     =========================================================== */
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbyKo1g9WEPWKwwi4jSOIj0ENBn3BAsD4OBtJkQqlm-SvFTiKHGLH8ggU0CW8p5mUROK/exec';
+
+  document.getElementById('clf-applyForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var form = e.target;
+
+    /* 기존 에러 초기화 */
+    form.querySelectorAll('.clf-error-msg').forEach(function(el){ el.remove(); });
+    form.querySelectorAll('.clf-input-error').forEach(function(el){ el.classList.remove('clf-input-error'); });
+
+    var isValid = true;
+    var firstInvalid = null;
+
+    /* 모든 필수 항목 검사 */
+    form.querySelectorAll('[required]').forEach(function(input) {
+      var isFieldValid = true;
+      var msg = '필수 항목입니다. 작성해 주세요.';
+
+      if (input.type === 'radio' || input.type === 'checkbox') {
+        if (input.type === 'radio') {
+          if (!form.querySelector('input[name="'+input.name+'"]:checked')) {
+            isFieldValid = false;
+            msg = '필수 항목입니다. 선택해 주세요.';
+          }
+        } else if (input.type === 'checkbox') {
+          if (!input.checked) {
+            isFieldValid = false;
+            msg = '필수 항목입니다. 동의해 주세요.';
+          }
+        }
+      } else {
+        if (!input.value.trim()) {
+          isFieldValid = false;
+        } else if (!input.validity.valid) {
+          isFieldValid = false;
+          msg = '올바른 형식으로 입력해 주세요.';
+        }
+      }
+
+      if (!isFieldValid) {
+        isValid = false;
+        var target = input;
+
+        if (input.type === 'radio') {
+          target = input.closest('.clf-pill-group');
+        } else if (input.type === 'checkbox') {
+          target = input.closest('.clf-agree-item');
+        } else {
+          input.classList.add('clf-input-error');
+        }
+
+        if (target && !target.dataset.hasError) {
+          var err = document.createElement('div');
+          err.className = 'clf-error-msg';
+          err.textContent = msg;
+          target.parentNode.insertBefore(err, target.nextSibling);
+          target.dataset.hasError = "true";
+        }
+
+        if (!firstInvalid) firstInvalid = input.type === 'radio' ? target : input;
+      }
+    });
+
+    /* 데이터 속성 정리 */
+    form.querySelectorAll('[data-has-error]').forEach(function(el){ delete el.dataset.hasError; });
+
+    if (!isValid) {
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+      return;
+    }
+
+    var submitBtn = form.querySelector('.clf-submit');
+    var originalText = submitBtn.textContent;
+    var ref = 'CLF-EXH-2026-' + Math.floor(100000 + Math.random() * 900000);
+
+    /* 폼 데이터 수집 및 UTM 연동 */
+    var fd = new FormData(form);
+    
+    // UTM 정보 읽어오기
+    var urlParams = new URLSearchParams(window.location.search);
+    var utmCampaign = urlParams.get('utm_campaign') || sessionStorage.getItem('utm_campaign') || 'exhibition';
+    var utmMedium   = urlParams.get('utm_medium')   || sessionStorage.getItem('utm_medium')   || 'free';
+    var utmSource   = urlParams.get('utm_source')   || sessionStorage.getItem('utm_source')   || 'site';
+    
+    var dbType = (utmMedium === 'paid') ? '유료DB' : '무료DB';
+
+    var payload = { 
+      refNumber: ref, 
+      formType: 'exhibition', 
+      submittedAt: new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'}), // KST로 저장
+      utmCampaign: utmCampaign,
+      utmMedium: utmMedium,
+      utmSource: utmSource,
+      dbType: dbType,
+      landedAt: sessionStorage.getItem('landedAt') || new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'})
+    };
+    
+    fd.forEach(function(value, key){ payload[key] = value; });
+    payload.marketingConsent = (document.getElementById('agree5') && document.getElementById('agree5').checked) ? 'Y' : 'N';
+
+    /* GAS URL 미설정 시 — 데모 모드 (시트 전송 없이 완료 처리) */
+    if (!GAS_URL || GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') === 0) {
+      document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
+      document.getElementById('successModal').classList.add('clf-show');
+      return;
+    }
+
+    /* 전송 중 표시 */
+    submitBtn.disabled = true;
+    submitBtn.style.setProperty('opacity', '.6', 'important');
+    submitBtn.textContent = '제출 중...';
+
+    fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',  /* GAS 웹앱 CORS 회피 */
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(){
+      document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
+      document.getElementById('successModal').classList.add('clf-show');
+    })
+    .catch(function(){
+      alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 재단 사무국으로 문의해 주세요.');
+    })
+    .finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.style.setProperty('opacity', '1', 'important');
+      submitBtn.textContent = originalText;
+    });
+  });
+
+  document.getElementById('modalClose').addEventListener('click', function(){
+    window.location.reload();
+  });
+
+  /* ── 업로드 방법 모달 ── */
+  var howToBtn   = document.getElementById('clf-howToUploadBtn');
+  var howToModal = document.getElementById('howToUploadModal');
+  var howToClose = document.getElementById('howToUploadClose');
+  function openHowTo(){
+    howToModal.classList.add('clf-show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeHowTo(){
+    howToModal.classList.remove('clf-show');
+    document.body.style.overflow = '';
+  }
+  if (howToBtn)   howToBtn.addEventListener('click', openHowTo);
+  if (howToClose) howToClose.addEventListener('click', closeHowTo);
+  if (howToModal) howToModal.addEventListener('click', function(e){
+    if (e.target === howToModal) closeHowTo();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && howToModal.classList.contains('clf-show')) closeHowTo();
+  });
+
+  /* ── 약관 전체 동의 마스터 체크박스 ── */
+  var agreeAll = document.getElementById('agreeAll');
+  if (agreeAll) {
+    var agreeItems = document.querySelectorAll('.clf-agree-item input[type="checkbox"]:not(#agreeAll)');
+    agreeAll.addEventListener('change', function(){
+      agreeItems.forEach(function(item){ item.checked = agreeAll.checked; });
+    });
+    agreeItems.forEach(function(item){
+      item.addEventListener('change', function(){
+        var all = Array.prototype.every.call(agreeItems, function(i){ return i.checked; });
+        agreeAll.checked = all;
+      });
+    });
+  }
+})();
+
+/* 아코디언 토글 */
+function clfToggleAcc(btn){
+  var acc = btn.closest('.clf-accordion');
+  if (acc) acc.classList.toggle('clf-open');
+}
+</script>
