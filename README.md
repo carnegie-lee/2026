@@ -4,7 +4,7 @@
 
 ## 🌐 공개 URL
 
-배포 후 접근 URL: **https://weekly-studio.github.io/concours-2026/**
+공식 사이트 URL: **https://carnegie-lee.github.io/2026/**
 
 ## 📁 페이지 구성
 
