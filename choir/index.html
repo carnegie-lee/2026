@@ -313,24 +313,34 @@
     .clf-dir .clf-closed-title { font-size:18px !important; font-weight:700 !important; color:#0C3D40 !important; margin-bottom:8px !important; }
     .clf-dir .clf-closed-desc { font-size:14px !important; color:#666 !important; line-height:1.6 !important; }
 
+    /* ── 마감일 타이머 (D-Day) — 콩쿠르 기준 통일 디자인 ── */
     .clf-dir .clf-dday-timer-wrap {
-      display:inline-flex !important;
-      align-items:center !important;
-      background:#FBF5E2 !important;
-      border:1px solid #E9DCA6 !important;
-      padding:10px 24px !important;
-      border-radius:30px !important;
-      gap:10px !important;
-      margin-bottom: 24px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      background: #FBF5E2 !important;
+      padding: 10px 22px !important;
+      border-radius: 30px !important;
+      border: 1px solid rgba(201, 168, 76, 0.4) !important;
+      font-size: 14px !important;
+      color: #0C3D40 !important;
+      font-weight: 600 !important;
+      margin-bottom: 20px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02) !important;
     }
     .clf-dir .clf-dday-timer-wrap .clf-dday-icon {
-      display:flex !important; align-items:center !important; justify-content:center !important;
-      width:28px !important; height:28px !important;
-      background:#C9A84C !important; color:#fff !important;
-      border-radius:50% !important; font-size:14px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 22px !important;
+      height: 22px !important;
+      background: #C9A84C !important;
+      color: #fff !important;
+      border-radius: 50% !important;
+      font-size: 12px !important;
     }
     .clf-dir .clf-dday-timer-wrap .clf-dday-text {
-      font-size:14px !important; font-weight:600 !important; color:#0C3D40 !important;
       letter-spacing: -0.2px !important;
     }
     .clf-dir .clf-dday-timer-wrap .clf-dday-time {
@@ -356,6 +366,45 @@
     .clf-dir .clf-form-section { display:none !important; }
     .clf-dir .clf-form-section.clf-form-visible { display:block !important; }
 
+    /* ── 영상 파일명 가이드 박스 ── */
+    .clf-dir .clf-filename-guide {
+      background:#F8F9FA !important;
+      border:1px solid #E4E4E4 !important;
+      border-left:3px solid #C9A84C !important;
+      border-radius:12px !important;
+      padding:18px 20px !important;
+      margin:0 0 14px !important;
+      display:flex !important;
+      align-items:center !important;
+      gap:18px !important;
+      flex-wrap:wrap !important;
+    }
+    .clf-dir .clf-filename-guide-text { flex:1 1 260px !important; min-width:0 !important; }
+    .clf-dir .clf-filename-guide-label { font-size:11px !important; font-weight:700 !important; letter-spacing:.18em !important; color:#C9A84C !important; text-transform:uppercase !important; margin-bottom:6px !important; }
+    .clf-dir .clf-filename-guide-rule { font-size:13.5px !important; color:#0C3D40 !important; font-weight:700 !important; margin-bottom:4px !important; }
+    .clf-dir .clf-filename-guide-rule code { background:#fff !important; color:#A8872A !important; padding:2px 10px !important; border-radius:8px !important; font-family:'Pretendard Variable',Pretendard,monospace !important; font-size:13px !important; font-weight:700 !important; margin:0 2px !important; border:1px solid #E8DDB5 !important; }
+    .clf-dir .clf-filename-guide-ex { font-size:12.5px !important; color:#888 !important; line-height:1.6 !important; }
+    .clf-dir .clf-help-btn { flex-shrink:0 !important; display:inline-flex !important; align-items:center !important; gap:6px !important; background:#fff !important; border:1px solid #0C3D40 !important; color:#0C3D40 !important; padding:9px 16px !important; border-radius:24px !important; font-family:inherit !important; font-size:12.5px !important; font-weight:700 !important; letter-spacing:.02em !important; cursor:pointer !important; transition:all .2s !important; white-space:nowrap !important; }
+    .clf-dir .clf-help-btn:hover { background:#0C3D40 !important; color:#fff !important; transform:translateY(-1px) !important; }
+    .clf-dir .clf-help-btn svg { width:14px !important; height:14px !important; }
+
+    /* ── 업로드 방법 모달 (와이드) ── */
+    .clf-dir .clf-modal.clf-modal-wide { max-width:560px !important; text-align:left !important; padding:40px 36px !important; }
+    .clf-dir .clf-modal-wide h3 { text-align:center !important; font-size:11px !important; font-weight:700 !important; letter-spacing:.3em !important; text-transform:uppercase !important; color:#C9A84C !important; margin:0 0 12px !important; }
+    .clf-dir .clf-modal-wide .clf-modal-title { text-align:center !important; margin-bottom:8px !important; }
+    .clf-dir .clf-modal-wide .clf-modal-desc { text-align:center !important; font-size:13px !important; color:#888 !important; margin-bottom:24px !important; line-height:1.6 !important; }
+    .clf-dir .clf-modal-wide .clf-gdrive-steps { list-style:none !important; padding:0 !important; margin:0 0 22px !important; display:flex !important; flex-direction:column !important; gap:12px !important; }
+    .clf-dir .clf-modal-wide .clf-gdrive-steps li { display:flex !important; align-items:flex-start !important; gap:12px !important; font-size:13.5px !important; color:#444 !important; line-height:1.65 !important; }
+    .clf-dir .clf-modal-wide .clf-gdrive-steps li strong { color:#0C3D40 !important; font-weight:700 !important; }
+    .clf-dir .clf-modal-wide .clf-gdrive-steps li code { background:#F8F9FA !important; color:#A8872A !important; padding:1px 8px !important; border-radius:6px !important; font-family:'Pretendard Variable',Pretendard,monospace !important; font-size:12.5px !important; font-weight:700 !important; margin:0 2px !important; border:1px solid #E8DDB5 !important; }
+    .clf-dir .clf-modal-wide .clf-gdrive-num { flex-shrink:0 !important; width:24px !important; height:24px !important; background:#C9A84C !important; color:#fff !important; border-radius:50% !important; display:flex !important; align-items:center !important; justify-content:center !important; font-size:12px !important; font-weight:700 !important; margin-top:1px !important; }
+    .clf-dir .clf-modal-wide .clf-modal-actions { display:flex !important; gap:10px !important; margin-top:8px !important; }
+    .clf-dir .clf-modal-wide .clf-modal-actions > * { flex:1 !important; }
+    .clf-dir .clf-modal-wide .clf-modal-open-drive { display:inline-flex !important; align-items:center !important; justify-content:center !important; gap:8px !important; background:#0C3D40 !important; color:#fff !important; text-decoration:none !important; padding:13px 20px !important; border-radius:28px !important; font-size:13px !important; font-weight:700 !important; letter-spacing:.02em !important; border:none !important; cursor:pointer !important; transition:all .2s !important; font-family:inherit !important; box-sizing:border-box !important; }
+    .clf-dir .clf-modal-wide .clf-modal-open-drive:hover { background:#0F5258 !important; transform:translateY(-1px) !important; }
+    .clf-dir .clf-modal-wide .clf-modal-secondary { background:#fff !important; border:1px solid #DADADA !important; color:#666 !important; padding:13px 20px !important; border-radius:28px !important; font-size:13px !important; font-weight:700 !important; letter-spacing:.02em !important; cursor:pointer !important; font-family:inherit !important; transition:all .2s !important; box-sizing:border-box !important; }
+    .clf-dir .clf-modal-wide .clf-modal-secondary:hover { border-color:#0C3D40 !important; color:#0C3D40 !important; }
+
     /* ── 모바일 환경 반응형 그리드 ── */
     @media(max-width:960px){
       .clf-dir .clf-profile-layout { grid-template-columns:1fr!important; gap:40px!important; }
@@ -366,15 +415,16 @@
       .clf-dir .clf-pay-amount { flex-direction:column!important; align-items:flex-start!important; }
       .clf-dir .clf-submit { padding:16px 32px!important; width:100%!important; }
     }
+    @media (max-width: 600px) {
+      .clf-dir .clf-filename-guide { flex-direction:column !important; align-items:stretch !important; }
+      .clf-dir .clf-help-btn { width:100% !important; justify-content:center !important; }
+    }
     </style>
 </head>
 <body>
 
 <div class="clf-dir">
   <div class="clf-phero">
-    <nav class="clf-breadcrumb">
-      <a href="../">홈</a><span>›</span><a href="#">알림마당</a><span>›</span><a href="#">합창 콩쿠르</a><span>›</span><span class="clf-bc-cur">참가신청</span>
-    </nav>
     <div class="clf-page-title-wrap">
       <h1 class="clf-page-title">참가신청</h1>
       <div class="clf-page-sub">카네기리재단 창립 7주년 및 소프라노 조수미 데뷔 40주년 기념 합창 콩쿠르 · 2026</div>
@@ -507,7 +557,7 @@
       <div id="clf-closedBanner" class="clf-closed-banner">
         <div class="clf-closed-icon">🔒</div>
         <div class="clf-closed-title">참가 신청이 마감되었습니다</div>
-        <div class="clf-closed-desc">접수 기간: ~ 2026년 6월 22일<br>문의: 콩쿠르 운영사무국</div>
+        <div class="clf-closed-desc">접수 기간: ~ 2026년 6월 26일 18:00<br>문의: 콩쿠르 운영사무국</div>
       </div>
       <div class="clf-dday-timer-wrap" style="display:none !important;">
         <div class="clf-dday-icon">⏳</div>
@@ -747,20 +797,24 @@
             <span class="clf-detail-label-ko">1차 예선 영상 링크</span>
             <span class="clf-detail-label-divider"></span>
           </div>
-          <p class="clf-form-block-desc" style="margin-bottom:16px !important;">
-            <strong style="color:#B54E3A;">※ 영상은 반드시 본인의 구글 드라이브(Google Drive)에 업로드 후 링크로 제출해 주셔야 합니다. (유튜브 등 타 링크 불가)</strong><br>
-            <span style="font-size:13px; color:#444; display:block; margin-top:8px; line-height:1.6; background:#F8F9FA; padding:12px; border-radius:8px;">
-              <strong>[구글 드라이브 링크 제출 방법]</strong><br>
-              1. 구글 드라이브 접속 후 [새로 만들기] 버튼 클릭 → [파일 업로드] 클릭 후 영상 업로드<br>
-              2. 업로드된 파일 우클릭 → [공유] → [공유] 클릭<br>
-              3. 일반 액세스를 <strong>'제한됨'에서 '링크가 있는 모든 사용자'로 변경</strong><br>
-              4. <strong>[링크 복사]</strong> 버튼을 누른 후 아래 칸에 붙여넣어 주세요.
-            </span>
-          </p>
+          <p class="clf-form-block-desc">촬영한 영상은 <strong>구글 드라이브</strong>에 업로드한 뒤 공유 링크를 입력해 주세요.</p>
+
+          <div class="clf-filename-guide">
+            <div class="clf-filename-guide-text">
+              <div class="clf-filename-guide-label">영상 파일명 규칙</div>
+              <div class="clf-filename-guide-rule"><code>단체명_대표자명_곡명.mp4</code></div>
+              <div class="clf-filename-guide-ex">예) <code style="background:#fff;color:#A8872A;padding:1px 8px;border-radius:6px;font-family:'Pretendard Variable',Pretendard,monospace;font-size:12.5px;font-weight:700;border:1px solid #E8DDB5;">하늘합창단_홍길동_Ave verum corpus.mp4</code> · 항목 사이는 언더바(_)로 연결</div>
+            </div>
+            <button type="button" class="clf-help-btn" id="clf-howToUploadBtn" aria-label="구글 드라이브 업로드 방법 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              업로드 방법 알아보기
+            </button>
+          </div>
 
           <div class="clf-field clf-full" style="margin-bottom:18px !important;">
             <div class="clf-field-label">영상 공유 링크 (Google Drive 전용) <span class="clf-req">*</span></div>
-            <input class="clf-input" type="url" id="videoLink" name="videoLink" placeholder="https://drive.google.com/file/d/... (반드시 구글 드라이브 링크)" pattern=".*drive\.google\.com.*" title="반드시 구글 드라이브(drive.google.com) 링크를 입력해 주세요." required>
+            <input class="clf-input" type="url" id="videoLink" name="videoLink" placeholder="https://drive.google.com/..." pattern=".*drive\.google\.com.*" title="반드시 구글 드라이브(drive.google.com) 링크를 입력해 주세요." required>
+            <div class="clf-field-help">제출 전 <strong style="color:#0C3D40 !important;">시크릿(비로그인) 창에서 링크가 정상적으로 열리는지</strong> 반드시 확인해 주세요.</div>
           </div>
 
           <div class="clf-fg">
@@ -944,6 +998,30 @@
       <button type="button" class="clf-modal-close" id="modalClose">확 인</button>
     </div>
   </div>
+
+  <!-- 업로드 방법 모달 -->
+  <div class="clf-modal-bd" id="howToUploadModal" role="dialog" aria-modal="true" aria-labelledby="howToUploadTitle">
+    <div class="clf-modal clf-modal-wide">
+      <h3>How to Upload</h3>
+      <div class="clf-modal-title" id="howToUploadTitle">구글 드라이브 영상 업로드 방법</div>
+      <p class="clf-modal-desc">아래 순서대로 진행하시면 심사용 영상 링크를 만드실 수 있습니다.</p>
+      <ol class="clf-gdrive-steps">
+        <li><span class="clf-gdrive-num">1</span><div><strong>drive.google.com</strong> 접속 후 본인 구글 계정으로 로그인합니다.</div></li>
+        <li><span class="clf-gdrive-num">2</span><div>좌측 상단 <strong>[+ 새로 만들기]</strong> → <strong>[파일 업로드]</strong> 클릭 후 영상 파일을 선택합니다.<br><span style="color:#888;font-size:12.5px;">파일명은 반드시 <code>단체명_대표자명_곡명.mp4</code> 형식으로 저장해 주세요. 예) <code>하늘합창단_홍길동_Ave verum corpus.mp4</code></span></div></li>
+        <li><span class="clf-gdrive-num">3</span><div>업로드가 완료되면 해당 파일을 <strong>우클릭 → [공유]</strong>를 선택합니다.</div></li>
+        <li><span class="clf-gdrive-num">4</span><div><strong>일반 액세스</strong> 항목을 <code>제한됨</code> → <code>링크가 있는 모든 사용자</code>로 변경합니다.</div></li>
+        <li><span class="clf-gdrive-num">5</span><div>권한은 <code>뷰어</code>로 유지하고, 우측 하단 <strong>[링크 복사]</strong>를 클릭합니다.</div></li>
+        <li><span class="clf-gdrive-num">6</span><div>복사된 링크를 <strong>영상 공유 링크</strong> 입력란에 붙여넣기 합니다.<br><span style="color:#888;font-size:12.5px;">제출 전 시크릿 창에서 정상 재생되는지 꼭 확인해 주세요.</span></div></li>
+      </ol>
+      <div class="clf-modal-actions">
+        <button type="button" class="clf-modal-secondary" id="howToUploadClose">닫 기</button>
+        <a class="clf-modal-open-drive" href="https://drive.google.com" target="_blank" rel="noopener noreferrer">
+          구글 드라이브 열기
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- 엑셀 파일 파싱을 위한 SheetJS 라이브러리 -->
@@ -986,9 +1064,36 @@
     });
   }
 
-  // ── 작성 영역 활성화 분기 함수 ──
+  // ── 마감일 D-Day 타이머 + 작성 영역 활성화 ──
+  var DEADLINE = new Date('2026-06-26T18:00:00+09:00');
   var openBtn = document.getElementById('clf-applyOpenBtn');
   var formSection = document.getElementById('apply');
+  var closedBanner = document.getElementById('clf-closedBanner');
+  var ddayTimers   = document.querySelectorAll('.clf-dday-timer-wrap');
+  var ddayTexts    = document.querySelectorAll('.clf-dday-time');
+
+  function updateChoirTimer() {
+    var diff = DEADLINE - new Date();
+    if (diff <= 0) {
+      if (openBtn) openBtn.style.setProperty('display','none','important');
+      ddayTimers.forEach(function(el) { el.style.setProperty('display','none','important'); });
+      if (closedBanner) closedBanner.style.setProperty('display','block','important');
+      return false;
+    }
+    ddayTimers.forEach(function(el) { el.style.setProperty('display','inline-flex','important'); });
+    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    var m = Math.floor((diff / 1000 / 60) % 60);
+    var s = Math.floor((diff / 1000) % 60);
+    var txt = '';
+    if (d > 0) txt += d + '일 ';
+    txt += String(h).padStart(2,'0') + '시간 ' + String(m).padStart(2,'0') + '분 ' + String(s).padStart(2,'0') + '초';
+    ddayTexts.forEach(function(el) { el.textContent = txt; });
+    return true;
+  }
+  if (updateChoirTimer()) {
+    setInterval(updateChoirTimer, 1000);
+  }
 
   if (openBtn && formSection) {
     openBtn.addEventListener('click', function(){
@@ -1359,6 +1464,31 @@
       window.location.reload();
     });
   }
+
+  /* ── 업로드 방법 모달 ── */
+  var howToBtn   = document.getElementById('clf-howToUploadBtn');
+  var howToModal = document.getElementById('howToUploadModal');
+  var howToClose = document.getElementById('howToUploadClose');
+  function openHowTo(){
+    if (howToModal) {
+      howToModal.classList.add('clf-show');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeHowTo(){
+    if (howToModal) {
+      howToModal.classList.remove('clf-show');
+      document.body.style.overflow = '';
+    }
+  }
+  if (howToBtn)   howToBtn.addEventListener('click', openHowTo);
+  if (howToClose) howToClose.addEventListener('click', closeHowTo);
+  if (howToModal) howToModal.addEventListener('click', function(e){
+    if (e.target === howToModal) closeHowTo();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && howToModal && howToModal.classList.contains('clf-show')) closeHowTo();
+  });
 
   /* ── 약관 전체 동의 마스터 체크박스 ── */
   var agreeAll = document.getElementById('agreeAll');
