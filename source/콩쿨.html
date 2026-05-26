@@ -344,6 +344,17 @@
 .clf-dir .clf-textarea:focus { border-color:#C9A84C !important; border-left-color:#C9A84C !important; background:#fff !important; }
 .clf-dir .clf-textarea::placeholder { color:#aaa !important; }
 
+/* 읽기전용 폼 필드 */
+.clf-dir .clf-input[readonly],
+.clf-dir .clf-select[disabled],
+.clf-dir .clf-textarea[readonly] {
+  background:#F0F0F0 !important;
+  border-left-color:#DADADA !important;
+  color:#555 !important;
+  cursor:default !important;
+  opacity:1 !important;
+}
+
 .clf-dir .clf-pill-group { display:flex !important; flex-wrap:wrap !important; gap:8px !important; }
 .clf-dir .clf-pill input { display:none !important; }
 .clf-dir .clf-pill label {
@@ -363,6 +374,16 @@
   border-color:#0C3D40 !important;
   color:#fff !important;
   font-weight:600 !important;
+}
+/* 읽기전용 pill */
+.clf-dir .clf-pill-readonly label {
+  cursor:default !important;
+  pointer-events:none !important;
+}
+.clf-dir .clf-pill-readonly input:checked + label {
+  background:#0C3D40 !important;
+  border-color:#0C3D40 !important;
+  color:#fff !important;
 }
 
 /* 업로드 */
@@ -1081,6 +1102,382 @@
   display:block !important;
 }
 
+/* ── 로그인 / 가입 박스 ── */
+.clf-dir .clf-auth-box {
+  max-width:480px !important;
+  margin:0 auto !important;
+  background:#fff !important;
+  border:1px solid #E4E4E4 !important;
+  border-top:4px solid #C9A84C !important;
+  border-radius:16px !important;
+  padding:40px 36px !important;
+  box-shadow:0 8px 32px -8px rgba(0,0,0,.12) !important;
+}
+.clf-dir .clf-auth-title {
+  font-size:20px !important;
+  font-weight:700 !important;
+  color:#0C3D40 !important;
+  margin:0 0 6px !important;
+  text-align:center !important;
+}
+.clf-dir .clf-auth-sub {
+  font-size:13px !important;
+  color:#888 !important;
+  text-align:center !important;
+  margin:0 0 28px !important;
+  line-height:1.7 !important;
+}
+.clf-dir .clf-auth-field {
+  display:flex !important;
+  flex-direction:column !important;
+  gap:6px !important;
+  margin-bottom:14px !important;
+}
+.clf-dir .clf-auth-label {
+  font-size:13px !important;
+  font-weight:600 !important;
+  color:#111 !important;
+  padding-left:2px !important;
+}
+.clf-dir .clf-auth-btn {
+  width:100% !important;
+  background:#0C3D40 !important;
+  color:#fff !important;
+  border:none !important;
+  font-family:'Pretendard Variable',Pretendard,sans-serif !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  letter-spacing:.15em !important;
+  padding:15px !important;
+  border-radius:30px !important;
+  cursor:pointer !important;
+  margin-top:8px !important;
+  transition:all .2s !important;
+}
+.clf-dir .clf-auth-btn:hover {
+  background:#0F5258 !important;
+  transform:translateY(-1px) !important;
+}
+.clf-dir .clf-auth-switch {
+  text-align:center !important;
+  margin-top:18px !important;
+  font-size:13px !important;
+  color:#888 !important;
+}
+.clf-dir .clf-auth-switch a {
+  color:#0C3D40 !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+  text-decoration:underline !important;
+}
+.clf-dir .clf-auth-error {
+  background:#FFF5F5 !important;
+  color:#B54E3A !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+  border-radius:8px !important;
+  padding:10px 14px !important;
+  margin-bottom:14px !important;
+  display:none !important;
+}
+.clf-dir .clf-auth-error.clf-show { display:block !important; }
+
+/* ── 영상 제출 섹션 (6/5 이후 잠금해제) ── */
+.clf-dir .clf-video-locked {
+  background:linear-gradient(135deg,#1a1a1a,#2d2d2d) !important;
+  border-radius:16px !important;
+  padding:40px 32px !important;
+  text-align:center !important;
+  color:#fff !important;
+}
+.clf-dir .clf-video-locked .clf-vl-icon { font-size:44px !important; margin-bottom:16px !important; }
+.clf-dir .clf-video-locked .clf-vl-title {
+  font-size:20px !important; font-weight:700 !important;
+  color:#C9A84C !important; margin-bottom:10px !important;
+}
+.clf-dir .clf-video-locked .clf-vl-desc {
+  font-size:14px !important; color:rgba(255,255,255,.75) !important; line-height:1.8 !important;
+}
+.clf-dir .clf-video-locked .clf-vl-date {
+  display:inline-block !important;
+  margin-top:16px !important;
+  background:rgba(201,168,76,.15) !important;
+  border:1px solid rgba(201,168,76,.4) !important;
+  color:#C9A84C !important;
+  font-size:15px !important; font-weight:700 !important;
+  padding:8px 24px !important; border-radius:30px !important;
+}
+
+/* ── 제출 완료 카드 (서류 열람 모드) ── */
+.clf-dir .clf-submitted-card {
+  background:#F8F9FA !important;
+  border-radius:14px !important;
+  border:1px solid #E4E4E4 !important;
+  border-top:4px solid #C9A84C !important;
+  padding:28px !important;
+  margin-bottom:32px !important;
+}
+.clf-dir .clf-submitted-card-header {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  margin-bottom:20px !important;
+  flex-wrap:wrap !important;
+  gap:10px !important;
+}
+.clf-dir .clf-submitted-card-title {
+  font-size:16px !important; font-weight:700 !important; color:#0C3D40 !important;
+}
+.clf-dir .clf-submitted-badge {
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  background:#EAF3F3 !important;
+  color:#0C3D40 !important;
+  font-size:12px !important; font-weight:700 !important;
+  padding:5px 14px !important; border-radius:20px !important;
+  border:1px solid #C2D9D2 !important;
+}
+.clf-dir .clf-submitted-row {
+  display:grid !important;
+  grid-template-columns:120px 1fr !important;
+  gap:8px 16px !important;
+  font-size:13.5px !important;
+  margin-bottom:8px !important;
+}
+.clf-dir .clf-submitted-key {
+  color:#888 !important; font-weight:500 !important;
+  padding:6px 0 !important;
+}
+.clf-dir .clf-submitted-val {
+  color:#111 !important; font-weight:500 !important;
+  padding:6px 12px !important;
+  background:#fff !important;
+  border-radius:8px !important;
+  border:1px solid #E4E4E4 !important;
+  word-break:break-all !important;
+  line-height:1.6 !important;
+}
+
+/* ══════════════════════════════════════
+   기관형 로그인 모달
+   ══════════════════════════════════════ */
+.clf-dir .clf-inst-modal-bd {
+  position:fixed !important; inset:0 !important;
+  background:rgba(10,20,30,.55) !important;
+  display:none !important;
+  align-items:center !important; justify-content:center !important;
+  z-index:10000 !important; padding:20px !important;
+}
+.clf-dir .clf-inst-modal-bd.clf-show { display:flex !important; }
+.clf-dir .clf-inst-modal {
+  background:#fff !important;
+  border-radius:4px !important;
+  width:100% !important; max-width:440px !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.22) !important;
+  overflow:hidden !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+}
+/* 헤더 바 */
+.clf-dir .clf-inst-modal-header {
+  background:#0C3D40 !important;
+  padding:22px 28px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+}
+.clf-dir .clf-inst-modal-logo {
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+}
+.clf-dir .clf-inst-modal-logo-mark {
+  width:32px !important; height:32px !important;
+  background:#C9A84C !important;
+  border-radius:2px !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  font-size:14px !important; font-weight:900 !important; color:#fff !important;
+  letter-spacing:-.02em !important;
+  flex-shrink:0 !important;
+}
+.clf-dir .clf-inst-modal-logo-text {
+  font-size:12px !important;
+  font-weight:700 !important;
+  color:rgba(255,255,255,.9) !important;
+  letter-spacing:.06em !important;
+  text-transform:uppercase !important;
+  line-height:1.4 !important;
+}
+.clf-dir .clf-inst-modal-logo-text small {
+  display:block !important;
+  font-size:10px !important;
+  font-weight:400 !important;
+  color:rgba(255,255,255,.55) !important;
+  letter-spacing:.04em !important;
+}
+.clf-dir .clf-inst-modal-x {
+  background:transparent !important;
+  border:none !important;
+  color:rgba(255,255,255,.55) !important;
+  font-size:20px !important;
+  line-height:1 !important;
+  cursor:pointer !important;
+  padding:4px !important;
+  transition:color .15s !important;
+}
+.clf-dir .clf-inst-modal-x:hover { color:#fff !important; }
+/* 탭 */
+.clf-dir .clf-inst-tabs {
+  display:flex !important;
+  border-bottom:1px solid #E4E4E4 !important;
+}
+.clf-dir .clf-inst-tab {
+  flex:1 !important;
+  padding:14px 0 !important;
+  text-align:center !important;
+  font-size:13.5px !important;
+  font-weight:600 !important;
+  color:#888 !important;
+  background:transparent !important;
+  border:none !important;
+  border-bottom:2px solid transparent !important;
+  margin-bottom:-1px !important;
+  cursor:pointer !important;
+  transition:color .15s, border-color .15s !important;
+  font-family:inherit !important;
+}
+.clf-dir .clf-inst-tab.clf-inst-active {
+  color:#0C3D40 !important;
+  border-bottom-color:#C9A84C !important;
+}
+/* 본문 */
+.clf-dir .clf-inst-body {
+  padding:28px !important;
+}
+.clf-dir .clf-inst-field {
+  display:flex !important;
+  flex-direction:column !important;
+  gap:5px !important;
+  margin-bottom:16px !important;
+}
+.clf-dir .clf-inst-label {
+  font-size:12.5px !important;
+  font-weight:600 !important;
+  color:#444 !important;
+  letter-spacing:.02em !important;
+}
+.clf-dir .clf-inst-input {
+  width:100% !important;
+  background:#fff !important;
+  border:1px solid #DADADA !important;
+  border-radius:3px !important;
+  color:#111 !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  font-size:14px !important;
+  padding:11px 14px !important;
+  outline:none !important;
+  transition:border-color .15s, box-shadow .15s !important;
+  box-sizing:border-box !important;
+}
+.clf-dir .clf-inst-input:focus {
+  border-color:#0C3D40 !important;
+  box-shadow:0 0 0 3px rgba(12,61,64,.1) !important;
+}
+.clf-dir .clf-inst-input::placeholder { color:#bbb !important; }
+.clf-dir .clf-inst-error {
+  background:#FFF3F3 !important;
+  border:1px solid #F0C0C0 !important;
+  border-radius:3px !important;
+  color:#B54E3A !important;
+  font-size:13px !important;
+  padding:10px 14px !important;
+  margin-bottom:14px !important;
+  display:none !important;
+  line-height:1.55 !important;
+}
+.clf-dir .clf-inst-error.clf-show { display:block !important; }
+.clf-dir .clf-inst-submit {
+  width:100% !important;
+  background:#0C3D40 !important;
+  color:#fff !important;
+  border:none !important;
+  border-radius:3px !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  letter-spacing:.08em !important;
+  padding:13px !important;
+  cursor:pointer !important;
+  margin-top:4px !important;
+  transition:background .15s !important;
+}
+.clf-dir .clf-inst-submit:hover { background:#0F5258 !important; }
+.clf-dir .clf-inst-submit:disabled { opacity:.55 !important; cursor:default !important; }
+.clf-dir .clf-inst-footer {
+  border-top:1px solid #F0F0F0 !important;
+  padding:14px 28px !important;
+  font-size:12.5px !important;
+  color:#888 !important;
+  text-align:center !important;
+  line-height:1.6 !important;
+}
+.clf-dir .clf-inst-footer strong { color:#0C3D40 !important; font-weight:700 !important; }
+.clf-dir .clf-inst-divider {
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  margin:18px 0 !important;
+}
+.clf-dir .clf-inst-divider::before,
+.clf-dir .clf-inst-divider::after {
+  content:'' !important;
+  flex:1 !important;
+  height:1px !important;
+  background:#E8E8E8 !important;
+}
+.clf-dir .clf-inst-divider span {
+  font-size:11.5px !important;
+  color:#aaa !important;
+  white-space:nowrap !important;
+}
+
+/* ── 로그아웃 버튼 ── */
+.clf-dir .clf-logout-btn {
+  background:transparent !important;
+  border:1px solid #DADADA !important;
+  color:#888 !important;
+  font-family:inherit !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+  padding:8px 20px !important;
+  border-radius:20px !important;
+  cursor:pointer !important;
+  transition:all .2s !important;
+}
+.clf-dir .clf-logout-btn:hover { border-color:#B54E3A !important; color:#B54E3A !important; }
+
+/* ── 사용자 인사 바 ── */
+.clf-dir .clf-user-bar {
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  background:#EAF3F3 !important;
+  border-radius:12px !important;
+  padding:14px 20px !important;
+  margin-bottom:28px !important;
+  gap:12px !important;
+}
+.clf-dir .clf-user-bar-name {
+  font-size:14px !important;
+  font-weight:700 !important;
+  color:#0C3D40 !important;
+}
+.clf-dir .clf-user-bar-sub {
+  font-size:12px !important;
+  color:#888 !important;
+  margin-top:2px !important;
+}
+
 @media(max-width:960px){
   .clf-dir .clf-profile-layout{grid-template-columns:1fr!important;gap:40px!important}
   .clf-dir .clf-photo-frame{aspect-ratio:3/4!important; min-height:unset !important; width:100% !important;}
@@ -1090,13 +1487,16 @@
   .clf-dir .clf-pay-amount-value{font-size:24px!important}
   .clf-dir .clf-pay-deadline{flex-direction:column!important; align-items:flex-start!important; gap:6px!important;}
   .clf-dir .clf-submit{padding:16px 32px!important; width:100%!important; letter-spacing:.2em!important;}
+  .clf-dir .clf-submitted-row{grid-template-columns:1fr!important;}
 }
 @media(max-width:600px){
   .clf-dir .clf-wrap{padding:48px 5vw!important}
   .clf-dir .clf-pay-box{padding:22px!important}
   .clf-dir .clf-pay-info{grid-template-columns:80px 1fr!important; font-size:13px!important;}
   .clf-dir .clf-apply-open-btn{padding:18px 36px!important; width:100%!important; font-size:14px!important;}
+  .clf-dir .clf-auth-box{padding:28px 20px!important;}
 }
+
   /* ── 마감일 타이머 (D-Day) 리디자인 ── */
   .clf-dir .clf-dday-timer-wrap {
     display: inline-flex !important;
@@ -1215,10 +1615,11 @@
             <span class="clf-detail-label-divider"></span>
           </div>
           <ul class="clf-detail-list">
-            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.06.11</strong> 참가지원 마감<span class="sub">접수 종료 (목)</span></span></li>
-            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>추후 공지</strong> 1차 예선 동영상 심사<span class="sub">결과 개별 통지</span></span></li>
-            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.09.02</strong> 본선 참가비 납부 마감<span class="sub">1차 본선 진출 확정자</span></span></li>
-            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>추후 공지</strong> 본선 경연 · 기념행사 · 시상식<span class="sub">조수미 40주년 기념 무대</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.06.05</strong> 서류 접수 마감<span class="sub">18:00까지 (목)</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.06.26</strong> 영상 제출 마감<span class="sub">18:00까지 — 서류 제출자만 가능</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.03</strong> 합격자 발표<span class="sub">개별 통지</span></span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.13</strong> 본선 콩쿨 및 시상식</span></li>
+            <li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.08.11</strong> 행사 당일</span></li>
           </ul>
         </div>
 
@@ -1320,30 +1721,212 @@
       </div>
     </div>
 
-    <!-- 참가신청 버튼 / 마감 배너 -->
+    <!-- ════════════════════════════════════
+         참가신청 버튼 / 마감 배너 / 영상제출
+         ════════════════════════════════════ -->
     <div class="clf-apply-btn-wrap" id="clf-applyBtnWrap" data-dir-anim>
+      <!-- 마감 배너 (서류 마감 후 표시) -->
       <div id="clf-closedBanner" class="clf-closed-banner">
         <div class="clf-closed-icon">🔒</div>
-        <div class="clf-closed-title">참가 신청이 마감되었습니다</div>
-        <div class="clf-closed-desc">접수 기간: ~ 2026년 6월 22일<br>문의: 콩쿠르 운영사무국</div>
+        <div class="clf-closed-title">서류 접수가 마감되었습니다</div>
+        <div class="clf-closed-desc">서류 접수 기간: ~ 2026년 6월 5일 18:00<br>문의: 콩쿠르 운영사무국</div>
       </div>
+      <!-- D-day 타이머 -->
       <div class="clf-dday-timer-wrap" style="display:none !important;">
         <div class="clf-dday-icon">⏳</div>
-        <div class="clf-dday-text">마감까지 <span class="clf-dday-time"></span> 남았습니다</div>
+        <div class="clf-dday-text">서류 마감까지 <span class="clf-dday-time"></span> 남았습니다</div>
       </div>
+      <!-- 신청 버튼 -->
       <button id="clf-applyOpenBtn" class="clf-apply-open-btn" type="button">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><polyline points="16 2 22 8 12 18 9 18 9 15"/></svg>
         참가 신청서 작성하기
       </button>
     </div>
 
-    <!-- 참가 신청 폼 -->
+    <!-- ════════════════════════════════════
+         로그인 / 가입 패널 (서류 마감 후)
+         ════════════════════════════════════ -->
+    <div id="clf-authPanel" style="display:none!important; padding-top:48px !important; border-top:1px solid #E4E4E4 !important; margin-top:48px !important;">
+      <!-- 로그인 박스 -->
+      <div id="clf-loginBox" class="clf-auth-box">
+        <div class="clf-auth-title">🔑 로그인</div>
+        <div class="clf-auth-sub">서류 제출 시 등록한 이메일과 비밀번호로 로그인하시면<br>제출한 서류 내용을 확인하고 영상을 제출할 수 있습니다.</div>
+        <div class="clf-auth-error" id="clf-loginError"></div>
+        <div class="clf-auth-field">
+          <label class="clf-auth-label" for="clf-loginEmail">이메일</label>
+          <input class="clf-input" type="email" id="clf-loginEmail" placeholder="name@example.com">
+        </div>
+        <div class="clf-auth-field">
+          <label class="clf-auth-label" for="clf-loginPw">비밀번호</label>
+          <input class="clf-input" type="password" id="clf-loginPw" placeholder="비밀번호 입력">
+        </div>
+        <button class="clf-auth-btn" id="clf-loginBtn">로그인</button>
+        <div class="clf-auth-switch">아직 서류를 제출하지 않으셨나요? <a id="clf-goRegister">회원가입</a></div>
+      </div>
+
+      <!-- 회원가입 박스 -->
+      <div id="clf-registerBox" class="clf-auth-box" style="display:none!important;">
+        <div class="clf-auth-title">📋 회원가입</div>
+        <div class="clf-auth-sub">서류 제출 전 계정을 만들어 주세요.<br>제출 후 언제든 로그인해서 내용을 확인할 수 있습니다.</div>
+        <div class="clf-auth-error" id="clf-registerError"></div>
+        <div class="clf-auth-field">
+          <label class="clf-auth-label" for="clf-regEmail">이메일</label>
+          <input class="clf-input" type="email" id="clf-regEmail" placeholder="name@example.com">
+        </div>
+        <div class="clf-auth-field">
+          <label class="clf-auth-label" for="clf-regPw">비밀번호</label>
+          <input class="clf-input" type="password" id="clf-regPw" placeholder="6자 이상">
+        </div>
+        <div class="clf-auth-field">
+          <label class="clf-auth-label" for="clf-regPw2">비밀번호 확인</label>
+          <input class="clf-input" type="password" id="clf-regPw2" placeholder="비밀번호 재입력">
+        </div>
+        <button class="clf-auth-btn" id="clf-registerBtn">가입하기</button>
+        <div class="clf-auth-switch">이미 계정이 있으신가요? <a id="clf-goLogin">로그인</a></div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════
+         로그인 후 — 내 신청 내역 + 영상제출
+         ════════════════════════════════════ -->
+    <div id="clf-myPage" style="display:none!important; padding-top:48px !important; border-top:1px solid #E4E4E4 !important; margin-top:48px !important;">
+      <!-- 사용자 바 -->
+      <div class="clf-user-bar">
+        <div>
+          <div class="clf-user-bar-name" id="clf-myPageName">안녕하세요 👋</div>
+          <div class="clf-user-bar-sub">제출한 서류 내용은 수정이 불가합니다.</div>
+        </div>
+        <button class="clf-logout-btn" id="clf-logoutBtn">로그아웃</button>
+      </div>
+
+      <!-- 제출한 서류 내용 읽기전용 뷰 -->
+      <div id="clf-mySubmission">
+        <!-- JS로 채워짐 -->
+      </div>
+
+      <!-- 영상 제출 섹션 -->
+      <div id="clf-videoSection" style="margin-top:40px !important;">
+        <!-- 잠금 상태 (6/5 18시 이전 또는 6/26 18시 이후) -->
+        <div id="clf-videoLocked" class="clf-video-locked" style="display:none!important;">
+          <div class="clf-vl-icon">🔒</div>
+          <div class="clf-vl-title" id="clf-vl-title">영상 제출 기간이 아닙니다</div>
+          <div class="clf-vl-desc" id="clf-vl-desc">영상 제출은 서류 접수 마감 이후 열립니다.</div>
+          <div class="clf-vl-date" id="clf-vl-date">2026년 6월 5일 18:00 이후 열림</div>
+        </div>
+
+        <!-- 영상 제출 열린 상태 -->
+        <div id="clf-videoOpen" style="display:none!important;">
+          <div class="clf-detail-label" style="margin-bottom:24px!important;">
+            <span class="clf-detail-label-en">Video Submission</span>
+            <span class="clf-detail-label-ko">1차 예선 영상 제출</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+
+          <div class="clf-callout" style="margin-bottom:20px!important;">
+            <div class="clf-callout-icon">!</div>
+            <div>영상 제출 마감: <strong>2026년 6월 26일 (금) 18:00</strong><br>마감 시간 이후에는 제출이 불가합니다. 서둘러 제출해 주세요.</div>
+          </div>
+
+          <!-- 이미 영상 제출 완료된 경우 -->
+          <div id="clf-videoAlreadySubmitted" style="display:none!important;">
+            <div class="clf-submitted-card">
+              <div class="clf-submitted-card-header">
+                <div class="clf-submitted-card-title">📹 영상 제출 완료</div>
+                <div class="clf-submitted-badge">✓ 접수됨</div>
+              </div>
+              <div class="clf-submitted-row">
+                <div class="clf-submitted-key">영상 링크</div>
+                <div class="clf-submitted-val" id="clf-myVideoLink">—</div>
+              </div>
+              <div class="clf-submitted-row">
+                <div class="clf-submitted-key">작곡가</div>
+                <div class="clf-submitted-val" id="clf-myVComposer">—</div>
+              </div>
+              <div class="clf-submitted-row">
+                <div class="clf-submitted-key">연주곡</div>
+                <div class="clf-submitted-val" id="clf-myVPiece">—</div>
+              </div>
+            </div>
+            <div style="text-align:center; font-size:13px; color:#888; margin-top:8px;">영상 제출 내용은 수정이 불가합니다. 문의: 운영사무국</div>
+          </div>
+
+          <!-- 영상 제출 폼 -->
+          <div id="clf-videoForm" style="display:none!important;">
+            <div class="clf-filename-guide">
+              <div class="clf-filename-guide-text">
+                <div class="clf-filename-guide-label">영상 파일명 규칙</div>
+                <div class="clf-filename-guide-rule"><code>분야_성명_곡명.mp4</code></div>
+                <div class="clf-filename-guide-ex">예) <code style="background:#fff;color:#A8872A;padding:1px 8px;border-radius:6px;font-family:'Pretendard Variable',Pretendard,monospace;font-size:12.5px;font-weight:700;border:1px solid #E8DDB5;">피아노_홍길동_Chopin Etude Op.10-4.mp4</code> · 항목 사이는 언더바(_)로 연결</div>
+              </div>
+              <button type="button" class="clf-help-btn" id="clf-howToUploadBtn2" aria-label="구글 드라이브 업로드 방법 보기">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                업로드 방법
+              </button>
+            </div>
+
+            <div style="max-width:880px!important; margin:0 auto!important;">
+              <div class="clf-fg" style="margin-bottom:18px!important;">
+                <div class="clf-field clf-full">
+                  <div class="clf-field-label">영상 공유 링크 <span class="clf-req">*</span></div>
+                  <input class="clf-input" type="url" id="clf-videoLinkInput" placeholder="https://drive.google.com/...">
+                  <div class="clf-field-help">제출 전 <strong style="color:#0C3D40 !important;">시크릿(비로그인) 창에서 링크가 정상적으로 열리는지</strong> 반드시 확인해 주세요.</div>
+                </div>
+                <div class="clf-field">
+                  <div class="clf-field-label">연주곡 작곡가 <span class="clf-req">*</span></div>
+                  <input class="clf-input" type="text" id="clf-videoComposer" placeholder="예) F. Chopin">
+                </div>
+                <div class="clf-field">
+                  <div class="clf-field-label">연주곡 곡명 <span class="clf-req">*</span></div>
+                  <input class="clf-input" type="text" id="clf-videoPiece" placeholder="예) Etude Op.10 No.4">
+                </div>
+              </div>
+              <div class="clf-submit-area" style="margin-top:24px!important;">
+                <button type="button" class="clf-submit" id="clf-videoSubmitBtn">영 상  제 출  하 기</button>
+                <div class="clf-submit-hint">제출 후에는 수정이 불가합니다. 신중하게 제출해 주세요.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════
+         서류 접수 폼 (마감 전에만 표시)
+         ════════════════════════════════════ -->
     <div class="clf-form-section" id="apply" data-dir-anim>
 
       <div class="clf-form-intro">
         <div class="clf-form-intro-en">APPLICATION FORM</div>
         <h2 class="clf-form-intro-ko">참가 신청서</h2>
-        <p class="clf-form-intro-desc">아래 항목을 정확히 입력하신 후 1차 예선 영상까지 업로드해 주세요. 본선 진출이 확정된 참가자에 한하여 별도의 참가비 납부가 진행됩니다.</p>
+        <p class="clf-form-intro-desc">아래 항목을 정확히 입력하신 후 제출해 주세요. 영상은 서류 마감(6월 5일) 이후 6월 26일 18:00까지 별도 제출합니다. 본선 진출이 확정된 참가자에 한하여 별도의 참가비 납부가 진행됩니다.</p>
+      </div>
+
+      <!-- 계정 생성 안내 -->
+      <div class="clf-callout" style="max-width:880px!important; margin:0 auto 32px!important;">
+        <div class="clf-callout-icon">🔑</div>
+        <div><strong>로그인 계정 생성 필요</strong><br>서류 제출 후 영상 제출 기간(6/5~6/26)에 다시 접속하여 영상을 제출하실 수 있습니다. 반드시 이메일과 비밀번호를 기억해 주세요.</div>
+      </div>
+
+      <!-- 계정 생성 섹션 -->
+      <div class="clf-form-wrap" style="margin-bottom:40px!important;">
+        <div class="clf-form-block">
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Account</span>
+            <span class="clf-detail-label-ko">계정 설정</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <p class="clf-form-block-desc">로그인에 사용할 이메일과 비밀번호를 설정해 주세요. (아래 참가자 정보의 이메일과 동일하게 입력하시면 됩니다)</p>
+          <div class="clf-fg">
+            <div class="clf-field">
+              <div class="clf-field-label">계정 이메일 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="email" id="clf-acctEmail" placeholder="name@example.com" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">비밀번호 설정 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="password" id="clf-acctPw" placeholder="6자 이상 (영문+숫자 권장)" required>
+            </div>
+          </div>
+        </div>
       </div>
 
       <form id="clf-applyForm" class="clf-form-wrap" novalidate>
@@ -1606,46 +2189,7 @@
           </div>
         </div>
 
-        <!-- 04 1차 예선 영상 링크 -->
-        <div class="clf-form-block">
-          <div class="clf-detail-label">
-            <span class="clf-detail-label-en">Preliminary Video</span>
-            <span class="clf-detail-label-ko">1차 예선 영상 링크</span>
-            <span class="clf-detail-label-divider"></span>
-          </div>
-          <p class="clf-form-block-desc">촬영한 영상은 <strong>구글 드라이브</strong>에 업로드한 뒤 공유 링크를 입력해 주세요.</p>
-
-          <div class="clf-filename-guide">
-            <div class="clf-filename-guide-text">
-              <div class="clf-filename-guide-label">영상 파일명 규칙</div>
-              <div class="clf-filename-guide-rule"><code>분야_성명_곡명.mp4</code></div>
-              <div class="clf-filename-guide-ex">예) <code style="background:#fff;color:#A8872A;padding:1px 8px;border-radius:6px;font-family:'Pretendard Variable',Pretendard,monospace;font-size:12.5px;font-weight:700;border:1px solid #E8DDB5;">피아노_홍길동_Chopin Etude Op.10-4.mp4</code> · 항목 사이는 언더바(_)로 연결</div>
-            </div>
-            <button type="button" class="clf-help-btn" id="clf-howToUploadBtn" aria-label="구글 드라이브 업로드 방법 보기">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              업로드 방법 알아보기
-            </button>
-          </div>
-
-          <div class="clf-field clf-full" style="margin-bottom:18px !important;">
-            <div class="clf-field-label">영상 공유 링크 <span class="clf-req">*</span></div>
-            <input class="clf-input" type="url" id="videoLink" name="videoLink" placeholder="https://drive.google.com/..." required>
-            <div class="clf-field-help">제출 전 <strong style="color:#0C3D40 !important;">시크릿(비로그인) 창에서 링크가 정상적으로 열리는지</strong> 반드시 확인해 주세요.</div>
-          </div>
-
-          <div class="clf-fg">
-            <div class="clf-field">
-              <div class="clf-field-label">연주곡 작곡가 <span class="clf-req">*</span></div>
-              <input class="clf-input" type="text" id="vComposer" name="vComposer" placeholder="예) F. Chopin" required>
-            </div>
-            <div class="clf-field">
-              <div class="clf-field-label">연주곡 곡명 <span class="clf-req">*</span></div>
-              <input class="clf-input" type="text" id="vPiece" name="vPiece" placeholder="예) Etude Op.10 No.4" required>
-            </div>
-          </div>
-        </div>
-
-        <!-- 05 유입 경로 -->
+        <!-- 04 유입 경로 -->
         <div class="clf-form-block">
           <div class="clf-detail-label">
             <span class="clf-detail-label-en">Referral</span>
@@ -1679,7 +2223,7 @@
           </div>
         </div>
 
-        <!-- 06 본선 참가비 안내 -->
+        <!-- 05 본선 참가비 안내 -->
         <div class="clf-form-block" id="payment">
           <div class="clf-detail-label">
             <span class="clf-detail-label-en">Payment</span>
@@ -1728,7 +2272,7 @@
           </div>
         </div>
 
-        <!-- 07 약관 동의 -->
+        <!-- 06 약관 동의 -->
         <div class="clf-form-block">
           <div class="clf-detail-label">
             <span class="clf-detail-label-en">Agreement</span>
@@ -1822,12 +2366,12 @@
         <div style="text-align:center;">
           <div class="clf-dday-timer-wrap" style="display:none !important; margin-bottom: 24px !important; margin-top: 10px !important;">
             <div class="clf-dday-icon">⏳</div>
-            <div class="clf-dday-text">마감까지 <span class="clf-dday-time"></span> 남았습니다</div>
+            <div class="clf-dday-text">서류 마감까지 <span class="clf-dday-time"></span> 남았습니다</div>
           </div>
         </div>
         <div class="clf-submit-area">
           <button type="submit" class="clf-submit">참 가 신 청 서  제 출</button>
-          <div class="clf-submit-hint">제출 후 입력하신 이메일로 접수 확인 메일이 발송됩니다.</div>
+          <div class="clf-submit-hint">제출 후 입력하신 이메일로 접수 확인 메일이 발송됩니다. 영상은 6월 5일 이후 별도로 제출합니다.</div>
         </div>
 
       </form>
@@ -1840,9 +2384,19 @@
     <div class="clf-modal">
       <h3>Application Received</h3>
       <div class="clf-modal-title">참가 신청이 정상 접수되었습니다</div>
-      <p>입력하신 이메일로 접수 확인 메일이 발송됩니다.<br>1차 예선 결과는 추후 개별 통지됩니다.</p>
+      <p>입력하신 이메일로 접수 확인 메일이 발송됩니다.<br>영상 제출은 <strong>6월 5일 18:00 이후</strong>부터 가능합니다.<br>로그인 후 영상을 제출해 주세요.</p>
       <div class="clf-modal-ref" id="refNumber">접수번호 · CLF-2026-000000</div>
       <button type="button" class="clf-modal-close" id="modalClose">확 인</button>
+    </div>
+  </div>
+
+  <!-- 영상 제출 완료 모달 -->
+  <div class="clf-modal-bd" id="videoSuccessModal">
+    <div class="clf-modal">
+      <h3>Video Submitted</h3>
+      <div class="clf-modal-title">영상이 정상 제출되었습니다</div>
+      <p>1차 예선 결과는 <strong>7월 3일</strong> 합격자 발표 시 개별 통지됩니다.</p>
+      <button type="button" class="clf-modal-close" id="videoModalClose">확 인</button>
     </div>
   </div>
 
@@ -1870,6 +2424,67 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════
+       기관형 로그인 / 가입 모달
+       ══════════════════════════════════════ -->
+  <div class="clf-inst-modal-bd" id="clf-instModalBd" role="dialog" aria-modal="true" aria-labelledby="clf-instModalHeading">
+    <div class="clf-inst-modal">
+      <!-- 헤더 -->
+      <div class="clf-inst-modal-header">
+        <div class="clf-inst-modal-logo">
+          <div class="clf-inst-modal-logo-mark">C</div>
+          <div class="clf-inst-modal-logo-text">
+            Carnegie LEE Foundation
+            <small>클래식 콩쿠르 2026 참가 신청</small>
+          </div>
+        </div>
+        <button class="clf-inst-modal-x" id="clf-instModalX" aria-label="닫기">&#x2715;</button>
+      </div>
+      <!-- 탭 -->
+      <div class="clf-inst-tabs">
+        <button class="clf-inst-tab clf-inst-active" id="clf-instTabLogin" type="button">로그인</button>
+        <button class="clf-inst-tab" id="clf-instTabReg" type="button">회원가입</button>
+      </div>
+      <!-- 로그인 패널 -->
+      <div id="clf-instLoginPanel" class="clf-inst-body">
+        <div class="clf-inst-error" id="clf-instLoginErr"></div>
+        <div class="clf-inst-field">
+          <label class="clf-inst-label" for="clf-instLoginEmail">이메일</label>
+          <input class="clf-inst-input" type="email" id="clf-instLoginEmail" placeholder="name@example.com" autocomplete="email">
+        </div>
+        <div class="clf-inst-field">
+          <label class="clf-inst-label" for="clf-instLoginPw">비밀번호</label>
+          <input class="clf-inst-input" type="password" id="clf-instLoginPw" placeholder="비밀번호 입력" autocomplete="current-password">
+        </div>
+        <button class="clf-inst-submit" id="clf-instLoginBtn" type="button">로그인 후 신청서 작성</button>
+        <div class="clf-inst-divider"><span>아직 계정이 없으신가요?</span></div>
+        <button class="clf-inst-submit" id="clf-instGoReg" type="button" style="background:#fff!important;color:#0C3D40!important;border:1.5px solid #0C3D40!important;">회원가입 후 신청서 작성</button>
+      </div>
+      <!-- 회원가입 패널 -->
+      <div id="clf-instRegPanel" class="clf-inst-body" style="display:none;">
+        <div class="clf-inst-error" id="clf-instRegErr"></div>
+        <div class="clf-inst-field">
+          <label class="clf-inst-label" for="clf-instRegEmail">이메일 <span style="color:#B54E3A">*</span></label>
+          <input class="clf-inst-input" type="email" id="clf-instRegEmail" placeholder="로그인에 사용할 이메일" autocomplete="username">
+        </div>
+        <div class="clf-inst-field">
+          <label class="clf-inst-label" for="clf-instRegPw">비밀번호 <span style="color:#B54E3A">*</span></label>
+          <input class="clf-inst-input" type="password" id="clf-instRegPw" placeholder="6자 이상" autocomplete="new-password">
+        </div>
+        <div class="clf-inst-field">
+          <label class="clf-inst-label" for="clf-instRegPw2">비밀번호 확인 <span style="color:#B54E3A">*</span></label>
+          <input class="clf-inst-input" type="password" id="clf-instRegPw2" placeholder="비밀번호 재입력" autocomplete="new-password">
+        </div>
+        <button class="clf-inst-submit" id="clf-instRegBtn" type="button">가입 후 신청서 작성</button>
+      </div>
+      <!-- 푸터 -->
+      <div class="clf-inst-footer">
+        <strong>카네기 Lee 재단</strong> &middot; 2026 클래식 콩쿠르 &middot; 운영사무국<br>
+        계정 정보는 영상 제출 기간(6/5~6/26)에 로그인 시 사용됩니다.
+      </div>
+    </div>
+  </div>
+
 </div><!-- /clf-dir -->
 
 <script>
@@ -1884,86 +2499,390 @@
   }
 })();
 
+/* ════════════════════════════════════════════════════
+   날짜 상수
+   ════════════════════════════════════════════════════ */
+var DOC_DEADLINE  = new Date('2026-06-05T18:00:00+09:00');  // 서류 마감
+var VID_OPEN      = new Date('2026-06-05T18:02:00+09:00');  // 영상 제출 오픈 (서류 마감 2분 후)
+var VID_DEADLINE  = new Date('2026-06-26T18:00:00+09:00');  // 영상 제출 마감
+
+/* ════════════════════════════════════════════════════
+   localStorage 유틸
+   ════════════════════════════════════════════════════ */
+var USERS_KEY      = 'clf_users_v1';
+var SESSION_KEY    = 'clf_session_v1';
+
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; } catch(e){ return {}; }
+}
+function saveUsers(u) {
+  localStorage.setItem(USERS_KEY, JSON.stringify(u));
+}
+function getSession() {
+  try { return JSON.parse(sessionStorage.getItem(SESSION_KEY)) || null; } catch(e){ return null; }
+}
+function setSession(email) {
+  sessionStorage.setItem(SESSION_KEY, JSON.stringify({ email: email }));
+}
+function clearSession() {
+  sessionStorage.removeItem(SESSION_KEY);
+}
+
+/* ════════════════════════════════════════════════════
+   메인 초기화
+   ════════════════════════════════════════════════════ */
 (function(){
-  /* ── 접수 기간 체크 ── */
-  var DEADLINE = new Date('2026-06-22T23:59:59+09:00');
-  var openBtn  = document.getElementById('clf-applyOpenBtn');
+
+  var now          = new Date();
+  var docOpen      = now < DOC_DEADLINE;   // 서류 접수 기간 중
+  var vidPeriod    = now >= VID_OPEN && now < VID_DEADLINE;  // 영상 제출 기간
+  var afterVidDead = now >= VID_DEADLINE;
+
+  var openBtn      = document.getElementById('clf-applyOpenBtn');
   var closedBanner = document.getElementById('clf-closedBanner');
   var formSection  = document.getElementById('apply');
   var ddayTimers   = document.querySelectorAll('.clf-dday-timer-wrap');
   var ddayTexts    = document.querySelectorAll('.clf-dday-time');
+  var authPanel    = document.getElementById('clf-authPanel');
+  var myPage       = document.getElementById('clf-myPage');
 
-  function updateTimer() {
-    var diff = DEADLINE - new Date();
+  /* ── 서류 접수 타이머 ── */
+  function updateDocTimer() {
+    var diff = DOC_DEADLINE - new Date();
     if (diff <= 0) {
       if (openBtn) openBtn.style.setProperty('display','none','important');
-      ddayTimers.forEach(function(el) { el.style.setProperty('display','none','important'); });
-      if (closedBanner) closedBanner.style.setProperty('display','block','important');
+      ddayTimers.forEach(function(el){ el.style.setProperty('display','none','important'); });
       return false;
     }
-    
-    ddayTimers.forEach(function(el) { el.style.setProperty('display','inline-flex','important'); });
-    
-    var d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    var h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    var m = Math.floor((diff / 1000 / 60) % 60);
+    ddayTimers.forEach(function(el){ el.style.setProperty('display','inline-flex','important'); });
+    var d = Math.floor(diff / (1000*60*60*24));
+    var h = Math.floor((diff / (1000*60*60)) % 24);
+    var m = Math.floor((diff / 1000/60) % 60);
     var s = Math.floor((diff / 1000) % 60);
-    
     var txt = '';
     if (d > 0) txt += d + '일 ';
     txt += String(h).padStart(2,'0') + '시간 ' + String(m).padStart(2,'0') + '분 ' + String(s).padStart(2,'0') + '초';
-    ddayTexts.forEach(function(el) { el.textContent = txt; });
+    ddayTexts.forEach(function(el){ el.textContent = txt; });
     return true;
   }
 
-  var timerInterval;
-  if (updateTimer()) {
-    timerInterval = setInterval(updateTimer, 1000);
-    
+  /* ── 스크롤 인 애니메이션 ── */
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('dir-visible'); });
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('[data-dir-anim]').forEach(function(el){ obs.observe(el); });
+
+  /* ════════════════════
+     서류 접수 기간 중
+     ════════════════════ */
+  if (docOpen) {
+    // 버튼 표시, 마감 배너 숨김
+    if (closedBanner) closedBanner.style.setProperty('display','none','important');
+    if (openBtn) openBtn.style.setProperty('display','inline-flex','important');
+
+    if (updateDocTimer()) {
+      setInterval(updateDocTimer, 1000);
+    }
+
     if (openBtn) {
       openBtn.addEventListener('click', function(){
-        /* 아임웹 로그인 체크 */
-        var isLoggedOut = (typeof window.MEMBER_HASH !== 'undefined' && window.MEMBER_HASH === '') || (typeof MEMBER_HASH !== 'undefined' && MEMBER_HASH === '');
-        if (isLoggedOut) {
-          if (typeof SITE_LOGIN === 'function') {
-            SITE_LOGIN();
-          } else {
-            if (confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?')) {
-              window.location.href = '/login?back_url=' + encodeURIComponent(window.location.pathname + window.location.search);
-            }
-          }
-          return;
-        }
-
-        if (formSection) {
-          formSection.classList.add('clf-form-visible');
-          var btnWrap = document.getElementById('clf-applyBtnWrap');
-          if (btnWrap) btnWrap.style.setProperty('display','none','important');
-          /* 타이머는 폼 안쪽에서도 계속 돌아가도록 clearInterval 하지 않음 */
-          setTimeout(function(){
-            formSection.scrollIntoView({behavior:'smooth', block:'start'});
-          }, 100);
-        }
+        // 로그인 모달 열기
+        openAuthModal();
       });
+    }
+
+  } else {
+    /* ════════════════════
+       서류 마감 이후
+       ════════════════════ */
+    if (openBtn) openBtn.style.setProperty('display','none','important');
+    ddayTimers.forEach(function(el){ el.style.setProperty('display','none','important'); });
+    if (closedBanner) closedBanner.style.setProperty('display','block','important');
+
+    // 세션 체크 — 이미 로그인 중인지 확인
+    var sess = getSession();
+    if (sess && sess.email) {
+      showMyPage(sess.email);
+    } else {
+      // 로그인/가입 패널 표시
+      if (authPanel) authPanel.style.setProperty('display','block','important');
     }
   }
 
-  /* 스크롤 인 애니메이션 */
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('dir-visible');});
-  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('[data-dir-anim]').forEach(function(el){obs.observe(el);});
+  /* ════════════════════
+     마이페이지 렌더
+     ════════════════════ */
+  function showMyPage(email) {
+    if (authPanel) authPanel.style.setProperty('display','none','important');
+    if (myPage)    myPage.style.setProperty('display','block','important');
 
+    var users = getUsers();
+    var user  = users[email] || {};
+    var data  = user.formData || {};
+
+    // 이름 표시
+    var nameEl = document.getElementById('clf-myPageName');
+    if (nameEl) nameEl.textContent = (data.nameKo || email) + ' 님, 안녕하세요 👋';
+
+    // 서류 내용 렌더링
+    renderSubmission(data);
+
+    // 영상 제출 섹션
+    renderVideoSection(email, user, data);
+  }
+
+  function renderSubmission(data) {
+    var el = document.getElementById('clf-mySubmission');
+    if (!el) return;
+
+    if (!data || !data.nameKo) {
+      el.innerHTML = '<div class="clf-callout"><div class="clf-callout-icon">ℹ</div><div>제출된 서류 내용이 없습니다.</div></div>';
+      return;
+    }
+
+    var rows = [
+      ['접수번호', data.refNumber || '—'],
+      ['접수일시', data.submittedAt || '—'],
+      ['경연 분야', data.division || '—'],
+      ['세부 악기 / 음역대', (data.instrument || data.voiceType || data.divisionEtc || '—')],
+      ['성명', data.nameKo || '—'],
+      ['생년월일', data.birth || '—'],
+      ['성별', data.gender || '—'],
+      ['국적', data.nationality || '—'],
+      ['휴대전화', data.phone || '—'],
+      ['이메일', data.email || '—'],
+      ['주소', (data.addressCity || '') + ' ' + (data.addressDistrict || '')],
+      ['현재 신분', data.status || '—'],
+      ['최종 학력', data.lastEducation || '—'],
+      ['학교명·전공', data.schoolName || '—'],
+      ['활동 경력', data.career || '—'],
+      ['수상 내역', data.awards || '—'],
+    ];
+
+    var html = '<div class="clf-submitted-card">' +
+      '<div class="clf-submitted-card-header">' +
+        '<div class="clf-submitted-card-title">📄 제출한 서류 내용</div>' +
+        '<div class="clf-submitted-badge">✓ 서류 접수 완료</div>' +
+      '</div>';
+
+    rows.forEach(function(r){
+      html += '<div class="clf-submitted-row">' +
+        '<div class="clf-submitted-key">' + r[0] + '</div>' +
+        '<div class="clf-submitted-val">' + (r[1] || '—').replace(/\n/g,'<br>') + '</div>' +
+      '</div>';
+    });
+
+    html += '</div>';
+    el.innerHTML = html;
+  }
+
+  function renderVideoSection(email, user, data) {
+    var lockEl  = document.getElementById('clf-videoLocked');
+    var openEl  = document.getElementById('clf-videoOpen');
+    var formEl  = document.getElementById('clf-videoForm');
+    var doneEl  = document.getElementById('clf-videoAlreadySubmitted');
+    var now2    = new Date();
+    var inPeriod = now2 >= VID_OPEN && now2 < VID_DEADLINE;
+
+    if (!data || !data.nameKo) {
+      // 서류를 제출하지 않은 경우
+      if (lockEl) {
+        lockEl.style.setProperty('display','block','important');
+        document.getElementById('clf-vl-title').textContent = '서류를 제출하지 않으셨습니다';
+        document.getElementById('clf-vl-desc').textContent = '영상 제출은 서류를 제출한 참가자만 가능합니다.';
+        document.getElementById('clf-vl-date').textContent = '';
+      }
+      if (openEl) openEl.style.setProperty('display','none','important');
+      return;
+    }
+
+    if (!inPeriod) {
+      if (lockEl) {
+        lockEl.style.setProperty('display','block','important');
+        if (now2 < VID_OPEN) {
+          document.getElementById('clf-vl-title').textContent = '영상 제출 기간이 아닙니다';
+          document.getElementById('clf-vl-desc').textContent = '서류 접수 마감(6월 5일 18:00) 이후 영상 제출이 열립니다.';
+          document.getElementById('clf-vl-date').textContent = '2026년 6월 5일 18:00 이후 열림';
+        } else {
+          document.getElementById('clf-vl-title').textContent = '영상 제출이 마감되었습니다';
+          document.getElementById('clf-vl-desc').textContent = '영상 제출 마감: 2026년 6월 26일 18:00\n합격자 발표: 2026년 7월 3일';
+          document.getElementById('clf-vl-date').textContent = '마감 완료';
+        }
+      }
+      if (openEl) openEl.style.setProperty('display','none','important');
+      return;
+    }
+
+    // 영상 제출 기간
+    if (lockEl) lockEl.style.setProperty('display','none','important');
+    if (openEl) openEl.style.setProperty('display','block','important');
+
+    if (user.videoData) {
+      // 이미 영상 제출 완료
+      if (doneEl) doneEl.style.setProperty('display','block','important');
+      if (formEl) formEl.style.setProperty('display','none','important');
+      var lnk = document.getElementById('clf-myVideoLink');
+      var cmp = document.getElementById('clf-myVComposer');
+      var pce = document.getElementById('clf-myVPiece');
+      if (lnk) lnk.textContent = user.videoData.videoLink || '—';
+      if (cmp) cmp.textContent = user.videoData.vComposer || '—';
+      if (pce) pce.textContent = user.videoData.vPiece || '—';
+    } else {
+      if (doneEl) doneEl.style.setProperty('display','none','important');
+      if (formEl) formEl.style.setProperty('display','block','important');
+      setupVideoForm(email);
+    }
+  }
+
+  function setupVideoForm(email) {
+    var submitBtn = document.getElementById('clf-videoSubmitBtn');
+    if (!submitBtn) return;
+    submitBtn.addEventListener('click', function(){
+      var link     = (document.getElementById('clf-videoLinkInput').value||'').trim();
+      var composer = (document.getElementById('clf-videoComposer').value||'').trim();
+      var piece    = (document.getElementById('clf-videoPiece').value||'').trim();
+
+      if (!link || !composer || !piece) {
+        alert('영상 링크, 작곡가, 곡명을 모두 입력해 주세요.');
+        return;
+      }
+      if (!link.startsWith('http')) {
+        alert('올바른 URL을 입력해 주세요.');
+        return;
+      }
+
+      // localStorage에 영상 정보 저장
+      var users = getUsers();
+      if (!users[email]) users[email] = {};
+      users[email].videoData = { videoLink: link, vComposer: composer, vPiece: piece, submittedAt: new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}) };
+      saveUsers(users);
+
+      // GAS 전송 (영상 정보 + 서류 refNumber)
+      var userData = users[email];
+      var formData = userData.formData || {};
+      var videoPayload = {
+        formType: 'concours_video',
+        refNumber: formData.refNumber || '',
+        nameKo: formData.nameKo || '',
+        email: email,
+        videoLink: link,
+        vComposer: composer,
+        vPiece: piece,
+        submittedAt: new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'})
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '제출 중...';
+
+      if (GAS_URL && GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') < 0) {
+        fetch(GAS_URL, {
+          method:'POST', mode:'no-cors',
+          headers:{'Content-Type':'text/plain;charset=utf-8'},
+          body: JSON.stringify(videoPayload)
+        }).catch(function(){});
+      }
+
+      document.getElementById('videoSuccessModal').classList.add('clf-show');
+    });
+  }
+
+  /* ════════════════════
+     로그인/가입 이벤트
+     ════════════════════ */
+
+  // 탭 전환
+  var goReg   = document.getElementById('clf-goRegister');
+  var goLogin = document.getElementById('clf-goLogin');
+  var loginBox = document.getElementById('clf-loginBox');
+  var regBox   = document.getElementById('clf-registerBox');
+
+  if (goReg) goReg.addEventListener('click', function(){
+    loginBox.style.setProperty('display','none','important');
+    regBox.style.setProperty('display','block','important');
+  });
+  if (goLogin) goLogin.addEventListener('click', function(){
+    regBox.style.setProperty('display','none','important');
+    loginBox.style.setProperty('display','block','important');
+  });
+
+  // 로그인
+  var loginBtn = document.getElementById('clf-loginBtn');
+  if (loginBtn) loginBtn.addEventListener('click', function(){
+    var em = (document.getElementById('clf-loginEmail').value||'').trim().toLowerCase();
+    var pw = (document.getElementById('clf-loginPw').value||'').trim();
+    var errEl = document.getElementById('clf-loginError');
+    errEl.classList.remove('clf-show');
+
+    if (!em || !pw) { errEl.textContent='이메일과 비밀번호를 입력해 주세요.'; errEl.classList.add('clf-show'); return; }
+    var users = getUsers();
+    if (!users[em] || users[em].password !== btoa(pw)) {
+      errEl.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.';
+      errEl.classList.add('clf-show');
+      return;
+    }
+    setSession(em);
+    showMyPage(em);
+  });
+
+  // Enter키 로그인
+  ['clf-loginEmail','clf-loginPw'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', function(e){ if(e.key==='Enter') loginBtn && loginBtn.click(); });
+  });
+
+  // 가입
+  var registerBtn = document.getElementById('clf-registerBtn');
+  if (registerBtn) registerBtn.addEventListener('click', function(){
+    var em  = (document.getElementById('clf-regEmail').value||'').trim().toLowerCase();
+    var pw  = (document.getElementById('clf-regPw').value||'').trim();
+    var pw2 = (document.getElementById('clf-regPw2').value||'').trim();
+    var errEl = document.getElementById('clf-registerError');
+    errEl.classList.remove('clf-show');
+
+    if (!em || !pw) { errEl.textContent='이메일과 비밀번호를 입력해 주세요.'; errEl.classList.add('clf-show'); return; }
+    if (pw.length < 6) { errEl.textContent='비밀번호는 6자 이상이어야 합니다.'; errEl.classList.add('clf-show'); return; }
+    if (pw !== pw2) { errEl.textContent='비밀번호가 일치하지 않습니다.'; errEl.classList.add('clf-show'); return; }
+    var users = getUsers();
+    if (users[em]) { errEl.textContent='이미 가입된 이메일입니다. 로그인해 주세요.'; errEl.classList.add('clf-show'); return; }
+
+    users[em] = { password: btoa(pw), formData: null, videoData: null };
+    saveUsers(users);
+    setSession(em);
+    showMyPage(em);
+  });
+
+  // 로그아웃
+  var logoutBtn = document.getElementById('clf-logoutBtn');
+  if (logoutBtn) logoutBtn.addEventListener('click', function(){
+    clearSession();
+    if (myPage) myPage.style.setProperty('display','none','important');
+    if (authPanel) authPanel.style.setProperty('display','block','important');
+    if (loginBox) loginBox.style.setProperty('display','block','important');
+    if (regBox)   regBox.style.setProperty('display','none','important');
+  });
+
+  // 영상 제출 완료 모달 닫기
+  var videoModalClose = document.getElementById('videoModalClose');
+  if (videoModalClose) videoModalClose.addEventListener('click', function(){
+    document.getElementById('videoSuccessModal').classList.remove('clf-show');
+    // 페이지 새로고침으로 업데이트된 상태 반영
+    var sess = getSession();
+    if (sess && sess.email) showMyPage(sess.email);
+  });
+
+  /* ════════════════════
+     서류 폼 이벤트
+     ════════════════════ */
 
   /* 분야 토글 */
   document.querySelectorAll('input[name="division"]').forEach(function(r){
     r.addEventListener('change', function(e){
-      var inst = document.getElementById('instrumentBox');
-      var voc = document.getElementById('vocalBox');
-      var etc = document.getElementById('divisionEtcBox');
+      var inst    = document.getElementById('instrumentBox');
+      var voc     = document.getElementById('vocalBox');
+      var etc     = document.getElementById('divisionEtcBox');
       var instSel = document.getElementById('instrument');
-      var vocSel = document.getElementById('voiceType');
-      var etcInp = document.getElementById('divisionEtc');
+      var vocSel  = document.getElementById('voiceType');
+      var etcInp  = document.getElementById('divisionEtc');
 
       inst.style.setProperty('display','none','important');
       voc.style.setProperty('display','none','important');
@@ -1985,11 +2904,11 @@
     });
   });
 
-  /* 모든 select 의 '기타' 옵션 처리 — data-etc 속성으로 매핑된 입력란 표시 */
+  /* select '기타' 옵션 처리 */
   document.querySelectorAll('.clf-with-etc').forEach(function(sel){
     sel.addEventListener('change', function(){
       var etcBoxId = sel.getAttribute('data-etc');
-      var etcBox = document.getElementById(etcBoxId);
+      var etcBox   = document.getElementById(etcBoxId);
       if (!etcBox) return;
       if (sel.value === '기타') {
         etcBox.classList.add('clf-show');
@@ -2003,51 +2922,32 @@
     });
   });
 
-  /* 영상 제출 — 링크 입력 방식 (유튜브 · 드라이브 · Vimeo) */
-
-  /* 드래그 앤 드롭 (잔여 업로드 영역 대응) */
+  /* 드래그 앤 드롭 */
   document.querySelectorAll('.clf-upload').forEach(function(zone){
     zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.classList.add('clf-dragover'); });
     zone.addEventListener('dragleave', function(){ zone.classList.remove('clf-dragover'); });
     zone.addEventListener('drop', function(){ zone.classList.remove('clf-dragover'); });
   });
 
-  /* 프로필 사진 압축 (Base64 변환) */
+  /* 프로필 사진 압축 */
   var photoInput = document.getElementById('profilePhoto');
   var photoDataInput = document.getElementById('photoData');
   if (photoInput) {
     photoInput.addEventListener('change', function(e) {
       var file = e.target.files[0];
-      if (!file) {
-        photoDataInput.value = '';
-        return;
-      }
+      if (!file) { photoDataInput.value = ''; return; }
       var reader = new FileReader();
       reader.onload = function(event) {
         var img = new Image();
         img.onload = function() {
           var canvas = document.createElement('canvas');
-          var max_size = 800; // 가로세로 최대 800px로 압축
-          var width = img.width;
-          var height = img.height;
-          
-          if (width > height) {
-            if (width > max_size) {
-              height *= max_size / width;
-              width = max_size;
-            }
-          } else {
-            if (height > max_size) {
-              width *= max_size / height;
-              height = max_size;
-            }
-          }
-          canvas.width = width;
-          canvas.height = height;
+          var max_size = 800;
+          var width = img.width, height = img.height;
+          if (width > height) { if (width > max_size) { height *= max_size/width; width = max_size; } }
+          else { if (height > max_size) { width *= max_size/height; height = max_size; } }
+          canvas.width = width; canvas.height = height;
           var ctx = canvas.getContext('2d');
           ctx.drawImage(img, 0, 0, width, height);
-          
-          // 압축 후 Base64로 변환 (Quality 0.7)
           photoDataInput.value = canvas.toDataURL('image/jpeg', 0.7);
         };
         img.src = event.target.result;
@@ -2057,177 +2957,187 @@
   }
 
   /* 전화번호 포맷 */
-  document.getElementById('phone').addEventListener('input', function(e){
-    var v = e.target.value.replace(/\D/g, '');
-    if (v.length > 11) v = v.slice(0, 11);
-    if (v.length >= 8) e.target.value = v.replace(/(\d{3})(\d{4})(\d{1,4})/, '$1-$2-$3');
-    else if (v.length >= 4) e.target.value = v.replace(/(\d{3})(\d{1,4})/, '$1-$2');
+  var phoneEl = document.getElementById('phone');
+  if (phoneEl) phoneEl.addEventListener('input', function(e){
+    var v = e.target.value.replace(/\D/g,'');
+    if (v.length > 11) v = v.slice(0,11);
+    if (v.length >= 8) e.target.value = v.replace(/(\d{3})(\d{4})(\d{1,4})/,'$1-$2-$3');
+    else if (v.length >= 4) e.target.value = v.replace(/(\d{3})(\d{1,4})/,'$1-$2');
     else e.target.value = v;
   });
 
-  /* 제출 */
-  /* ===========================================================
-     Google Apps Script 연동 설정
-     아래 GAS_URL 을 본인의 Apps Script 웹앱 배포 URL로 교체하세요.
-     (배포 방법은 별도 안내 참고)
-     =========================================================== */
+  /* ═══════════════════════════════════════
+     GAS URL 설정
+     ═══════════════════════════════════════ */
   var GAS_URL = 'https://script.google.com/macros/s/AKfycbyKo1g9WEPWKwwi4jSOIj0ENBn3BAsD4OBtJkQqlm-SvFTiKHGLH8ggU0CW8p5mUROK/exec';
 
-  document.getElementById('clf-applyForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var form = e.target;
-    
-    /* 기존 에러 초기화 */
-    form.querySelectorAll('.clf-error-msg').forEach(function(el){ el.remove(); });
-    form.querySelectorAll('.clf-input-error').forEach(function(el){ el.classList.remove('clf-input-error'); });
+  /* ═══════════════════════════════════════
+     서류 폼 제출
+     ═══════════════════════════════════════ */
+  var applyForm = document.getElementById('clf-applyForm');
+  if (applyForm) {
+    applyForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var form = e.target;
 
-    var isValid = true;
-    var firstInvalid = null;
+      /* 계정 이메일/비밀번호 검사 */
+      var acctEmail = (document.getElementById('clf-acctEmail').value||'').trim().toLowerCase();
+      var acctPw    = (document.getElementById('clf-acctPw').value||'').trim();
+      if (!acctEmail) { alert('계정 이메일을 입력해 주세요.'); document.getElementById('clf-acctEmail').focus(); return; }
+      if (acctPw.length < 6) { alert('비밀번호를 6자 이상으로 입력해 주세요.'); document.getElementById('clf-acctPw').focus(); return; }
 
-    /* 모든 필수 항목 검사 */
-    form.querySelectorAll('[required]').forEach(function(input) {
-      var isFieldValid = true;
-      var msg = '필수 항목입니다. 작성해 주세요.';
+      /* 기존 에러 초기화 */
+      form.querySelectorAll('.clf-error-msg').forEach(function(el){ el.remove(); });
+      form.querySelectorAll('.clf-input-error').forEach(function(el){ el.classList.remove('clf-input-error'); });
 
-      if (input.type === 'radio' || input.type === 'checkbox') {
-        if (input.type === 'radio') {
-          if (!form.querySelector('input[name="'+input.name+'"]:checked')) {
-            isFieldValid = false;
-            msg = '필수 항목입니다. 선택해 주세요.';
+      var isValid = true, firstInvalid = null;
+
+      form.querySelectorAll('[required]').forEach(function(input){
+        var isFieldValid = true;
+        var msg = '필수 항목입니다. 작성해 주세요.';
+
+        if (input.type === 'radio' || input.type === 'checkbox') {
+          if (input.type === 'radio') {
+            if (!form.querySelector('input[name="'+input.name+'"]:checked')) {
+              isFieldValid = false; msg = '필수 항목입니다. 선택해 주세요.';
+            }
+          } else if (input.type === 'checkbox') {
+            if (!input.checked) { isFieldValid = false; msg = '필수 항목입니다. 동의해 주세요.'; }
           }
-        } else if (input.type === 'checkbox') {
-          if (!input.checked) {
-            isFieldValid = false;
-            msg = '필수 항목입니다. 동의해 주세요.';
-          }
-        }
-      } else {
-        if (!input.value.trim()) {
-          isFieldValid = false;
-        } else if (!input.validity.valid) {
-          isFieldValid = false;
-          msg = '올바른 형식으로 입력해 주세요.';
-        }
-      }
-
-      if (!isFieldValid) {
-        isValid = false;
-        var target = input;
-        
-        if (input.type === 'radio') {
-          target = input.closest('.clf-pill-group');
-        } else if (input.type === 'checkbox') {
-          target = input.closest('.clf-agree-item');
         } else {
-          input.classList.add('clf-input-error');
+          if (!input.value.trim()) { isFieldValid = false; }
+          else if (!input.validity.valid) { isFieldValid = false; msg = '올바른 형식으로 입력해 주세요.'; }
         }
 
-        if (target && !target.dataset.hasError) {
-          var err = document.createElement('div');
-          err.className = 'clf-error-msg';
-          err.textContent = msg;
-          target.parentNode.insertBefore(err, target.nextSibling);
-          target.dataset.hasError = "true";
+        if (!isFieldValid) {
+          isValid = false;
+          var target = input;
+          if (input.type === 'radio')    target = input.closest('.clf-pill-group');
+          else if (input.type === 'checkbox') target = input.closest('.clf-agree-item');
+          else input.classList.add('clf-input-error');
+
+          if (target && !target.dataset.hasError) {
+            var err = document.createElement('div');
+            err.className = 'clf-error-msg';
+            err.textContent = msg;
+            target.parentNode.insertBefore(err, target.nextSibling);
+            target.dataset.hasError = "true";
+          }
+          if (!firstInvalid) firstInvalid = input.type === 'radio' ? target : input;
         }
+      });
 
-        if (!firstInvalid) firstInvalid = input.type === 'radio' ? target : input;
+      form.querySelectorAll('[data-has-error]').forEach(function(el){ delete el.dataset.hasError; });
+
+      if (!isValid) {
+        if (firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+        return;
       }
-    });
-    
-    /* 데이터 속성 정리 */
-    form.querySelectorAll('[data-has-error]').forEach(function(el){ delete el.dataset.hasError; });
 
-    if (!isValid) {
-      if (firstInvalid) {
-        firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+      var submitBtn = form.querySelector('.clf-submit');
+      var originalText = submitBtn.textContent;
+      var ref = 'CLF-2026-' + Math.floor(100000 + Math.random()*900000);
+
+      var fd = new FormData(form);
+      var urlParams = new URLSearchParams(window.location.search);
+      var utmCampaign = urlParams.get('utm_campaign') || sessionStorage.getItem('utm_campaign') || 'concours';
+      var utmMedium   = urlParams.get('utm_medium')   || sessionStorage.getItem('utm_medium')   || 'free';
+      var utmSource   = urlParams.get('utm_source')   || sessionStorage.getItem('utm_source')   || 'site';
+      var dbType = (utmMedium === 'paid') ? '유료DB' : '무료DB';
+
+      var payload = {
+        refNumber: ref,
+        formType: 'concours',
+        submittedAt: new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}),
+        utmCampaign: utmCampaign, utmMedium: utmMedium, utmSource: utmSource, dbType: dbType,
+        landedAt: sessionStorage.getItem('landedAt') || new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'})
+      };
+      fd.forEach(function(value, key){ payload[key] = value; });
+      payload.marketingConsent = (document.getElementById('agree5') && document.getElementById('agree5').checked) ? 'Y' : 'N';
+
+      /* localStorage에 계정+서류 저장 */
+      var users = getUsers();
+      var existingUser = users[acctEmail];
+      if (existingUser && existingUser.formData) {
+        // 이미 제출한 계정이 있는 경우 경고
+        if (!confirm('이 이메일로 이미 제출된 서류가 있습니다. 계속 진행하시겠습니까?')) return;
       }
-      return;
-    }
+      if (!users[acctEmail]) {
+        users[acctEmail] = { password: btoa(acctPw), formData: null, videoData: null };
+      } else {
+        // 기존 계정이면 비밀번호는 업데이트하지 않음 (이미 있으면 유지)
+      }
+      users[acctEmail].formData = Object.assign({}, payload);
+      saveUsers(users);
+      setSession(acctEmail);
 
-    var submitBtn = form.querySelector('.clf-submit');
-    var originalText = submitBtn.textContent;
-    var ref = 'CLF-2026-' + Math.floor(100000 + Math.random() * 900000);
+      /* GAS 전송 */
+      if (!GAS_URL || GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') === 0) {
+        document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
+        document.getElementById('successModal').classList.add('clf-show');
+        return;
+      }
 
-    /* 폼 데이터 수집 및 UTM 연동 */
-    var fd = new FormData(form);
-    
-    // UTM 정보 읽어오기
-    var urlParams = new URLSearchParams(window.location.search);
-    var utmCampaign = urlParams.get('utm_campaign') || sessionStorage.getItem('utm_campaign') || 'concours';
-    var utmMedium   = urlParams.get('utm_medium')   || sessionStorage.getItem('utm_medium')   || 'free';
-    var utmSource   = urlParams.get('utm_source')   || sessionStorage.getItem('utm_source')   || 'site';
-    
-    var dbType = (utmMedium === 'paid') ? '유료DB' : '무료DB';
+      submitBtn.disabled = true;
+      submitBtn.style.setProperty('opacity','.6','important');
+      submitBtn.textContent = '제출 중...';
 
-    var payload = { 
-      refNumber: ref, 
-      formType: 'concours', 
-      submittedAt: new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'}), // KST로 저장
-      utmCampaign: utmCampaign,
-      utmMedium: utmMedium,
-      utmSource: utmSource,
-      dbType: dbType,
-      landedAt: sessionStorage.getItem('landedAt') || new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'})
-    };
-    
-    fd.forEach(function(value, key){ payload[key] = value; });
-    payload.marketingConsent = (document.getElementById('agree5') && document.getElementById('agree5').checked) ? 'Y' : 'N';
-
-    /* GAS URL 미설정 시 — 데모 모드 (시트 전송 없이 완료 처리) */
-    if (!GAS_URL || GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') === 0) {
-      document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
-      document.getElementById('successModal').classList.add('clf-show');
-      return;
-    }
-
-    /* 전송 중 표시 */
-    submitBtn.disabled = true;
-    submitBtn.style.setProperty('opacity', '.6', 'important');
-    submitBtn.textContent = '제출 중...';
-
-    fetch(GAS_URL, {
-      method: 'POST',
-      mode: 'no-cors',  /* GAS 웹앱 CORS 회피 */
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload)
-    })
-    .then(function(){
-      document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
-      document.getElementById('successModal').classList.add('clf-show');
-    })
-    .catch(function(){
-      alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 운영사무국으로 문의해 주세요.');
-    })
-    .finally(function(){
-      submitBtn.disabled = false;
-      submitBtn.style.setProperty('opacity', '1', 'important');
-      submitBtn.textContent = originalText;
+      fetch(GAS_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify(payload)
+      })
+      .then(function(){
+        document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
+        document.getElementById('successModal').classList.add('clf-show');
+      })
+      .catch(function(){
+        alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 운영사무국으로 문의해 주세요.');
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.style.setProperty('opacity','1','important');
+        submitBtn.textContent = originalText;
+      });
     });
-  });
+  }
 
-  document.getElementById('modalClose').addEventListener('click', function(){
-    window.location.reload();
+  /* 모달 닫기 (서류 제출 완료) */
+  var modalClose = document.getElementById('modalClose');
+  if (modalClose) modalClose.addEventListener('click', function(){
+    document.getElementById('successModal').classList.remove('clf-show');
+    // 마이페이지로 전환
+    var sess = getSession();
+    if (sess && sess.email) {
+      var fEl = document.getElementById('apply');
+      if (fEl) fEl.classList.remove('clf-form-visible');
+      var btnWrap = document.getElementById('clf-applyBtnWrap');
+      if (btnWrap) btnWrap.style.setProperty('display','flex','important');
+      // 이제 서류 마감 전이므로 마이페이지 전환은 안 함
+    }
   });
 
   /* ── 업로드 방법 모달 ── */
-  var howToBtn   = document.getElementById('clf-howToUploadBtn');
-  var howToModal = document.getElementById('howToUploadModal');
-  var howToClose = document.getElementById('howToUploadClose');
-  function openHowTo(){
-    howToModal.classList.add('clf-show');
-    document.body.style.overflow = 'hidden';
+  function setupHowToModal(btnId) {
+    var btn = document.getElementById(btnId);
+    var modal = document.getElementById('howToUploadModal');
+    var closeBtn = document.getElementById('howToUploadClose');
+    function openM(){ modal.classList.add('clf-show'); document.body.style.overflow='hidden'; }
+    function closeM(){ modal.classList.remove('clf-show'); document.body.style.overflow=''; }
+    if (btn) btn.addEventListener('click', openM);
+    if (closeBtn) closeBtn.addEventListener('click', closeM);
+    if (modal) modal.addEventListener('click', function(e){ if(e.target===modal) closeM(); });
   }
-  function closeHowTo(){
-    howToModal.classList.remove('clf-show');
-    document.body.style.overflow = '';
-  }
-  if (howToBtn)   howToBtn.addEventListener('click', openHowTo);
-  if (howToClose) howToClose.addEventListener('click', closeHowTo);
-  if (howToModal) howToModal.addEventListener('click', function(e){
-    if (e.target === howToModal) closeHowTo();
-  });
+  setupHowToModal('clf-howToUploadBtn2');
   document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && howToModal.classList.contains('clf-show')) closeHowTo();
+    var m = document.getElementById('howToUploadModal');
+    if (m && e.key==='Escape' && m.classList.contains('clf-show')) {
+      m.classList.remove('clf-show'); document.body.style.overflow='';
+    }
+    var vs = document.getElementById('videoSuccessModal');
+    if (vs && e.key==='Escape' && vs.classList.contains('clf-show')) vs.classList.remove('clf-show');
+    var ss = document.getElementById('successModal');
+    if (ss && e.key==='Escape' && ss.classList.contains('clf-show')) ss.classList.remove('clf-show');
   });
 
   /* ── 약관 전체 동의 마스터 체크박스 ── */
@@ -2244,6 +3154,7 @@
       });
     });
   }
+
 })();
 
 /* 아코디언 토글 */
@@ -2251,4 +3162,127 @@ function clfToggleAcc(btn){
   var acc = btn.closest('.clf-accordion');
   if (acc) acc.classList.toggle('clf-open');
 }
+
+/* ══════════════════════════════════════════════════
+   기관형 로그인 모달
+   ══════════════════════════════════════════════════ */
+function openAuthModal() {
+  var bd = document.getElementById('clf-instModalBd');
+  if (!bd) return;
+  // 패널 초기 상태 리셋
+  showInstTab('login');
+  clearInstErrors();
+  bd.classList.add('clf-show');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){
+    var el = document.getElementById('clf-instLoginEmail');
+    if (el) el.focus();
+  }, 120);
+}
+function closeAuthModal() {
+  var bd = document.getElementById('clf-instModalBd');
+  if (bd) bd.classList.remove('clf-show');
+  document.body.style.overflow = '';
+}
+function showInstTab(tab) {
+  var lp = document.getElementById('clf-instLoginPanel');
+  var rp = document.getElementById('clf-instRegPanel');
+  var lt = document.getElementById('clf-instTabLogin');
+  var rt = document.getElementById('clf-instTabReg');
+  if (tab === 'login') {
+    lp.style.display = ''; rp.style.display = 'none';
+    lt.classList.add('clf-inst-active'); rt.classList.remove('clf-inst-active');
+    setTimeout(function(){ var e=document.getElementById('clf-instLoginEmail'); if(e)e.focus(); },80);
+  } else {
+    rp.style.display = ''; lp.style.display = 'none';
+    rt.classList.add('clf-inst-active'); lt.classList.remove('clf-inst-active');
+    setTimeout(function(){ var e=document.getElementById('clf-instRegEmail'); if(e)e.focus(); },80);
+  }
+}
+function clearInstErrors() {
+  ['clf-instLoginErr','clf-instRegErr'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) { el.textContent=''; el.classList.remove('clf-show'); }
+  });
+}
+function proceedToForm() {
+  closeAuthModal();
+  var formSection = document.getElementById('apply');
+  var btnWrap     = document.getElementById('clf-applyBtnWrap');
+  if (formSection) {
+    formSection.classList.add('clf-form-visible');
+    if (btnWrap) btnWrap.style.setProperty('display','none','important');
+    setTimeout(function(){ formSection.scrollIntoView({behavior:'smooth', block:'start'}); }, 150);
+  }
+}
+
+(function initInstModal(){
+  var bd      = document.getElementById('clf-instModalBd');
+  var xBtn    = document.getElementById('clf-instModalX');
+  var tabL    = document.getElementById('clf-instTabLogin');
+  var tabR    = document.getElementById('clf-instTabReg');
+  var loginBtn = document.getElementById('clf-instLoginBtn');
+  var goRegBtn = document.getElementById('clf-instGoReg');
+  var regBtn  = document.getElementById('clf-instRegBtn');
+
+  if (xBtn) xBtn.addEventListener('click', closeAuthModal);
+  if (bd)   bd.addEventListener('click', function(e){ if(e.target===bd) closeAuthModal(); });
+  if (tabL) tabL.addEventListener('click', function(){ showInstTab('login'); clearInstErrors(); });
+  if (tabR) tabR.addEventListener('click', function(){ showInstTab('reg'); clearInstErrors(); });
+  if (goRegBtn) goRegBtn.addEventListener('click', function(){ showInstTab('reg'); clearInstErrors(); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key==='Escape' && bd && bd.classList.contains('clf-show')) closeAuthModal();
+  });
+
+  // Enter 키 지원
+  ['clf-instLoginEmail','clf-instLoginPw'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', function(e){ if(e.key==='Enter') loginBtn && loginBtn.click(); });
+  });
+  ['clf-instRegEmail','clf-instRegPw','clf-instRegPw2'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('keydown', function(e){ if(e.key==='Enter') regBtn && regBtn.click(); });
+  });
+
+  /* 로그인 */
+  if (loginBtn) loginBtn.addEventListener('click', function(){
+    var em  = (document.getElementById('clf-instLoginEmail').value||'').trim().toLowerCase();
+    var pw  = (document.getElementById('clf-instLoginPw').value||'').trim();
+    var err = document.getElementById('clf-instLoginErr');
+    err.classList.remove('clf-show');
+    if (!em || !pw) { err.textContent='이메일과 비밀번호를 입력해 주세요.'; err.classList.add('clf-show'); return; }
+    var users = getUsers();
+    if (!users[em] || users[em].password !== btoa(pw)) {
+      err.textContent='이메일 또는 비밀번호가 올바르지 않습니다.'; err.classList.add('clf-show'); return;
+    }
+    setSession(em);
+    /* 계정 이메일 필드에 자동 입력 */
+    var ae = document.getElementById('clf-acctEmail'); if(ae) ae.value = em;
+    proceedToForm();
+  });
+
+  /* 가입 */
+  if (regBtn) regBtn.addEventListener('click', function(){
+    var em  = (document.getElementById('clf-instRegEmail').value||'').trim().toLowerCase();
+    var pw  = (document.getElementById('clf-instRegPw').value||'').trim();
+    var pw2 = (document.getElementById('clf-instRegPw2').value||'').trim();
+    var err = document.getElementById('clf-instRegErr');
+    err.classList.remove('clf-show');
+    if (!em || !pw) { err.textContent='이메일과 비밀번호를 입력해 주세요.'; err.classList.add('clf-show'); return; }
+    if (pw.length < 6) { err.textContent='비밀번호는 6자 이상이어야 합니다.'; err.classList.add('clf-show'); return; }
+    if (pw !== pw2) { err.textContent='비밀번호가 일치하지 않습니다.'; err.classList.add('clf-show'); return; }
+    var users = getUsers();
+    if (users[em] && users[em].formData) {
+      err.textContent='이미 서류를 제출한 이메일입니다. 로그인해 주세요.'; err.classList.add('clf-show'); return;
+    }
+    if (!users[em]) users[em] = { password: btoa(pw), formData: null, videoData: null };
+    saveUsers(users);
+    setSession(em);
+    /* 계정 이메일/비밀번호 필드에 자동 입력 */
+    var ae = document.getElementById('clf-acctEmail'); if(ae) ae.value = em;
+    var ap = document.getElementById('clf-acctPw');    if(ap) ap.value = pw;
+    proceedToForm();
+  });
+})();
 </script>
