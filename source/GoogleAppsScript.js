@@ -34,6 +34,8 @@ function doPost(e) {
     // 3. 신청 분야(formType)에 따른 분기 처리 및 시트 기록
     if (formType === "concours") {
       logConcours(ss, payload, photoUrl);
+    } else if (formType === "concours_video") {
+      logConcoursVideo(ss, payload);
     } else if (formType === "exhibition") {
       logExhibition(ss, payload, photoUrl);
     } else if (formType === "choir") {
@@ -42,8 +44,8 @@ function doPost(e) {
       return output.setContent(JSON.stringify({ status: "error", message: "Invalid formType: " + formType }));
     }
     
-    // 4. 접수 완료 이메일 발송
-    if (payload.email) {
+    // 4. 접수 완료 이메일 발송 (영상 제출은 발송 안함)
+    if (payload.email && formType !== "concours_video") {
       sendConfirmationEmail(payload);
     }
     
@@ -130,6 +132,57 @@ function logConcours(ss, payload, photoUrl) {
   ];
   
   sheet.appendRow(rowData);
+}
+
+/**
+ * 콩쿠르 영상 제출 업데이트
+ */
+function logConcoursVideo(ss, payload) {
+  var sheetName = "콩쿨 명단";
+  var sheet = ss.getSheetByName(sheetName);
+  if (!sheet) throw new Error("콩쿨 명단 시트를 찾을 수 없습니다.");
+  
+  var data = sheet.getDataRange().getValues();
+  var refNumber = payload.refNumber;
+  var email = payload.email; // refNumber가 없으면 이메일로 매칭
+  
+  var rowIndex = -1;
+  // 1번 인덱스(두번째 줄)부터 탐색 (0번은 헤더)
+  for (var i = 1; i < data.length; i++) {
+    var rowRef = data[i][0]; // A열 (접수번호)
+    var rowEmail = data[i][15]; // P열 (이메일)
+    
+    if (refNumber && rowRef === refNumber) {
+      rowIndex = i + 1; // getRange는 1-based index
+      break;
+    } else if (!refNumber && email && rowEmail === email) {
+      rowIndex = i + 1;
+      break;
+    }
+  }
+  
+  if (rowIndex > -1) {
+    // 24번째 열(X열): 영상공유링크
+    sheet.getRange(rowIndex, 24).setValue(payload.videoLink || "");
+    // 25번째 열(Y열): 연주곡 작곡가
+    sheet.getRange(rowIndex, 25).setValue(payload.vComposer || "");
+    // 26번째 열(Z열): 연주곡 곡명
+    sheet.getRange(rowIndex, 26).setValue(payload.vPiece || "");
+  } else {
+    // 찾을 수 없는 경우 누락 방지를 위해 새 행에 추가
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var newRow = new Array(headers.length);
+    for (var j = 0; j < newRow.length; j++) newRow[j] = "";
+    
+    newRow[0] = payload.refNumber || "[누락-영상단독제출]";
+    newRow[1] = payload.submittedAt;
+    newRow[10] = payload.nameKo;
+    newRow[15] = payload.email;
+    newRow[23] = payload.videoLink;
+    newRow[24] = payload.vComposer;
+    newRow[25] = payload.vPiece;
+    sheet.appendRow(newRow);
+  }
 }
 
 /**
