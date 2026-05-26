@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="카네기 Lee 재단 공식 멀티링크 - 콩쿠르 참가신청, 공식 홈페이지, 보도자료 안내">
+<title>카네기 Lee 재단</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #c9a84c;
+  --gold-dark: #a8872a;
+  --gold-pale: #fbf5e2;
+  --teal: #0c3d40;
+  --teal-light: #eaf3f3;
+  --bg-color: #f5f5f8;
+  --card-bg: #ffffff;
+  --text-main: #1f2937;
+  --text-sub: #4b5563;
+  --text-muted: #9ca3af;
+  --border: #e5e7eb;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+html, body {
+  min-height: 100%;
+  background-color: var(--bg-color);
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Container Layout ── */
+.wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 16px 60px;
+}
+
+/* ── Profile Header ── */
+.profile-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.logo-wrap {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.profile-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.profile-subtitle {
+  font-size: 13px;
+  color: var(--text-sub);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* ── Blocks Container ── */
+.blocks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Featured Poster Card (Giving Plus 1번 사진 스타일) ── */
+.poster-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 22px 20px 20px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+
+.poster-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(12, 61, 64, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.poster-title-wrap {
+  margin-bottom: 12px;
+}
+
+.poster-header-text {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: var(--teal);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.poster-subheader-text {
+  font-size: 13px;
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.poster-tag {
+  display: inline-block;
+  background-color: var(--gold);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.poster-img-container {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #f3f4f6;
+  margin-bottom: 14px;
+}
+
+.poster-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.poster-caption {
+  font-size: 12.5px;
+  color: var(--text-sub);
+  line-height: 1.65;
+  word-break: keep-all;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.poster-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background-color: var(--teal);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 14px 20px;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 16px -6px rgba(12, 61, 64, 0.4);
+}
+
+.poster-card:hover .poster-cta {
+  background-color: #0f5258;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px -8px rgba(12, 61, 64, 0.5);
+}
+
+.poster-cta-arrow {
+  font-size: 16px;
+  font-weight: 400;
+  transition: transform 0.2s ease;
+}
+
+.poster-card:hover .poster-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* ── Section Dividers ── */
+.section-divider {
+  height: 1px;
+  background-color: var(--border);
+  margin: 24px 0 16px;
+  border: none;
+}
+
+.section-label-wrap {
+  margin: 12px 0 8px 4px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section-sublabel {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── Litt.ly Small Button Style ── */
+.btn-small {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 16px 20px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+
+.btn-small:hover {
+  transform: translateY(-1px);
+  border-color: rgba(12, 61, 64, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.btn-icon {
+  font-size: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.btn-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1f2937;
+  flex-grow: 1;
+}
+
+.btn-arrow {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+/* ── Recent News Card Style (Giving Plus 3번 사진 스타일) ── */
+.news-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.news-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(12, 61, 64, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.news-thumb-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 14px;
+  border: 1px solid #f3f4f6;
+}
+
+.news-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  line-height: 1.5;
+  flex-grow: 1;
+  word-break: keep-all;
+  padding-right: 6px;
+}
+
+.news-arrow {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 48px;
+}
+
+.footer-sns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.footer-sns-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-sns-item:hover {
+  color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.footer-sns-item svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.footer-sns-item svg.stroke-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.footer-copy {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Profile Header -->
+  <header class="profile-header">
+    <div class="logo-wrap">
+      <img src="../images/logo.png" alt="카네기 Lee 재단 로고" class="logo-img">
+    </div>
+    <h1 class="profile-title">카네기 Lee 재단</h1>
+    <p class="profile-subtitle">차세대 음악 인재를 발굴하고 함께 성장하는<br>비영리 문화예술재단</p>
+  </header>
+
+  <!-- Blocks -->
+  <main class="blocks-container">
+
+    <!-- 1. Featured Poster Card (음악 콩쿨 단독 신청 카드 - Giving Plus 1번 스타일) -->
+    <a href="https://carnegie-lee.github.io/2026/" target="_blank" class="poster-card">
+      <div class="poster-title-wrap">
+        <h2 class="poster-header-text">카네기 LEE 제1회 콩쿠르</h2>
+        <p class="poster-subheader-text">조수미와 함께 서는, 단 하나의 무대</p>
+      </div>
+      <span class="poster-tag">1차 영상 접수 신청 중</span>
+      <div class="poster-img-container">
+        <img src="../images/poster.png" alt="카네기 LEE 제1회 콩쿠르 포스터" class="poster-img">
+      </div>
+      <p class="poster-caption">
+        기악 · 성악 부문 · 입시생부터 현역 아티스트까지
+      </p>
+      <div class="poster-cta">
+        <span>참가 신청하러 가기</span>
+        <span class="poster-cta-arrow">→</span>
+      </div>
+    </a>
+
+    <hr class="section-divider">
+
+    <!-- Section: 최신 보도자료 바로가기 -->
+    <div class="section-label-wrap">
+      <h3 class="section-label">📰 최신 보도자료 바로가기</h3>
+      <p class="section-sublabel">문화예술과 함께하는 지구 힐링 협력 소식을 전해드립니다.</p>
+    </div>
+
+    <div class="news-card-container">
+      
+      <!-- Article 1 -->
+      <a href="https://www.discoverynews.kr/news/articleView.html?idxno=1066590" target="_blank" class="news-card">
+        <div class="news-thumb-wrap">
+          <img src="기사 사진/1066590_1100521_4750.jpg" alt="뉴스 썸네일" class="news-thumb">
+        </div>
+        <h4 class="news-title">📍 "카네기LEE재단 창립 6주년 기념 '지구힐링 콘서트' 성료"</h4>
+        <span class="news-arrow">›</span>
+      </a>
+
+      <!-- Article 2 -->
+      <a href="https://www.kmib.co.kr/article/view.asp?arcid=0018836625" target="_blank" class="news-card">
+        <div class="news-thumb-wrap">
+          <img src="기사 사진/2기사.jpg" alt="뉴스 썸네일" class="news-thumb">
+        </div>
+        <h4 class="news-title">📍 "카네기홀에 아름다운 오카리나 선율이…."</h4>
+        <span class="news-arrow">›</span>
+      </a>
+
+      <!-- Article 3 -->
+      <a href="https://www.discoverynews.kr/news/articleView.html?idxno=1055800" target="_blank" class="news-card">
+        <div class="news-thumb-wrap">
+          <img src="기사 사진/3번기사.jpg" alt="뉴스 썸네일" class="news-thumb">
+        </div>
+        <h4 class="news-title">📍 "카네기 LEE 재단, 창립 5주년 기념 ‘아티스트와 기업인의 밤’ 성황리 개최"</h4>
+        <span class="news-arrow">›</span>
+      </a>
+
+      <!-- Article 4 -->
+      <a href="https://www.womentimes.co.kr/news/articleView.html?idxno=60910" target="_blank" class="news-card">
+        <div class="news-thumb-wrap">
+          <img src="기사 사진/4번기사.jpg" alt="뉴스 썸네일" class="news-thumb">
+        </div>
+        <h4 class="news-title">📍 "조수미-팝페리나 이예영, 지구 힐링 콘서트 개최"</h4>
+        <span class="news-arrow">›</span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-sns">
+      <a href="https://carnegielee.com/" target="_blank" class="footer-sns-item" aria-label="공식 홈페이지">
+        <svg class="stroke-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      </a>
+      <a href="https://www.youtube.com/@carnegieleefoundation7057" target="_blank" class="footer-sns-item" aria-label="유튜브">
+        <svg viewBox="0 0 24 24">
+          <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 재단법인 카네기 Lee 재단. All rights reserved.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
