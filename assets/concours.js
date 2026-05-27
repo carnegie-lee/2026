@@ -41,12 +41,14 @@ async function getApplication(userId) {
 async function saveApplication(userId, payload) {
   return sb.from('concours_applications').insert(Object.assign({ user_id: userId }, payload));
 }
-async function getVideoSubmission(userId) {
-  var { data } = await sb.from('concours_video_submissions').select('*').eq('user_id', userId).maybeSingle();
-  return data;
-}
 async function saveVideoSubmission(userId, payload) {
-  return sb.from('concours_video_submissions').insert(Object.assign({ user_id: userId }, payload));
+  return sb.from('concours_applications').update({
+    video_link:        payload.video_link,
+    video_composer:    payload.composer,
+    video_piece:       payload.piece,
+    video_submitted_at: payload.submitted_at,
+    updated_at:        new Date().toISOString()
+  }).eq('user_id', userId);
 }
 
 /* ══════════════════════════════════════════════
@@ -308,9 +310,7 @@ function clearInstErrors() {
     if (nameEl) nameEl.textContent = ((appData && appData.name_ko) ? appData.name_ko : user.email) + ' 님, 안녕하세요 👋';
 
     renderSubmission(appData);
-
-    var videoData = appData ? await getVideoSubmission(user.id) : null;
-    renderVideoSection(user, appData, videoData);
+    renderVideoSection(user, appData);
   }
 
   function renderSubmission(data) {
@@ -345,7 +345,7 @@ function clearInstErrors() {
     el.innerHTML = html + '</div>';
   }
 
-  function renderVideoSection(user, appData, videoData) {
+  function renderVideoSection(user, appData) {
     var lockEl = document.getElementById('clf-videoLocked');
     var openEl = document.getElementById('clf-videoOpen');
     var formEl = document.getElementById('clf-videoForm');
@@ -384,15 +384,15 @@ function clearInstErrors() {
     if (lockEl) lockEl.style.setProperty('display', 'none', 'important');
     if (openEl) openEl.style.setProperty('display', 'block', 'important');
 
-    if (videoData) {
+    if (appData && appData.video_link) {
       if (doneEl) doneEl.style.setProperty('display', 'block', 'important');
       if (formEl) formEl.style.setProperty('display', 'none', 'important');
       var lnk = document.getElementById('clf-myVideoLink');
       var cmp = document.getElementById('clf-myVComposer');
       var pce = document.getElementById('clf-myVPiece');
-      if (lnk) lnk.textContent = videoData.video_link || '—';
-      if (cmp) cmp.textContent = videoData.composer   || '—';
-      if (pce) pce.textContent = videoData.piece      || '—';
+      if (lnk) lnk.textContent = appData.video_link     || '—';
+      if (cmp) cmp.textContent = appData.video_composer || '—';
+      if (pce) pce.textContent = appData.video_piece    || '—';
     } else {
       if (doneEl) doneEl.style.setProperty('display', 'none', 'important');
       if (formEl) formEl.style.setProperty('display', 'block', 'important');

@@ -9,29 +9,33 @@
 --     Authentication → Providers → Email → Confirm email OFF
 -- ============================================================
 
+-- 기존 테이블 초기화 (재실행 시)
+DROP TABLE IF EXISTS concours_video_submissions;
+DROP TABLE IF EXISTS concours_applications;
+
 
 -- ════════════════════════════════════════════
---  1. 콩쿠르 서류 신청 테이블
+--  단일 통합 테이블 (서류 + 영상 한 row)
 -- ════════════════════════════════════════════
-CREATE TABLE IF NOT EXISTS concours_applications (
+CREATE TABLE concours_applications (
   id               UUID        DEFAULT gen_random_uuid() PRIMARY KEY,
-  user_id          UUID        REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  user_id          UUID        REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL UNIQUE,
 
   -- 접수 메타
-  ref_number       TEXT        NOT NULL,              -- CLF-2026-XXXXXX
+  ref_number       TEXT        NOT NULL,
   form_type        TEXT        DEFAULT 'concours',
-  submitted_at     TEXT,                              -- 한국시각 문자열
+  submitted_at     TEXT,
   is_test          BOOLEAN     DEFAULT FALSE,
 
   -- UTM
   utm_campaign     TEXT,
   utm_medium       TEXT,
   utm_source       TEXT,
-  db_type          TEXT,                              -- 유료DB / 무료DB
+  db_type          TEXT,
   landed_at        TEXT,
 
   -- 참가 부문
-  division         TEXT,                              -- 기악 / 성악 / 기타
+  division         TEXT,
   division_etc     TEXT,
   instrument       TEXT,
   instrument_etc   TEXT,
@@ -46,7 +50,7 @@ CREATE TABLE IF NOT EXISTS concours_applications (
   email            TEXT,
   address_city     TEXT,
   address_district TEXT,
-  photo_data       TEXT,                              -- base64 JPEG (300px, ~30KB)
+  photo_data       TEXT,
 
   -- 학력 · 경력
   school_name      TEXT,
@@ -60,61 +64,46 @@ CREATE TABLE IF NOT EXISTS concours_applications (
   -- 약관
   marketing_consent TEXT DEFAULT 'N',
 
-  created_at       TIMESTAMPTZ DEFAULT NOW()
+  -- 영상 제출 (서류 마감 후 UPDATE로 채워짐)
+  video_link        TEXT,
+  video_composer    TEXT,
+  video_piece       TEXT,
+  video_submitted_at TEXT,
+
+  created_at       TIMESTAMPTZ DEFAULT NOW(),
+  updated_at       TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- Row Level Security
 ALTER TABLE concours_applications ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "concours_app_select_own" ON concours_applications
+CREATE POLICY "app_select_own" ON concours_applications
   FOR SELECT USING (auth.uid() = user_id);
 
-CREATE POLICY "concours_app_insert_own" ON concours_applications
+CREATE POLICY "app_insert_own" ON concours_applications
   FOR INSERT WITH CHECK (auth.uid() = user_id);
 
-
--- ════════════════════════════════════════════
---  2. 영상 제출 테이블 (서류 마감 후 별도 제출)
--- ════════════════════════════════════════════
-CREATE TABLE IF NOT EXISTS concours_video_submissions (
-  id           UUID        DEFAULT gen_random_uuid() PRIMARY KEY,
-  user_id      UUID        REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
-
-  ref_number   TEXT,                                  -- 연계용 접수번호
-  video_link   TEXT,                                  -- Google Drive / YouTube
-  composer     TEXT,
-  piece        TEXT,
-  submitted_at TEXT,
-
-  created_at   TIMESTAMPTZ DEFAULT NOW()
-);
-
-ALTER TABLE concours_video_submissions ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "concours_vid_select_own" ON concours_video_submissions
-  FOR SELECT USING (auth.uid() = user_id);
-
-CREATE POLICY "concours_vid_insert_own" ON concours_video_submissions
-  FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "app_update_own" ON concours_applications
+  FOR UPDATE USING (auth.uid() = user_id);
 
 
 -- ════════════════════════════════════════════
---  관리자 조회 쿼리 예시 (SQL Editor에서 직접 실행)
+--  관리자 조회 쿼리 예시
 -- ════════════════════════════════════════════
--- 전체 신청자 목록 (최신순)
--- SELECT id, ref_number, name_ko, email, phone, division, instrument, submitted_at, is_test
+-- 전체 신청자 (최신순)
+-- SELECT ref_number, name_ko, email, phone, division, instrument,
+--        submitted_at, video_link, video_submitted_at, is_test
 -- FROM concours_applications
 -- ORDER BY created_at DESC;
 
--- 영상 제출자 목록
--- SELECT v.ref_number, a.name_ko, a.email, v.video_link, v.composer, v.piece, v.submitted_at
--- FROM concours_video_submissions v
--- JOIN concours_applications a ON a.user_id = v.user_id
--- ORDER BY v.created_at DESC;
+-- 서류만 제출하고 영상 미제출자
+-- SELECT ref_number, name_ko, email, phone
+-- FROM concours_applications
+-- WHERE video_link IS NULL AND is_test = FALSE
+-- ORDER BY created_at;
 
--- 서류 제출 / 영상 미제출자
--- SELECT a.ref_number, a.name_ko, a.email, a.phone
--- FROM concours_applications a
--- LEFT JOIN concours_video_submissions v ON v.user_id = a.user_id
--- WHERE v.id IS NULL AND a.is_test = FALSE
--- ORDER BY a.created_at;
+-- 영상까지 제출 완료자
+-- SELECT ref_number, name_ko, email, video_link, video_composer, video_piece
+-- FROM concours_applications
+-- WHERE video_link IS NOT NULL AND is_test = FALSE
+-- ORDER BY video_submitted_at;
