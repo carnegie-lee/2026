@@ -473,7 +473,7 @@
     /* ═══════════════════════════════════════
        GAS URL 설정
        ═══════════════════════════════════════ */
-    var GAS_URL = 'https://script.google.com/macros/s/AKfycbzAT5sGiUls8GzBzfuBI2zdDmjMH8COaLwmr50WrM_cSoA7jIrPrdbHv02mzQ4jSvPD-A/exec';
+    var GAS_URL = 'https://script.google.com/macros/s/AKfycbwz7X4n4QRKQhqe6F_5AVFx1mVEyqsWaiQ-b3K7u_G-_bUSpnLIbiWodlsajRf-XLvrjA/exec';
 
     /* ═══════════════════════════════════════
        테스트 계정 (잠금/재제출 차단 우회)
