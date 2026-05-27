@@ -1,0 +1,2352 @@
+  .clf-dir {
+    --gold: #C9A84C;
+    --gold2: #A8872A;
+    --gold-pale: #FBF5E2;
+    --teal: #0C3D40;
+    --teal2: #0F5258;
+    --teal-pale: #EAF3F3;
+    --text: #111111;
+    --text2: #444444;
+    --text3: #888888;
+    --bg: #F8F9FA;
+    --border: #E4E4E4;
+    --warn: #B54E3A;
+    --radius: 14px;
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif !important;
+    color: #111 !important;
+  }
+
+  /* ── 헤더 ── */
+  .clf-dir .clf-phero {
+    background: #fff !important;
+    padding: 48px 6vw 0 !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+  }
+
+  .clf-dir .clf-breadcrumb {
+    font-size: 12px !important;
+    color: #aaa !important;
+    margin-bottom: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    list-style: none !important;
+    padding: 0 !important;
+  }
+
+  .clf-dir .clf-breadcrumb a {
+    color: #888 !important;
+    text-decoration: none !important;
+  }
+
+  .clf-dir .clf-breadcrumb a:hover {
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-breadcrumb .clf-bc-cur {
+    color: #0C3D40 !important;
+    font-weight: 600 !important;
+  }
+
+  .clf-dir .clf-page-title-wrap {
+    padding-bottom: 28px !important;
+    border-bottom: 2px solid #111 !important;
+  }
+
+  .clf-dir .clf-page-title {
+    font-size: clamp(28px, 4vw, 42px) !important;
+    font-weight: 700 !important;
+    color: #111 !important;
+    letter-spacing: -.02em !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  .clf-dir .clf-page-sub {
+    font-size: 14px !important;
+    color: #888 !important;
+    margin-top: 12px !important;
+  }
+
+  /* ── 서브 내비 ── */
+  .clf-dir .clf-subnav {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    padding: 0 6vw !important;
+    background: #fff !important;
+    border-bottom: 1px solid #E4E4E4 !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    list-style: none !important;
+  }
+
+  .clf-dir .clf-subnav-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 16px 20px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #888 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    border-bottom: 2px solid transparent !important;
+    margin-bottom: -1px !important;
+    transition: color .2s !important;
+    cursor: pointer !important;
+  }
+
+  .clf-dir .clf-subnav-item:hover {
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-subnav-item.clf-active {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+    border-bottom-color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-snav-dot {
+    width: 4px !important;
+    height: 4px !important;
+    border-radius: 50% !important;
+    background: #ddd !important;
+    flex-shrink: 0 !important;
+    margin: 0 2px !important;
+  }
+
+  /* ── 콘텐츠 래퍼 ── */
+  .clf-dir .clf-wrap {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 72px 6vw !important;
+  }
+
+  /* ── 인트로 레이아웃 ── */
+  .clf-dir .clf-profile-layout {
+    display: grid !important;
+    grid-template-columns: 300px 1fr !important;
+    gap: 72px !important;
+    align-items: start !important;
+    margin-bottom: 72px !important;
+  }
+
+  .clf-dir .clf-photo-col {}
+
+  .clf-dir .clf-photo-frame {
+    width: 100% !important;
+    aspect-ratio: 3/4 !important;
+    background: linear-gradient(145deg, #0C3D40 0%, #0F5258 100%) !important;
+    border-radius: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff !important;
+    text-align: center !important;
+    line-height: 1.5 !important;
+    margin-bottom: 20px !important;
+    padding: 32px 24px !important;
+  }
+
+  .clf-dir .clf-photo-frame .clf-card-en {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: .3em !important;
+    color: #C9A84C !important;
+    margin-bottom: 24px !important;
+  }
+
+  .clf-dir .clf-photo-frame .clf-card-roman {
+    font-size: 56px !important;
+    font-weight: 300 !important;
+    color: #C9A84C !important;
+    font-family: 'Times New Roman', serif !important;
+    letter-spacing: .08em !important;
+    margin-bottom: 20px !important;
+    line-height: 1 !important;
+  }
+
+  .clf-dir .clf-photo-frame .clf-card-ko {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    line-height: 1.7 !important;
+    margin-bottom: 24px !important;
+  }
+
+  .clf-dir .clf-photo-frame .clf-card-div {
+    width: 30px !important;
+    height: 1px !important;
+    background: rgba(201, 168, 76, .5) !important;
+    margin: 0 auto 18px !important;
+  }
+
+  .clf-dir .clf-photo-frame .clf-card-meta {
+    font-size: 12px !important;
+    color: rgba(255, 255, 255, .85) !important;
+    line-height: 1.9 !important;
+  }
+
+  .clf-dir .clf-photo-frame .clf-card-meta strong {
+    color: #C9A84C !important;
+    font-weight: 600 !important;
+  }
+
+  .clf-dir .clf-name-badge {
+    text-align: center !important;
+  }
+
+  .clf-dir .clf-name-badge .clf-name-ko {
+    display: block !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .clf-dir .clf-name-badge .clf-name-nick {
+    display: block !important;
+    font-size: 13px !important;
+    color: #C9A84C !important;
+    font-weight: 600 !important;
+    letter-spacing: .05em !important;
+    margin-bottom: 12px !important;
+  }
+
+  .clf-dir .clf-name-badge .clf-name-title {
+    display: inline-block !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: .2em !important;
+    text-transform: uppercase !important;
+    color: #fff !important;
+    background: #0C3D40 !important;
+    padding: 5px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .clf-dir .clf-greeting-col {}
+
+  .clf-dir .clf-greeting-h2 {
+    font-size: clamp(18px, 2.2vw, 26px) !important;
+    font-weight: 700 !important;
+    color: #111 !important;
+    margin: 0 0 32px !important;
+    line-height: 1.55 !important;
+    word-break: keep-all !important;
+  }
+
+  .clf-dir .clf-greeting-p {
+    font-size: 15px !important;
+    color: #444 !important;
+    line-height: 1.9 !important;
+    margin: 0 0 18px !important;
+    word-break: keep-all !important;
+  }
+
+  .clf-dir .clf-sig {
+    margin-top: 36px !important;
+    padding-top: 28px !important;
+    border-top: 1px solid #E4E4E4 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  .clf-dir .clf-sig-role {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: #C9A84C !important;
+    letter-spacing: .2em !important;
+    text-transform: uppercase !important;
+  }
+
+  .clf-dir .clf-sig-name {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+  }
+
+  /* ── 상세 ── */
+  .clf-dir .clf-profile-detail {
+    border-top: 1px solid #E4E4E4 !important;
+    padding-top: 64px !important;
+    margin-bottom: 80px !important;
+  }
+
+  .clf-dir .clf-detail-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 48px 64px !important;
+  }
+
+  .clf-dir .clf-detail-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .clf-dir .clf-detail-label-en {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: .3em !important;
+    text-transform: uppercase !important;
+    color: #C9A84C !important;
+  }
+
+  .clf-dir .clf-detail-label-ko {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-detail-label-divider {
+    flex: 1 !important;
+    height: 1px !important;
+    background: #E4E4E4 !important;
+  }
+
+  .clf-dir .clf-detail-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .clf-dir .clf-detail-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding: 12px 16px !important;
+    background: #F8F9FA !important;
+    border-radius: 10px !important;
+    border-left: 3px solid #EAF3F3 !important;
+    transition: border-color .2s !important;
+  }
+
+  .clf-dir .clf-detail-item:hover {
+    border-left-color: #C9A84C !important;
+  }
+
+  .clf-dir .clf-detail-dot {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50% !important;
+    background: #C9A84C !important;
+    flex-shrink: 0 !important;
+    margin-top: 7px !important;
+  }
+
+  .clf-dir .clf-detail-text {
+    font-size: 13.5px !important;
+    color: #333 !important;
+    line-height: 1.65 !important;
+    word-break: keep-all !important;
+  }
+
+  .clf-dir .clf-detail-text strong {
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-detail-text .sub {
+    display: block !important;
+    font-size: 12px !important;
+    color: #888 !important;
+    margin-top: 3px !important;
+    font-weight: 400 !important;
+  }
+
+  /* ── 폼 ── */
+  .clf-dir .clf-form-section {
+    border-top: 1px solid #E4E4E4 !important;
+    padding-top: 64px !important;
+  }
+
+  .clf-dir .clf-form-intro {
+    text-align: center !important;
+    margin-bottom: 56px !important;
+  }
+
+  .clf-dir .clf-form-intro-en {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: .3em !important;
+    text-transform: uppercase !important;
+    color: #C9A84C !important;
+    margin-bottom: 12px !important;
+  }
+
+  .clf-dir .clf-form-intro-ko {
+    font-size: clamp(22px, 2.6vw, 30px) !important;
+    font-weight: 700 !important;
+    color: #111 !important;
+    margin: 0 !important;
+    letter-spacing: -.02em !important;
+  }
+
+  .clf-dir .clf-form-intro-ko::after {
+    content: "" !important;
+    display: block !important;
+    width: 36px !important;
+    height: 2px !important;
+    background: #C9A84C !important;
+    margin: 18px auto 0 !important;
+  }
+
+  .clf-dir .clf-form-intro-desc {
+    font-size: 14px !important;
+    color: #666 !important;
+    max-width: 560px !important;
+    margin: 16px auto 0 !important;
+    line-height: 1.8 !important;
+  }
+
+  .clf-dir .clf-form-wrap {
+    max-width: 880px !important;
+    margin: 0 auto !important;
+  }
+
+  .clf-dir .clf-form-block {
+    margin-bottom: 56px !important;
+  }
+
+  .clf-dir .clf-form-block-desc {
+    font-size: 13px !important;
+    color: #888 !important;
+    margin: -12px 0 20px !important;
+  }
+
+  .clf-dir .clf-fg {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px 20px !important;
+  }
+
+  .clf-dir .clf-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .clf-dir .clf-field.clf-full {
+    grid-column: 1 / -1 !important;
+  }
+
+  .clf-dir .clf-field-label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #111 !important;
+    padding-left: 2px !important;
+  }
+
+  .clf-dir .clf-field-label .clf-req {
+    color: #B54E3A !important;
+    margin-left: 4px !important;
+  }
+
+  .clf-dir .clf-field-help {
+    font-size: 12px !important;
+    color: #888 !important;
+    margin-top: 4px !important;
+    padding-left: 2px !important;
+  }
+
+  /* ── 에러 메시지 ── */
+  .clf-dir .clf-error-msg {
+    color: #B54E3A !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    margin-top: 6px !important;
+    padding-left: 2px !important;
+    animation: clfFadeIn .2s ease !important;
+  }
+
+  .clf-dir .clf-input.clf-input-error,
+  .clf-dir .clf-select.clf-input-error,
+  .clf-dir .clf-textarea.clf-input-error {
+    border-color: #B54E3A !important;
+    border-left-color: #B54E3A !important;
+    background: #FFF5F5 !important;
+  }
+
+  /* ── 기타 입력 필드 (드롭다운/라디오 아래) ── */
+  .clf-dir .clf-etc-input {
+    margin-top: 10px !important;
+    display: none !important;
+    animation: clfFadeIn .25s ease !important;
+  }
+
+  .clf-dir .clf-etc-input.clf-show {
+    display: block !important;
+  }
+
+  @keyframes clfFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .clf-dir .clf-input,
+  .clf-dir .clf-select {
+    width: 100% !important;
+    background: #F8F9FA !important;
+    border: 1px solid #E4E4E4 !important;
+    border-left: 3px solid #EAF3F3 !important;
+    border-radius: 10px !important;
+    color: #111 !important;
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif !important;
+    font-size: 14px !important;
+    padding: 13px 16px !important;
+    outline: none !important;
+    transition: border-color .2s !important;
+    box-sizing: border-box !important;
+  }
+
+  .clf-dir .clf-input:focus,
+  .clf-dir .clf-select:focus {
+    border-color: #C9A84C !important;
+    border-left-color: #C9A84C !important;
+    background: #fff !important;
+  }
+
+  .clf-dir .clf-input::placeholder {
+    color: #aaa !important;
+  }
+
+  .clf-dir .clf-select {
+    appearance: none !important;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23C9A84C' stroke-width='1.5' fill='none'/></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 16px center !important;
+    padding-right: 38px !important;
+    cursor: pointer !important;
+  }
+
+  .clf-dir .clf-textarea {
+    width: 100% !important;
+    background: #F8F9FA !important;
+    border: 1px solid #E4E4E4 !important;
+    border-left: 3px solid #EAF3F3 !important;
+    border-radius: 10px !important;
+    color: #111 !important;
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif !important;
+    font-size: 14px !important;
+    padding: 14px 16px !important;
+    outline: none !important;
+    min-height: 110px !important;
+    resize: vertical !important;
+    line-height: 1.75 !important;
+    box-sizing: border-box !important;
+    transition: border-color .2s !important;
+  }
+
+  .clf-dir .clf-textarea:focus {
+    border-color: #C9A84C !important;
+    border-left-color: #C9A84C !important;
+    background: #fff !important;
+  }
+
+  .clf-dir .clf-textarea::placeholder {
+    color: #aaa !important;
+  }
+
+  /* 읽기전용 폼 필드 */
+  .clf-dir .clf-input[readonly],
+  .clf-dir .clf-select[disabled],
+  .clf-dir .clf-textarea[readonly] {
+    background: #F0F0F0 !important;
+    border-left-color: #DADADA !important;
+    color: #555 !important;
+    cursor: default !important;
+    opacity: 1 !important;
+  }
+
+  .clf-dir .clf-pill-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .clf-dir .clf-pill input {
+    display: none !important;
+  }
+
+  .clf-dir .clf-pill label {
+    display: inline-block !important;
+    cursor: pointer !important;
+    padding: 10px 22px !important;
+    background: #F8F9FA !important;
+    border: 1px solid #E4E4E4 !important;
+    color: #555 !important;
+    font-size: 13.5px !important;
+    border-radius: 30px !important;
+    transition: all .15s !important;
+  }
+
+  .clf-dir .clf-pill label:hover {
+    border-color: #C9A84C !important;
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-pill input:checked+label {
+    background: #0C3D40 !important;
+    border-color: #0C3D40 !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+  }
+
+  /* 읽기전용 pill */
+  .clf-dir .clf-pill-readonly label {
+    cursor: default !important;
+    pointer-events: none !important;
+  }
+
+  .clf-dir .clf-pill-readonly input:checked+label {
+    background: #0C3D40 !important;
+    border-color: #0C3D40 !important;
+    color: #fff !important;
+  }
+
+  /* 업로드 */
+  .clf-dir .clf-upload {
+    position: relative !important;
+    background: #F8F9FA !important;
+    border: 1.5px dashed #C9A84C !important;
+    border-radius: 14px !important;
+    padding: 36px 20px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    transition: background .15s !important;
+  }
+
+  .clf-dir .clf-upload:hover {
+    background: #FBF5E2 !important;
+  }
+
+  .clf-dir .clf-upload.clf-dragover {
+    background: #fff !important;
+    border-color: #A8872A !important;
+  }
+
+  .clf-dir .clf-upload input[type="file"] {
+    position: absolute !important;
+    inset: 0 !important;
+    opacity: 0 !important;
+    cursor: pointer !important;
+  }
+
+  .clf-dir .clf-upload-icon {
+    width: 42px !important;
+    height: 42px !important;
+    margin: 0 auto 12px !important;
+    background: #fff !important;
+    border: 1px solid #FBF5E2 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #C9A84C !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+  }
+
+  .clf-dir .clf-upload-title {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #0C3D40 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .clf-dir .clf-upload-hint {
+    font-size: 12px !important;
+    color: #888 !important;
+  }
+
+  .clf-dir .clf-upload-status {
+    margin-top: 10px !important;
+    font-size: 12.5px !important;
+    color: #0C3D40 !important;
+    font-weight: 600 !important;
+  }
+
+  /* ── 구글 드라이브 제출 박스 ── */
+  .clf-dir .clf-gdrive {
+    background: #F8F9FA !important;
+    border: 1px solid #E4E4E4 !important;
+    border-left: 3px solid #C9A84C !important;
+    border-radius: 14px !important;
+    padding: 28px !important;
+  }
+
+  .clf-dir .clf-gdrive-head {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .clf-dir .clf-gdrive-logo {
+    width: 44px !important;
+    height: 44px !important;
+    background: #fff !important;
+    border: 1px solid #E4E4E4 !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .clf-dir .clf-gdrive-head .clf-gdrive-titles {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+
+  .clf-dir .clf-gdrive-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-gdrive-sub {
+    font-size: 12.5px !important;
+    color: #888 !important;
+  }
+
+  .clf-dir .clf-gdrive-steps {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .clf-dir .clf-gdrive-steps li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    font-size: 13px !important;
+    color: #444 !important;
+    line-height: 1.65 !important;
+  }
+
+  .clf-dir .clf-gdrive-num {
+    flex-shrink: 0 !important;
+    width: 22px !important;
+    height: 22px !important;
+    background: #C9A84C !important;
+    color: #fff !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-gdrive-steps li strong {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-gdrive-steps li code {
+    background: #fff !important;
+    color: #A8872A !important;
+    padding: 1px 8px !important;
+    border-radius: 8px !important;
+    font-family: 'Pretendard Variable', Pretendard, monospace !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    margin: 0 2px !important;
+  }
+
+  .clf-dir .clf-gdrive-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    background: #0C3D40 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 15px 24px !important;
+    border-radius: 30px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: .02em !important;
+    transition: all .2s !important;
+    box-sizing: border-box !important;
+  }
+
+  .clf-dir .clf-gdrive-btn:hover {
+    background: #0F5258 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 8px 18px -8px rgba(12, 61, 64, .4) !important;
+  }
+
+  /* ── 아코디언 ── */
+  .clf-dir .clf-accordion {
+    background: #F8F9FA !important;
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+    overflow: hidden !important;
+    border-left: 3px solid #EAF3F3 !important;
+    transition: border-color .2s !important;
+  }
+
+  .clf-dir .clf-accordion.clf-open {
+    border-left-color: #C9A84C !important;
+  }
+
+  .clf-dir .clf-acc-trigger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 16px 20px !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+    text-align: left !important;
+    transition: background .15s !important;
+  }
+
+  .clf-dir .clf-acc-trigger:hover {
+    background: rgba(201, 168, 76, .06) !important;
+  }
+
+  .clf-dir .clf-acc-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-acc-icon {
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+    border: 1px solid #C9A84C !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #C9A84C !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .clf-dir .clf-acc-arrow {
+    color: #C9A84C !important;
+    font-size: 12px !important;
+    transition: transform .25s !important;
+  }
+
+  .clf-dir .clf-accordion.clf-open .clf-acc-arrow {
+    transform: rotate(180deg) !important;
+  }
+
+  .clf-dir .clf-acc-body {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height .35s ease !important;
+  }
+
+  .clf-dir .clf-accordion.clf-open .clf-acc-body {
+    max-height: 1200px !important;
+  }
+
+  .clf-dir .clf-acc-inner {
+    padding: 0 20px 20px 20px !important;
+    border-top: 1px solid #E4E4E4 !important;
+    padding-top: 18px !important;
+  }
+
+  .clf-dir .clf-acc-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .clf-dir .clf-acc-list li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    font-size: 13px !important;
+    color: #444 !important;
+    line-height: 1.7 !important;
+  }
+
+  .clf-dir .clf-acc-list li::before {
+    content: "" !important;
+    width: 5px !important;
+    height: 5px !important;
+    background: #C9A84C !important;
+    border-radius: 50% !important;
+    margin-top: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .clf-dir .clf-acc-list li strong {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-acc-list li code {
+    background: #fff !important;
+    color: #A8872A !important;
+    padding: 1px 8px !important;
+    border-radius: 8px !important;
+    font-family: 'Pretendard Variable', Pretendard, monospace !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    margin: 0 2px !important;
+  }
+
+  /* ── 핵심 공지 박스 ── */
+  .clf-dir .clf-callout {
+    background: #FBF5E2 !important;
+    border-radius: 12px !important;
+    padding: 16px 20px !important;
+    margin-bottom: 20px !important;
+    border-left: 3px solid #C9A84C !important;
+    font-size: 13.5px !important;
+    color: #444 !important;
+    line-height: 1.75 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .clf-dir .clf-callout-icon {
+    flex-shrink: 0 !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    background: #C9A84C !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-callout strong {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+  }
+
+  /* ── 결제 박스 ── */
+  .clf-dir .clf-pay-box {
+    background: #F8F9FA !important;
+    border-radius: 14px !important;
+    padding: 32px !important;
+    border-left: 3px solid #C9A84C !important;
+  }
+
+  .clf-dir .clf-pay-amount {
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: space-between !important;
+    padding-bottom: 20px !important;
+    border-bottom: 1px solid #E4E4E4 !important;
+    margin-bottom: 20px !important;
+    gap: 16px !important;
+  }
+
+  .clf-dir .clf-pay-amount-label {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: .3em !important;
+    text-transform: uppercase !important;
+    color: #C9A84C !important;
+    margin-bottom: 6px !important;
+  }
+
+  .clf-dir .clf-pay-amount-sub {
+    font-size: 12.5px !important;
+    color: #888 !important;
+  }
+
+  .clf-dir .clf-pay-amount-value {
+    font-size: 30px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+    letter-spacing: -.02em !important;
+  }
+
+  .clf-dir .clf-pay-amount-value .clf-unit {
+    font-size: 14px !important;
+    color: #888 !important;
+    margin-left: 6px !important;
+    font-weight: 500 !important;
+  }
+
+  .clf-dir .clf-pay-info {
+    display: grid !important;
+    grid-template-columns: 90px 1fr !important;
+    gap: 12px 20px !important;
+    font-size: 13.5px !important;
+    margin: 0 0 20px !important;
+  }
+
+  .clf-dir .clf-pay-info dt {
+    color: #888 !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+  }
+
+  .clf-dir .clf-pay-info dd {
+    color: #111 !important;
+    margin: 0 !important;
+    font-weight: 500 !important;
+  }
+
+  .clf-dir .clf-pay-info dd .clf-code {
+    background: #fff !important;
+    color: #A8872A !important;
+    padding: 3px 12px !important;
+    border-radius: 20px !important;
+    font-family: 'Pretendard Variable', Pretendard, monospace !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: .02em !important;
+  }
+
+  .clf-dir .clf-pay-deadline {
+    background: #fff !important;
+    border-radius: 10px !important;
+    padding: 14px 18px !important;
+    margin-bottom: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    border: 1px solid #FBF5E2 !important;
+  }
+
+  .clf-dir .clf-pay-deadline-label {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #888 !important;
+    letter-spacing: .2em !important;
+    text-transform: uppercase !important;
+  }
+
+  .clf-dir .clf-pay-deadline-date {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #B54E3A !important;
+    letter-spacing: -.01em !important;
+  }
+
+  .clf-dir .clf-pay-note {
+    background: #fff !important;
+    border-radius: 10px !important;
+    padding: 14px 18px !important;
+    font-size: 13px !important;
+    color: #444 !important;
+    line-height: 1.85 !important;
+    border-left: 3px solid #B54E3A !important;
+    margin-bottom: 12px !important;
+  }
+
+  .clf-dir .clf-pay-note+.clf-pay-note {
+    margin-bottom: 0 !important;
+  }
+
+  .clf-dir .clf-pay-note strong.clf-warn {
+    color: #B54E3A !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-pay-note strong {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+  }
+
+  /* ── 동의 ── */
+  .clf-dir .clf-agree {
+    background: #F8F9FA !important;
+    border-radius: 14px !important;
+    padding: 8px 24px !important;
+  }
+
+  .clf-dir .clf-agree-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding: 16px 0 !important;
+  }
+
+  .clf-dir .clf-agree-item input[type="checkbox"] {
+    appearance: none !important;
+    width: 20px !important;
+    height: 20px !important;
+    border: 1.5px solid #C9A84C !important;
+    background: #fff !important;
+    cursor: pointer !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+    border-radius: 50% !important;
+  }
+
+  .clf-dir .clf-agree-item input[type="checkbox"]:checked {
+    background: #C9A84C !important;
+    border-color: #C9A84C !important;
+  }
+
+  .clf-dir .clf-agree-item input[type="checkbox"]:checked::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 5px !important;
+    top: 1px !important;
+    width: 6px !important;
+    height: 11px !important;
+    border: solid #fff !important;
+    border-width: 0 2px 2px 0 !important;
+    transform: rotate(45deg) !important;
+  }
+
+  .clf-dir .clf-agree-item label {
+    cursor: pointer !important;
+    font-size: 13.5px !important;
+    color: #444 !important;
+    line-height: 1.75 !important;
+  }
+
+  .clf-dir .clf-agree-item label strong {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-agree-item label .clf-req {
+    color: #B54E3A !important;
+  }
+
+  .clf-dir .clf-agree-detail {
+    background: #fff !important;
+    border-radius: 10px !important;
+    padding: 14px 18px !important;
+    margin-top: 10px !important;
+    font-size: 12.5px !important;
+    color: #666 !important;
+    line-height: 1.8 !important;
+    border: 1px solid #E4E4E4 !important;
+  }
+
+  .clf-dir .clf-agree-master {
+    background: #FBF5E2 !important;
+    border: 1px solid #E9DCA6 !important;
+    border-radius: 10px !important;
+    padding: 14px 18px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .clf-dir .clf-agree-master label strong {
+    font-size: 14.5px !important;
+  }
+
+  .clf-dir .clf-agree-master-sub {
+    display: block !important;
+    font-size: 12px !important;
+    color: #888 !important;
+    margin-top: 4px !important;
+    font-weight: 500 !important;
+  }
+
+  .clf-dir .clf-agree-optional-tag {
+    display: inline-block !important;
+    padding: 1px 8px !important;
+    border-radius: 4px !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: .04em !important;
+    background: #EAF3F3 !important;
+    color: #0C3D40 !important;
+    border: 1px solid #C2D9D2 !important;
+    margin-right: 6px !important;
+  }
+
+  /* ── 제출 ── */
+  .clf-dir .clf-submit-area {
+    margin-top: 56px !important;
+    text-align: center !important;
+  }
+
+  .clf-dir .clf-submit {
+    background: #0C3D40 !important;
+    color: #fff !important;
+    border: none !important;
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: .3em !important;
+    padding: 18px 72px !important;
+    cursor: pointer !important;
+    border-radius: 30px !important;
+    transition: all .2s !important;
+    box-shadow: 0 6px 16px -6px rgba(12, 61, 64, .4) !important;
+  }
+
+  .clf-dir .clf-submit:hover {
+    background: #0F5258 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 24px -8px rgba(12, 61, 64, .5) !important;
+  }
+
+  .clf-dir .clf-submit-hint {
+    margin-top: 14px !important;
+    font-size: 12.5px !important;
+    color: #aaa !important;
+  }
+
+  /* 모달 */
+  .clf-dir .clf-modal-bd {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(17, 17, 17, .5) !important;
+    backdrop-filter: blur(6px) !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 9999 !important;
+    padding: 24px !important;
+  }
+
+  .clf-dir .clf-modal-bd.clf-show {
+    display: flex !important;
+  }
+
+  .clf-dir .clf-modal {
+    background: #fff !important;
+    border-radius: 16px !important;
+    max-width: 460px !important;
+    width: 100% !important;
+    padding: 48px 36px !important;
+    text-align: center !important;
+    border-top: 4px solid #C9A84C !important;
+    box-shadow: 0 20px 60px -10px rgba(0, 0, 0, .3) !important;
+  }
+
+  .clf-dir .clf-modal h3 {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: .3em !important;
+    text-transform: uppercase !important;
+    color: #C9A84C !important;
+    margin: 0 0 12px !important;
+  }
+
+  .clf-dir .clf-modal-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .clf-dir .clf-modal p {
+    color: #666 !important;
+    font-size: 14px !important;
+    margin: 10px 0 !important;
+    line-height: 1.8 !important;
+  }
+
+  .clf-dir .clf-modal-ref {
+    margin-top: 22px !important;
+    padding: 12px !important;
+    background: #F8F9FA !important;
+    color: #A8872A !important;
+    font-family: 'Pretendard Variable', monospace !important;
+    font-size: 13.5px !important;
+    letter-spacing: .1em !important;
+    border-radius: 30px !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-modal-close {
+    margin-top: 24px !important;
+    background: #0C3D40 !important;
+    border: none !important;
+    color: #fff !important;
+    padding: 12px 36px !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+    letter-spacing: .2em !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    border-radius: 30px !important;
+  }
+
+  /* ── 영상 파일명 가이드 박스 ── */
+  .clf-dir .clf-filename-guide {
+    background: #F8F9FA !important;
+    border: 1px solid #E4E4E4 !important;
+    border-left: 3px solid #C9A84C !important;
+    border-radius: 12px !important;
+    padding: 18px 20px !important;
+    margin: 0 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .clf-dir .clf-filename-guide-text {
+    flex: 1 1 260px !important;
+    min-width: 0 !important;
+  }
+
+  .clf-dir .clf-filename-guide-label {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: .18em !important;
+    color: #C9A84C !important;
+    text-transform: uppercase !important;
+    margin-bottom: 6px !important;
+  }
+
+  .clf-dir .clf-filename-guide-rule {
+    font-size: 13.5px !important;
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .clf-dir .clf-filename-guide-rule code {
+    background: #fff !important;
+    color: #A8872A !important;
+    padding: 2px 10px !important;
+    border-radius: 8px !important;
+    font-family: 'Pretendard Variable', Pretendard, monospace !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    margin: 0 2px !important;
+    border: 1px solid #E8DDB5 !important;
+  }
+
+  .clf-dir .clf-filename-guide-ex {
+    font-size: 12.5px !important;
+    color: #888 !important;
+    line-height: 1.6 !important;
+  }
+
+  .clf-dir .clf-help-btn {
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: #fff !important;
+    border: 1px solid #0C3D40 !important;
+    color: #0C3D40 !important;
+    padding: 9px 16px !important;
+    border-radius: 24px !important;
+    font-family: inherit !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: .02em !important;
+    cursor: pointer !important;
+    transition: all .2s !important;
+    white-space: nowrap !important;
+  }
+
+  .clf-dir .clf-help-btn:hover {
+    background: #0C3D40 !important;
+    color: #fff !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .clf-dir .clf-help-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  /* ── 업로드 방법 모달 (와이드) ── */
+  .clf-dir .clf-modal.clf-modal-wide {
+    max-width: 560px !important;
+    text-align: left !important;
+    padding: 40px 36px !important;
+  }
+
+  .clf-dir .clf-modal-wide h3 {
+    text-align: center !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-modal-title {
+    text-align: center !important;
+    margin-bottom: 8px !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-modal-desc {
+    text-align: center !important;
+    font-size: 13px !important;
+    color: #888 !important;
+    margin-bottom: 24px !important;
+    line-height: 1.6 !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-gdrive-steps {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 22px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-gdrive-steps li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    font-size: 13.5px !important;
+    color: #444 !important;
+    line-height: 1.65 !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-gdrive-steps li strong {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-gdrive-steps li code {
+    background: #F8F9FA !important;
+    color: #A8872A !important;
+    padding: 1px 8px !important;
+    border-radius: 6px !important;
+    font-family: 'Pretendard Variable', Pretendard, monospace !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    margin: 0 2px !important;
+    border: 1px solid #E8DDB5 !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-gdrive-num {
+    flex-shrink: 0 !important;
+    width: 24px !important;
+    height: 24px !important;
+    background: #C9A84C !important;
+    color: #fff !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    margin-top: 1px !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-modal-actions {
+    display: flex !important;
+    gap: 10px !important;
+    margin-top: 8px !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-modal-actions>* {
+    flex: 1 !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-modal-open-drive {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: #0C3D40 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 13px 20px !important;
+    border-radius: 28px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: .02em !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all .2s !important;
+    font-family: inherit !important;
+    box-sizing: border-box !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-modal-open-drive:hover {
+    background: #0F5258 !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-modal-secondary {
+    background: #fff !important;
+    border: 1px solid #DADADA !important;
+    color: #666 !important;
+    padding: 13px 20px !important;
+    border-radius: 28px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: .02em !important;
+    cursor: pointer !important;
+    font-family: inherit !important;
+    transition: all .2s !important;
+    box-sizing: border-box !important;
+  }
+
+  .clf-dir .clf-modal-wide .clf-modal-secondary:hover {
+    border-color: #0C3D40 !important;
+    color: #0C3D40 !important;
+  }
+
+  @media (max-width: 600px) {
+    .clf-dir .clf-filename-guide {
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+
+    .clf-dir .clf-help-btn {
+      width: 100% !important;
+      justify-content: center !important;
+    }
+  }
+
+  [data-dir-anim] {
+    opacity: 0 !important;
+    transform: translateY(22px) !important;
+    transition: opacity .75s cubic-bezier(.16, 1, .3, 1), transform .75s cubic-bezier(.16, 1, .3, 1) !important
+  }
+
+  [data-dir-anim].dir-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important
+  }
+
+  [data-dir-delay="1"] {
+    transition-delay: .1s !important
+  }
+
+  [data-dir-delay="2"] {
+    transition-delay: .2s !important
+  }
+
+  [data-dir-delay="3"] {
+    transition-delay: .3s !important
+  }
+
+  /* ── 참가신청 버튼 ── */
+  .clf-dir .clf-apply-btn-wrap {
+    text-align: center !important;
+    margin-top: 48px !important;
+    padding-top: 48px !important;
+    border-top: 1px solid #E4E4E4 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .clf-dir .clf-apply-open-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    background: linear-gradient(135deg, #0C3D40, #0F5258) !important;
+    color: #fff !important;
+    border: none !important;
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: .12em !important;
+    padding: 20px 56px !important;
+    border-radius: 50px !important;
+    cursor: pointer !important;
+    box-shadow: 0 8px 24px -6px rgba(12, 61, 64, .45) !important;
+    transition: all .25s !important;
+  }
+
+  .clf-dir .clf-apply-open-btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 14px 32px -8px rgba(12, 61, 64, .55) !important;
+  }
+
+  .clf-dir .clf-apply-open-btn svg {
+    flex-shrink: 0 !important;
+  }
+
+  /* ── 마감 배너 ── */
+  .clf-dir .clf-closed-banner {
+    display: none !important;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
+    color: #fff !important;
+    border-radius: 16px !important;
+    padding: 40px 32px !important;
+    text-align: center !important;
+    margin-top: 48px !important;
+  }
+
+  .clf-dir .clf-closed-banner .clf-closed-icon {
+    font-size: 40px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .clf-dir .clf-closed-banner .clf-closed-title {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+    color: #C9A84C !important;
+  }
+
+  .clf-dir .clf-closed-banner .clf-closed-desc {
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, .7) !important;
+    line-height: 1.8 !important;
+  }
+
+  /* 폼 섹션 기본 hidden */
+  .clf-dir .clf-form-section {
+    display: none !important;
+  }
+
+  .clf-dir .clf-form-section.clf-form-visible {
+    display: block !important;
+  }
+
+  /* ── 로그인 / 가입 박스 ── */
+  .clf-dir .clf-auth-box {
+    max-width: 480px !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+    border: 1px solid #E4E4E4 !important;
+    border-top: 4px solid #C9A84C !important;
+    border-radius: 16px !important;
+    padding: 40px 36px !important;
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, .12) !important;
+  }
+
+  .clf-dir .clf-auth-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+    margin: 0 0 6px !important;
+    text-align: center !important;
+  }
+
+  .clf-dir .clf-auth-sub {
+    font-size: 13px !important;
+    color: #888 !important;
+    text-align: center !important;
+    margin: 0 0 28px !important;
+    line-height: 1.7 !important;
+  }
+
+  .clf-dir .clf-auth-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .clf-dir .clf-auth-label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #111 !important;
+    padding-left: 2px !important;
+  }
+
+  .clf-dir .clf-auth-btn {
+    width: 100% !important;
+    background: #0C3D40 !important;
+    color: #fff !important;
+    border: none !important;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: .15em !important;
+    padding: 15px !important;
+    border-radius: 30px !important;
+    cursor: pointer !important;
+    margin-top: 8px !important;
+    transition: all .2s !important;
+  }
+
+  .clf-dir .clf-auth-btn:hover {
+    background: #0F5258 !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .clf-dir .clf-auth-switch {
+    text-align: center !important;
+    margin-top: 18px !important;
+    font-size: 13px !important;
+    color: #888 !important;
+  }
+
+  .clf-dir .clf-auth-switch a {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    text-decoration: underline !important;
+  }
+
+  .clf-dir .clf-auth-error {
+    background: #FFF5F5 !important;
+    color: #B54E3A !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    margin-bottom: 14px !important;
+    display: none !important;
+  }
+
+  .clf-dir .clf-auth-error.clf-show {
+    display: block !important;
+  }
+
+  /* ── 영상 제출 섹션 (6/5 이후 잠금해제) ── */
+  .clf-dir .clf-video-locked {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
+    border-radius: 16px !important;
+    padding: 40px 32px !important;
+    text-align: center !important;
+    color: #fff !important;
+  }
+
+  .clf-dir .clf-video-locked .clf-vl-icon {
+    font-size: 44px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .clf-dir .clf-video-locked .clf-vl-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #C9A84C !important;
+    margin-bottom: 10px !important;
+  }
+
+  .clf-dir .clf-video-locked .clf-vl-desc {
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, .75) !important;
+    line-height: 1.8 !important;
+  }
+
+  .clf-dir .clf-video-locked .clf-vl-date {
+    display: inline-block !important;
+    margin-top: 16px !important;
+    background: rgba(201, 168, 76, .15) !important;
+    border: 1px solid rgba(201, 168, 76, .4) !important;
+    color: #C9A84C !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    padding: 8px 24px !important;
+    border-radius: 30px !important;
+  }
+
+  /* ── 제출 완료 카드 (서류 열람 모드) ── */
+  .clf-dir .clf-submitted-card {
+    background: #F8F9FA !important;
+    border-radius: 14px !important;
+    border: 1px solid #E4E4E4 !important;
+    border-top: 4px solid #C9A84C !important;
+    padding: 28px !important;
+    margin-bottom: 32px !important;
+  }
+
+  .clf-dir .clf-submitted-card-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 20px !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  .clf-dir .clf-submitted-card-title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-submitted-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: #EAF3F3 !important;
+    color: #0C3D40 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    padding: 5px 14px !important;
+    border-radius: 20px !important;
+    border: 1px solid #C2D9D2 !important;
+  }
+
+  .clf-dir .clf-submitted-row {
+    display: grid !important;
+    grid-template-columns: 120px 1fr !important;
+    gap: 8px 16px !important;
+    font-size: 13.5px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .clf-dir .clf-submitted-key {
+    color: #888 !important;
+    font-weight: 500 !important;
+    padding: 6px 0 !important;
+  }
+
+  .clf-dir .clf-submitted-val {
+    color: #111 !important;
+    font-weight: 500 !important;
+    padding: 6px 12px !important;
+    background: #fff !important;
+    border-radius: 8px !important;
+    border: 1px solid #E4E4E4 !important;
+    word-break: break-all !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ══════════════════════════════════════
+   기관형 로그인 모달
+   ══════════════════════════════════════ */
+  .clf-dir .clf-inst-modal-bd {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(10, 20, 30, .55) !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10000 !important;
+    padding: 20px !important;
+  }
+
+  .clf-dir .clf-inst-modal-bd.clf-show {
+    display: flex !important;
+  }
+
+  .clf-dir .clf-inst-modal {
+    background: #fff !important;
+    border-radius: 4px !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, .22) !important;
+    overflow: hidden !important;
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif !important;
+  }
+
+  /* 헤더 바 */
+  .clf-dir .clf-inst-modal-header {
+    background: #0C3D40 !important;
+    padding: 22px 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .clf-dir .clf-inst-modal-logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .clf-dir .clf-inst-modal-logo-mark {
+    width: 32px !important;
+    height: 32px !important;
+    background: #C9A84C !important;
+    border-radius: 2px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    letter-spacing: -.02em !important;
+    flex-shrink: 0 !important;
+  }
+
+  .clf-dir .clf-inst-modal-logo-text {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: rgba(255, 255, 255, .9) !important;
+    letter-spacing: .06em !important;
+    text-transform: uppercase !important;
+    line-height: 1.4 !important;
+  }
+
+  .clf-dir .clf-inst-modal-logo-text small {
+    display: block !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, .55) !important;
+    letter-spacing: .04em !important;
+  }
+
+  .clf-dir .clf-inst-modal-x {
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255, 255, 255, .55) !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    padding: 4px !important;
+    transition: color .15s !important;
+  }
+
+  .clf-dir .clf-inst-modal-x:hover {
+    color: #fff !important;
+  }
+
+  /* 탭 */
+  .clf-dir .clf-inst-tabs {
+    display: flex !important;
+    border-bottom: 1px solid #E4E4E4 !important;
+  }
+
+  .clf-dir .clf-inst-tab {
+    flex: 1 !important;
+    padding: 14px 0 !important;
+    text-align: center !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #888 !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    margin-bottom: -1px !important;
+    cursor: pointer !important;
+    transition: color .15s, border-color .15s !important;
+    font-family: inherit !important;
+  }
+
+  .clf-dir .clf-inst-tab.clf-inst-active {
+    color: #0C3D40 !important;
+    border-bottom-color: #C9A84C !important;
+  }
+
+  /* 본문 */
+  .clf-dir .clf-inst-body {
+    padding: 28px !important;
+  }
+
+  .clf-dir .clf-inst-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .clf-dir .clf-inst-label {
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    color: #444 !important;
+    letter-spacing: .02em !important;
+  }
+
+  .clf-dir .clf-inst-input {
+    width: 100% !important;
+    background: #fff !important;
+    border: 1px solid #DADADA !important;
+    border-radius: 3px !important;
+    color: #111 !important;
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif !important;
+    font-size: 14px !important;
+    padding: 11px 14px !important;
+    outline: none !important;
+    transition: border-color .15s, box-shadow .15s !important;
+    box-sizing: border-box !important;
+  }
+
+  .clf-dir .clf-inst-input:focus {
+    border-color: #0C3D40 !important;
+    box-shadow: 0 0 0 3px rgba(12, 61, 64, .1) !important;
+  }
+
+  .clf-dir .clf-inst-input::placeholder {
+    color: #bbb !important;
+  }
+
+  .clf-dir .clf-inst-error {
+    background: #FFF3F3 !important;
+    border: 1px solid #F0C0C0 !important;
+    border-radius: 3px !important;
+    color: #B54E3A !important;
+    font-size: 13px !important;
+    padding: 10px 14px !important;
+    margin-bottom: 14px !important;
+    display: none !important;
+    line-height: 1.55 !important;
+  }
+
+  .clf-dir .clf-inst-error.clf-show {
+    display: block !important;
+  }
+
+  .clf-dir .clf-inst-submit {
+    width: 100% !important;
+    background: #0C3D40 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 3px !important;
+    font-family: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: .08em !important;
+    padding: 13px !important;
+    cursor: pointer !important;
+    margin-top: 4px !important;
+    transition: background .15s !important;
+  }
+
+  .clf-dir .clf-inst-submit:hover {
+    background: #0F5258 !important;
+  }
+
+  .clf-dir .clf-inst-submit:disabled {
+    opacity: .55 !important;
+    cursor: default !important;
+  }
+
+  .clf-dir .clf-inst-footer {
+    border-top: 1px solid #F0F0F0 !important;
+    padding: 14px 28px !important;
+    font-size: 12.5px !important;
+    color: #888 !important;
+    text-align: center !important;
+    line-height: 1.6 !important;
+  }
+
+  .clf-dir .clf-inst-footer strong {
+    color: #0C3D40 !important;
+    font-weight: 700 !important;
+  }
+
+  .clf-dir .clf-inst-divider {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 18px 0 !important;
+  }
+
+  .clf-dir .clf-inst-divider::before,
+  .clf-dir .clf-inst-divider::after {
+    content: '' !important;
+    flex: 1 !important;
+    height: 1px !important;
+    background: #E8E8E8 !important;
+  }
+
+  .clf-dir .clf-inst-divider span {
+    font-size: 11.5px !important;
+    color: #aaa !important;
+    white-space: nowrap !important;
+  }
+
+  /* ── 회원가입 체크박스 ── */
+  .clf-dir .clf-inst-checkbox-wrap {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin: 12px 0 20px !important;
+  }
+  .clf-dir .clf-inst-checkbox {
+    margin-top: 2px !important;
+    accent-color: #0C3D40 !important;
+  }
+  .clf-dir .clf-inst-checkbox-label {
+    font-size: 12.5px !important;
+    color: #555 !important;
+    line-height: 1.4 !important;
+    cursor: pointer !important;
+  }
+
+  /* ── 로그아웃 버튼 ── */
+  .clf-dir .clf-logout-btn {
+    background: transparent !important;
+    border: 1px solid #DADADA !important;
+    color: #888 !important;
+    font-family: inherit !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 8px 20px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    transition: all .2s !important;
+  }
+
+  .clf-dir .clf-logout-btn:hover {
+    border-color: #B54E3A !important;
+    color: #B54E3A !important;
+  }
+
+  /* ── 사용자 인사 바 ── */
+  .clf-dir .clf-user-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: #EAF3F3 !important;
+    border-radius: 12px !important;
+    padding: 14px 20px !important;
+    margin-bottom: 28px !important;
+    gap: 12px !important;
+  }
+
+  .clf-dir .clf-user-bar-name {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #0C3D40 !important;
+  }
+
+  .clf-dir .clf-user-bar-sub {
+    font-size: 12px !important;
+    color: #888 !important;
+    margin-top: 2px !important;
+  }
+
+  @media(max-width:960px) {
+    .clf-dir .clf-profile-layout {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important
+    }
+
+    .clf-dir .clf-photo-frame {
+      aspect-ratio: 3/4 !important;
+      min-height: unset !important;
+      width: 100% !important;
+    }
+
+    .clf-dir .clf-detail-grid {
+      grid-template-columns: 1fr !important;
+      gap: 36px !important
+    }
+
+    .clf-dir .clf-fg {
+      grid-template-columns: 1fr !important
+    }
+
+    .clf-dir .clf-pay-amount {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    .clf-dir .clf-pay-amount-value {
+      font-size: 24px !important
+    }
+
+    .clf-dir .clf-pay-deadline {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 6px !important;
+    }
+
+    .clf-dir .clf-submit {
+      padding: 16px 32px !important;
+      width: 100% !important;
+      letter-spacing: .2em !important;
+    }
+
+    .clf-dir .clf-submitted-row {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media(max-width:600px) {
+    .clf-dir .clf-wrap {
+      padding: 48px 5vw !important
+    }
+
+    .clf-dir .clf-pay-box {
+      padding: 22px !important
+    }
+
+    .clf-dir .clf-pay-info {
+      grid-template-columns: 80px 1fr !important;
+      font-size: 13px !important;
+    }
+
+    .clf-dir .clf-apply-open-btn {
+      padding: 18px 36px !important;
+      width: 100% !important;
+      font-size: 14px !important;
+    }
+
+    .clf-dir .clf-auth-box {
+      padding: 28px 20px !important;
+    }
+
+    /* ─── 모바일 잘림 방지: 긴 영문/파일명 줄바꿈 ─── */
+    .clf-dir,
+    .clf-dir * {
+      word-break: keep-all !important;
+      overflow-wrap: anywhere !important;
+    }
+    .clf-dir code {
+      word-break: break-all !important;
+      overflow-wrap: anywhere !important;
+      white-space: normal !important;
+      display: inline-block !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 영상 제출 — 파일명 가이드 카드 */
+    .clf-dir .clf-filename-guide {
+      padding: 16px !important;
+    }
+    .clf-dir .clf-filename-guide-rule code,
+    .clf-dir .clf-filename-guide-ex code,
+    .clf-dir .clf-acc-list li code {
+      word-break: break-all !important;
+      overflow-wrap: anywhere !important;
+      white-space: normal !important;
+      line-height: 1.7 !important;
+    }
+    .clf-dir .clf-filename-guide-ex {
+      font-size: 12px !important;
+      line-height: 1.65 !important;
+    }
+
+    /* 영상 제출 폼 박스 — 화면 안에 꽉 들어가게 */
+    .clf-dir #clf-videoForm > div[style*="max-width"] {
+      max-width: 100% !important;
+    }
+    .clf-dir #clf-videoSection {
+      margin-top: 24px !important;
+    }
+    .clf-dir #clf-videoLocked,
+    .clf-dir #clf-videoOpen {
+      padding: 18px !important;
+      box-sizing: border-box !important;
+    }
+    .clf-dir .clf-submitted-card {
+      padding: 18px !important;
+      box-sizing: border-box !important;
+    }
+    .clf-dir .clf-submitted-key {
+      padding-bottom: 4px !important;
+    }
+
+    /* 아코디언(촬영/음향/파일 규격) 내부 — 줄바꿈 강제 */
+    .clf-dir .clf-acc-list {
+      padding-left: 16px !important;
+    }
+    .clf-dir .clf-acc-list li {
+      font-size: 13.5px !important;
+      line-height: 1.7 !important;
+    }
+    .clf-dir .clf-acc-trigger {
+      font-size: 14px !important;
+      padding: 14px 16px !important;
+    }
+    .clf-dir .clf-acc-inner {
+      padding: 14px 16px !important;
+    }
+
+    /* callout 박스 */
+    .clf-dir .clf-callout {
+      padding: 14px 16px !important;
+      gap: 10px !important;
+    }
+  }
+
+  /* 본문 가로 오버플로 방지 — 모든 화면 폭에서 안전 */
+  html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+  .clf-dir { overflow-x: hidden !important; }
+  .clf-dir img, .clf-dir video, .clf-dir iframe { max-width: 100% !important; height: auto !important; }
+
+  /* ── 마감일 타이머 (D-Day) 리디자인 ── */
+  .clf-dir .clf-dday-timer-wrap {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: var(--gold-pale) !important;
+    padding: 10px 22px !important;
+    border-radius: 30px !important;
+    border: 1px solid rgba(201, 168, 76, 0.4) !important;
+    font-size: 14px !important;
+    color: var(--teal) !important;
+    font-weight: 600 !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
+  }
+
+  .clf-dir .clf-dday-timer-wrap .clf-dday-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 22px !important;
+    height: 22px !important;
+    background: var(--gold) !important;
+    color: #fff !important;
+    border-radius: 50% !important;
+    font-size: 12px !important;
+  }
+
+  .clf-dir .clf-dday-timer-wrap .clf-dday-text {
+    letter-spacing: -0.2px !important;
+  }
+
+  .clf-dir .clf-dday-timer-wrap .clf-dday-time {
+    color: #B54E3A !important;
+    font-weight: 700 !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+
+  /* 제출 완료 후 폼 잠금 (수정 불가 시각화) */
+  .clf-dir .clf-form-locked {
+    position: relative !important;
+    opacity: .82 !important;
+    pointer-events: none !important;
+    user-select: text !important;
+  }
+  /* 잠금 상태여도 입력값은 또렷이 보이도록 — 회색 처리 오버라이드 */
+  .clf-dir .clf-form-locked input:disabled,
+  .clf-dir .clf-form-locked select:disabled,
+  .clf-dir .clf-form-locked textarea:disabled {
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+    background-color: #FAFAFA !important;
+    cursor: not-allowed !important;
+    opacity: 1 !important;
+  }
+  .clf-dir .clf-form-locked .clf-pill input:disabled + label {
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+    opacity: 1 !important;
+  }
+  .clf-dir .clf-form-locked .clf-submit {
+    background: #BBB !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+  }
+  .clf-dir .clf-locked-banner {
+    position: sticky !important;
+    top: 16px !important;
+    z-index: 10 !important;
+    margin: 0 0 24px 0 !important;
+    padding: 14px 18px !important;
+    background: #0C3D40 !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    text-align: center !important;
+    box-shadow: 0 6px 24px rgba(12,61,64,.18) !important;
+    pointer-events: auto !important;
+    user-select: none !important;
+  }
+  .clf-dir .clf-locked-banner b { color: #C9A84C !important; }
