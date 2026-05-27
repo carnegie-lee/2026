@@ -39,7 +39,10 @@ async function getApplication(userId) {
   return data;
 }
 async function saveApplication(userId, payload) {
-  return sb.from('concours_applications').insert(Object.assign({ user_id: userId }, payload));
+  return sb.from('concours_applications').upsert(
+    Object.assign({ user_id: userId }, payload),
+    { onConflict: 'user_id' }
+  );
 }
 async function saveVideoSubmission(userId, payload) {
   return sb.from('concours_applications').update({
