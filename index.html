@@ -620,6 +620,20 @@
                 <div class="clf-field-label">이메일 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="email" id="email" name="email" placeholder="name@example.com" required>
               </div>
+              <div class="clf-field clf-full" style="display:flex; gap:12px; margin-bottom: 0 !important;">
+                <div style="flex:1;">
+                  <div class="clf-field-label">주소 (시·도) <span class="clf-req">*</span></div>
+                  <select class="clf-select" id="addressCity" name="addressCity" required>
+                    <option value="">— 시·도 선택 —</option>
+                  </select>
+                </div>
+                <div style="flex:1;">
+                  <div class="clf-field-label">주소 (구·군) <span class="clf-req">*</span></div>
+                  <select class="clf-select" id="addressDistrict" name="addressDistrict" required>
+                    <option value="">— 구·군 선택 —</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
 

@@ -94,6 +94,7 @@ function logConcours(ss, payload, photoUrl) {
     "부문", "악기", "성악 장르",
     // 개인정보
     "성명", "생년월일", "성별", "연락처", "이메일",
+    "주소 (시·도)", "주소 (구·군)",
     // 학력 · 경력 · 수상
     "학교명·전공", "활동경력", "주요수상내역",
     // 영상심사 (영상)
@@ -118,6 +119,8 @@ function logConcours(ss, payload, photoUrl) {
     payload.gender || "",
     payload.phone || "",
     payload.email || "",
+    payload.addressCity || "",
+    payload.addressDistrict || "",
     payload.schoolName || "",
     payload.career || "",
     payload.awards || "",
@@ -154,9 +157,9 @@ function logConcoursVideo(ss, payload) {
 
   var NAME_COL       = 9;
   var EMAIL_COL      = 13;
-  var VIDEO_LINK_COL = 17;
-  var V_COMPOSER_COL = 18;
-  var V_PIECE_COL    = 19;
+  var VIDEO_LINK_COL = 19;
+  var V_COMPOSER_COL = 20;
+  var V_PIECE_COL    = 21;
 
   var data = sheet.getDataRange().getValues();
   var refNumber = payload.refNumber;
