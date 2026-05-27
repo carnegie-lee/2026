@@ -4100,24 +4100,33 @@
       applyLockedStateIfSubmitted();
     });
 
-    /* 모달 닫기 (서류 제출 완료) — 메인 페이지로 강제 이동
-       location.replace 를 사용해 history에서 콩쿨.html을 제거 → 뒤로가기 시 재제출 불가 */
+    /* 모달 닫기 (서류 제출 완료) — 잠긴 폼이 화면에 그대로 남도록
+       콩쿨 폼이 곧 메인이므로 별도 이동 없이 잠금 상태로 표시. UTM 흔적 제거 위해
+       쿼리스트링/해시는 history에서 깔끔하게 교체. */
     var modalClose = document.getElementById('modalClose');
     if (modalClose) modalClose.addEventListener('click', function () {
       document.getElementById('successModal').classList.remove('clf-show');
       var sess = getSession();
-      // 테스트 계정은 이동 안 함 — 폼 그대로 두고 다시 테스트 가능
+      var fEl = document.getElementById('apply');
+      if (fEl) fEl.classList.add('clf-form-visible');
+
+      // 테스트 계정: 잠금 안 함, 폼 그대로 둠
       if (sess && isTestAccount(sess.email)) {
-        var fEl = document.getElementById('apply');
         if (fEl && fEl.scrollIntoView) fEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
       }
-      // 일반 사용자: 메인 페이지로 redirect (history 교체)
-      try {
-        window.location.replace('../index.html');
-      } catch (e) {
-        window.location.href = '../index.html';
+
+      // 일반 사용자: 폼 잠금 보강 + URL의 query/hash 정리 (history 교체 → 뒤로가기 시 광고 진입 URL로 안 돌아감)
+      var form = document.getElementById('clf-applyForm');
+      if (form && !form.classList.contains('clf-form-locked')) {
+        lockApplyForm();
       }
+      try {
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+      } catch (e) { /* noop */ }
+      if (fEl && fEl.scrollIntoView) fEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     /* ── 업로드 방법 모달 ── */
