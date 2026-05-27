@@ -50,11 +50,14 @@ function doPost(e) {
       logExhibition(ss, payload, photoUrl);
     } else if (formType === "choir") {
       logChoir(ss, payload, photoUrl);
+    } else if (formType === "choir_video") {
+      logChoirVideo(ss, payload);
     } else {
       return output.setContent(JSON.stringify({ status: "error", message: "Invalid formType: " + formType }));
     }
 
-    if (payload.email && formType !== "concours_video") {
+    var isVideoOnly = (formType === "concours_video" || formType === "choir_video");
+    if (payload.email && !isVideoOnly) {
       sendConfirmationEmail(payload);
     }
 
@@ -188,6 +191,60 @@ function logConcoursVideo(ss, payload) {
 }
 
 /* ════════════════════════════════════════════════════════════
+   합창 영상 제출 — 기존 행에 영상 정보 업데이트
+   합창 시트 컬럼 인덱스(1-based, 35열 기준):
+     이름/단체명=10  이메일(대표자)=19  영상공유링크=29  작곡가=30  곡명=31
+   ════════════════════════════════════════════════════════════ */
+function logChoirVideo(ss, payload) {
+  var sheetName = "합창";
+  var sheet = ss.getSheetByName(sheetName);
+  if (!sheet) throw new Error("합창 시트를 찾을 수 없습니다.");
+
+  var NAME_COL       = 10;
+  var EMAIL_COL      = 19;
+  var VIDEO_LINK_COL = 29;
+  var V_COMPOSER_COL = 30;
+  var V_PIECE_COL    = 31;
+
+  var data = sheet.getDataRange().getValues();
+  var refNumber = payload.refNumber;
+  var email = payload.email;
+
+  var rowIndex = -1;
+  for (var i = 1; i < data.length; i++) {
+    var rowRef = data[i][0];
+    var rowEmail = data[i][EMAIL_COL - 1];
+
+    if (refNumber && rowRef === refNumber) {
+      rowIndex = i + 1;
+      break;
+    } else if (!refNumber && email && rowEmail === email) {
+      rowIndex = i + 1;
+      break;
+    }
+  }
+
+  if (rowIndex > -1) {
+    sheet.getRange(rowIndex, VIDEO_LINK_COL).setValue(payload.videoLink || "");
+    sheet.getRange(rowIndex, V_COMPOSER_COL).setValue(payload.vComposer || "");
+    sheet.getRange(rowIndex, V_PIECE_COL).setValue(payload.vPiece || "");
+  } else {
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var newRow = new Array(headers.length);
+    for (var j = 0; j < newRow.length; j++) newRow[j] = "";
+
+    newRow[0]                  = payload.refNumber || "[누락-영상단독]";
+    newRow[1]                  = payload.submittedAt || "";
+    newRow[NAME_COL - 1]       = payload.nameKo || payload.groupName || "";
+    newRow[EMAIL_COL - 1]      = payload.email || "";
+    newRow[VIDEO_LINK_COL - 1] = payload.videoLink || "";
+    newRow[V_COMPOSER_COL - 1] = payload.vComposer || "";
+    newRow[V_PIECE_COL - 1]    = payload.vPiece || "";
+    sheet.appendRow(newRow);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
    합창 (35열)
    ════════════════════════════════════════════════════════════ */
 function logChoir(ss, payload, photoUrl) {
@@ -215,9 +272,9 @@ function logChoir(ss, payload, photoUrl) {
     mapUtmSourceToKo(payload.utmSource, payload.utmMedium),
     payload.utmCampaign || "",
     payload.applyType || "",
-    payload.division || "",
+    mergeEtc(payload.division, payload.divisionEtc),
     payload.part || "",
-    payload.nameKo || "",
+    (payload.applyType === "단체") ? (payload.groupName || "") : (payload.nameKo || ""),
     payload.repName || "",
     payload.groupSize || "1",
     payload.rosterFileName || "",
@@ -254,6 +311,7 @@ function logExhibition(ss, payload, photoUrl) {
   var sheetName = "전시";
   var headers = [
     "접수번호", "접수일시", "폼 종류", "DB유형", "광고유형", "캠페인",
+    "출품 부문", "매체·기법",
     "성명 (작가명)", "생년월일", "성별", "국적",
     "연락처", "비상연락처", "이메일",
     "주소 (시·도)", "주소 (구·군)", "SNS·포트폴리오 링크",
@@ -261,6 +319,7 @@ function logExhibition(ss, payload, photoUrl) {
     "학교명·전공", "활동경력", "주요수상내역",
     "작품 제목", "제작 연도", "작품 크기", "사용 재료",
     "작품 사진 링크", "작품 설명",
+    "유입 경로",
     "프로필사진 (링크)", "심사 상태", "입금 상태", "마케팅 동의"
   ];
   var sheet = getOrCreateSheet(ss, sheetName, headers);
@@ -272,6 +331,8 @@ function logExhibition(ss, payload, photoUrl) {
     payload.dbType || "무료DB",
     mapUtmSourceToKo(payload.utmSource, payload.utmMedium),
     payload.utmCampaign || "",
+    mergeEtc(payload.division, payload.divisionEtc),
+    mergeEtc(payload.medium, payload.mediumEtc),
     payload.nameKo || "",
     payload.birth || "",
     payload.gender || "",
@@ -293,6 +354,7 @@ function logExhibition(ss, payload, photoUrl) {
     payload.artworkMaterials || "",
     payload.artworkPhotoLink || "",
     payload.artworkDescription || "",
+    mergeEtc(payload.referral, payload.referralEtc),
     photoUrl,
     "대기",
     "대기",
