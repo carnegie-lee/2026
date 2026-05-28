@@ -41,11 +41,9 @@ function doPost(e) {
     var formType = payload.formType || "unknown";
 
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var driveFolder = getOrCreateFolder("[CLF] 신청서 사진");
-
     var photoUrl = "";
-    if (payload.photoData && payload.photoData.indexOf("data:image") === 0) {
-      photoUrl = saveBase64ImageToDrive(payload.photoData, payload.refNumber, driveFolder);
+    if (payload.photoData && payload.photoData.startsWith("http")) {
+      photoUrl = '=IMAGE("' + payload.photoData + '", 4, 100, 100)';
     }
 
     if (formType === "concours") {
@@ -379,12 +377,6 @@ function logExhibition(ss, payload, photoUrl) {
 /* ════════════════════════════════════════════════════════════
    헬퍼
    ════════════════════════════════════════════════════════════ */
-function getOrCreateFolder(folderName) {
-  var folders = DriveApp.getFoldersByName(folderName);
-  if (folders.hasNext()) return folders.next();
-  return DriveApp.createFolder(folderName);
-}
-
 function getOrCreateSheet(ss, sheetName, headers) {
   var sheet = ss.getSheetByName(sheetName);
   if (!sheet) {
@@ -400,26 +392,6 @@ function getOrCreateSheet(ss, sheetName, headers) {
     sheet.setFrozenRows(1);
   }
   return sheet;
-}
-
-function saveBase64ImageToDrive(base64Str, refNumber, folder) {
-  try {
-    var parts = base64Str.split(",");
-    var mimeType = parts[0].match(/:(.*?);/)[1];
-    var ext = mimeType.split("/")[1] || "jpg";
-    var base64Data = parts[1];
-    var decoded = Utilities.base64Decode(base64Data);
-
-    var blob = Utilities.newBlob(decoded, mimeType, refNumber + "_profile." + ext);
-    var file = folder.createFile(blob);
-    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-
-    // 시트 셀에서 바로 썸네일이 보이도록 IMAGE() 수식으로 반환 (100x100)
-    var fileId = file.getId();
-    return '=IMAGE("https://lh3.googleusercontent.com/d/' + fileId + '", 4, 100, 100)';
-  } catch (err) {
-    return "파일 저장 오류: " + err.toString();
-  }
 }
 
 /* 사진 셀이 잘 보이도록 행 높이 조정 */

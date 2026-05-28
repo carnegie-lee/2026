@@ -698,7 +698,12 @@ function clearInstErrors() {
             var { data: urlData } = sb.storage.from('profile-photos').getPublicUrl(fileName);
             photoUrl = urlData.publicUrl;
           } else {
-            console.warn('Supabase Storage RLS block (ignored):', uploadError);
+            console.error('Storage Upload Error:', uploadError);
+            alert('Supabase 저장소 권한 오류입니다. 대시보드에서 Storage RLS 정책(profile-photos)을 허용해주세요.');
+            submitBtn.disabled = false;
+            submitBtn.style.setProperty('opacity', '1', 'important');
+            submitBtn.textContent = origText;
+            return;
           }
         } catch (uploadErr) {
           console.warn('Supabase Storage error (ignored):', uploadErr);
@@ -768,7 +773,7 @@ function clearInstErrors() {
         email:            payload.email,
         addressCity:      payload.address_city,
         addressDistrict:  payload.address_district,
-        photoData:        photoDataVal, // GAS용: 무조건 base64 원본 전송
+        photoData:        photoUrl, // Supabase URL 전송 (구글 드라이브 거치지 않음)
         schoolName:       payload.school_name,
         career:           payload.career,
         awards:           payload.awards,
