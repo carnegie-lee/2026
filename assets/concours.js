@@ -705,6 +705,44 @@ function clearInstErrors() {
         return;
       }
 
+      /* 구글 앱스 스크립트(이메일 발송 및 시트 백업) 호출 */
+      if (!isTestAccount(currentUser.email)) {
+        var gasPayload = {
+          refNumber:        ref,
+          formType:         'concours',
+          submittedAt:      payload.submitted_at,
+          utmCampaign:      payload.utm_campaign,
+          utmMedium:        payload.utm_medium,
+          utmSource:        payload.utm_source,
+          dbType:           payload.db_type,
+          division:         payload.division,
+          divisionEtc:      payload.division_etc,
+          instrument:       payload.instrument,
+          instrumentEtc:    payload.instrument_etc,
+          vocalGenre:       payload.vocal_genre,
+          vocalGenreEtc:    payload.vocal_genre_etc,
+          nameKo:           payload.name_ko,
+          birth:            payload.birth,
+          gender:           payload.gender,
+          phone:            payload.phone,
+          email:            payload.email,
+          addressCity:      payload.address_city,
+          addressDistrict:  payload.address_district,
+          photoData:        payload.photo_data,
+          schoolName:       payload.school_name,
+          career:           payload.career,
+          awards:           payload.awards,
+          referral:         payload.referral,
+          referralEtc:      payload.referral_etc,
+          marketingConsent: payload.marketing_consent
+        };
+        var GAS_URL = 'https://script.google.com/macros/s/AKfycbyKo1g9WEPWKwwi4jSOIj0ENBn3BAsD4OBtJkQqlm-SvFTiKHGLH8ggU0CW8p5mUROK/exec';
+        fetch(GAS_URL, {
+          method: 'POST',
+          body: JSON.stringify(gasPayload)
+        }).catch(function(e) { console.error('GAS sync error', e); });
+      }
+
       document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
       document.getElementById('successModal').classList.add('clf-show');
       if (!isTestAccount(currentUser.email)) lockApplyForm();
