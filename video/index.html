@@ -536,6 +536,7 @@
 
 </div>
 
+<script src="../assets/config.js"></script>
 <script>
 (function(){
   /* 스크롤 인 애니메이션 */
@@ -553,8 +554,7 @@
     else e.target.value = v;
   });
 
-  /* GAS URL */
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbzh2eZ2jWBhk7z4zvuM0npJZadPz_qxQsT_6lIKUg9ixa1Sh878Q_BbjBNaxJyEWM5o/exec';
+  /* GAS_URL은 assets/config.js에서 전역 정의 */
 
   document.getElementById('clf-videoForm').addEventListener('submit', function(e){
     e.preventDefault();

@@ -1053,6 +1053,7 @@
 
 <!-- 엑셀 파일 파싱을 위한 SheetJS 라이브러리 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="../assets/config.js"></script>
 
 <script>
 /* ── UTM 및 랜딩 정보 저장 ── */
@@ -1342,8 +1343,7 @@
     });
   }
 
-  // 구글 스프레드시트 앱스 스크립트 엔드포인트 바인딩 구문 주소 (합창용 분리 필요시 URL 변경)
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbzh2eZ2jWBhk7z4zvuM0npJZadPz_qxQsT_6lIKUg9ixa1Sh878Q_BbjBNaxJyEWM5o/exec';
+  /* GAS_URL은 assets/config.js에서 전역 정의 */
 
   var applyForm = document.getElementById('clf-applyForm');
   if(applyForm) {

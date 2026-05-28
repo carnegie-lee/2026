@@ -1890,6 +1890,7 @@
 
 </div><!-- /clf-dir -->
 
+<script src="../assets/config.js"></script>
 <script>
 /* ── UTM 및 랜딩 정보 저장 ── */
 (function saveLandingInfo(){
@@ -2071,11 +2072,8 @@
 
   /* 제출 */
   /* ===========================================================
-     Google Apps Script 연동 설정
-     아래 GAS_URL 을 본인의 Apps Script 웹앱 배포 URL로 교체하세요.
-     (배포 방법은 별도 안내 참고)
+     GAS_URL은 assets/config.js에서 전역 정의
      =========================================================== */
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbzh2eZ2jWBhk7z4zvuM0npJZadPz_qxQsT_6lIKUg9ixa1Sh878Q_BbjBNaxJyEWM5o/exec';
 
   document.getElementById('clf-applyForm').addEventListener('submit', function(e){
     e.preventDefault();

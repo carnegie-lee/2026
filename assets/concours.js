@@ -301,7 +301,10 @@ function clearInstErrors() {
     if (openBtn)      openBtn.style.setProperty('display', 'inline-flex', 'important');
     if (updateDocTimer()) setInterval(updateDocTimer, 1000);
 
-    if (openBtn) openBtn.addEventListener('click', openAuthModal);
+    if (openBtn) openBtn.addEventListener('click', function () {
+      var pm = document.getElementById('paymentInfoModal');
+      if (pm) { pm.classList.add('clf-show'); document.body.style.overflow = 'hidden'; }
+    });
 
     /* 이미 로그인된 경우 계정 이메일 자동 입력 */
     if (session) {
@@ -771,7 +774,6 @@ function clearInstErrors() {
         referralEtc:      payload.referral_etc,
         marketingConsent: payload.marketing_consent
       };
-      var GAS_URL = 'https://script.google.com/macros/s/AKfycbzh2eZ2jWBhk7z4zvuM0npJZadPz_qxQsT_6lIKUg9ixa1Sh878Q_BbjBNaxJyEWM5o/exec';
       fetch(GAS_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -858,10 +860,19 @@ function clearInstErrors() {
   }
   setupHowToModal('clf-howToUploadBtn2');
 
+  /* 참가비 안내 팝업 */
+  var payModal = document.getElementById('paymentInfoModal');
+  var payClose = document.getElementById('paymentInfoClose');
+  var payConfirm = document.getElementById('paymentInfoConfirm');
+  function closePayModal() { if (payModal) { payModal.classList.remove('clf-show'); document.body.style.overflow = ''; } }
+  if (payClose) payClose.addEventListener('click', closePayModal);
+  if (payConfirm) payConfirm.addEventListener('click', function () { closePayModal(); openAuthModal(); });
+  if (payModal) payModal.addEventListener('click', function (e) { if (e.target === payModal) closePayModal(); });
+
   /* Escape 키로 모달 닫기 */
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    ['howToUploadModal', 'videoSuccessModal', 'successModal'].forEach(function (id) {
+    ['paymentInfoModal', 'howToUploadModal', 'videoSuccessModal', 'successModal'].forEach(function (id) {
       var m = document.getElementById(id);
       if (m && m.classList.contains('clf-show')) { m.classList.remove('clf-show'); document.body.style.overflow = ''; }
     });
