@@ -100,7 +100,7 @@ function logConcours(ss, payload, photoUrl) {
     // 영상심사 (영상)
     "영상공유링크", "연주곡 작곡가", "연주곡 곡명",
     // 운영
-    "프로필사진 (링크)", "심사 상태", "입금 상태", "마케팅 동의", "합격 메일 발송 일시"
+    "프로필사진", "심사 상태", "입금 상태", "마케팅 동의", "합격 메일 발송 일시"
   ];
   var sheet = getOrCreateSheet(ss, sheetName, headers);
   ensureSentColumn(sheet); // 기존에 만들어진 시트에도 컬럼 자동 추가
@@ -270,7 +270,7 @@ function logChoir(ss, payload, photoUrl) {
     "학교명·전공", "활동경력", "주요수상내역",
     "영상공유링크", "연주곡 작곡가", "연주곡 곡명",
     "유입 경로",
-    "프로필사진 (링크)", "심사 상태", "입금 상태", "마케팅 동의"
+    "프로필사진", "심사 상태", "입금 상태", "마케팅 동의"
   ];
   var sheet = getOrCreateSheet(ss, sheetName, headers);
 
@@ -331,7 +331,7 @@ function logExhibition(ss, payload, photoUrl) {
     "작품 제목", "제작 연도", "작품 크기", "사용 재료",
     "작품 사진 링크", "작품 설명",
     "유입 경로",
-    "프로필사진 (링크)", "심사 상태", "입금 상태", "마케팅 동의"
+    "프로필사진", "심사 상태", "입금 상태", "마케팅 동의"
   ];
   var sheet = getOrCreateSheet(ss, sheetName, headers);
 
