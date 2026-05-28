@@ -678,7 +678,7 @@ function clearInstErrors() {
 
       /* ── 이미지 업로드 처리 (Supabase Storage) ── */
       var photoDataVal = fd.get('photoData') || '';
-      var photoUrl = '';
+      var photoUrl = ''; // Supabase URL
 
       if (photoDataVal && photoDataVal.startsWith('data:image')) {
         try {
@@ -686,7 +686,7 @@ function clearInstErrors() {
           var fileExt = 'jpg';
           var fileName = currentUser.id + '/' + ref + '.' + fileExt;
 
-          // Supabase Storage에 업로드 (버킷 이름: profile-photos)
+          // Supabase Storage에 업로드 (실패하더라도 GAS 제출을 위해 막지 않음)
           var { data: uploadData, error: uploadError } = await sb.storage
             .from('profile-photos')
             .upload(fileName, blob, {
@@ -694,25 +694,14 @@ function clearInstErrors() {
               upsert: true
             });
 
-          if (uploadError) {
-            console.error('Storage Upload Error:', uploadError);
-            alert('사진 업로드 중 오류가 발생했습니다: ' + uploadError.message);
-            submitBtn.disabled = false;
-            submitBtn.style.setProperty('opacity', '1', 'important');
-            submitBtn.textContent = origText;
-            return;
+          if (!uploadError) {
+            var { data: urlData } = sb.storage.from('profile-photos').getPublicUrl(fileName);
+            photoUrl = urlData.publicUrl;
+          } else {
+            console.warn('Supabase Storage RLS block (ignored):', uploadError);
           }
-
-          // 퍼블릭 URL 가져오기
-          var { data: urlData } = sb.storage.from('profile-photos').getPublicUrl(fileName);
-          photoUrl = urlData.publicUrl;
         } catch (uploadErr) {
-          console.error(uploadErr);
-          alert('사진 처리 중 예상치 못한 오류가 발생했습니다.');
-          submitBtn.disabled = false;
-          submitBtn.style.setProperty('opacity', '1', 'important');
-          submitBtn.textContent = origText;
-          return;
+          console.warn('Supabase Storage error (ignored):', uploadErr);
         }
       }
 
@@ -738,7 +727,7 @@ function clearInstErrors() {
         email:             fd.get('email')          || '',
         address_city:      fd.get('addressCity')    || '',
         address_district:  fd.get('addressDistrict') || '',
-        photo_data:        photoUrl,
+        photo_data:        photoUrl, // Supabase DB에는 URL (성공시) 또는 빈문자열
         school_name:       fd.get('schoolName')     || '',
         career:            fd.get('career')         || '',
         awards:            fd.get('awards')         || '',
@@ -779,7 +768,7 @@ function clearInstErrors() {
         email:            payload.email,
         addressCity:      payload.address_city,
         addressDistrict:  payload.address_district,
-        photoData:        payload.photo_data,
+        photoData:        photoDataVal, // GAS용: 무조건 base64 원본 전송
         schoolName:       payload.school_name,
         career:           payload.career,
         awards:           payload.awards,
