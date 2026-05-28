@@ -738,6 +738,8 @@ function clearInstErrors() {
       var GAS_URL = 'https://script.google.com/macros/s/AKfycbxOtHHYaQvT826cPy5cqAzdSbWyrHQqOAZ2D09UcfhSdWImXPuo94gJPex59a4zafwlag/exec';
       fetch(GAS_URL, {
         method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(gasPayload)
       }).catch(function(e) { console.error('GAS sync error', e); });
 
