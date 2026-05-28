@@ -517,6 +517,7 @@ function sendConfirmationEmail(payload) {
       '<div style="font-size: 15px; line-height: 1.85; color: #444444; margin-bottom: 30px; word-break: keep-all;">' +
         '<p style="margin: 0 0 12px 0;"><strong>' + name + ' 님,</strong></p>' +
         '<p style="margin: 0;">카네기리재단 ' + formTitle + ' 참가 신청이 정상적으로 접수되었습니다.</p>' +
+        '<p style="margin: 15px 0 0 0; color: #d32f2f; font-weight: 600; font-size: 14px; background: #fff5f5; padding: 12px; border-radius: 8px;">※ 참가비 입금이 확인된 참가자에 한하여, 추후 영상 제출용 링크가 포함된 개별 안내 메일이 순차적으로 발송될 예정입니다.</p>' +
       '</div>' +
       '<div style="background-color: #F8F9FA; border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 30px; border: 1px solid #E4E4E4;">' +
         '<div style="font-size: 13px; font-weight: 600; color: #888888; margin-bottom: 8px; letter-spacing: 0.05em;">접수번호</div>' +
