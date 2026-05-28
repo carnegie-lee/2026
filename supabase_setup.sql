@@ -88,6 +88,28 @@ CREATE POLICY "app_update_own" ON concours_applications
 
 
 -- ════════════════════════════════════════════
+--  Storage 버킷 정책 (profile-photos 버킷)
+--  버킷은 대시보드에서 미리 생성 필요 (Public ON)
+-- ════════════════════════════════════════════
+
+-- 로그인한 사용자만 업로드 가능
+CREATE POLICY "auth_upload_photo" ON storage.objects
+  FOR INSERT WITH CHECK (
+    bucket_id = 'profile-photos' AND auth.role() = 'authenticated'
+  );
+
+-- 덮어쓰기 허용 (재제출 시)
+CREATE POLICY "auth_update_photo" ON storage.objects
+  FOR UPDATE USING (
+    bucket_id = 'profile-photos' AND auth.role() = 'authenticated'
+  );
+
+-- 누구나 조회 가능 (public 버킷)
+CREATE POLICY "public_read_photo" ON storage.objects
+  FOR SELECT USING (bucket_id = 'profile-photos');
+
+
+-- ════════════════════════════════════════════
 --  관리자 조회 쿼리 예시
 -- ════════════════════════════════════════════
 -- 전체 신청자 (최신순)

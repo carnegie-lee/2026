@@ -96,6 +96,29 @@ var KOREA_ADDRESS = {
   "해외": ["해외"]
 };
 
+/* ── 이미지 압축 → Blob 반환 ── */
+function compressImageToBlob(file) {
+  return new Promise(function (resolve) {
+    var reader = new FileReader();
+    reader.onload = function (ev) {
+      var img = new Image();
+      img.onload = function () {
+        var canvas = document.createElement('canvas');
+        var max = 800, w = img.width, h = img.height;
+        if (w > h) { if (w > max) { h = h * max / w; w = max; } }
+        else       { if (h > max) { w = w * max / h; h = max; } }
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        canvas.toBlob(resolve, 'image/jpeg', 0.85);
+      };
+      img.onerror = function () { resolve(null); };
+      img.src = ev.target.result;
+    };
+    reader.onerror = function () { resolve(null); };
+    reader.readAsDataURL(file);
+  });
+}
+
 /* ── 주소 드롭다운 초기화 ── */
 function initAddressDropdowns() {
   var citySelect = document.getElementById('addressCity');
@@ -535,28 +558,19 @@ function clearInstErrors() {
     });
   });
 
-  /* 프로필 사진 압축 */
-  var photoInput     = document.getElementById('profilePhoto');
-  var photoDataInput = document.getElementById('photoData');
+  /* 프로필 사진 — 선택 시 미리보기만, 실제 업로드는 폼 제출 시 */
+  var photoInput = document.getElementById('profilePhoto');
   if (photoInput) {
     photoInput.addEventListener('change', function (e) {
       var file = e.target.files[0];
-      if (!file) { photoDataInput.value = ''; return; }
-      var reader = new FileReader();
-      reader.onload = function (ev) {
-        var img = new Image();
-        img.onload = function () {
-          var canvas = document.createElement('canvas');
-          var max = 300, w = img.width, h = img.height;
-          if (w > h) { if (w > max) { h = h * max / w; w = max; } }
-          else       { if (h > max) { w = w * max / h; h = max; } }
-          canvas.width = w; canvas.height = h;
-          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-          photoDataInput.value = canvas.toDataURL('image/jpeg', 0.8);
-        };
-        img.src = ev.target.result;
-      };
-      reader.readAsDataURL(file);
+      if (!file) return;
+      var preview = document.getElementById('photoPreview');
+      if (preview) {
+        var url = URL.createObjectURL(file);
+        preview.src = url;
+        var wrap = document.getElementById('photoPreviewWrap');
+        if (wrap) wrap.style.display = 'block';
+      }
     });
   }
 
@@ -664,6 +678,23 @@ function clearInstErrors() {
       var medium = urlP.get('utm_medium') || sessionStorage.getItem('utm_medium') || 'free';
       var fd     = new FormData(form);
 
+      /* 프로필 사진 → Supabase Storage 업로드 */
+      var photoUrl = '';
+      var photoFile = photoInput ? photoInput.files[0] : null;
+      if (photoFile) {
+        var compressedBlob = await compressImageToBlob(photoFile);
+        if (compressedBlob) {
+          var fileName = currentUser.id + '.jpg';
+          var { error: uploadErr } = await sb.storage
+            .from('profile-photos')
+            .upload(fileName, compressedBlob, { contentType: 'image/jpeg', upsert: true });
+          if (!uploadErr) {
+            var { data: { publicUrl } } = sb.storage.from('profile-photos').getPublicUrl(fileName);
+            photoUrl = publicUrl;
+          }
+        }
+      }
+
       var payload = {
         ref_number:        ref,
         form_type:         'concours',
@@ -686,7 +717,7 @@ function clearInstErrors() {
         email:             fd.get('email')          || '',
         address_city:      fd.get('addressCity')    || '',
         address_district:  fd.get('addressDistrict') || '',
-        photo_data:        fd.get('photoData')      || '',
+        photo_data:        photoUrl,
         school_name:       fd.get('schoolName')     || '',
         career:            fd.get('career')         || '',
         awards:            fd.get('awards')         || '',
