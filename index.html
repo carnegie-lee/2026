@@ -230,6 +230,21 @@
           <button class="clf-auth-btn" id="clf-registerBtn">가입하기</button>
           <div class="clf-auth-switch">이미 계정이 있으신가요? <a id="clf-goLogin">로그인</a></div>
         </div>
+
+        <!-- 이메일 인증 안내 -->
+        <div id="clf-emailSentBox" class="clf-auth-box" style="display:none!important;">
+          <div style="text-align:center; padding: 16px 0;">
+            <div style="font-size:32px; margin-bottom:14px;">&#9993;</div>
+            <div class="clf-auth-title">인증 이메일이 발송되었습니다</div>
+            <div class="clf-auth-sub" style="margin-bottom:20px;">
+              입력하신 이메일로 인증 메일을 보냈습니다.<br>
+              이메일을 확인하고 인증 링크를 클릭해 주세요.<br>
+              인증 완료 후 다시 돌아와서 로그인해 주세요.
+            </div>
+            <button class="clf-auth-btn" id="clf-emailSentOkBtn">확인 (로그인으로 이동)</button>
+            <div style="margin-top:12px; font-size:12.5px; color:#999;">이메일이 도착하지 않으면 스팸 폴더를 확인해 주세요.</div>
+          </div>
+        </div>
       </div>
 
       <!-- ════════════════════════════════════
@@ -264,14 +279,14 @@
         </div>
 
         <!-- 계정 생성 안내 -->
-        <div class="clf-callout" style="max-width:880px!important; margin:0 auto 32px!important;">
+        <div class="clf-callout" id="clf-acctCallout" style="max-width:880px!important; margin:0 auto 32px!important;">
           <div class="clf-callout-icon">🔑</div>
           <div><strong>로그인 계정 생성 필요</strong><br>서류 제출 후 영상 제출 기간(6/5~6/26)에 다시 접속하여 영상을 제출하실 수 있습니다. 반드시 이메일과 비밀번호를 기억해
             주세요.</div>
         </div>
 
         <!-- 계정 생성 섹션 -->
-        <div class="clf-form-wrap" style="margin-bottom:40px!important;">
+        <div class="clf-form-wrap" id="clf-acctSection" style="margin-bottom:40px!important;">
           <div class="clf-form-block">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Account</span>
@@ -843,6 +858,20 @@
 
           <button class="clf-inst-submit" id="clf-instRegBtn" type="button">가입 후 신청서 작성</button>
         </div>
+        <!-- 이메일 인증 안내 패널 -->
+        <div id="clf-instEmailSentPanel" class="clf-inst-body" style="display:none;">
+          <div style="text-align:center; padding: 20px 0;">
+            <div style="font-size:40px; margin-bottom:16px;">&#9993;</div>
+            <div style="font-size:18px; font-weight:700; color:#0C3D40; margin-bottom:10px;">인증 이메일이 발송되었습니다</div>
+            <div style="font-size:14px; color:#666; line-height:1.7; margin-bottom:20px;">
+              입력하신 이메일로 인증 메일을 보냈습니다.<br>
+              이메일을 확인하고 <strong>인증 링크를 클릭</strong>해 주세요.<br><br>
+              인증 완료 후 다시 돌아와서 <strong>로그인</strong>해 주세요.
+            </div>
+            <button class="clf-inst-submit" id="clf-instEmailSentOk" type="button">확인</button>
+            <div style="margin-top:14px; font-size:12.5px; color:#999;">이메일이 도착하지 않으면 스팸 폴더를 확인해 주세요.</div>
+          </div>
+        </div>
         <!-- 푸터 -->
         <div class="clf-inst-footer">
           <strong>카네기 Lee 재단</strong> &middot; 2026 클래식 콩쿠르 &middot; 운영사무국 <a href="tel:1588-8418"
@@ -855,7 +884,7 @@
   </div><!-- /clf-dir -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="assets/concours.js"></script>
+  <script src="assets/concours.js?v=20260528_5"></script>
   </body>
 
 </html>

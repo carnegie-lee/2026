@@ -421,9 +421,8 @@ function saveBase64ImageToDrive(base64Str, refNumber, folder) {
     var file = folder.createFile(blob);
     file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
 
-    // 시트 셀에서 바로 썸네일이 보이도록 IMAGE() 수식으로 반환 (100x100)
     var fileId = file.getId();
-    return '=IMAGE("https://lh3.googleusercontent.com/d/' + fileId + '", 4, 100, 100)';
+    return '=IMAGE("https://drive.google.com/uc?export=view&id=' + fileId + '", 4, 100, 100)';
   } catch (err) {
     return "파일 저장 오류: " + err.toString();
   }

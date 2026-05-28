@@ -22,6 +22,7 @@ var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 var DOC_DEADLINE = new Date('2026-06-08T16:00:00+09:00');
 var VID_OPEN     = new Date('2026-06-08T16:02:00+09:00');
 var VID_DEADLINE = new Date('2026-06-26T18:00:00+09:00');
+var CONFIRM_REDIRECT = new URL('confirm.html', window.location.href).href;
 
 /* ══════════════════════════════════════════════
    테스트 계정
@@ -208,8 +209,12 @@ function closeAuthModal() {
 function showInstTab(tab) {
   var lp = document.getElementById('clf-instLoginPanel');
   var rp = document.getElementById('clf-instRegPanel');
+  var ep = document.getElementById('clf-instEmailSentPanel');
   var lt = document.getElementById('clf-instTabLogin');
   var rt = document.getElementById('clf-instTabReg');
+  var tabs = document.querySelector('.clf-inst-tabs');
+  if (ep) ep.style.display = 'none';
+  if (tabs) tabs.style.display = '';
   if (tab === 'login') {
     if (lp) lp.style.display = '';
     if (rp) rp.style.display = 'none';
@@ -223,6 +228,16 @@ function showInstTab(tab) {
     if (lt) lt.classList.remove('clf-inst-active');
     setTimeout(function () { var e = document.getElementById('clf-instRegEmail'); if (e) e.focus(); }, 80);
   }
+}
+function showInstEmailSent() {
+  var lp = document.getElementById('clf-instLoginPanel');
+  var rp = document.getElementById('clf-instRegPanel');
+  var ep = document.getElementById('clf-instEmailSentPanel');
+  var tabs = document.querySelector('.clf-inst-tabs');
+  if (lp) lp.style.display = 'none';
+  if (rp) rp.style.display = 'none';
+  if (ep) ep.style.display = '';
+  if (tabs) tabs.style.display = 'none';
 }
 function clearInstErrors() {
   ['clf-instLoginErr', 'clf-instRegErr'].forEach(function (id) {
@@ -467,7 +482,14 @@ function clearInstErrors() {
     panelLoginBtn.disabled = true;
     var { data, error } = await sb.auth.signInWithPassword({ email: em, password: pw });
     panelLoginBtn.disabled = false;
-    if (error) { err.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.'; err.classList.add('clf-show'); return; }
+    if (error) {
+      if (error.message && error.message.toLowerCase().includes('not confirmed')) {
+        err.textContent = '이메일 인증이 완료되지 않았습니다. 이메일을 확인해 주세요.';
+      } else {
+        err.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.';
+      }
+      err.classList.add('clf-show'); return;
+    }
     await showMyPage(data.user);
   });
   ['clf-loginEmail', 'clf-loginPw'].forEach(function (id) {
@@ -486,10 +508,19 @@ function clearInstErrors() {
     if (pw.length < 6) { err.textContent = '비밀번호는 6자 이상이어야 합니다.'; err.classList.add('clf-show'); return; }
     if (pw !== pw2)    { err.textContent = '비밀번호가 일치하지 않습니다.';      err.classList.add('clf-show'); return; }
     panelRegBtn.disabled = true;
-    var { data, error } = await sb.auth.signUp({ email: em, password: pw });
+    var { data, error } = await sb.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: CONFIRM_REDIRECT } });
     panelRegBtn.disabled = false;
-    if (error) { err.textContent = error.message; err.classList.add('clf-show'); return; }
-    await showMyPage(data.user);
+    if (error) {
+      if (error.message.includes('already')) {
+        err.textContent = '이미 가입된 이메일입니다. 로그인해 주세요.';
+      } else {
+        err.textContent = error.message;
+      }
+      err.classList.add('clf-show'); return;
+    }
+    if (regBox) regBox.style.setProperty('display', 'none', 'important');
+    var esBox = document.getElementById('clf-emailSentBox');
+    if (esBox) esBox.style.setProperty('display', 'block', 'important');
   });
 
   var logoutBtn = document.getElementById('clf-logoutBtn');
@@ -499,6 +530,13 @@ function clearInstErrors() {
     if (authPanel) authPanel.style.setProperty('display', 'block', 'important');
     if (loginBox)  loginBox.style.setProperty('display', 'block', 'important');
     if (regBox)    regBox.style.setProperty('display', 'none', 'important');
+  });
+
+  var emailSentOkBtn2 = document.getElementById('clf-emailSentOkBtn');
+  if (emailSentOkBtn2) emailSentOkBtn2.addEventListener('click', function () {
+    var esBox = document.getElementById('clf-emailSentBox');
+    if (esBox) esBox.style.setProperty('display', 'none', 'important');
+    if (loginBox) loginBox.style.setProperty('display', 'block', 'important');
   });
 
   var videoModalClose = document.getElementById('videoModalClose');
@@ -550,10 +588,12 @@ function clearInstErrors() {
   /* 프로필 사진 압축 */
   var photoInput     = document.getElementById('profilePhoto');
   var photoDataInput = document.getElementById('photoData');
+  var photoProcessing = false;
   if (photoInput) {
     photoInput.addEventListener('change', function (e) {
       var file = e.target.files[0];
-      if (!file) { photoDataInput.value = ''; return; }
+      if (!file) { photoDataInput.value = ''; photoProcessing = false; return; }
+      photoProcessing = true;
       var reader = new FileReader();
       reader.onload = function (ev) {
         var img = new Image();
@@ -565,6 +605,7 @@ function clearInstErrors() {
           canvas.width = w; canvas.height = h;
           canvas.getContext('2d').drawImage(img, 0, 0, w, h);
           photoDataInput.value = canvas.toDataURL('image/jpeg', 0.8);
+          photoProcessing = false;
         };
         img.src = ev.target.result;
       };
@@ -626,31 +667,19 @@ function clearInstErrors() {
         return;
       }
 
-      /* 계정 이메일/비밀번호 검사 */
-      var acctEmail = (document.getElementById('clf-acctEmail').value || '').trim().toLowerCase();
-      var acctPw    = (document.getElementById('clf-acctPw').value    || '').trim();
-      if (!acctEmail) { alert('계정 이메일을 입력해 주세요.'); document.getElementById('clf-acctEmail').focus(); return; }
-      if (acctPw.length < 6) { alert('비밀번호를 6자 이상으로 입력해 주세요.'); document.getElementById('clf-acctPw').focus(); return; }
-
-      /* Supabase 세션 확인 — 없으면 자동 로그인/가입 시도 */
+      /* Supabase 세션 확인 — 없으면 로그인 요구 */
       var { data: { session: curSess } } = await sb.auth.getSession();
       var currentUser = curSess ? curSess.user : null;
 
       if (!currentUser) {
-        /* 계정 없는 경우 가입, 있는 경우 로그인 */
-        var signUpResult = await sb.auth.signUp({ email: acctEmail, password: acctPw });
-        if (signUpResult.error && signUpResult.error.message.includes('already')) {
-          var signInResult = await sb.auth.signInWithPassword({ email: acctEmail, password: acctPw });
-          if (signInResult.error) { alert('로그인 실패: ' + signInResult.error.message); return; }
-          currentUser = signInResult.data.user;
-        } else if (signUpResult.error) {
-          alert('계정 생성 실패: ' + signUpResult.error.message); return;
-        } else {
-          currentUser = signUpResult.data.user;
-        }
+        alert('로그인이 필요합니다.\n먼저 회원가입 및 이메일 인증을 완료해 주세요.');
+        openAuthModal();
+        return;
       }
 
-      if (!currentUser) { alert('인증에 실패했습니다. 다시 시도해 주세요.'); return; }
+      /* 사진 처리 완료 확인 */
+      if (photoProcessing) { alert('사진을 처리 중입니다. 잠시 후 다시 제출해 주세요.'); return; }
+      if (photoInput && photoInput.files.length > 0 && !photoDataInput.value) { alert('사진 변환에 실패했습니다. 사진을 다시 선택해 주세요.'); return; }
 
       /* 최종 확인 */
       if (!confirm('제출하시면 내용을 수정하기 어렵습니다.\n작성하신 내용을 다시 한 번 확인하셨나요? 그대로 제출하시겠습니까?')) return;
@@ -712,16 +741,7 @@ function clearInstErrors() {
         is_test:           isTestAccount(currentUser.email),
       };
 
-      var { error } = await saveApplication(currentUser.id, payload);
-      if (error) {
-        alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.\n' + error.message);
-        submitBtn.disabled = false;
-        submitBtn.style.setProperty('opacity', '1', 'important');
-        submitBtn.textContent = origText;
-        return;
-      }
-
-      /* 구글 앱스 스크립트(이메일 발송 및 시트 백업) 호출 */
+      /* ── 구글시트(GAS) 호출: Supabase와 독립적으로 먼저 발사 ── */
       var gasPayload = {
         refNumber:        ref,
         formType:         'concours',
@@ -743,7 +763,7 @@ function clearInstErrors() {
         email:            payload.email,
         addressCity:      payload.address_city,
         addressDistrict:  payload.address_district,
-        photoData:        photoDataVal, // GAS용: 무조건 base64 원본 전송
+        photoData:        photoDataVal,
         schoolName:       payload.school_name,
         career:           payload.career,
         awards:           payload.awards,
@@ -759,9 +779,15 @@ function clearInstErrors() {
         body: JSON.stringify(gasPayload)
       }).catch(function(e) { console.error('GAS sync error', e); });
 
+      /* ── Supabase 저장: GAS와 독립적 ── */
+      var { error } = await saveApplication(currentUser.id, payload);
+      if (error) {
+        console.error('Supabase save error:', error.message);
+      }
+
       document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
       document.getElementById('successModal').classList.add('clf-show');
-      if (!isTestAccount(currentUser.email)) lockApplyForm();
+      if (!error && !isTestAccount(currentUser.email)) lockApplyForm();
       else {
         submitBtn.disabled = false;
         submitBtn.style.setProperty('opacity', '1', 'important');
@@ -875,6 +901,16 @@ function clfToggleAcc(btn) {
   if (tabR) tabR.addEventListener('click', function () { showInstTab('reg');   clearInstErrors(); });
   if (goRegBtn) goRegBtn.addEventListener('click', function () { showInstTab('reg'); clearInstErrors(); });
 
+  var emailSentOkBtn = document.getElementById('clf-instEmailSentOk');
+  if (emailSentOkBtn) emailSentOkBtn.addEventListener('click', function () {
+    var ep = document.getElementById('clf-instEmailSentPanel');
+    var tabs = document.querySelector('.clf-inst-tabs');
+    if (ep) ep.style.display = 'none';
+    if (tabs) tabs.style.display = '';
+    showInstTab('login');
+    closeAuthModal();
+  });
+
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && bd && bd.classList.contains('clf-show')) closeAuthModal();
   });
@@ -899,8 +935,23 @@ function clfToggleAcc(btn) {
     loginBtn.disabled = true;
     var { data, error } = await sb.auth.signInWithPassword({ email: em, password: pw });
     loginBtn.disabled = false;
-    if (error) { err.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.'; err.classList.add('clf-show'); return; }
+    if (error) {
+      if (error.message && error.message.toLowerCase().includes('not confirmed')) {
+        err.textContent = '이메일 인증이 완료되지 않았습니다. 이메일을 확인해 주세요.';
+      } else {
+        err.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.';
+      }
+      err.classList.add('clf-show'); return;
+    }
     var ae = document.getElementById('clf-acctEmail'); if (ae) ae.value = em;
+    try {
+      var sn = sessionStorage.getItem('clf_reg_name');
+      var sp = sessionStorage.getItem('clf_reg_phone');
+      if (sn) { var fn = document.getElementById('nameKo'); if (fn && !fn.value) fn.value = sn; }
+      if (sp) { var fp = document.getElementById('phone'); if (fp && !fp.value) fp.value = sp; }
+      sessionStorage.removeItem('clf_reg_name');
+      sessionStorage.removeItem('clf_reg_phone');
+    } catch(e){}
     await proceedToForm(data.user);
   });
 
@@ -920,7 +971,7 @@ function clfToggleAcc(btn) {
     if (!agree)        { err.textContent = '이용약관 및 개인정보 수집에 동의해 주세요.'; err.classList.add('clf-show'); return; }
 
     regBtn.disabled = true;
-    var { data, error } = await sb.auth.signUp({ email: em, password: pw });
+    var { data, error } = await sb.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: CONFIRM_REDIRECT } });
     regBtn.disabled = false;
 
     if (error) {
@@ -932,13 +983,8 @@ function clfToggleAcc(btn) {
       err.classList.add('clf-show'); return;
     }
 
-    /* 폼에 이름·연락처 자동 입력 */
-    var ae = document.getElementById('clf-acctEmail'); if (ae) ae.value = em;
-    var ap = document.getElementById('clf-acctPw');    if (ap) ap.value = pw;
-    var fn = document.getElementById('nameKo');        if (fn && !fn.value) fn.value = name;
-    var fp = document.getElementById('phone');         if (fp && !fp.value) fp.value = phone;
-
-    await proceedToForm(data.user);
+    try { sessionStorage.setItem('clf_reg_name', name); sessionStorage.setItem('clf_reg_phone', phone); } catch(e){}
+    showInstEmailSent();
   });
 
   async function proceedToForm(user) {
@@ -948,6 +994,10 @@ function clfToggleAcc(btn) {
     if (formSection) {
       formSection.classList.add('clf-form-visible');
       if (btnWrap) btnWrap.style.setProperty('display', 'none', 'important');
+      var acctCallout = document.getElementById('clf-acctCallout');
+      var acctSection = document.getElementById('clf-acctSection');
+      if (acctCallout) acctCallout.style.setProperty('display', 'none', 'important');
+      if (acctSection) acctSection.style.setProperty('display', 'none', 'important');
       setTimeout(function () { formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
     }
     /* 이미 제출한 계정이면 복원 + 잠금 */
