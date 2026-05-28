@@ -735,7 +735,7 @@ function clearInstErrors() {
         referralEtc:      payload.referral_etc,
         marketingConsent: payload.marketing_consent
       };
-      var GAS_URL = 'https://script.google.com/macros/s/AKfycbxOtHHYaQvT826cPy5cqAzdSbWyrHQqOAZ2D09UcfhSdWImXPuo94gJPex59a4zafwlag/exec';
+      var GAS_URL = 'https://script.google.com/macros/s/AKfycbxep2b7yXyxHKwzAJ5kLd1j0o4FCrQILpKgYjgXDgT69qqHGe7f_o3ufqsyDTvm8fc4YQ/exec';
       fetch(GAS_URL, {
         method: 'POST',
         mode: 'no-cors',
