@@ -85,6 +85,29 @@ function dataURLtoBlob(dataurl) {
   return new Blob([u8arr], {type:mime});
 }
 
+/* 이미지 파일 → 800px JPEG Blob 압축 */
+function compressImageToBlob(file) {
+  return new Promise(function(resolve) {
+    var img = new Image();
+    var url = URL.createObjectURL(file);
+    img.onload = function() {
+      var maxSize = 800;
+      var w = img.width, h = img.height;
+      if (w > maxSize || h > maxSize) {
+        if (w >= h) { h = Math.round(h * maxSize / w); w = maxSize; }
+        else        { w = Math.round(w * maxSize / h); h = maxSize; }
+      }
+      var canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(url);
+      canvas.toBlob(function(blob) { resolve(blob); }, 'image/jpeg', 0.85);
+    };
+    img.onerror = function() { URL.revokeObjectURL(url); resolve(null); };
+    img.src = url;
+  });
+}
+
 /* ══════════════════════════════════════════════
    주소 데이터
    ══════════════════════════════════════════════ */
@@ -585,31 +608,18 @@ function clearInstErrors() {
     });
   });
 
-  /* 프로필 사진 압축 */
-  var photoInput     = document.getElementById('profilePhoto');
-  var photoDataInput = document.getElementById('photoData');
-  var photoProcessing = false;
+  /* 프로필 사진 — 선택 시 미리보기만 표시, 실제 업로드는 폼 제출 시 Storage로 */
+  var photoInput = document.getElementById('profilePhoto');
   if (photoInput) {
     photoInput.addEventListener('change', function (e) {
       var file = e.target.files[0];
-      if (!file) { photoDataInput.value = ''; photoProcessing = false; return; }
-      photoProcessing = true;
-      var reader = new FileReader();
-      reader.onload = function (ev) {
-        var img = new Image();
-        img.onload = function () {
-          var canvas = document.createElement('canvas');
-          var max = 300, w = img.width, h = img.height;
-          if (w > h) { if (w > max) { h = h * max / w; w = max; } }
-          else       { if (h > max) { w = w * max / h; h = max; } }
-          canvas.width = w; canvas.height = h;
-          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-          photoDataInput.value = canvas.toDataURL('image/jpeg', 0.8);
-          photoProcessing = false;
-        };
-        img.src = ev.target.result;
-      };
-      reader.readAsDataURL(file);
+      if (!file) return;
+      var preview = document.getElementById('photoPreview');
+      if (preview) {
+        preview.src = URL.createObjectURL(file);
+        var wrap = document.getElementById('photoPreviewWrap');
+        if (wrap) wrap.style.display = 'block';
+      }
     });
   }
 
@@ -677,10 +687,6 @@ function clearInstErrors() {
         return;
       }
 
-      /* 사진 처리 완료 확인 */
-      if (photoProcessing) { alert('사진을 처리 중입니다. 잠시 후 다시 제출해 주세요.'); return; }
-      if (photoInput && photoInput.files.length > 0 && !photoDataInput.value) { alert('사진 변환에 실패했습니다. 사진을 다시 선택해 주세요.'); return; }
-
       /* 최종 확인 */
       if (!confirm('제출하시면 내용을 수정하기 어렵습니다.\n작성하신 내용을 다시 한 번 확인하셨나요? 그대로 제출하시겠습니까?')) return;
 
@@ -705,9 +711,24 @@ function clearInstErrors() {
       var medium = urlP.get('utm_medium') || sessionStorage.getItem('utm_medium') || 'free';
       var fd     = new FormData(form);
 
-      /* ── 이미지 업로드 처리 (Google Drive 직접 전송) ── */
-      var photoDataVal = fd.get('photoData') || '';
-      // Supabase Storage 관련 에러를 피하기 위해 스토리지 업로드는 생략하고 원본 base64 데이터를 그대로 GAS로 전송합니다.
+      /* ── Supabase Storage 사진 업로드 ── */
+      var photoUrl = '';
+      var photoFile = photoInput ? photoInput.files[0] : null;
+      if (photoFile) {
+        var compressedBlob = await compressImageToBlob(photoFile);
+        if (compressedBlob) {
+          var fileName = currentUser.id + '.jpg';
+          var { error: uploadErr } = await sb.storage
+            .from('profile-photos')
+            .upload(fileName, compressedBlob, { contentType: 'image/jpeg', upsert: true });
+          if (!uploadErr) {
+            var { data: { publicUrl } } = sb.storage.from('profile-photos').getPublicUrl(fileName);
+            photoUrl = publicUrl;
+          } else {
+            console.error('Photo upload error:', uploadErr.message);
+          }
+        }
+      }
 
       var payload = {
         ref_number:        ref,
@@ -731,7 +752,7 @@ function clearInstErrors() {
         email:             fd.get('email')          || '',
         address_city:      fd.get('addressCity')    || '',
         address_district:  fd.get('addressDistrict') || '',
-        photo_data:        photoDataVal ? "Google Drive 사용 예정" : "", 
+        photo_data:        photoUrl,
         school_name:       fd.get('schoolName')     || '',
         career:            fd.get('career')         || '',
         awards:            fd.get('awards')         || '',
@@ -763,7 +784,7 @@ function clearInstErrors() {
         email:            payload.email,
         addressCity:      payload.address_city,
         addressDistrict:  payload.address_district,
-        photoData:        photoDataVal,
+        photoData:        photoUrl,
         schoolName:       payload.school_name,
         career:           payload.career,
         awards:           payload.awards,
