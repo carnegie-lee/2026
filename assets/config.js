@@ -1,1 +1,1 @@
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbzh2eZ2jWBhk7z4zvuM0npJZadPz_qxQsT_6lIKUg9ixa1Sh878Q_BbjBNaxJyEWM5o/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbz7gsXxSxKenW7hiXL_E1XWfy64_7GhHrHc3mM9PnHdrAqq_oFr3Kme7Z6FoJNVvaql/exec';
