@@ -28,6 +28,13 @@
  *  · 메일 본문은 APPROVAL_EMAIL_TEMPLATE() 함수에서 수정
  */
 
+function testDrivePermission() {
+  // 구글이 드라이브 권한을 강제로 묻게 만들기 위한 테스트 함수입니다.
+  DriveApp.getRootFolder();
+  MailApp.getRemainingDailyQuota();
+  Logger.log("드라이브 및 이메일 권한이 정상적으로 허용되었습니다!");
+}
+
 function doPost(e) {
   var output = ContentService.createTextOutput();
   output.setMimeType(ContentService.MimeType.TEXT);
