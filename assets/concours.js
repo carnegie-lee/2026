@@ -73,6 +73,18 @@ function dbToFormFields(d) {
 }
 
 /* ══════════════════════════════════════════════
+   Base64 Data URL → Blob 변환 헬퍼 (Storage 업로드용)
+   ══════════════════════════════════════════════ */
+function dataURLtoBlob(dataurl) {
+  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr], {type:mime});
+}
+
+/* ══════════════════════════════════════════════
    주소 데이터
    ══════════════════════════════════════════════ */
 var KOREA_ADDRESS = {
@@ -664,6 +676,46 @@ function clearInstErrors() {
       var medium = urlP.get('utm_medium') || sessionStorage.getItem('utm_medium') || 'free';
       var fd     = new FormData(form);
 
+      /* ── 이미지 업로드 처리 (Supabase Storage) ── */
+      var photoDataVal = fd.get('photoData') || '';
+      var photoUrl = '';
+
+      if (photoDataVal && photoDataVal.startsWith('data:image')) {
+        try {
+          var blob = dataURLtoBlob(photoDataVal);
+          var fileExt = 'jpg';
+          var fileName = currentUser.id + '/' + ref + '.' + fileExt;
+
+          // Supabase Storage에 업로드 (버킷 이름: profile-photos)
+          var { data: uploadData, error: uploadError } = await sb.storage
+            .from('profile-photos')
+            .upload(fileName, blob, {
+              contentType: 'image/jpeg',
+              upsert: true
+            });
+
+          if (uploadError) {
+            console.error('Storage Upload Error:', uploadError);
+            alert('사진 업로드 중 오류가 발생했습니다: ' + uploadError.message);
+            submitBtn.disabled = false;
+            submitBtn.style.setProperty('opacity', '1', 'important');
+            submitBtn.textContent = origText;
+            return;
+          }
+
+          // 퍼블릭 URL 가져오기
+          var { data: urlData } = sb.storage.from('profile-photos').getPublicUrl(fileName);
+          photoUrl = urlData.publicUrl;
+        } catch (uploadErr) {
+          console.error(uploadErr);
+          alert('사진 처리 중 예상치 못한 오류가 발생했습니다.');
+          submitBtn.disabled = false;
+          submitBtn.style.setProperty('opacity', '1', 'important');
+          submitBtn.textContent = origText;
+          return;
+        }
+      }
+
       var payload = {
         ref_number:        ref,
         form_type:         'concours',
@@ -686,7 +738,7 @@ function clearInstErrors() {
         email:             fd.get('email')          || '',
         address_city:      fd.get('addressCity')    || '',
         address_district:  fd.get('addressDistrict') || '',
-        photo_data:        fd.get('photoData')      || '',
+        photo_data:        photoUrl,
         school_name:       fd.get('schoolName')     || '',
         career:            fd.get('career')         || '',
         awards:            fd.get('awards')         || '',
