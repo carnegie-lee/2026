@@ -416,7 +416,7 @@ function saveBase64ImageToDrive(base64Str, refNumber, folder) {
 
     // 시트 셀에서 바로 썸네일이 보이도록 IMAGE() 수식으로 반환 (100x100)
     var fileId = file.getId();
-    return '=IMAGE("https://drive.google.com/thumbnail?id=' + fileId + '&sz=w200", 4, 100, 100)';
+    return '=IMAGE("https://lh3.googleusercontent.com/d/' + fileId + '", 4, 100, 100)';
   } catch (err) {
     return "파일 저장 오류: " + err.toString();
   }
