@@ -19,8 +19,8 @@ var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 /* ══════════════════════════════════════════════
    날짜 상수
    ══════════════════════════════════════════════ */
-var DOC_DEADLINE = new Date('2026-06-05T18:00:00+09:00');
-var VID_OPEN     = new Date('2026-06-05T18:02:00+09:00');
+var DOC_DEADLINE = new Date('2026-06-08T18:00:00+09:00');
+var VID_OPEN     = new Date('2026-06-08T18:02:00+09:00');
 var VID_DEADLINE = new Date('2026-06-26T18:00:00+09:00');
 
 /* ══════════════════════════════════════════════
