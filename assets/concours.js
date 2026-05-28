@@ -676,39 +676,9 @@ function clearInstErrors() {
       var medium = urlP.get('utm_medium') || sessionStorage.getItem('utm_medium') || 'free';
       var fd     = new FormData(form);
 
-      /* ── 이미지 업로드 처리 (Supabase Storage) ── */
+      /* ── 이미지 업로드 처리 (Google Drive 직접 전송) ── */
       var photoDataVal = fd.get('photoData') || '';
-      var photoUrl = ''; // Supabase URL
-
-      if (photoDataVal && photoDataVal.startsWith('data:image')) {
-        try {
-          var blob = dataURLtoBlob(photoDataVal);
-          var fileExt = 'jpg';
-          var fileName = currentUser.id + '/' + ref + '.' + fileExt;
-
-          // Supabase Storage에 업로드 (실패하더라도 GAS 제출을 위해 막지 않음)
-          var { data: uploadData, error: uploadError } = await sb.storage
-            .from('profile-photos')
-            .upload(fileName, blob, {
-              contentType: 'image/jpeg',
-              upsert: true
-            });
-
-          if (!uploadError) {
-            var { data: urlData } = sb.storage.from('profile-photos').getPublicUrl(fileName);
-            photoUrl = urlData.publicUrl;
-          } else {
-            console.error('Storage Upload Error:', uploadError);
-            alert('Supabase 저장소 권한 오류입니다. 대시보드에서 Storage RLS 정책(profile-photos)을 허용해주세요.');
-            submitBtn.disabled = false;
-            submitBtn.style.setProperty('opacity', '1', 'important');
-            submitBtn.textContent = origText;
-            return;
-          }
-        } catch (uploadErr) {
-          console.warn('Supabase Storage error (ignored):', uploadErr);
-        }
-      }
+      // Supabase Storage 관련 에러를 피하기 위해 스토리지 업로드는 생략하고 원본 base64 데이터를 그대로 GAS로 전송합니다.
 
       var payload = {
         ref_number:        ref,
@@ -732,7 +702,7 @@ function clearInstErrors() {
         email:             fd.get('email')          || '',
         address_city:      fd.get('addressCity')    || '',
         address_district:  fd.get('addressDistrict') || '',
-        photo_data:        photoUrl, // Supabase DB에는 URL (성공시) 또는 빈문자열
+        photo_data:        photoDataVal ? "Google Drive 사용 예정" : "", 
         school_name:       fd.get('schoolName')     || '',
         career:            fd.get('career')         || '',
         awards:            fd.get('awards')         || '',
@@ -773,7 +743,7 @@ function clearInstErrors() {
         email:            payload.email,
         addressCity:      payload.address_city,
         addressDistrict:  payload.address_district,
-        photoData:        photoUrl, // Supabase URL 전송 (구글 드라이브 거치지 않음)
+        photoData:        photoDataVal, // GAS용: 무조건 base64 원본 전송
         schoolName:       payload.school_name,
         career:           payload.career,
         awards:           payload.awards,
