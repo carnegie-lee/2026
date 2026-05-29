@@ -143,7 +143,7 @@ function initAddressDropdowns() {
     citySelect.appendChild(opt);
   });
   citySelect.addEventListener('change', function () {
-    distSelect.innerHTML = '<option value="">— 구·군 선택 —</option>';
+    distSelect.innerHTML = '<option value="">— 시·군·구 선택 —</option>';
     (KOREA_ADDRESS[this.value] || []).forEach(function (dist) {
       var opt = document.createElement('option');
       opt.value = dist; opt.textContent = dist;
