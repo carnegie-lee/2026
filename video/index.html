@@ -95,6 +95,7 @@
   margin:-12px 0 20px !important;
 }
 .clf-vid .clf-fg { display:grid !important; grid-template-columns:1fr 1fr !important; gap:18px 20px !important; }
+.clf-vid .clf-fg-3 { display:grid !important; grid-template-columns:1fr 1fr 1fr !important; gap:18px 20px !important; }
 .clf-vid .clf-field { display:flex !important; flex-direction:column !important; gap:8px !important; }
 .clf-vid .clf-field.clf-full { grid-column:1 / -1 !important; }
 .clf-vid .clf-field-label {
@@ -320,7 +321,7 @@
 [data-vid-anim].vid-visible{opacity:1!important;transform:translateY(0)!important}
 
 @media(max-width:960px){
-  .clf-vid .clf-fg{grid-template-columns:1fr!important}
+  .clf-vid .clf-fg, .clf-vid .clf-fg-3{grid-template-columns:1fr!important}
   .clf-vid .clf-submit{padding:16px 32px!important;width:100%!important;letter-spacing:.2em!important;}
 }
 @media(max-width:600px){
@@ -430,7 +431,7 @@
           </div>
           <p class="clf-form-block-desc">참가 신청서에 기재하신 정보와 동일하게 입력해 주세요.</p>
 
-          <div class="clf-fg">
+          <div class="clf-fg-3">
             <div class="clf-field">
               <div class="clf-field-label">성명 <span class="clf-req">*</span></div>
               <input class="clf-input" type="text" id="vidName" name="nameKo" placeholder="홍길동" required>
@@ -442,11 +443,6 @@
             <div class="clf-field">
               <div class="clf-field-label">휴대전화 <span class="clf-req">*</span></div>
               <input class="clf-input" type="tel" id="vidPhone" name="phone" placeholder="010-0000-0000" required>
-            </div>
-            <div class="clf-field">
-              <div class="clf-field-label">접수번호</div>
-              <input class="clf-input" type="text" id="vidRefNumber" name="appRefNumber" placeholder="예) CLF-2026-123456 (선택)">
-              <div class="clf-field-help">참가 신청 시 받으신 접수번호를 입력하시면 매칭이 빠릅니다.</div>
             </div>
           </div>
         </div>
