@@ -316,6 +316,30 @@
 }
 .clf-vid .clf-modal-wide .clf-modal-secondary:hover { border-color:#0C3D40 !important; color:#0C3D40 !important; }
 
+/* ── 로그인 / 유저 정보 카드 ── */
+.clf-vid .clf-user-card {
+  background:#EAF3F3 !important; border-radius:12px !important;
+  padding:16px 20px !important; display:flex !important;
+  align-items:center !important; justify-content:space-between !important;
+  flex-wrap:wrap !important; gap:12px !important;
+}
+.clf-vid .clf-user-card-info { font-size:14px !important; color:#0C3D40 !important; line-height:1.7 !important; }
+.clf-vid .clf-user-card-info strong { font-weight:700 !important; }
+.clf-vid .clf-logout-btn {
+  background:transparent !important; border:1px solid #0C3D40 !important;
+  color:#0C3D40 !important; padding:7px 18px !important; border-radius:20px !important;
+  font-family:inherit !important; font-size:12.5px !important; font-weight:700 !important;
+  cursor:pointer !important; transition:all .2s !important; white-space:nowrap !important;
+}
+.clf-vid .clf-logout-btn:hover { background:#0C3D40 !important; color:#fff !important; }
+.clf-vid .clf-login-error { color:#B54E3A !important; font-size:13px !important; font-weight:600 !important; margin-top:10px !important; display:none !important; }
+.clf-vid .clf-login-error.clf-show { display:block !important; }
+.clf-vid .clf-already-submitted {
+  background:#F0FBF0 !important; border-radius:12px !important;
+  border-left:3px solid #4CAF50 !important; padding:20px 24px !important;
+  font-size:14px !important; color:#2E7D32 !important; line-height:1.8 !important;
+}
+
 /* ── 애니메이션 ── */
 [data-vid-anim]{opacity:0!important;transform:translateY(22px)!important;transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)!important}
 [data-vid-anim].vid-visible{opacity:1!important;transform:translateY(0)!important}
@@ -419,33 +443,56 @@
         </div>
       </div>
 
-      <!-- 제출 폼 -->
-      <form id="clf-videoForm" novalidate>
+      <!-- 로그인 블록 -->
+      <div id="vid-loginBlock" class="clf-form-block" data-vid-anim>
+        <div class="clf-detail-label">
+          <span class="clf-detail-label-en">Login</span>
+          <span class="clf-detail-label-ko">로그인</span>
+          <span class="clf-detail-label-divider"></span>
+        </div>
+        <p class="clf-form-block-desc">서류 제출 시 등록한 이메일과 비밀번호로 로그인해 주세요.</p>
+        <div class="clf-fg">
+          <div class="clf-field">
+            <div class="clf-field-label">이메일</div>
+            <input class="clf-input" type="email" id="vid-loginEmail" placeholder="name@example.com" autocomplete="email">
+          </div>
+          <div class="clf-field">
+            <div class="clf-field-label">비밀번호</div>
+            <input class="clf-input" type="password" id="vid-loginPw" placeholder="비밀번호" autocomplete="current-password">
+          </div>
+        </div>
+        <div id="vid-loginError" class="clf-login-error"></div>
+        <div style="margin-top:20px !important;">
+          <button type="button" id="vid-loginBtn" class="clf-submit" style="padding:14px 56px !important;">로 그 인</button>
+        </div>
+      </div>
 
-        <!-- 본인 확인 -->
+      <!-- 로그인 후 유저 정보 + 제출 폼 -->
+      <div id="vid-loggedInBlock" style="display:none !important;">
+
+        <!-- 유저 정보 카드 -->
         <div class="clf-form-block" data-vid-anim>
           <div class="clf-detail-label">
             <span class="clf-detail-label-en">Identification</span>
-            <span class="clf-detail-label-ko">참가자 본인 확인</span>
+            <span class="clf-detail-label-ko">참가자 확인</span>
             <span class="clf-detail-label-divider"></span>
           </div>
-          <p class="clf-form-block-desc">참가 신청서에 기재하신 정보와 동일하게 입력해 주세요.</p>
-
-          <div class="clf-fg-3">
-            <div class="clf-field">
-              <div class="clf-field-label">성명 <span class="clf-req">*</span></div>
-              <input class="clf-input" type="text" id="vidName" name="nameKo" placeholder="홍길동" required>
-            </div>
-            <div class="clf-field">
-              <div class="clf-field-label">이메일 <span class="clf-req">*</span></div>
-              <input class="clf-input" type="email" id="vidEmail" name="email" placeholder="name@example.com" required>
-            </div>
-            <div class="clf-field">
-              <div class="clf-field-label">휴대전화 <span class="clf-req">*</span></div>
-              <input class="clf-input" type="tel" id="vidPhone" name="phone" placeholder="010-0000-0000" required>
-            </div>
+          <div class="clf-user-card">
+            <div class="clf-user-card-info" id="vid-userInfo">—</div>
+            <button type="button" id="vid-logoutBtn" class="clf-logout-btn">로그아웃</button>
           </div>
         </div>
+
+        <!-- 이미 제출한 경우 -->
+        <div id="vid-alreadySubmitted" class="clf-form-block" style="display:none !important;">
+          <div class="clf-already-submitted">
+            ✓ 영상이 이미 제출되었습니다.<br>
+            <span id="vid-submittedLink" style="word-break:break-all !important;"></span>
+          </div>
+        </div>
+
+      <!-- 제출 폼 -->
+      <form id="clf-videoForm" novalidate>
 
         <!-- 영상 링크 -->
         <div class="clf-form-block" data-vid-anim>
@@ -492,6 +539,8 @@
         </div>
       </form>
 
+      </div><!-- /vid-loggedInBlock -->
+
     </div>
   </div>
 
@@ -501,7 +550,7 @@
       <h3>Video Submitted</h3>
       <div class="clf-modal-title">영상이 정상 제출되었습니다</div>
       <p>입력하신 이메일로 접수 확인 메일이 발송됩니다.<br>심사 결과는 추후 개별 통지됩니다.</p>
-      <div class="clf-modal-ref" id="vidRefDisplay">VID-2026-000000</div>
+      <div class="clf-modal-ref" id="vidRefDisplay"></div>
       <button type="button" class="clf-modal-close" id="vidModalClose">확 인</button>
     </div>
   </div>
@@ -539,120 +588,196 @@ var SUPABASE_URL = 'https://qldtlzqlsssfdmkxoirn.supabase.co';
 var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsZHRsenFsc3NzZmRta3hvaXJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2MTk1MTYsImV4cCI6MjA5NTE5NTUxNn0.3uBMsRnrnwPH9Nn-6pDTnXjzLjmPA7K3mkNic0iynLE';
 var sb2 = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+/* 스크롤 인 애니메이션 */
 (function(){
-  /* 스크롤 인 애니메이션 */
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vid-visible'); });
   }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
   document.querySelectorAll('[data-vid-anim]').forEach(function(el){ obs.observe(el); });
+})();
 
-  /* 전화번호 포맷 */
-  document.getElementById('vidPhone').addEventListener('input', function(e){
-    var v = e.target.value.replace(/\D/g, '');
-    if (v.length > 11) v = v.slice(0, 11);
-    if (v.length >= 8) e.target.value = v.replace(/(\d{3})(\d{4})(\d{1,4})/, '$1-$2-$3');
-    else if (v.length >= 4) e.target.value = v.replace(/(\d{3})(\d{1,4})/, '$1-$2');
-    else e.target.value = v;
+/* ── 로그인/로그아웃 UI 전환 ── */
+function showLoginBlock() {
+  document.getElementById('vid-loginBlock').style.setProperty('display', 'block', 'important');
+  document.getElementById('vid-loggedInBlock').style.setProperty('display', 'none', 'important');
+}
+
+function showLoggedInBlock(appData) {
+  document.getElementById('vid-loginBlock').style.setProperty('display', 'none', 'important');
+  document.getElementById('vid-loggedInBlock').style.setProperty('display', 'block', 'important');
+
+  var info = document.getElementById('vid-userInfo');
+  if (info) {
+    info.innerHTML =
+      '<strong>' + (appData.name_ko || '—') + '</strong>' +
+      ' &nbsp;·&nbsp; ' + (appData.email || '—') +
+      ' &nbsp;·&nbsp; 접수번호 ' + (appData.ref_number || '—');
+  }
+
+  /* 이미 제출한 경우 */
+  var alreadyEl = document.getElementById('vid-alreadySubmitted');
+  var formEl    = document.getElementById('clf-videoForm');
+  if (appData.video_link) {
+    if (alreadyEl) {
+      alreadyEl.style.setProperty('display', 'block', 'important');
+      var linkEl = document.getElementById('vid-submittedLink');
+      if (linkEl) linkEl.innerHTML = '제출된 링크: <a href="' + appData.video_link + '" target="_blank" rel="noopener" style="color:#0C3D40 !important;word-break:break-all !important;">' + appData.video_link + '</a>';
+    }
+    if (formEl) formEl.style.setProperty('display', 'none', 'important');
+  } else {
+    if (alreadyEl) alreadyEl.style.setProperty('display', 'none', 'important');
+    if (formEl)    formEl.style.setProperty('display', 'block', 'important');
+  }
+}
+
+/* ── 페이지 로드 시 세션 확인 ── */
+(async function init() {
+  var { data: { session } } = await sb2.auth.getSession();
+  if (!session) { showLoginBlock(); return; }
+
+  var { data: appData } = await sb2
+    .from('concours_applications')
+    .select('name_ko, email, ref_number, video_link')
+    .eq('user_id', session.user.id)
+    .maybeSingle();
+
+  if (!appData) {
+    showLoginBlock();
+    var errEl = document.getElementById('vid-loginError');
+    if (errEl) { errEl.textContent = '서류 제출 내역이 없습니다. 서류를 먼저 제출해 주세요.'; errEl.classList.add('clf-show'); }
+    await sb2.auth.signOut();
+    return;
+  }
+  showLoggedInBlock(appData);
+})();
+
+/* ── 로그인 버튼 ── */
+document.getElementById('vid-loginBtn').addEventListener('click', async function() {
+  var email = (document.getElementById('vid-loginEmail').value || '').trim();
+  var pw    = (document.getElementById('vid-loginPw').value    || '').trim();
+  var errEl = document.getElementById('vid-loginError');
+  errEl.classList.remove('clf-show');
+
+  if (!email || !pw) { errEl.textContent = '이메일과 비밀번호를 입력해 주세요.'; errEl.classList.add('clf-show'); return; }
+
+  var btn = this;
+  btn.disabled = true; btn.textContent = '로그인 중...';
+
+  var { data: { session }, error } = await sb2.auth.signInWithPassword({ email: email, password: pw });
+
+  if (error || !session) {
+    errEl.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.';
+    errEl.classList.add('clf-show');
+    btn.disabled = false; btn.textContent = '로 그 인';
+    return;
+  }
+
+  var { data: appData } = await sb2
+    .from('concours_applications')
+    .select('name_ko, email, ref_number, video_link')
+    .eq('user_id', session.user.id)
+    .maybeSingle();
+
+  if (!appData) {
+    errEl.textContent = '서류 제출 내역이 없습니다. 서류를 먼저 제출해 주세요.';
+    errEl.classList.add('clf-show');
+    btn.disabled = false; btn.textContent = '로 그 인';
+    await sb2.auth.signOut();
+    return;
+  }
+
+  showLoggedInBlock(appData);
+});
+
+/* 엔터키 로그인 */
+document.getElementById('vid-loginPw').addEventListener('keydown', function(e){
+  if (e.key === 'Enter') document.getElementById('vid-loginBtn').click();
+});
+
+/* ── 로그아웃 ── */
+document.getElementById('vid-logoutBtn').addEventListener('click', async function() {
+  await sb2.auth.signOut();
+  showLoginBlock();
+  document.getElementById('vid-loginEmail').value = '';
+  document.getElementById('vid-loginPw').value = '';
+});
+
+/* ── 영상 폼 제출 ── */
+document.getElementById('clf-videoForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var form = e.target;
+
+  form.querySelectorAll('.clf-error-msg').forEach(function(el){ el.remove(); });
+  form.querySelectorAll('.clf-input-error').forEach(function(el){ el.classList.remove('clf-input-error'); });
+
+  var isValid = true, firstInvalid = null;
+  form.querySelectorAll('[required]').forEach(function(input){
+    var ok = true, msg = '필수 항목입니다. 작성해 주세요.';
+    if (!input.value.trim()) { ok = false; }
+    else if (!input.validity.valid) { ok = false; msg = '올바른 형식으로 입력해 주세요.'; }
+    if (!ok) {
+      isValid = false;
+      input.classList.add('clf-input-error');
+      var err = document.createElement('div');
+      err.className = 'clf-error-msg'; err.textContent = msg;
+      input.parentNode.insertBefore(err, input.nextSibling);
+      if (!firstInvalid) firstInvalid = input;
+    }
   });
+  if (!isValid) { if (firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth', block:'center'}); return; }
 
-  document.getElementById('clf-videoForm').addEventListener('submit', async function(e){
-    e.preventDefault();
-    var form = e.target;
+  var { data: { session } } = await sb2.auth.getSession();
+  if (!session) { alert('로그인이 필요합니다.'); showLoginBlock(); return; }
 
-    form.querySelectorAll('.clf-error-msg').forEach(function(el){ el.remove(); });
-    form.querySelectorAll('.clf-input-error').forEach(function(el){ el.classList.remove('clf-input-error'); });
+  var submitBtn = form.querySelector('.clf-submit');
+  var origText  = submitBtn.textContent;
+  submitBtn.disabled = true; submitBtn.style.setProperty('opacity', '.6', 'important'); submitBtn.textContent = '제출 중...';
 
-    var isValid = true;
-    var firstInvalid = null;
+  var fd        = new FormData(form);
+  var videoLink = (fd.get('videoLink') || '').trim();
+  var composer  = (fd.get('vComposer') || '').trim();
+  var piece     = (fd.get('vPiece')    || '').trim();
+  var now       = new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'});
 
-    form.querySelectorAll('[required]').forEach(function(input){
-      var ok = true;
-      var msg = '필수 항목입니다. 작성해 주세요.';
-      if (!input.value.trim()) { ok = false; }
-      else if (!input.validity.valid) { ok = false; msg = '올바른 형식으로 입력해 주세요.'; }
-      if (!ok) {
-        isValid = false;
-        input.classList.add('clf-input-error');
-        var err = document.createElement('div');
-        err.className = 'clf-error-msg';
-        err.textContent = msg;
-        input.parentNode.insertBefore(err, input.nextSibling);
-        if (!firstInvalid) firstInvalid = input;
-      }
-    });
+  /* ── GAS 백업 ── */
+  if (GAS_URL && GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') !== 0) {
+    fetch(GAS_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ formType:'video', submittedAt:now, email:session.user.email, videoLink:videoLink, vComposer:composer, vPiece:piece })
+    }).catch(function(err){ console.error('GAS error', err); });
+  }
 
-    if (!isValid) {
-      if (firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
-      return;
-    }
+  /* ── Supabase UPDATE ── */
+  var { error } = await sb2.from('concours_applications').update({
+    video_link:         videoLink,
+    video_composer:     composer,
+    video_piece:        piece,
+    video_submitted_at: now,
+    updated_at:         new Date().toISOString()
+  }).eq('user_id', session.user.id);
 
-    var submitBtn = form.querySelector('.clf-submit');
-    var originalText = submitBtn.textContent;
-    var ref = 'VID2-2026-' + Math.floor(100000 + Math.random() * 900000);
-    var now = new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'});
+  if (error) {
+    console.error('Supabase error:', error.message);
+    alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    submitBtn.disabled = false; submitBtn.style.setProperty('opacity','1','important'); submitBtn.textContent = origText;
+    return;
+  }
 
-    var fd = new FormData(form);
-    var nameKo    = fd.get('nameKo')     || '';
-    var email     = fd.get('email')      || '';
-    var phone     = fd.get('phone')      || '';
-    var refNum    = fd.get('appRefNumber') || '';
-    var videoLink = fd.get('videoLink')  || '';
-    var composer  = fd.get('vComposer')  || '';
-    var piece     = fd.get('vPiece')     || '';
+  document.getElementById('vidRefDisplay').textContent = session.user.email;
+  document.getElementById('vidSuccessModal').classList.add('clf-show');
+});
 
-    submitBtn.disabled = true;
-    submitBtn.style.setProperty('opacity', '.6', 'important');
-    submitBtn.textContent = '제출 중...';
+document.getElementById('vidModalClose').addEventListener('click', function(){ window.location.reload(); });
 
-    /* ── GAS 호출 (독립적으로 먼저 발사) ── */
-    if (GAS_URL && GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') !== 0) {
-      fetch(GAS_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          videoRef: ref, formType: 'video2', submittedAt: now,
-          nameKo: nameKo, email: email, phone: phone,
-          appRefNumber: refNum, videoLink: videoLink,
-          vComposer: composer, vPiece: piece
-        })
-      }).catch(function(err){ console.error('GAS error', err); });
-    }
-
-    /* ── Supabase 저장 ── */
-    var { error } = await sb2.from('concours_video2_submissions').insert({
-      ref_number:    refNum,
-      name_ko:       nameKo,
-      email:         email,
-      phone:         phone,
-      video_link:    videoLink,
-      video_composer: composer,
-      video_piece:   piece,
-      submitted_at:  now
-    });
-
-    if (error) {
-      console.error('Supabase error:', error.message);
-      alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 운영사무국으로 문의해 주세요.');
-      submitBtn.disabled = false;
-      submitBtn.style.setProperty('opacity', '1', 'important');
-      submitBtn.textContent = originalText;
-      return;
-    }
-
-    document.getElementById('vidRefDisplay').textContent = ref;
-    document.getElementById('vidSuccessModal').classList.add('clf-show');
-  });
-
-  document.getElementById('vidModalClose').addEventListener('click', function(){ window.location.reload(); });
-
-  /* 업로드 방법 모달 */
-  var howToBtn = document.getElementById('clf-howToUploadBtn2');
+/* ── 업로드 방법 모달 ── */
+(function(){
+  var howToBtn   = document.getElementById('clf-howToUploadBtn2');
   var howToModal = document.getElementById('howToUploadModal2');
   var howToClose = document.getElementById('howToUploadClose2');
   function openH(){ howToModal.classList.add('clf-show'); document.body.style.overflow='hidden'; }
   function closeH(){ howToModal.classList.remove('clf-show'); document.body.style.overflow=''; }
-  if(howToBtn) howToBtn.addEventListener('click', openH);
+  if(howToBtn)   howToBtn.addEventListener('click', openH);
   if(howToClose) howToClose.addEventListener('click', closeH);
   if(howToModal) howToModal.addEventListener('click', function(e){ if(e.target===howToModal) closeH(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && howToModal.classList.contains('clf-show')) closeH(); });
