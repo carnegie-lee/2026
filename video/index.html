@@ -532,8 +532,13 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="../assets/config.js"></script>
 <script>
+var SUPABASE_URL = 'https://qldtlzqlsssfdmkxoirn.supabase.co';
+var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsZHRsenFsc3NzZmRta3hvaXJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2MTk1MTYsImV4cCI6MjA5NTE5NTUxNn0.3uBMsRnrnwPH9Nn-6pDTnXjzLjmPA7K3mkNic0iynLE';
+var sb2 = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 (function(){
   /* 스크롤 인 애니메이션 */
   var obs = new IntersectionObserver(function(entries){
@@ -550,9 +555,7 @@
     else e.target.value = v;
   });
 
-  /* GAS_URL은 assets/config.js에서 전역 정의 */
-
-  document.getElementById('clf-videoForm').addEventListener('submit', function(e){
+  document.getElementById('clf-videoForm').addEventListener('submit', async function(e){
     e.preventDefault();
     var form = e.target;
 
@@ -585,44 +588,60 @@
 
     var submitBtn = form.querySelector('.clf-submit');
     var originalText = submitBtn.textContent;
-    var ref = 'VID-2026-' + Math.floor(100000 + Math.random() * 900000);
+    var ref = 'VID2-2026-' + Math.floor(100000 + Math.random() * 900000);
+    var now = new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'});
 
     var fd = new FormData(form);
-    var payload = {
-      videoRef: ref,
-      formType: 'video',
-      submittedAt: new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'})
-    };
-    fd.forEach(function(value, key){ payload[key] = value; });
-
-    if (!GAS_URL || GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') === 0) {
-      document.getElementById('vidRefDisplay').textContent = ref;
-      document.getElementById('vidSuccessModal').classList.add('clf-show');
-      return;
-    }
+    var nameKo    = fd.get('nameKo')     || '';
+    var email     = fd.get('email')      || '';
+    var phone     = fd.get('phone')      || '';
+    var refNum    = fd.get('appRefNumber') || '';
+    var videoLink = fd.get('videoLink')  || '';
+    var composer  = fd.get('vComposer')  || '';
+    var piece     = fd.get('vPiece')     || '';
 
     submitBtn.disabled = true;
     submitBtn.style.setProperty('opacity', '.6', 'important');
     submitBtn.textContent = '제출 중...';
 
-    fetch(GAS_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload)
-    })
-    .then(function(){
-      document.getElementById('vidRefDisplay').textContent = ref;
-      document.getElementById('vidSuccessModal').classList.add('clf-show');
-    })
-    .catch(function(){
+    /* ── GAS 호출 (독립적으로 먼저 발사) ── */
+    if (GAS_URL && GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') !== 0) {
+      fetch(GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          videoRef: ref, formType: 'video2', submittedAt: now,
+          nameKo: nameKo, email: email, phone: phone,
+          appRefNumber: refNum, videoLink: videoLink,
+          vComposer: composer, vPiece: piece
+        })
+      }).catch(function(err){ console.error('GAS error', err); });
+    }
+
+    /* ── Supabase 저장 ── */
+    var { error } = await sb2.from('concours_video2_submissions').insert({
+      ref_number:    refNum,
+      name_ko:       nameKo,
+      email:         email,
+      phone:         phone,
+      video_link:    videoLink,
+      video_composer: composer,
+      video_piece:   piece,
+      submitted_at:  now
+    });
+
+    if (error) {
+      console.error('Supabase error:', error.message);
       alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 운영사무국으로 문의해 주세요.');
-    })
-    .finally(function(){
       submitBtn.disabled = false;
       submitBtn.style.setProperty('opacity', '1', 'important');
       submitBtn.textContent = originalText;
-    });
+      return;
+    }
+
+    document.getElementById('vidRefDisplay').textContent = ref;
+    document.getElementById('vidSuccessModal').classList.add('clf-show');
   });
 
   document.getElementById('vidModalClose').addEventListener('click', function(){ window.location.reload(); });

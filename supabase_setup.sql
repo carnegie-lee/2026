@@ -10,6 +10,7 @@
 -- ============================================================
 
 -- 기존 테이블 초기화 (재실행 시)
+DROP TABLE IF EXISTS concours_video2_submissions;
 DROP TABLE IF EXISTS concours_video_submissions;
 DROP TABLE IF EXISTS concours_applications;
 
@@ -85,6 +86,40 @@ CREATE POLICY "app_insert_own" ON concours_applications
 
 CREATE POLICY "app_update_own" ON concours_applications
   FOR UPDATE USING (auth.uid() = user_id);
+
+
+-- ════════════════════════════════════════════
+--  2차 영상 제출 테이블 (로그인 불필요, 본선 진출자용)
+-- ════════════════════════════════════════════
+CREATE TABLE concours_video2_submissions (
+  id               UUID        DEFAULT gen_random_uuid() PRIMARY KEY,
+
+  -- 본인 확인
+  ref_number       TEXT,
+  name_ko          TEXT        NOT NULL,
+  email            TEXT        NOT NULL,
+  phone            TEXT,
+
+  -- 영상 정보
+  video_link       TEXT        NOT NULL,
+  video_composer   TEXT        NOT NULL,
+  video_piece      TEXT        NOT NULL,
+
+  submitted_at     TEXT,
+  created_at       TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Row Level Security
+ALTER TABLE concours_video2_submissions ENABLE ROW LEVEL SECURITY;
+
+-- 누구나 INSERT 가능 (로그인 불필요)
+CREATE POLICY "video2_insert_anon" ON concours_video2_submissions
+  FOR INSERT WITH CHECK (true);
+
+-- 관리자만 SELECT (서비스 롤로만 조회)
+-- 필요 시 아래 주석 해제:
+-- CREATE POLICY "video2_select_admin" ON concours_video2_submissions
+--   FOR SELECT USING (auth.role() = 'service_role');
 
 
 -- ════════════════════════════════════════════
