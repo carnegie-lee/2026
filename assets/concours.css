@@ -2359,45 +2359,60 @@
     left: 0 !important;
     right: 0 !important;
     z-index: 9999 !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06) !important;
+    background: #0C3D40 !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 10px 16px !important;
-    gap: 8px !important;
-    border-bottom: 1px solid #E4E4E4 !important;
+    padding: 12px 20px !important;
+    gap: 10px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
   }
+  
+  /* PC 버전 퀵메뉴 레이아웃 (화면이 넓을 때 우측 정렬 및 고급스러운 여백) */
+  @media (min-width: 768px) {
+    .clf-quick-bar {
+      justify-content: flex-end !important;
+      gap: 16px !important;
+      padding: 16px 40px !important;
+    }
+    .clf-quick-btn {
+      padding: 12px 28px !important;
+      font-size: 14px !important;
+    }
+    .clf-quick-icon {
+      font-size: 18px !important;
+    }
+  }
+
   .clf-quick-btn {
     display: flex !important;
     align-items: center !important;
-    gap: 6px !important;
+    gap: 8px !important;
     text-decoration: none !important;
-    color: #333 !important;
+    color: #0C3D40 !important;
     font-size: 13px !important;
-    font-weight: 600 !important;
-    background: #fff !important;
-    padding: 8px 14px !important;
-    border-radius: 30px !important;
-    border: 1px solid #E4E4E4 !important;
-    transition: all 0.2s !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
+    font-weight: 700 !important;
+    background: #ffffff !important;
+    padding: 10px 18px !important;
+    border-radius: 40px !important;
+    border: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
   }
   .clf-quick-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05) !important;
-    border-color: #0C3D40 !important;
-    color: #0C3D40 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    background: #F8F9FA !important;
   }
   .clf-quick-btn.clf-kakao {
     background: #FEE500 !important;
-    border-color: #FEE500 !important;
     color: #000000 !important;
+    box-shadow: 0 4px 12px rgba(254, 229, 0, 0.2) !important;
   }
   .clf-quick-btn.clf-kakao:hover {
-    border-color: #F4DC00 !important;
+    background: #F4DC00 !important;
+    box-shadow: 0 8px 20px rgba(254, 229, 0, 0.3) !important;
   }
   .clf-quick-icon {
     font-size: 16px !important;
@@ -2415,5 +2430,5 @@
   }
 
   body .clf-dir {
-    padding-top: 56px !important; /* 퀵바 공간 확보 */
+    padding-top: 66px !important; /* 바뀐 퀵바 높이에 맞춰 여백 증가 */
   }
