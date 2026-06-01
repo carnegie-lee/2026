@@ -43,9 +43,10 @@ var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 /* ══════════════════════════════════════════════
    날짜 상수
    ══════════════════════════════════════════════ */
-var DOC_DEADLINE = new Date('2026-06-08T16:00:00+09:00');
-var VID_OPEN     = new Date('2026-06-08T16:02:00+09:00');
-var VID_DEADLINE = new Date('2026-06-26T18:00:00+09:00');
+/* 서류·영상 통합 접수: 2026.06.01 ~ 06.26(금) 16:00 */
+var DOC_DEADLINE = new Date('2026-06-26T16:00:00+09:00');
+var VID_OPEN     = new Date('2026-06-26T16:02:00+09:00');
+var VID_DEADLINE = new Date('2026-06-26T16:00:00+09:00');
 var CONFIRM_REDIRECT = new URL('confirm.html', window.location.href).href;
 
 /* ══════════════════════════════════════════════
@@ -93,6 +94,7 @@ function dbToFormFields(d) {
     addressCity: d.address_city, addressDistrict: d.address_district,
     schoolName: d.school_name, career: d.career,
     awards: d.awards, referral: d.referral, referralEtc: d.referral_etc,
+    videoLink: d.video_link, vComposer: d.video_composer, vPiece: d.video_piece,
     marketingConsent: d.marketing_consent,
   };
 }
@@ -410,6 +412,9 @@ function clearInstErrors() {
       ['학교명·전공',    data.school_name],
       ['활동 경력',      data.career],
       ['수상 내역',      data.awards],
+      ['영상 링크',      data.video_link],
+      ['연주곡 작곡가',  data.video_composer],
+      ['연주곡 곡명',    data.video_piece],
       ['유입 경로',      data.referral],
     ];
     var html = '<div class="clf-submitted-card"><div class="clf-submitted-card-header">' +
@@ -782,6 +787,10 @@ function clearInstErrors() {
         awards:            fd.get('awards')         || '',
         referral:          fd.get('referral')       || '',
         referral_etc:      fd.get('referralEtc')    || '',
+        video_link:        fd.get('videoLink')      || '',
+        video_composer:    fd.get('vComposer')      || '',
+        video_piece:       fd.get('vPiece')         || '',
+        video_submitted_at: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
         marketing_consent: (document.getElementById('agree5') && document.getElementById('agree5').checked) ? 'Y' : 'N',
         is_test:           isTestAccount(currentUser.email),
       };
@@ -814,6 +823,9 @@ function clearInstErrors() {
         awards:           payload.awards,
         referral:         payload.referral,
         referralEtc:      payload.referral_etc,
+        videoLink:        payload.video_link,
+        vComposer:        payload.video_composer,
+        vPiece:           payload.video_piece,
         marketingConsent: payload.marketing_consent
       };
       fetch(GAS_URL, {
