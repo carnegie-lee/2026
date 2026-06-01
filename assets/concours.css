@@ -2351,3 +2351,69 @@
     user-select: none !important;
   }
   .clf-dir .clf-locked-banner b { color: #C9A84C !important; }
+
+  /* ── 퀵 메뉴 (상단 고정) ── */
+  .clf-quick-bar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 16px !important;
+    gap: 8px !important;
+    border-bottom: 1px solid #E4E4E4 !important;
+  }
+  .clf-quick-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    text-decoration: none !important;
+    color: #333 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    background: #fff !important;
+    padding: 8px 14px !important;
+    border-radius: 30px !important;
+    border: 1px solid #E4E4E4 !important;
+    transition: all 0.2s !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
+  }
+  .clf-quick-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05) !important;
+    border-color: #0C3D40 !important;
+    color: #0C3D40 !important;
+  }
+  .clf-quick-btn.clf-kakao {
+    background: #FEE500 !important;
+    border-color: #FEE500 !important;
+    color: #000000 !important;
+  }
+  .clf-quick-btn.clf-kakao:hover {
+    border-color: #F4DC00 !important;
+  }
+  .clf-quick-icon {
+    font-size: 16px !important;
+  }
+  
+  /* 반응형 퀵메뉴 */
+  @media (max-width: 480px) {
+    .clf-quick-btn {
+      padding: 8px 10px !important;
+      font-size: 12px !important;
+    }
+    .clf-quick-icon {
+      font-size: 14px !important;
+    }
+  }
+
+  body .clf-dir {
+    padding-top: 56px !important; /* 퀵바 공간 확보 */
+  }
