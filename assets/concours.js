@@ -9,6 +9,30 @@
   }
 })();
 
+/* ── 유입경로 한글 라벨 (회원가입 알림용) — GAS mapUtmSourceToKo 와 동일 규칙 ── */
+function clfReferralLabel() {
+  var urlP   = new URLSearchParams(window.location.search);
+  var source = urlP.get('utm_source') || sessionStorage.getItem('utm_source') || '';
+  var medium = urlP.get('utm_medium') || sessionStorage.getItem('utm_medium') || '';
+  if (!source) return '자연유입';
+  var src    = source.toLowerCase().trim();
+  var isPaid = (medium.toLowerCase().trim() === 'paid');
+  var prefix = isPaid ? '유-' : '무-';
+  var label;
+  switch (src) {
+    case 'instagram': case 'insta':          label = isPaid ? '인스타' : '개인 인스타'; break;
+    case 'threads':   case 'thread':         label = '스레드'; break;
+    case 'facebook':  case 'fb':             label = '페이스북'; break;
+    case 'youtube':   case 'yt':             label = '유튜브'; break;
+    case 'school':    case 'univ':           label = '학교'; break;
+    case 'prep_academy':  case 'academy_prep':  label = '입시 학원/선생님'; break;
+    case 'adult_academy': case 'academy_adult': label = '성인 학원/선생님'; break;
+    case 'site':      case 'homepage':       label = '사이트'; break;
+    default: label = source;
+  }
+  return prefix + label;
+}
+
 /* ══════════════════════════════════════════════
    Supabase 초기화
    ══════════════════════════════════════════════ */
@@ -531,7 +555,7 @@ function clearInstErrors() {
     if (pw.length < 6) { err.textContent = '비밀번호는 6자 이상이어야 합니다.'; err.classList.add('clf-show'); return; }
     if (pw !== pw2)    { err.textContent = '비밀번호가 일치하지 않습니다.';      err.classList.add('clf-show'); return; }
     panelRegBtn.disabled = true;
-    var { data, error } = await sb.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: CONFIRM_REDIRECT } });
+    var { data, error } = await sb.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: CONFIRM_REDIRECT, data: { referral: clfReferralLabel() } } });
     panelRegBtn.disabled = false;
     if (error) {
       if (error.message.includes('already')) {
@@ -991,7 +1015,7 @@ function clfToggleAcc(btn) {
     if (!agree)        { err.textContent = '이용약관 및 개인정보 수집에 동의해 주세요.'; err.classList.add('clf-show'); return; }
 
     regBtn.disabled = true;
-    var { data, error } = await sb.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: CONFIRM_REDIRECT } });
+    var { data, error } = await sb.auth.signUp({ email: em, password: pw, options: { emailRedirectTo: CONFIRM_REDIRECT, data: { full_name: name, phone: phone, referral: clfReferralLabel() } } });
     regBtn.disabled = false;
 
     if (error) {
