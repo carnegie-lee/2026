@@ -2363,18 +2363,37 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
     padding: 12px 20px !important;
-    gap: 10px !important;
     border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  }
+  .clf-quick-logo {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+  .clf-quick-logo img {
+    height: 34px !important;
+    display: block !important;
+    border-radius: 8px !important;
+    object-fit: contain !important;
+  }
+  .clf-quick-btns {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
   }
   
   /* PC 버전 퀵메뉴 레이아웃 (화면이 넓을 때 우측 정렬 및 고급스러운 여백) */
   @media (min-width: 768px) {
     .clf-quick-bar {
-      justify-content: flex-end !important;
-      gap: 16px !important;
       padding: 16px 40px !important;
+    }
+    .clf-quick-btns {
+      gap: 16px !important;
+    }
+    .clf-quick-logo img {
+      height: 40px !important;
     }
     .clf-quick-btn {
       padding: 12px 28px !important;
