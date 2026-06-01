@@ -28,6 +28,8 @@ function clfReferralLabel() {
     case 'prep_academy':  case 'academy_prep':  label = '입시 학원/선생님'; break;
     case 'adult_academy': case 'academy_adult': label = '성인 학원/선생님'; break;
     case 'site':      case 'homepage':       label = '사이트'; break;
+    case 'kakao':     case 'kakaotalk':      label = '카카오톡'; break;
+    case 'qr':                               label = 'QR'; break;
     default: label = source;
   }
   return prefix + label;
