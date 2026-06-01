@@ -1,0 +1,1511 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "Carnegie LEE Foundation 2026 클래식 콩쿠르",
+    "languages": [
+      "html",
+      "css",
+      "javascript",
+      "sql",
+      "shell",
+      "markdown"
+    ],
+    "frameworks": [
+      "GitHub Pages",
+      "Google Apps Script",
+      "Resend API",
+      "Supabase"
+    ],
+    "description": "카네기 Lee 재단의 제1회 클래식 콩쿠르 공식 참가신청 사이트. GitHub Pages 정적 호스팅, Supabase 백엔드, Google Apps Script 폼 핸들러를 통합하여 참가신청·영상 제출·참가비 안내 이메일 발송을 관리합니다.",
+    "gitCommitHash": "f959a83b0af20dc2ad24422c2e9888a7833fc9c1",
+    "analyzedAt": "2026-06-01T03:41:19Z"
+  },
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "프로젝트 전체 구성, 공개 URL, 페이지 경로, UTM 추적 채널 및 리다이렉트 링크 스키마, 그리고 채널 추가/수정 방법을 문서화합니다.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "utm-tracking",
+        "channel-guide"
+      ],
+      "complexity": "simple",
+      "languageNotes": "UTM 파라미터 매핑 표는 각 광고 채널별 utm_source, utm_medium, utm_campaign 값과 데이터베이스 분류(유료/무료)를 명확히 정의합니다."
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "메인 참가신청 페이지(콩쿠르). 콩쿠르 소개, 일정, 부문, 시상내역을 표시하고, Supabase 인증 통합으로 참가자 가입·로그인·신청서 작성·영상 제출 기능을 제공합니다.",
+      "tags": [
+        "entry-point",
+        "registration-form",
+        "authentication",
+        "video-submission"
+      ],
+      "complexity": "complex",
+      "languageNotes": "890줄의 대규모 마크업 파일로, 조건부 UI 토글(마감 전후), 폼 섹션(계정/부문/정보), 로그인/가입 패널, 마이페이지 영상제출 기능을 포함합니다. assets/concours.css, assets/concours.js, assets/config.js를 로드합니다."
+    },
+    {
+      "id": "file:confirm.html",
+      "type": "file",
+      "name": "confirm.html",
+      "filePath": "confirm.html",
+      "summary": "이메일 인증 완료 확인 페이지. Supabase 이메일 인증 후 사용자가 리다이렉트되는 단순한 성공 안내 페이지입니다.",
+      "tags": [
+        "confirmation-page",
+        "email-verification",
+        "post-auth"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:supabase_setup.sql:concours_applications",
+      "type": "table",
+      "name": "concours_applications",
+      "filePath": "supabase_setup.sql",
+      "lineRange": [
+        20,
+        75
+      ],
+      "summary": "참가신청 통합 테이블. 서류 제출(참가자 정보, 부문, 경력) 및 영상 제출 정보를 단일 row로 저장하며, UUID PK, user_id 외래키, UTM/접수 메타데이터, Row Level Security 정책을 포함합니다.",
+      "tags": [
+        "database",
+        "registration-data",
+        "rls-enabled",
+        "schema-definition"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "ref_number(접수번호), form_type(콩쿠르), utm_* 필드는 광고채널 추적을 가능하게 합니다. video_link, video_submitted_at은 영상 제출 후 UPDATE로 채워집니다. RLS 정책으로 사용자는 자신의 데이터만 조회/수정 가능합니다."
+    },
+    {
+      "id": "file:source/영상제출.html",
+      "type": "file",
+      "name": "영상제출.html",
+      "filePath": "source/영상제출.html",
+      "summary": "2차 영상 제출 폼으로, 참가자가 구글 드라이브 영상 링크와 작곡가, 곡명 정보를 제출하는 독립형 페이지. Imweb 코드 위젯에 통합되며, Google Apps Script 백엔드로 접수 메일을 발송한다.",
+      "tags": [
+        "video-submission",
+        "form",
+        "gsheet-integration",
+        "email-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:source/전시회.html",
+      "type": "file",
+      "name": "전시회.html",
+      "filePath": "source/전시회.html",
+      "summary": "지구 힐링 특별전 신인 아티스트 공모용 신청 폼으로, 이메일 인증 시스템, 마이페이지, 다단계 폼 검증, 영상 제출 UI를 포함한 완전한 신청 플랫폼. Supabase 인증 및 Google Apps Script 폼 제출을 통합한다.",
+      "tags": [
+        "exhibition-form",
+        "authentication",
+        "mypage",
+        "multi-step-form",
+        "supabase"
+      ],
+      "complexity": "complex",
+      "languageNotes": "대규모 HTML 폼으로, 클라이언트 측 인증(Supabase), 로컬 스토리지 기반 마이페이지 렌더링, 다중 모달 UI를 포함한다. 접수번호 생성과 이메일 검증 로직이 내장되어 있다."
+    },
+    {
+      "id": "file:source/콩쿨.html",
+      "type": "file",
+      "name": "콩쿨.html",
+      "filePath": "source/콩쿨.html",
+      "summary": "레거시 URL(/source/콩쿨.html)에서 메인 페이지로 자동 리다이렉트하는 호환성 페이지. UTM 파라미터를 보존하여 마케팅 추적을 유지한다.",
+      "tags": [
+        "redirect",
+        "legacy-url",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:source/합창 (1).html",
+      "type": "file",
+      "name": "합창 (1).html",
+      "filePath": "source/합창 (1).html",
+      "summary": "2026 합창 오디션 참가신청 폼으로, 참가자 정보, 성악곡 선택, 음성 파일 업로드, 이메일 인증, 마이페이지를 포함한 완전한 신청 시스템. Supabase 인증 및 Google Apps Script 폼 처리를 통합한다.",
+      "tags": [
+        "choir-audition-form",
+        "authentication",
+        "file-upload",
+        "email-verification",
+        "supabase"
+      ],
+      "complexity": "complex",
+      "languageNotes": "합창 콩쿠르용 폼으로, 성악곡 선택 및 음성 파일 업로드 기능을 갖춘 대규모 폼이다. 전시회.html과 유사한 구조(인증, 마이페이지, GAS 연동)를 따르나, 파일 업로드 대신 Google Drive 공유 링크 방식을 사용한다."
+    },
+    {
+      "id": "file:.nojekyll",
+      "type": "file",
+      "name": ".nojekyll",
+      "filePath": ".nojekyll",
+      "summary": "GitHub Pages 설정 파일로 Jekyll 정적 사이트 생성기를 비활성화합니다.",
+      "tags": [
+        "github-pages",
+        "configuration",
+        "infrastructure"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:assets/config.js",
+      "type": "file",
+      "name": "config.js",
+      "filePath": "assets/config.js",
+      "summary": "Google Apps Script 배포 웹앱 URL 상수를 정의하는 런타임 설정 파일입니다.",
+      "tags": [
+        "configuration",
+        "runtime-config",
+        "api-endpoint"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:assets/concours.css",
+      "type": "file",
+      "name": "concours.css",
+      "filePath": "assets/concours.css",
+      "summary": "모든 신청 페이지에서 사용하는 통합 스타일시트로, 색상 변수, 레이아웃, 폼 스타일, 반응형 디자인을 포함합니다.",
+      "tags": [
+        "stylesheet",
+        "global-styles",
+        "design-system"
+      ],
+      "complexity": "complex",
+      "languageNotes": "CSS 변수(--gold, --teal)를 사용하여 디자인 토큰 관리; 2352줄로 대규모 스타일 정의"
+    },
+    {
+      "id": "file:assets/concours.js",
+      "type": "file",
+      "name": "concours.js",
+      "filePath": "assets/concours.js",
+      "summary": "클라이언트 측 폼 로직, Supabase 연동, 이미지 압축, 주소 드롭다운, 인증 모달, 영상 제출 관리를 처리하는 핵심 비즈니스 로직입니다.",
+      "tags": [
+        "form-logic",
+        "supabase-client",
+        "image-processing",
+        "authentication"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Supabase JavaScript SDK 사용; Promise 기반 비동기 처리; 이미지 캔버스 압축 알고리즘 포함"
+    },
+    {
+      "id": "function:assets/concours.js:isTestAccount",
+      "type": "function",
+      "name": "isTestAccount",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        31,
+        33
+      ],
+      "summary": "테스트 계정 목록과 매칭하여 현재 사용자가 테스트 사용자인지 확인합니다.",
+      "tags": [
+        "validation",
+        "utility",
+        "test-helper"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:assets/concours.js:getApplication",
+      "type": "function",
+      "name": "getApplication",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        38,
+        41
+      ],
+      "summary": "Supabase에서 주어진 사용자 ID의 신청서 데이터를 조회합니다.",
+      "tags": [
+        "database-query",
+        "supabase-client",
+        "async"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:assets/concours.js:saveApplication",
+      "type": "function",
+      "name": "saveApplication",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        42,
+        47
+      ],
+      "summary": "사용자의 신청서 데이터를 Supabase에 저장하거나 업데이트합니다.",
+      "tags": [
+        "database-write",
+        "supabase-client",
+        "async"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:assets/concours.js:saveVideoSubmission",
+      "type": "function",
+      "name": "saveVideoSubmission",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        48,
+        56
+      ],
+      "summary": "영상 제출 정보(링크, 작곡가, 곡명, 제출 시간)를 Supabase에 업데이트합니다.",
+      "tags": [
+        "video-submission",
+        "database-write",
+        "async"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:assets/concours.js:dbToFormFields",
+      "type": "function",
+      "name": "dbToFormFields",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        61,
+        74
+      ],
+      "summary": "Supabase 데이터베이스의 snake_case 컬럼을 HTML 폼의 camelCase 필드명으로 변환합니다.",
+      "tags": [
+        "data-mapping",
+        "transformation",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:assets/concours.js:compressImageToBlob",
+      "type": "function",
+      "name": "compressImageToBlob",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        89,
+        109
+      ],
+      "summary": "업로드된 이미지 파일을 최대 800px로 캔버스 기반 압축하여 JPEG Blob으로 반환합니다.",
+      "tags": [
+        "image-processing",
+        "compression",
+        "client-side"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:assets/concours.js:initAddressDropdowns",
+      "type": "function",
+      "name": "initAddressDropdowns",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        136,
+        153
+      ],
+      "summary": "주소 드롭다운(시·도 → 구·군)을 초기화하고, 시 선택 이벤트 리스너를 설정합니다.",
+      "tags": [
+        "form-initialization",
+        "dom-manipulation",
+        "address-dropdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:assets/concours.js:fillFormFromData",
+      "type": "function",
+      "name": "fillFormFromData",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        158,
+        196
+      ],
+      "summary": "저장된 신청서 데이터를 HTML 폼의 각 입력 필드에 채우고, UI 상태(텍스트 필드 표시 등)를 동기화합니다.",
+      "tags": [
+        "form-rendering",
+        "dom-manipulation",
+        "data-binding"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:assets/concours.js:lockApplyForm",
+      "type": "function",
+      "name": "lockApplyForm",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        199,
+        210
+      ],
+      "summary": "신청서가 이미 제출된 경우, 폼의 모든 입력 필드를 비활성화합니다.",
+      "tags": [
+        "form-validation",
+        "dom-manipulation",
+        "state-management"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:assets/concours.js:openAuthModal",
+      "type": "function",
+      "name": "openAuthModal",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        215,
+        226
+      ],
+      "summary": "인증/로그인 모달 창을 표시하고 입력 필드에 포커스를 이동합니다.",
+      "tags": [
+        "modal-ui",
+        "authentication",
+        "dom-manipulation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:assets/concours.js:closeAuthModal",
+      "type": "function",
+      "name": "closeAuthModal",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        227,
+        231
+      ],
+      "summary": "인증 모달을 숨깁니다.",
+      "tags": [
+        "modal-ui",
+        "dom-manipulation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:assets/concours.js:showInstTab",
+      "type": "function",
+      "name": "showInstTab",
+      "filePath": "assets/concours.js",
+      "lineRange": [
+        232,
+        254
+      ],
+      "summary": "인증 모달 내 로그인/회원가입 탭을 전환하고, 해당 입력 필드에 포커스를 설정합니다.",
+      "tags": [
+        "modal-ui",
+        "tab-navigation",
+        "dom-manipulation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:choir/index.html",
+      "type": "file",
+      "name": "index.html (choir)",
+      "filePath": "choir/index.html",
+      "summary": "합창 콩쿠르(Choir Competition) 참가신청 페이지로, 신청자 정보 수집, 영상 제출, 결제 안내, 이메일 인증을 처리합니다.",
+      "tags": [
+        "registration-form",
+        "application-page",
+        "entry-point"
+      ],
+      "complexity": "complex",
+      "languageNotes": "1543줄의 대규모 HTML로, 인라인 스타일과 JavaScript 폼 처리 포함"
+    },
+    {
+      "id": "file:exhibition/index.html",
+      "type": "file",
+      "name": "index.html (exhibition)",
+      "filePath": "exhibition/index.html",
+      "summary": "전시 공모(Exhibition Call) 신청 페이지로, 전시 부문, 매체·기법, 작품 정보 입력 및 제출을 처리합니다.",
+      "tags": [
+        "application-form",
+        "art-submission",
+        "entry-point"
+      ],
+      "complexity": "complex",
+      "languageNotes": "2258줄로 가장 큰 HTML 파일; 다양한 선택지와 조건부 필드 포함"
+    },
+    {
+      "id": "file:video/index.html",
+      "type": "file",
+      "name": "index.html (video)",
+      "filePath": "video/index.html",
+      "summary": "영상 제출 페이지로, YouTube 링크 검증, 작곡가/곡명 입력, 프로필 사진 업로드를 처리합니다.",
+      "tags": [
+        "video-submission",
+        "form-page",
+        "upload-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:weekly/index.html",
+      "type": "file",
+      "name": "index.html (weekly)",
+      "filePath": "weekly/index.html",
+      "summary": "주간 공지사항 또는 랜딩 페이지로, 링크와 정보를 표시합니다.",
+      "tags": [
+        "landing-page",
+        "information-page",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:GoogleAppsScript.js",
+      "type": "file",
+      "name": "GoogleAppsScript.js",
+      "filePath": "GoogleAppsScript.js",
+      "summary": "Google Sheets 백엔드로, 폼 제출(doPost) 핸들링, 신청서 로깅, 프로필 사진 저장, Resend API 메일 발송, Slack 알림, 합격자 일괄 메일 기능을 제공합니다.",
+      "tags": [
+        "backend-handler",
+        "gas-endpoint",
+        "email-service"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Google Apps Script API 사용; 860줄로 여러 폼 타입(콩쿠르, 전시, 합창) 지원"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:doPost",
+      "type": "function",
+      "name": "doPost",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        48,
+        95
+      ],
+      "summary": "HTTP POST 요청을 수신하여 폼 타입별로 신청서를 로깅하고, 확인 이메일과 Slack 알림을 전송합니다.",
+      "tags": [
+        "api-handler",
+        "entry-point",
+        "request-handler"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:isTestEmail",
+      "type": "function",
+      "name": "isTestEmail",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        101,
+        104
+      ],
+      "summary": "테스트 이메일 목록과 매칭하여 테스트 제출인지 확인합니다.",
+      "tags": [
+        "validation",
+        "utility",
+        "test-helper"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:logConcours",
+      "type": "function",
+      "name": "logConcours",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        106,
+        151
+      ],
+      "summary": "콩쿠르 신청 데이터를 Google Sheets 테이블에 기록합니다.",
+      "tags": [
+        "data-logging",
+        "sheet-writer",
+        "concours-form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:mergeEtc",
+      "type": "function",
+      "name": "mergeEtc",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        153,
+        157
+      ],
+      "summary": "'기타' 옵션의 경우 선택값과 직접 입력값을 합쳐서 하나의 문자열로 반환합니다.",
+      "tags": [
+        "data-transformation",
+        "utility",
+        "form-field-processing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:logConcoursVideo",
+      "type": "function",
+      "name": "logConcoursVideo",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        162,
+        209
+      ],
+      "summary": "콩쿠르 영상 제출 정보(YouTube 링크, 작곡가, 곡명)를 기존 신청서 행에 업데이트합니다.",
+      "tags": [
+        "video-logging",
+        "sheet-updater",
+        "concours-video"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:logChoirVideo",
+      "type": "function",
+      "name": "logChoirVideo",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        214,
+        261
+      ],
+      "summary": "합창 콩쿠르 영상 제출 정보를 기존 신청서 행에 업데이트합니다.",
+      "tags": [
+        "video-logging",
+        "sheet-updater",
+        "choir-video"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:logChoir",
+      "type": "function",
+      "name": "logChoir",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        266,
+        323
+      ],
+      "summary": "합창 콩쿠르 신청 데이터를 Google Sheets 테이블에 기록합니다.",
+      "tags": [
+        "data-logging",
+        "sheet-writer",
+        "choir-form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:logExhibition",
+      "type": "function",
+      "name": "logExhibition",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        328,
+        384
+      ],
+      "summary": "전시 공모 신청 데이터를 Google Sheets 테이블에 기록합니다.",
+      "tags": [
+        "data-logging",
+        "sheet-writer",
+        "exhibition-form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:sendSlackNotification",
+      "type": "function",
+      "name": "sendSlackNotification",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        389,
+        427
+      ],
+      "summary": "새로운 신청서 제출 시 Slack 웹훅을 통해 운영팀에 알림을 전송합니다.",
+      "tags": [
+        "notification",
+        "slack-integration",
+        "ops-alert"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:getOrCreateFolder",
+      "type": "function",
+      "name": "getOrCreateFolder",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        432,
+        436
+      ],
+      "summary": "Google Drive에서 주어진 이름의 폴더를 찾거나 없으면 새로 생성합니다.",
+      "tags": [
+        "file-storage",
+        "drive-api",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:getOrCreateSheet",
+      "type": "function",
+      "name": "getOrCreateSheet",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        438,
+        453
+      ],
+      "summary": "Google Sheets에서 주어진 이름의 시트를 찾거나 없으면 새로 생성하고, 헤더 행의 포맷을 적용합니다.",
+      "tags": [
+        "sheet-management",
+        "spreadsheet-api",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:saveBase64ImageToDrive",
+      "type": "function",
+      "name": "saveBase64ImageToDrive",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        455,
+        472
+      ],
+      "summary": "Base64 인코딩된 프로필 사진을 Google Drive에 파일로 저장합니다.",
+      "tags": [
+        "image-storage",
+        "drive-api",
+        "file-processing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:sendViaResend",
+      "type": "function",
+      "name": "sendViaResend",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        540,
+        561
+      ],
+      "summary": "Resend API를 통해 HTML 이메일을 전송합니다.",
+      "tags": [
+        "email-service",
+        "api-call",
+        "notification"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:sendConfirmationEmail",
+      "type": "function",
+      "name": "sendConfirmationEmail",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        566,
+        601
+      ],
+      "summary": "신청 완료 확인 이메일을 참가자에게 전송합니다. 폼 타입별로 다른 메일 템플릿을 사용합니다.",
+      "tags": [
+        "email-template",
+        "notification",
+        "form-response"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:buildConcoursConfirmationEmail",
+      "type": "function",
+      "name": "buildConcoursConfirmationEmail",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        604,
+        683
+      ],
+      "summary": "콩쿠르 신청 확인 이메일의 HTML 템플릿을 생성합니다.",
+      "tags": [
+        "email-template",
+        "html-generation",
+        "concours-form"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:buildGenericConfirmationEmail",
+      "type": "function",
+      "name": "buildGenericConfirmationEmail",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        686,
+        707
+      ],
+      "summary": "전시, 합창 신청의 확인 이메일 HTML 템플릿을 생성합니다.",
+      "tags": [
+        "email-template",
+        "html-generation",
+        "form-response"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:onOpen",
+      "type": "function",
+      "name": "onOpen",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        713,
+        718
+      ],
+      "summary": "Google Sheets 열 때 [📧 운영] 메뉴를 추가하여 합격자 메일 일괄 발송 기능을 제공합니다.",
+      "tags": [
+        "ui-extension",
+        "menu-creation",
+        "gas-lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:sendApprovalEmailsToAllPassed",
+      "type": "function",
+      "name": "sendApprovalEmailsToAllPassed",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        720,
+        789
+      ],
+      "summary": "심사 상태가 '합격'인 모든 신청자에게 합격 이메일을 일괄 전송하고, 발송 일시를 기록합니다.",
+      "tags": [
+        "bulk-email",
+        "approval-notification",
+        "admin-tool"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:getColIndexByHeader",
+      "type": "function",
+      "name": "getColIndexByHeader",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        791,
+        798
+      ],
+      "summary": "헤더 행에서 주어진 컬럼명의 인덱스를 찾습니다.",
+      "tags": [
+        "sheet-utility",
+        "column-lookup",
+        "helper"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:GoogleAppsScript.js:ensureSentColumn",
+      "type": "function",
+      "name": "ensureSentColumn",
+      "filePath": "GoogleAppsScript.js",
+      "lineRange": [
+        800,
+        806
+      ],
+      "summary": "시트에 '합격 메일 발송 일시' 컬럼이 없으면 새로 추가합니다.",
+      "tags": [
+        "sheet-utility",
+        "column-management",
+        "helper"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:source/GoogleAppsScript.js",
+      "type": "file",
+      "name": "GoogleAppsScript.js (source)",
+      "filePath": "source/GoogleAppsScript.js",
+      "summary": "Google Apps Script 백엔드의 소스 버전으로, 메인 배포 파일과 유사한 구조이나 일부 기능이 간소화되었습니다.",
+      "tags": [
+        "backend-source",
+        "gas-code",
+        "backup"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:source/GoogleAppsScript.js:doPost",
+      "type": "function",
+      "name": "doPost",
+      "filePath": "source/GoogleAppsScript.js",
+      "lineRange": [
+        38,
+        83
+      ],
+      "summary": "HTTP POST 요청을 수신하여 폼 타입별로 신청서를 로깅합니다.",
+      "tags": [
+        "api-handler",
+        "entry-point",
+        "request-handler"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:source/GoogleAppsScript.js:sendConfirmationEmail",
+      "type": "function",
+      "name": "sendConfirmationEmail",
+      "filePath": "source/GoogleAppsScript.js",
+      "lineRange": [
+        492,
+        548
+      ],
+      "summary": "신청 완료 확인 이메일을 MailApp API로 전송합니다. (소스 버전은 Resend API 미사용)",
+      "tags": [
+        "email-service",
+        "notification",
+        "form-response"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tools/gen_redirects.sh",
+      "type": "file",
+      "name": "gen_redirects.sh",
+      "filePath": "tools/gen_redirects.sh",
+      "summary": "UTM 파라미터를 포함한 광고 채널별 리다이렉트 페이지를 자동 생성하는 Bash 스크립트입니다. 10개 채널 × 3개 섹션 = 30개의 index.html을 생성합니다.",
+      "tags": [
+        "redirect-generator",
+        "utm-tracking",
+        "build-script"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "쉘 함수 기반; 채널과 섹션 배열을 중첩 루프로 순회하여 HTML 생성"
+    },
+    {
+      "id": "function:tools/gen_redirects.sh:create_redirect",
+      "type": "function",
+      "name": "create_redirect",
+      "filePath": "tools/gen_redirects.sh",
+      "lineRange": [
+        25,
+        60
+      ],
+      "summary": "주어진 타겟 URL로 리다이렉트하는 HTML 페이지를 생성합니다.",
+      "tags": [
+        "redirect-page",
+        "html-generation",
+        "helper"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:README.md",
+      "target": "file:index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:confirm.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:index.html",
+      "target": "table:supabase_setup.sql:concours_applications",
+      "type": "writes_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:index.html",
+      "target": "file:confirm.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "table:supabase_setup.sql:concours_applications",
+      "target": "file:index.html",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:source/전시회.html",
+      "target": "file:source/영상제출.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:source/합창 (1).html",
+      "target": "file:source/영상제출.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:source/콩쿨.html",
+      "target": "file:source/전시회.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:choir/index.html",
+      "target": "file:assets/concours.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:choir/index.html",
+      "target": "file:assets/concours.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:choir/index.html",
+      "target": "file:assets/config.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:exhibition/index.html",
+      "target": "file:assets/concours.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:exhibition/index.html",
+      "target": "file:assets/concours.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:exhibition/index.html",
+      "target": "file:assets/config.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:video/index.html",
+      "target": "file:assets/concours.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:video/index.html",
+      "target": "file:assets/concours.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:video/index.html",
+      "target": "file:assets/config.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:weekly/index.html",
+      "target": "file:assets/concours.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "file:assets/config.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:isTestAccount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:getApplication",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:saveApplication",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:saveVideoSubmission",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:dbToFormFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:compressImageToBlob",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:initAddressDropdowns",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:fillFormFromData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:lockApplyForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:openAuthModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:closeAuthModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:assets/concours.js",
+      "target": "function:assets/concours.js:showInstTab",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:choir/index.html",
+      "target": "file:GoogleAppsScript.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:exhibition/index.html",
+      "target": "file:GoogleAppsScript.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:video/index.html",
+      "target": "file:GoogleAppsScript.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:doPost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:isTestEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:logConcours",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:mergeEtc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:logConcoursVideo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:logChoirVideo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:logChoir",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:logExhibition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:sendSlackNotification",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:getOrCreateFolder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:getOrCreateSheet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:saveBase64ImageToDrive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:sendViaResend",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:sendConfirmationEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:buildConcoursConfirmationEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:buildGenericConfirmationEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:onOpen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:sendApprovalEmailsToAllPassed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:getColIndexByHeader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "function:GoogleAppsScript.js:ensureSentColumn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:source/GoogleAppsScript.js",
+      "target": "function:source/GoogleAppsScript.js:doPost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:source/GoogleAppsScript.js",
+      "target": "function:source/GoogleAppsScript.js:sendConfirmationEmail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:GoogleAppsScript.js",
+      "target": "file:source/GoogleAppsScript.js",
+      "type": "similar_to",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tools/gen_redirects.sh",
+      "target": "function:tools/gen_redirects.sh:create_redirect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:index.html",
+      "target": "file:assets/concours.css",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:index.html",
+      "target": "file:assets/concours.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:index.html",
+      "target": "file:assets/config.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:source/콩쿨.html",
+      "target": "file:index.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:source/전시회.html",
+      "target": "file:exhibition/index.html",
+      "type": "similar_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:source/합창 (1).html",
+      "target": "file:choir/index.html",
+      "type": "similar_to",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:source/영상제출.html",
+      "target": "file:video/index.html",
+      "type": "similar_to",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:frontend-pages",
+      "name": "퍼블리시된 프론트엔드 페이지",
+      "description": "공개 URL에 배포된 신청 페이지로, 참가자 정보 입력, 영상 제출, 이메일 인증을 처리하고 Supabase 및 Google Apps Script 백엔드와 통합합니다.",
+      "nodeIds": [
+        "file:index.html",
+        "file:confirm.html",
+        "file:choir/index.html",
+        "file:exhibition/index.html",
+        "file:video/index.html",
+        "file:weekly/index.html"
+      ]
+    },
+    {
+      "id": "layer:shared-assets",
+      "name": "공유 프론트엔드 자산",
+      "description": "모든 신청 페이지에서 사용되는 통합 스타일시트, 클라이언트 측 비즈니스 로직, 그리고 런타임 설정을 제공하여 폼 상호작용, Supabase 연동, 이미지 처리를 관리합니다.",
+      "nodeIds": [
+        "file:assets/concours.css",
+        "file:assets/concours.js",
+        "file:assets/config.js"
+      ]
+    },
+    {
+      "id": "layer:backend-handler",
+      "name": "백엔드 핸들러",
+      "description": "Google Apps Script로 구현된 폼 제출 엔드포인트로, 신청 데이터 로깅, 프로필 사진 저장, Resend API를 통한 이메일 발송, 그리고 Slack 알림을 처리합니다.",
+      "nodeIds": [
+        "file:GoogleAppsScript.js",
+        "file:source/GoogleAppsScript.js"
+      ]
+    },
+    {
+      "id": "layer:source-forms",
+      "name": "소스 폼 (개발용 아카이브)",
+      "description": "개발 및 유지보수 목적의 원본 신청 폼으로, 합창, 전시, 영상 부문의 초기 구현과 레거시 호환성 리다이렉트를 포함합니다.",
+      "nodeIds": [
+        "file:source/영상제출.html",
+        "file:source/전시회.html",
+        "file:source/콩쿨.html",
+        "file:source/합창 (1).html"
+      ]
+    },
+    {
+      "id": "layer:data-schema",
+      "name": "데이터 레이어",
+      "description": "Supabase 데이터베이스 스키마로, 참가신청 정보와 영상 제출 데이터를 통합 저장하며 Row Level Security 정책을 적용합니다.",
+      "nodeIds": [
+        "table:supabase_setup.sql:concours_applications"
+      ]
+    },
+    {
+      "id": "layer:infrastructure",
+      "name": "인프라 및 빌드",
+      "description": "GitHub Pages 배포 설정과 UTM 추적 리다이렉트 페이지 생성 스크립트를 포함하여 정적 호스팅 및 마케팅 채널 추적을 관리합니다.",
+      "nodeIds": [
+        "file:.nojekyll",
+        "file:tools/gen_redirects.sh"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "문서",
+      "description": "프로젝트 전체 구성, 공개 URL, 페이지 경로, UTM 추적 채널 및 마케팅 리다이렉트 스키마를 문서화합니다.",
+      "nodeIds": [
+        "document:README.md"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "프로젝트 개요",
+      "description": "README에서 Carnegie LEE Foundation 클래식 콩쿠르의 전체 프로젝트 구조, 공개 URL 경로, 그리고 UTM 추적 채널 및 리다이렉트 링크 스키마를 학습합니다. 이 문서는 프로젝트의 맥락과 각 페이지의 역할을 이해하기 위한 출발점입니다.",
+      "nodeIds": [
+        "document:README.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "메인 참가신청 페이지",
+      "description": "메인 콩쿠르 신청 페이지(index.html)는 참가자가 콩쿠르 소개, 일정, 부문을 확인하고 Supabase 인증으로 가입·로그인한 후 신청서를 작성하고 영상을 제출하는 입구입니다. 이 페이지는 프로젝트의 핵심 사용자 여정을 구현합니다.",
+      "nodeIds": [
+        "file:index.html"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "공유 프론트엔드 자산",
+      "description": "모든 신청 페이지가 공유하는 자산 계층입니다. concours.css는 색상 변수, 레이아웃, 폼 스타일링을 제공하고, concours.js는 Supabase 인증, 이미지 압축, 주소 드롭다운, 인증 모달, 영상 제출 관리 등 클라이언트 측 비즈니스 로직을 담당하며, config.js는 Google Apps Script 배포 URL을 정의합니다.",
+      "nodeIds": [
+        "file:assets/concours.css",
+        "file:assets/concours.js",
+        "file:assets/config.js"
+      ],
+      "languageLesson": "JavaScript에서 config.js 같은 상수 파일은 환경별 설정을 중앙화합니다. 이를 통해 배포 환경마다 코드 변경 없이 엔드포인트만 교체할 수 있습니다."
+    },
+    {
+      "order": 4,
+      "title": "데이터 저장소: 참가신청 테이블",
+      "description": "Supabase 데이터베이스의 concours_applications 테이블은 참가신청 정보(참가자 정보, 부문, 경력, 영상 링크)를 단일 row로 저장합니다. UUID 기본키, user_id 외래키, UTM/접수 메타데이터, 그리고 Row Level Security 정책으로 참가자 데이터를 안전하게 관리합니다.",
+      "nodeIds": [
+        "table:supabase_setup.sql:concours_applications"
+      ],
+      "languageLesson": "SQL의 Row Level Security(RLS)는 데이터베이스 수준에서 행 접근을 제어합니다. 각 사용자는 자신의 신청만 조회할 수 있도록 정책을 설정하여, 클라이언트 검증만으로는 부족한 보안을 강화합니다."
+    },
+    {
+      "order": 5,
+      "title": "백엔드 폼 핸들러",
+      "description": "Google Apps Script의 GoogleAppsScript.js는 프론트엔드 폼 제출(doPost)을 수신하여 신청 데이터를 Google Sheets에 로깅하고, 프로필 사진을 Supabase Storage에 저장하며, Resend API로 확인 이메일을 발송하고, Slack으로 신청 알림을 보냅니다. 합격자에게 일괄 메일을 발송하는 기능도 제공합니다.",
+      "nodeIds": [
+        "file:GoogleAppsScript.js"
+      ],
+      "languageLesson": "Google Apps Script의 doPost() 함수는 웹 앱 POST 요청의 진입점입니다. 반환 값은 클라이언트에게 전송되므로, 성공/실패 JSON을 반환하여 클라이언트가 사용자 피드백을 표시하도록 설계합니다."
+    },
+    {
+      "order": 6,
+      "title": "부문별 신청 페이지",
+      "description": "메인 페이지 외에도 세 개의 부문별 신청 페이지가 있습니다. choir/index.html은 합창 콩쿠르 신청(신청자 정보, 영상 제출, 결제), exhibition/index.html은 전시 공모(부문, 매체·기법, 작품 정보), video/index.html은 영상 제출 전용 페이지(YouTube 검증, 작곡가/곡명, 프로필 사진)입니다. 각각 동일한 공유 자산을 import하여 일관된 UX를 제공합니다.",
+      "nodeIds": [
+        "file:choir/index.html",
+        "file:exhibition/index.html",
+        "file:video/index.html"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "이메일 인증 및 확인",
+      "description": "confirm.html은 Supabase 이메일 인증 후 사용자가 리다이렉트되는 단순한 성공 안내 페이지입니다. 이메일 인증 링크를 클릭하면 Supabase가 이 페이지로 리다이렉트하여 인증 완료를 안내합니다.",
+      "nodeIds": [
+        "file:confirm.html"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "소스 폼 아카이브",
+      "description": "source/ 폴더에는 개발 및 유지보수 목적의 원본 신청 폼들이 보관되어 있습니다. 콩쿨.html은 레거시 URL에서 메인으로 리다이렉트하면서 UTM 파라미터를 보존하고, 합창(1).html과 전시회.html, 영상제출.html은 초기 구현본으로 현재의 부문별 페이지로 발전했습니다.",
+      "nodeIds": [
+        "file:source/콩쿨.html",
+        "file:source/합창 (1).html",
+        "file:source/전시회.html",
+        "file:source/영상제출.html"
+      ]
+    },
+    {
+      "order": 9,
+      "title": "인프라: GitHub Pages 및 UTM 리다이렉트",
+      "description": ".nojekyll 파일은 GitHub Pages가 Jekyll 정적 사이트 생성기를 비활성화하도록 지시합니다. tools/gen_redirects.sh는 10개 광고 채널 × 3개 섹션 = 30개의 리다이렉트 페이지를 자동 생성하여, 각 채널 폴더 접속 시 UTM 파라미터를 붙인 후 메인 페이지로 리다이렉트함으로써 유입 채널을 추적합니다.",
+      "nodeIds": [
+        "file:.nojekyll",
+        "file:tools/gen_redirects.sh"
+      ],
+      "languageLesson": "Bash의 for 루프와 문자열 치환을 사용하여 생성형 파일(boilerplate)을 자동화하면, 채널 추가 시 스크립트만 수정하고 재실행하면 모든 리다이렉트 페이지가 일괄 생성됩니다. 이는 마케팅 채널 관리의 유지보수성을 크게 향상시킵니다."
+    },
+    {
+      "order": 10,
+      "title": "주간 랜딩 페이지",
+      "description": "weekly/index.html은 주간 공지사항이나 특별 공지용 랜딩 페이지입니다. 필요에 따라 링크와 정보를 표시하여 참가자에게 최신 소식을 안내합니다.",
+      "nodeIds": [
+        "file:weekly/index.html"
+      ]
+    }
+  ]
+}

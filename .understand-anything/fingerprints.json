@@ -1,0 +1,714 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "f959a83b0af20dc2ad24422c2e9888a7833fc9c1",
+  "generatedAt": "2026-06-01T03:42:13.043Z",
+  "files": {
+    ".nojekyll": {
+      "filePath": ".nojekyll",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": false
+    },
+    "assets/concours.css": {
+      "filePath": "assets/concours.css",
+      "contentHash": "bae83dc2e6fc1160e9986147c6b355e1a9ce4a24a1775c8749b0d14438ab111a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2353,
+      "hasStructuralAnalysis": false
+    },
+    "assets/concours.js": {
+      "filePath": "assets/concours.js",
+      "contentHash": "0084c67b2f6195af9b3f3d7d3c0be5caac8ba771517c87f804802c16f33f90bf",
+      "functions": [
+        {
+          "name": "isTestAccount",
+          "params": [
+            "email"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getApplication",
+          "params": [
+            "userId"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "saveApplication",
+          "params": [
+            "userId",
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "saveVideoSubmission",
+          "params": [
+            "userId",
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "dbToFormFields",
+          "params": [
+            "d"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "dataURLtoBlob",
+          "params": [
+            "dataurl"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "compressImageToBlob",
+          "params": [
+            "file"
+          ],
+          "exported": false,
+          "lineCount": 21
+        },
+        {
+          "name": "initAddressDropdowns",
+          "params": [],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "fillFormFromData",
+          "params": [
+            "formData"
+          ],
+          "exported": false,
+          "lineCount": 39
+        },
+        {
+          "name": "lockApplyForm",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "openAuthModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "closeAuthModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "showInstTab",
+          "params": [
+            "tab"
+          ],
+          "exported": false,
+          "lineCount": 23
+        },
+        {
+          "name": "showInstEmailSent",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "clearInstErrors",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "clfToggleAcc",
+          "params": [
+            "btn"
+          ],
+          "exported": false,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1036,
+      "hasStructuralAnalysis": true
+    },
+    "assets/config.js": {
+      "filePath": "assets/config.js",
+      "contentHash": "bc11b1a02f6618e4222a09580eaf3ce2c4b492e6f0c847c053bd6086e5fb6640",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "choir/index.html": {
+      "filePath": "choir/index.html",
+      "contentHash": "dc58a51ab47f53ad958b125780dc57f5c7011ab912cdc45deaec61e4e79b25f8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1544,
+      "hasStructuralAnalysis": false
+    },
+    "confirm.html": {
+      "filePath": "confirm.html",
+      "contentHash": "4c5ab67e7f69e1044b9975e0f93ebecef4fa1722ed830f845bc191ad96871de2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 68,
+      "hasStructuralAnalysis": false
+    },
+    "exhibition/index.html": {
+      "filePath": "exhibition/index.html",
+      "contentHash": "25d9cbb01ad770b44537f98b8c9846c902fc34f47befc7b64ff3973619c112f8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2259,
+      "hasStructuralAnalysis": false
+    },
+    "GoogleAppsScript.js": {
+      "filePath": "GoogleAppsScript.js",
+      "contentHash": "6d60494ac6d232ac6e31aae05cc889b6b76cb1957fb493e4b6a989b1cc0de849",
+      "functions": [
+        {
+          "name": "testDrivePermission",
+          "params": [],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "doPost",
+          "params": [
+            "e"
+          ],
+          "exported": false,
+          "lineCount": 46
+        },
+        {
+          "name": "isTestEmail",
+          "params": [
+            "email"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "logConcours",
+          "params": [
+            "ss",
+            "payload",
+            "photoUrl"
+          ],
+          "exported": false,
+          "lineCount": 46
+        },
+        {
+          "name": "mergeEtc",
+          "params": [
+            "value",
+            "etcValue"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "logConcoursVideo",
+          "params": [
+            "ss",
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "logChoirVideo",
+          "params": [
+            "ss",
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "logChoir",
+          "params": [
+            "ss",
+            "payload",
+            "photoUrl"
+          ],
+          "exported": false,
+          "lineCount": 58
+        },
+        {
+          "name": "logExhibition",
+          "params": [
+            "ss",
+            "payload",
+            "photoUrl"
+          ],
+          "exported": false,
+          "lineCount": 57
+        },
+        {
+          "name": "getOrCreateFolder",
+          "params": [
+            "folderName"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "getOrCreateSheet",
+          "params": [
+            "ss",
+            "sheetName",
+            "headers"
+          ],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "saveBase64ImageToDrive",
+          "params": [
+            "base64Str",
+            "refNumber",
+            "folder"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "setPhotoRowHeight",
+          "params": [
+            "sheet"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "mapUtmSourceToKo",
+          "params": [
+            "source",
+            "medium"
+          ],
+          "exported": false,
+          "lineCount": 40
+        },
+        {
+          "name": "testResendEmail",
+          "params": [],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "sendViaResend",
+          "params": [
+            "to",
+            "subject",
+            "htmlBody"
+          ],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "sendConfirmationEmail",
+          "params": [
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 36
+        },
+        {
+          "name": "buildConcoursConfirmationEmail",
+          "params": [
+            "name",
+            "refNumber"
+          ],
+          "exported": false,
+          "lineCount": 80
+        },
+        {
+          "name": "buildGenericConfirmationEmail",
+          "params": [
+            "name",
+            "refNumber",
+            "formTitle"
+          ],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "onOpen",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "sendApprovalEmailsToAllPassed",
+          "params": [],
+          "exported": false,
+          "lineCount": 70
+        },
+        {
+          "name": "getColIndexByHeader",
+          "params": [
+            "sheet",
+            "headerName"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "ensureSentColumn",
+          "params": [
+            "sheet"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "APPROVAL_EMAIL_SUBJECT",
+          "params": [
+            "target"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "APPROVAL_EMAIL_TEMPLATE",
+          "params": [
+            "target"
+          ],
+          "exported": false,
+          "lineCount": 46
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 811,
+      "hasStructuralAnalysis": true
+    },
+    "index.html": {
+      "filePath": "index.html",
+      "contentHash": "849ea56504698be614933e5fd5d95fffe84c1de98d6bd9ac2e83b2ce5776d14c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 891,
+      "hasStructuralAnalysis": false
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "d33449672ac730b9aed21631e8ba7b491bd608f1ec5b0aa4ef458111bcff2eef",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "source/GoogleAppsScript.js": {
+      "filePath": "source/GoogleAppsScript.js",
+      "contentHash": "4fff82dc57e6af4fac146f26ccb16738f4ee09a1cf0a6877af05ac620ef66761",
+      "functions": [
+        {
+          "name": "testDrivePermission",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "doPost",
+          "params": [
+            "e"
+          ],
+          "exported": false,
+          "lineCount": 46
+        },
+        {
+          "name": "isTestEmail",
+          "params": [
+            "email"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "logConcours",
+          "params": [
+            "ss",
+            "payload",
+            "photoUrl"
+          ],
+          "exported": false,
+          "lineCount": 52
+        },
+        {
+          "name": "mergeEtc",
+          "params": [
+            "value",
+            "etcValue"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "logConcoursVideo",
+          "params": [
+            "ss",
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "logChoirVideo",
+          "params": [
+            "ss",
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 48
+        },
+        {
+          "name": "logChoir",
+          "params": [
+            "ss",
+            "payload",
+            "photoUrl"
+          ],
+          "exported": false,
+          "lineCount": 58
+        },
+        {
+          "name": "logExhibition",
+          "params": [
+            "ss",
+            "payload",
+            "photoUrl"
+          ],
+          "exported": false,
+          "lineCount": 57
+        },
+        {
+          "name": "getOrCreateFolder",
+          "params": [
+            "folderName"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "getOrCreateSheet",
+          "params": [
+            "ss",
+            "sheetName",
+            "headers"
+          ],
+          "exported": false,
+          "lineCount": 16
+        },
+        {
+          "name": "saveBase64ImageToDrive",
+          "params": [
+            "base64Str",
+            "refNumber",
+            "folder"
+          ],
+          "exported": false,
+          "lineCount": 18
+        },
+        {
+          "name": "setPhotoRowHeight",
+          "params": [
+            "sheet"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "mapUtmSourceToKo",
+          "params": [
+            "source",
+            "medium"
+          ],
+          "exported": false,
+          "lineCount": 41
+        },
+        {
+          "name": "sendConfirmationEmail",
+          "params": [
+            "payload"
+          ],
+          "exported": false,
+          "lineCount": 57
+        },
+        {
+          "name": "onOpen",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "sendApprovalEmailsToAllPassed",
+          "params": [],
+          "exported": false,
+          "lineCount": 75
+        },
+        {
+          "name": "getColIndexByHeader",
+          "params": [
+            "sheet",
+            "headerName"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "ensureSentColumn",
+          "params": [
+            "sheet"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "APPROVAL_EMAIL_SUBJECT",
+          "params": [
+            "target"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "APPROVAL_EMAIL_TEMPLATE",
+          "params": [
+            "target"
+          ],
+          "exported": false,
+          "lineCount": 49
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 720,
+      "hasStructuralAnalysis": true
+    },
+    "source/영상제출.html": {
+      "filePath": "source/영상제출.html",
+      "contentHash": "339d96a2fd4d06c2e9bce55c9fb17b744c9149e893868ff4e1084f47b5baff11",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 642,
+      "hasStructuralAnalysis": false
+    },
+    "source/전시회.html": {
+      "filePath": "source/전시회.html",
+      "contentHash": "5aef9e242b5f73651551b52bc43d5f7dfc66ee5a42c19b6b4868d1931d96f8d7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4276,
+      "hasStructuralAnalysis": false
+    },
+    "source/콩쿨.html": {
+      "filePath": "source/콩쿨.html",
+      "contentHash": "34271137504d9a5d0d566542b5aa340ddcfb429107d6f347346656ea7b2ea9b1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": false
+    },
+    "source/합창 (1).html": {
+      "filePath": "source/합창 (1).html",
+      "contentHash": "ad87a14881bceef2128a333b4a18ece7ed6fb3c387e97b729c0224d602d82070",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4420,
+      "hasStructuralAnalysis": false
+    },
+    "supabase_setup.sql": {
+      "filePath": "supabase_setup.sql",
+      "contentHash": "a11e6c298a4cf7e51f82b488a20277d13cb6d7e1c166976148e43565ec37860d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 145,
+      "hasStructuralAnalysis": true
+    },
+    "tools/gen_redirects.sh": {
+      "filePath": "tools/gen_redirects.sh",
+      "contentHash": "49cbf8de32ec2f4e62acd5032c5fba0308a45260a16321471d64b7a5c0dc061e",
+      "functions": [
+        {
+          "name": "create_redirect",
+          "params": [],
+          "exported": false,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 74,
+      "hasStructuralAnalysis": true
+    },
+    "video/index.html": {
+      "filePath": "video/index.html",
+      "contentHash": "7efc65010cf361b7693be9326f3cbb0e72ce2239e17269b82ad8661a56e12a84",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 794,
+      "hasStructuralAnalysis": false
+    },
+    "weekly/index.html": {
+      "filePath": "weekly/index.html",
+      "contentHash": "99f8d83696db078c53bf639aeaa82be2f5260ad6a53f34978b61a4ced7942882",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 484,
+      "hasStructuralAnalysis": false
+    }
+  }
+}
