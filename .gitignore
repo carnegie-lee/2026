@@ -8,3 +8,6 @@ node_modules/
 
 # 서버(GAS) 코드 — 비밀키 포함, GitHub Pages 공개 방지를 위해 추적 제외
 /GoogleAppsScript.js
+
+# Supabase 회원가입→Slack 트리거 SQL — webhook URL 포함, 추적 제외
+/supabase_signup_slack.sql
