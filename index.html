@@ -590,6 +590,41 @@
                 <div class="clf-field-label">생년월일 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="date" id="birth" name="birth" required>
               </div>
+
+              <div class="clf-field">
+                <div class="clf-field-label">연령 확인 <span class="clf-req">*</span></div>
+                <div class="clf-pill-group">
+                  <span class="clf-pill"><input type="radio" id="ageOver14" name="ageGroup" value="over14" required onchange="document.getElementById('guardianBlock').style.display='none';"><label for="ageOver14">만 14세 이상</label></span>
+                  <span class="clf-pill"><input type="radio" id="ageUnder14" name="ageGroup" value="under14" required onchange="document.getElementById('guardianBlock').style.display='block';"><label for="ageUnder14">만 14세 미만</label></span>
+                </div>
+              </div>
+
+              <!-- 법정대리인 동의 영역 (만 14세 미만 선택 시에만 표시됨) -->
+              <div id="guardianBlock" style="display:none; background:#F8F9FA; padding:16px; border-radius:10px; margin-bottom:20px; border:1px solid #E9ECEF;">
+                <div style="font-size:13.5px; font-weight:700; color:#B54E3A; margin-bottom:12px;">※ 만 14세 미만 참가자는 법정대리인의 동의가 필요합니다.</div>
+                
+                <div class="clf-agree-item" style="padding:0 !important; gap:8px !important; margin-bottom:12px;">
+                  <input type="checkbox" id="guardianConsent" name="guardianConsent" style="margin-top:0 !important;">
+                  <label for="guardianConsent" style="font-size:13px !important; color:#444;">
+                    본인은 만 14세 미만 참가자의 법정대리인으로서 카네기LEE 재단 제1회 콩쿠르 참가 및 개인정보 수집·이용에 동의합니다. <span class="clf-req">*</span>
+                  </label>
+                </div>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                  <div style="flex:1; min-width:120px;">
+                    <div style="font-size:12px; color:#666; margin-bottom:4px;">법정대리인 성명 <span class="clf-req">*</span></div>
+                    <input type="text" class="clf-input" id="guardianName" name="guardianName" placeholder="홍길동" style="padding:8px !important; font-size:13px;">
+                  </div>
+                  <div style="flex:1; min-width:100px;">
+                    <div style="font-size:12px; color:#666; margin-bottom:4px;">참가자와의 관계 <span class="clf-req">*</span></div>
+                    <input type="text" class="clf-input" id="guardianRelation" name="guardianRelation" placeholder="부, 모 등" style="padding:8px !important; font-size:13px;">
+                  </div>
+                  <div style="flex:1; min-width:140px;">
+                    <div style="font-size:12px; color:#666; margin-bottom:4px;">연락처 <span class="clf-req">*</span></div>
+                    <input type="tel" class="clf-input" id="guardianPhone" name="guardianPhone" placeholder="010-0000-0000" style="padding:8px !important; font-size:13px;">
+                  </div>
+                </div>
+              </div>
               <div class="clf-field">
                 <div class="clf-field-label">성별</div>
                 <div class="clf-pill-group">
@@ -807,14 +842,11 @@
               </div>
 
               <!-- 1. 개인정보 수집·이용 -->
-              <div class="clf-agree-item" style="flex-wrap: wrap;">
+              <div class="clf-agree-item">
                 <input type="checkbox" id="agree1" required>
-                <div style="flex: 1; display:flex; flex-direction:column;">
-                  <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree1" style="flex:1;"><strong>[필수] <span class="clf-req">*</span> 개인정보 수집·이용에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
-                  </div>
-                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
+                <label for="agree1">
+                  <strong>[필수] <span class="clf-req">*</span> 개인정보 수집·이용에 동의합니다</strong>
+                  <div class="clf-agree-detail">
                     <strong style="color:#0C3D40 !important;">▸ 수집 항목</strong><br>
                     성명, 생년월일, 성별, 연락처, 이메일, 학교명·전공, 활동 경력, 수상 내역, 유입 경로, 연주 영상, 프로필 사진<br><br>
                     <strong style="color:#0C3D40 !important;">▸ 수집·이용 목적</strong><br>
@@ -824,18 +856,15 @@
                     <strong style="color:#0C3D40 !important;">▸ 동의 거부 권리</strong><br>
                     본 개인정보 수집·이용에 대한 동의를 거부할 수 있으며, 동의 거부 시 콩쿠르 참가가 불가합니다.
                   </div>
-                </div>
+                </label>
               </div>
 
               <!-- 2. 연주 영상 사용권 -->
-              <div class="clf-agree-item" style="flex-wrap: wrap;">
+              <div class="clf-agree-item">
                 <input type="checkbox" id="agree2" required>
-                <div style="flex: 1; display:flex; flex-direction:column;">
-                  <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree2" style="flex:1;"><strong>[필수] <span class="clf-req">*</span> 연주 영상 및 콘텐츠 사용권에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
-                  </div>
-                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
+                <label for="agree2">
+                  <strong>[필수] <span class="clf-req">*</span> 연주 영상 및 콘텐츠 사용권에 동의합니다</strong>
+                  <div class="clf-agree-detail">
                     <strong style="color:#0C3D40 !important;">▸ 저작권 귀속</strong><br>
                     제출된 모든 연주 영상의 원 저작권은 <strong>참가자 본인</strong>에게 귀속됩니다.<br><br>
                     <strong style="color:#0C3D40 !important;">▸ 재단 사용권 범위</strong><br>
@@ -844,55 +873,46 @@
                     <strong style="color:#0C3D40 !important;">▸ 본선 무대 촬영</strong><br>
                     본선 진출자는 본선 무대 공연 영상·사진이 행사 기록 및 향후 홍보 자료로 활용될 수 있음에 동의합니다.
                   </div>
-                </div>
+                </label>
               </div>
 
               <!-- 3. 초상권 사용 -->
-              <div class="clf-agree-item" style="flex-wrap: wrap;">
+              <div class="clf-agree-item">
                 <input type="checkbox" id="agree3" required>
-                <div style="flex: 1; display:flex; flex-direction:column;">
-                  <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree3" style="flex:1;"><strong>[필수] <span class="clf-req">*</span> 초상권 사용에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
-                  </div>
-                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
+                <label for="agree3">
+                  <strong>[필수] <span class="clf-req">*</span> 초상권 사용에 동의합니다</strong>
+                  <div class="clf-agree-detail">
                     <strong style="color:#0C3D40 !important;">▸ 동의 범위</strong><br>
                     본선 무대, 리허설 등 행사 현장에서 촬영된 본인의 사진·영상에 대한 사용에 동의합니다.<br><br>
                     <strong style="color:#0C3D40 !important;">▸ 활용 매체</strong><br>
                     재단 공식 홈페이지·SNS, 보도자료, 도록, 영상 기록물, 향후 재단 행사 홍보물 등.
                   </div>
-                </div>
+                </label>
               </div>
 
               <!-- 4. 참가비 환불 불가 -->
-              <div class="clf-agree-item" style="flex-wrap: wrap;">
+              <div class="clf-agree-item">
                 <input type="checkbox" id="agree4" required>
-                <div style="flex: 1; display:flex; flex-direction:column;">
-                  <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree4" style="flex:1;"><strong>[필수] <span class="clf-req">*</span> 참가비 환불 불가 규정에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
-                  </div>
-                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
+                <label for="agree4">
+                  <strong>[필수] <span class="clf-req">*</span> 참가비 환불 불가 규정에 동의합니다</strong>
+                  <div class="clf-agree-detail">
                     납부한 <strong>참가비(300,000원)</strong>는 어떠한 사유로도 반환되지 않음을 충분히 인지하고 동의합니다. 참가비 납입과 함께
                     콩쿠르
                     참가 접수가 정식으로 완료됩니다.
                   </div>
-                </div>
+                </label>
               </div>
 
               <!-- 5. 마케팅 (선택) -->
-              <div class="clf-agree-item" style="flex-wrap: wrap;">
+              <div class="clf-agree-item">
                 <input type="checkbox" id="agree5">
-                <div style="flex: 1; display:flex; flex-direction:column;">
-                  <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree5" style="flex:1;"><span class="clf-agree-optional-tag">선택</span><strong>마케팅 정보 수신에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
-                  </div>
-                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
+                <label for="agree5">
+                  <span class="clf-agree-optional-tag">선택</span><strong>마케팅 정보 수신에 동의합니다</strong>
+                  <div class="clf-agree-detail">
                     향후 카네기리 재단의 공모전·콘서트·전시 등 행사 안내 및 뉴스레터를 이메일·문자로 수신함에 동의합니다. 거부 시 마케팅 정보는 발송되지 않으나, 본 콩쿠르 운영 안내 메일은 정상
                     발송됩니다.
                   </div>
-                </div>
+                </label>
               </div>
             </div>
           </div>
