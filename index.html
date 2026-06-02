@@ -53,7 +53,7 @@
             style="padding:0!important; overflow:hidden!important; background:none!important;">
             <!-- ★ 포스터 사진 변경하는 곳: 아래 img 태그의 src="주소" 부분을 수정하시면 됩니다 ★ -->
             <img src="찐최종.png" alt="Classic Concours 2026"
-              style="width:100%!important; height:100%!important; object-fit:cover!important; display:block!important; border-radius:20px!important; cursor: pointer;" onclick="document.getElementById('posterModal').style.display='flex'">
+              style="width:100%!important; height:100%!important; object-fit:cover!important; display:block!important; border-radius:20px!important; cursor: pointer;" onclick="document.getElementById('posterModal').classList.add('clf-show')">
           </div>
           <div class="clf-name-badge">
             <span class="clf-name-ko">카네기 LEE 재단 제1회 콩쿠르</span>
@@ -908,7 +908,7 @@
     </div><!-- /clf-wrap -->
 
   <!-- 포스터 원본 보기 팝업 -->
-  <div class="clf-modal-bd" id="posterModal" role="dialog" aria-modal="true" style="z-index: 100005; display: none; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: pointer;" onclick="this.style.display='none'">
+  <div class="clf-modal-bd" id="posterModal" role="dialog" aria-modal="true" style="z-index: 100005; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: pointer;" onclick="this.classList.remove('clf-show')">
     <img src="찐최종.png" style="max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
   </div>
 
@@ -1133,6 +1133,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
-  <script src="assets/concours.js?v=20260601_1"></script>
+  <script src="assets/concours.js?v=20260602_1"></script>
   </body>
 </html>
