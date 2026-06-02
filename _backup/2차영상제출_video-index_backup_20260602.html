@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>2차 영상 제출 — 카네기 Lee 재단 클래식 콩쿠르 2026</title>
+</head>
+<body style="margin:0;padding:0;">
+
+<style>
+.clf-vid {
+  --gold:#C9A84C; --gold2:#A8872A; --gold-pale:#FBF5E2;
+  --teal:#0C3D40; --teal2:#0F5258; --teal-pale:#EAF3F3;
+  --text:#111111; --text2:#444444; --text3:#888888;
+  --bg:#F8F9FA; --border:#E4E4E4;
+  --warn:#B54E3A;
+  --radius:14px;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  color:#111 !important;
+}
+
+/* ── 헤더 ── */
+.clf-vid .clf-phero {
+  background:#fff !important; padding:48px 6vw 0 !important;
+  max-width:1400px !important; margin:0 auto !important;
+}
+.clf-vid .clf-page-title-wrap { padding-bottom:28px !important; border-bottom:2px solid #111 !important; }
+.clf-vid .clf-page-title {
+  font-size:clamp(28px,4vw,42px) !important; font-weight:700 !important;
+  color:#111 !important; letter-spacing:-.02em !important;
+  line-height:1.2 !important; margin:0 !important;
+}
+.clf-vid .clf-page-sub {
+  font-size:14px !important; color:#888 !important; margin-top:12px !important;
+}
+
+/* ── 콘텐츠 래퍼 ── */
+.clf-vid .clf-wrap {
+  max-width:1400px !important; margin:0 auto !important;
+  padding:72px 6vw !important;
+}
+
+/* ── 섹션 라벨 ── */
+.clf-vid .clf-detail-label {
+  display:flex !important; align-items:center !important; gap:10px !important;
+  margin-bottom:20px !important;
+}
+.clf-vid .clf-detail-label-en {
+  font-size:10px !important; font-weight:700 !important;
+  letter-spacing:.3em !important; text-transform:uppercase !important;
+  color:#C9A84C !important;
+}
+.clf-vid .clf-detail-label-ko {
+  font-size:16px !important; font-weight:700 !important; color:#0C3D40 !important;
+}
+.clf-vid .clf-detail-label-divider {
+  flex:1 !important; height:1px !important; background:#E4E4E4 !important;
+}
+
+/* ── 폼 인트로 ── */
+.clf-vid .clf-form-intro {
+  text-align:center !important;
+  margin-bottom:56px !important;
+}
+.clf-vid .clf-form-intro-en {
+  font-size:11px !important; font-weight:700 !important;
+  letter-spacing:.3em !important; text-transform:uppercase !important;
+  color:#C9A84C !important;
+  margin-bottom:12px !important;
+}
+.clf-vid .clf-form-intro-ko {
+  font-size:clamp(22px,2.6vw,30px) !important; font-weight:700 !important;
+  color:#111 !important; margin:0 !important;
+  letter-spacing:-.02em !important;
+}
+.clf-vid .clf-form-intro-ko::after {
+  content:"" !important;
+  display:block !important;
+  width:36px !important; height:2px !important;
+  background:#C9A84C !important;
+  margin:18px auto 0 !important;
+}
+.clf-vid .clf-form-intro-desc {
+  font-size:14px !important; color:#666 !important;
+  max-width:560px !important;
+  margin:16px auto 0 !important;
+  line-height:1.8 !important;
+}
+
+/* ── 폼 ── */
+.clf-vid .clf-form-wrap { max-width:880px !important; margin:0 auto !important; }
+.clf-vid .clf-form-block { margin-bottom:56px !important; }
+.clf-vid .clf-form-block-desc {
+  font-size:13px !important; color:#888 !important;
+  margin:-12px 0 20px !important;
+}
+.clf-vid .clf-fg { display:grid !important; grid-template-columns:1fr 1fr !important; gap:18px 20px !important; }
+.clf-vid .clf-fg-3 { display:grid !important; grid-template-columns:1fr 1fr 1fr !important; gap:18px 20px !important; }
+.clf-vid .clf-field { display:flex !important; flex-direction:column !important; gap:8px !important; }
+.clf-vid .clf-field.clf-full { grid-column:1 / -1 !important; }
+.clf-vid .clf-field-label {
+  font-size:13px !important; font-weight:600 !important; color:#111 !important;
+  padding-left:2px !important;
+}
+.clf-vid .clf-field-label .clf-req { color:#B54E3A !important; margin-left:4px !important; }
+.clf-vid .clf-field-help {
+  font-size:12px !important; color:#888 !important;
+  margin-top:4px !important; padding-left:2px !important;
+}
+
+/* ── 에러 메시지 ── */
+.clf-vid .clf-error-msg {
+  color:#B54E3A !important; font-size:12.5px !important; font-weight:600 !important;
+  margin-top:6px !important; padding-left:2px !important;
+  animation:clfVidFadeIn .2s ease !important;
+}
+.clf-vid .clf-input.clf-input-error {
+  border-color:#B54E3A !important; border-left-color:#B54E3A !important; background:#FFF5F5 !important;
+}
+@keyframes clfVidFadeIn {
+  from { opacity:0; transform:translateY(-4px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── 입력 필드 ── */
+.clf-vid .clf-input {
+  width:100% !important; background:#F8F9FA !important;
+  border:1px solid #E4E4E4 !important; border-left:3px solid #EAF3F3 !important;
+  border-radius:10px !important; color:#111 !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  font-size:14px !important; padding:13px 16px !important;
+  outline:none !important; transition:border-color .2s !important; box-sizing:border-box !important;
+}
+.clf-vid .clf-input:focus { border-color:#C9A84C !important; border-left-color:#C9A84C !important; background:#fff !important; }
+.clf-vid .clf-input::placeholder { color:#aaa !important; }
+
+/* ── 핵심 공지 박스 ── */
+.clf-vid .clf-callout {
+  background:#FBF5E2 !important; border-radius:12px !important;
+  padding:16px 20px !important; margin-bottom:20px !important;
+  border-left:3px solid #C9A84C !important; font-size:13.5px !important;
+  color:#444 !important; line-height:1.75 !important;
+  display:flex !important; align-items:flex-start !important; gap:12px !important;
+}
+.clf-vid .clf-callout-icon {
+  flex-shrink:0 !important; width:24px !important; height:24px !important;
+  border-radius:50% !important; background:#C9A84C !important; color:#fff !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  font-size:12px !important; font-weight:700 !important;
+}
+.clf-vid .clf-callout strong { color:#0C3D40 !important; font-weight:700 !important; }
+
+/* ── 아코디언 ── */
+.clf-vid .clf-accordion {
+  background:#F8F9FA !important; border-radius:12px !important;
+  margin-bottom:12px !important; overflow:hidden !important;
+  border-left:3px solid #EAF3F3 !important; transition:border-color .2s !important;
+}
+.clf-vid .clf-accordion.clf-open { border-left-color:#C9A84C !important; }
+.clf-vid .clf-acc-trigger {
+  display:flex !important; align-items:center !important; justify-content:space-between !important;
+  width:100% !important; background:transparent !important; border:none !important;
+  padding:16px 20px !important; cursor:pointer !important; font-family:inherit !important;
+  text-align:left !important; transition:background .15s !important;
+}
+.clf-vid .clf-acc-trigger:hover { background:rgba(201,168,76,.06) !important; }
+.clf-vid .clf-acc-title {
+  display:flex !important; align-items:center !important; gap:10px !important;
+  font-size:13.5px !important; font-weight:600 !important; color:#0C3D40 !important;
+}
+.clf-vid .clf-acc-icon {
+  width:22px !important; height:22px !important; border-radius:50% !important;
+  background:#fff !important; border:1px solid #C9A84C !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  color:#C9A84C !important; font-size:11px !important; font-weight:700 !important; flex-shrink:0 !important;
+}
+.clf-vid .clf-acc-arrow { color:#C9A84C !important; font-size:12px !important; transition:transform .25s !important; }
+.clf-vid .clf-accordion.clf-open .clf-acc-arrow { transform:rotate(180deg) !important; }
+.clf-vid .clf-acc-body { max-height:0 !important; overflow:hidden !important; transition:max-height .35s ease !important; }
+.clf-vid .clf-accordion.clf-open .clf-acc-body { max-height:1200px !important; }
+.clf-vid .clf-acc-inner { padding:0 20px 20px 20px !important; border-top:1px solid #E4E4E4 !important; padding-top:18px !important; }
+.clf-vid .clf-acc-list {
+  list-style:none !important; padding:0 !important; margin:0 !important;
+  display:flex !important; flex-direction:column !important; gap:10px !important;
+}
+.clf-vid .clf-acc-list li {
+  display:flex !important; align-items:flex-start !important; gap:10px !important;
+  font-size:13px !important; color:#444 !important; line-height:1.7 !important;
+}
+.clf-vid .clf-acc-list li::before {
+  content:"" !important; width:5px !important; height:5px !important;
+  background:#C9A84C !important; border-radius:50% !important;
+  margin-top:8px !important; flex-shrink:0 !important;
+}
+.clf-vid .clf-acc-list li strong { color:#0C3D40 !important; font-weight:700 !important; }
+.clf-vid .clf-acc-list li code {
+  background:#fff !important; color:#A8872A !important;
+  padding:1px 8px !important; border-radius:8px !important;
+  font-family:'Pretendard Variable',Pretendard,monospace !important;
+  font-size:12px !important; font-weight:600 !important; margin:0 2px !important;
+}
+
+/* ── 영상 파일명 가이드 ── */
+.clf-vid .clf-filename-guide {
+  background:#F8F9FA !important; border:1px solid #E4E4E4 !important;
+  border-left:3px solid #C9A84C !important; border-radius:12px !important;
+  padding:18px 20px !important; margin:0 0 14px !important;
+  display:flex !important; align-items:center !important; gap:18px !important; flex-wrap:wrap !important;
+}
+.clf-vid .clf-filename-guide-text { flex:1 1 260px !important; min-width:0 !important; }
+.clf-vid .clf-filename-guide-label {
+  font-size:11px !important; font-weight:700 !important; letter-spacing:.18em !important;
+  color:#C9A84C !important; text-transform:uppercase !important; margin-bottom:6px !important;
+}
+.clf-vid .clf-filename-guide-rule { font-size:13.5px !important; color:#0C3D40 !important; font-weight:700 !important; margin-bottom:4px !important; }
+.clf-vid .clf-filename-guide-rule code {
+  background:#fff !important; color:#A8872A !important; padding:2px 10px !important;
+  border-radius:8px !important; font-family:'Pretendard Variable',Pretendard,monospace !important;
+  font-size:13px !important; font-weight:700 !important; margin:0 2px !important; border:1px solid #E8DDB5 !important;
+}
+.clf-vid .clf-filename-guide-ex { font-size:12.5px !important; color:#888 !important; line-height:1.6 !important; }
+.clf-vid .clf-help-btn {
+  flex-shrink:0 !important; display:inline-flex !important; align-items:center !important; gap:6px !important;
+  background:#fff !important; border:1px solid #0C3D40 !important; color:#0C3D40 !important;
+  padding:9px 16px !important; border-radius:24px !important; font-family:inherit !important;
+  font-size:12.5px !important; font-weight:700 !important; letter-spacing:.02em !important;
+  cursor:pointer !important; transition:all .2s !important; white-space:nowrap !important;
+}
+.clf-vid .clf-help-btn:hover { background:#0C3D40 !important; color:#fff !important; transform:translateY(-1px) !important; }
+.clf-vid .clf-help-btn svg { width:14px !important; height:14px !important; }
+
+/* ── 제출 ── */
+.clf-vid .clf-submit-area { margin-top:56px !important; text-align:center !important; }
+.clf-vid .clf-submit {
+  background:#0C3D40 !important; color:#fff !important; border:none !important;
+  font-family:'Pretendard Variable',Pretendard,'Apple SD Gothic Neo',sans-serif !important;
+  font-size:14px !important; font-weight:700 !important; letter-spacing:.3em !important;
+  padding:18px 72px !important; cursor:pointer !important; border-radius:30px !important;
+  transition:all .2s !important; box-shadow:0 6px 16px -6px rgba(12,61,64,.4) !important;
+}
+.clf-vid .clf-submit:hover { background:#0F5258 !important; transform:translateY(-2px) !important; box-shadow:0 12px 24px -8px rgba(12,61,64,.5) !important; }
+.clf-vid .clf-submit-hint { margin-top:14px !important; font-size:12.5px !important; color:#aaa !important; }
+
+/* ── 모달 ── */
+.clf-vid .clf-modal-bd {
+  position:fixed !important; inset:0 !important; background:rgba(17,17,17,.5) !important;
+  backdrop-filter:blur(6px) !important; display:none !important;
+  align-items:center !important; justify-content:center !important;
+  z-index:9999 !important; padding:24px !important;
+}
+.clf-vid .clf-modal-bd.clf-show { display:flex !important; }
+.clf-vid .clf-modal {
+  background:#fff !important; border-radius:16px !important;
+  max-width:460px !important; width:100% !important; padding:48px 36px !important;
+  text-align:center !important; border-top:4px solid #C9A84C !important;
+  box-shadow:0 20px 60px -10px rgba(0,0,0,.3) !important;
+}
+.clf-vid .clf-modal h3 {
+  font-size:11px !important; font-weight:700 !important; letter-spacing:.3em !important;
+  text-transform:uppercase !important; color:#C9A84C !important; margin:0 0 12px !important;
+}
+.clf-vid .clf-modal-title { font-size:20px !important; font-weight:700 !important; color:#0C3D40 !important; margin-bottom:20px !important; }
+.clf-vid .clf-modal p { color:#666 !important; font-size:14px !important; margin:10px 0 !important; line-height:1.8 !important; }
+.clf-vid .clf-modal-ref {
+  margin-top:22px !important; padding:12px !important; background:#F8F9FA !important;
+  color:#A8872A !important; font-family:'Pretendard Variable',monospace !important;
+  font-size:13.5px !important; letter-spacing:.1em !important; border-radius:30px !important; font-weight:700 !important;
+}
+.clf-vid .clf-modal-close {
+  margin-top:24px !important; background:#0C3D40 !important; border:none !important;
+  color:#fff !important; padding:12px 36px !important; cursor:pointer !important;
+  font-family:inherit !important; letter-spacing:.2em !important; font-size:13px !important;
+  font-weight:700 !important; border-radius:30px !important;
+}
+
+/* ── 업로드 방법 모달 ── */
+.clf-vid .clf-modal.clf-modal-wide { max-width:560px !important; text-align:left !important; padding:40px 36px !important; }
+.clf-vid .clf-modal-wide h3 { text-align:center !important; }
+.clf-vid .clf-modal-wide .clf-modal-title { text-align:center !important; margin-bottom:8px !important; }
+.clf-vid .clf-modal-wide .clf-modal-desc { text-align:center !important; font-size:13px !important; color:#888 !important; margin-bottom:24px !important; line-height:1.6 !important; }
+.clf-vid .clf-modal-wide .clf-gdrive-steps {
+  list-style:none !important; padding:0 !important; margin:0 0 22px !important;
+  display:flex !important; flex-direction:column !important; gap:12px !important;
+}
+.clf-vid .clf-modal-wide .clf-gdrive-steps li {
+  display:flex !important; align-items:flex-start !important; gap:12px !important;
+  font-size:13.5px !important; color:#444 !important; line-height:1.65 !important;
+}
+.clf-vid .clf-modal-wide .clf-gdrive-steps li strong { color:#0C3D40 !important; font-weight:700 !important; }
+.clf-vid .clf-modal-wide .clf-gdrive-steps li code {
+  background:#F8F9FA !important; color:#A8872A !important; padding:1px 8px !important; border-radius:6px !important;
+  font-family:'Pretendard Variable',Pretendard,monospace !important; font-size:12.5px !important;
+  font-weight:700 !important; margin:0 2px !important; border:1px solid #E8DDB5 !important;
+}
+.clf-vid .clf-modal-wide .clf-gdrive-num {
+  flex-shrink:0 !important; width:24px !important; height:24px !important;
+  background:#C9A84C !important; color:#fff !important; border-radius:50% !important;
+  display:flex !important; align-items:center !important; justify-content:center !important;
+  font-size:12px !important; font-weight:700 !important; margin-top:1px !important;
+}
+.clf-vid .clf-modal-wide .clf-modal-actions { display:flex !important; gap:10px !important; margin-top:8px !important; }
+.clf-vid .clf-modal-wide .clf-modal-actions > * { flex:1 !important; }
+.clf-vid .clf-modal-wide .clf-modal-open-drive {
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  gap:8px !important; background:#0C3D40 !important; color:#fff !important;
+  text-decoration:none !important; padding:13px 20px !important; border-radius:28px !important;
+  font-size:13px !important; font-weight:700 !important; border:none !important;
+  cursor:pointer !important; transition:all .2s !important; font-family:inherit !important; box-sizing:border-box !important;
+}
+.clf-vid .clf-modal-wide .clf-modal-open-drive:hover { background:#0F5258 !important; transform:translateY(-1px) !important; }
+.clf-vid .clf-modal-wide .clf-modal-secondary {
+  background:#fff !important; border:1px solid #DADADA !important; color:#666 !important;
+  padding:13px 20px !important; border-radius:28px !important; font-size:13px !important;
+  font-weight:700 !important; cursor:pointer !important; font-family:inherit !important;
+  transition:all .2s !important; box-sizing:border-box !important;
+}
+.clf-vid .clf-modal-wide .clf-modal-secondary:hover { border-color:#0C3D40 !important; color:#0C3D40 !important; }
+
+/* ── 로그인 / 유저 정보 카드 ── */
+.clf-vid .clf-user-card {
+  background:#EAF3F3 !important; border-radius:12px !important;
+  padding:16px 20px !important; display:flex !important;
+  align-items:center !important; justify-content:space-between !important;
+  flex-wrap:wrap !important; gap:12px !important;
+}
+.clf-vid .clf-user-card-info { font-size:14px !important; color:#0C3D40 !important; line-height:1.7 !important; }
+.clf-vid .clf-user-card-info strong { font-weight:700 !important; }
+.clf-vid .clf-logout-btn {
+  background:transparent !important; border:1px solid #0C3D40 !important;
+  color:#0C3D40 !important; padding:7px 18px !important; border-radius:20px !important;
+  font-family:inherit !important; font-size:12.5px !important; font-weight:700 !important;
+  cursor:pointer !important; transition:all .2s !important; white-space:nowrap !important;
+}
+.clf-vid .clf-logout-btn:hover { background:#0C3D40 !important; color:#fff !important; }
+.clf-vid .clf-login-error { color:#B54E3A !important; font-size:13px !important; font-weight:600 !important; margin-top:10px !important; display:none !important; }
+.clf-vid .clf-login-error.clf-show { display:block !important; }
+.clf-vid .clf-already-submitted {
+  background:#F0FBF0 !important; border-radius:12px !important;
+  border-left:3px solid #4CAF50 !important; padding:20px 24px !important;
+  font-size:14px !important; color:#2E7D32 !important; line-height:1.8 !important;
+}
+
+/* ── 애니메이션 ── */
+[data-vid-anim]{opacity:0!important;transform:translateY(22px)!important;transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)!important}
+[data-vid-anim].vid-visible{opacity:1!important;transform:translateY(0)!important}
+
+@media(max-width:960px){
+  .clf-vid .clf-fg, .clf-vid .clf-fg-3{grid-template-columns:1fr!important}
+  .clf-vid .clf-submit{padding:16px 32px!important;width:100%!important;letter-spacing:.2em!important;}
+}
+@media(max-width:600px){
+  .clf-vid .clf-wrap{padding:48px 5vw!important}
+  .clf-vid .clf-filename-guide{flex-direction:column!important;align-items:stretch!important;}
+  .clf-vid .clf-help-btn{width:100%!important;justify-content:center!important;}
+}
+</style>
+
+<div class="clf-vid">
+
+  <!-- 헤더 -->
+  <div class="clf-phero">
+    <div class="clf-page-title-wrap">
+      <h1 class="clf-page-title">2차 영상 제출</h1>
+      <div class="clf-page-sub">제7회 카네기 Lee 재단 클래식 콩쿠르 · 2026</div>
+    </div>
+  </div>
+
+  <!-- 본문 -->
+  <div class="clf-wrap">
+
+    <div class="clf-form-intro" data-vid-anim>
+      <div class="clf-form-intro-en">VIDEO SUBMISSION</div>
+      <h2 class="clf-form-intro-ko">2차 영상 제출</h2>
+      <p class="clf-form-intro-desc">본선 진출이 확정된 참가자에 한하여 2차 영상을 제출해 주세요.<br>아래 촬영 · 음향 가이드를 반드시 확인 후 영상 링크를 입력해 주세요.</p>
+    </div>
+
+    <div class="clf-form-wrap">
+
+      <!-- 영상 가이드 -->
+      <div class="clf-form-block" data-vid-anim>
+        <div class="clf-detail-label">
+          <span class="clf-detail-label-en">Video Guide</span>
+          <span class="clf-detail-label-ko">영상 촬영 · 제출 가이드</span>
+          <span class="clf-detail-label-divider"></span>
+        </div>
+        <p class="clf-form-block-desc">자유곡 1곡. 아래 가이드를 반드시 확인 후 제출해 주세요.</p>
+
+        <div class="clf-callout" style="margin-bottom:20px !important;">
+          <div class="clf-callout-icon">!</div>
+          <div><strong>모든 곡은 암보(暗譜) 연주가 원칙입니다.</strong><br>악보를 보지 않고 외워서 연주하는 것을 전제로 곡을 선정해 주세요. 악보를 보고 연주한 영상은 심사 대상에서 제외될 수 있습니다.</div>
+        </div>
+
+        <!-- 촬영 가이드 -->
+        <div class="clf-accordion" data-acc>
+          <button type="button" class="clf-acc-trigger" onclick="clfVidToggleAcc(this)">
+            <span class="clf-acc-title"><span class="clf-acc-icon">1</span> 촬영 가이드 (Filming Guide)</span>
+            <span class="clf-acc-arrow">▼</span>
+          </button>
+          <div class="clf-acc-body"><div class="clf-acc-inner">
+            <ul class="clf-acc-list">
+              <li><strong>전신 촬영 필수</strong> — 연주자의 머리부터 발끝, 악기 전체가 화면 안에 모두 들어와야 합니다. (성악의 경우 상반신 전체 + 표정이 명확히 보이도록)</li>
+              <li><strong>본인 확인 슬레이트</strong> — 영상 시작 시 5초 이상 정면을 향해 본인의 얼굴이 명확히 보이는 장면을 포함하거나, 본인 성명 · 연주곡명을 육성으로 또렷이 안내해 주세요.</li>
+              <li><strong>무편집 단일 테이크</strong> — 처음부터 끝까지 한 번에 녹화한 원본이어야 합니다. 컷 편집 · 다중 카메라 합성 · 화면 분할 · 자막 삽입 · 음향 보정 모두 <strong>금지</strong>입니다.</li>
+              <li><strong>고정 카메라</strong> — 삼각대 등을 활용한 고정 촬영. 줌인 · 줌아웃 · 패닝 모두 금지.</li>
+              <li><strong>해상도</strong> — <code>1920×1080 (FHD)</code> 이상 권장, <code>1280×720 (HD)</code> 이상 필수.</li>
+              <li><strong>밝기 · 조명</strong> — 연주자의 얼굴과 손동작이 명확히 식별 가능해야 합니다. 역광 촬영 금지.</li>
+              <li><strong>녹화 유효 기간</strong> — 2026년 1월 1일 이후 촬영본만 인정됩니다.</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <!-- 음향 가이드 -->
+        <div class="clf-accordion" data-acc>
+          <button type="button" class="clf-acc-trigger" onclick="clfVidToggleAcc(this)">
+            <span class="clf-acc-title"><span class="clf-acc-icon">2</span> 음향 가이드 (Audio Guide)</span>
+            <span class="clf-acc-arrow">▼</span>
+          </button>
+          <div class="clf-acc-body"><div class="clf-acc-inner">
+            <ul class="clf-acc-list">
+              <li><strong>현장 동시 녹음</strong> — 영상과 동시에 녹음된 원음 오디오여야 합니다. 별도 녹음 후 영상에 입히는 더빙 · 후작업은 금지입니다.</li>
+              <li><strong>음향 보정 금지</strong> — 이퀄라이저(EQ) · 리버브 · 컴프레서 · 노이즈 게이트 등 일체의 후반 보정 금지.</li>
+              <li><strong>마이크</strong> — 외장 마이크 사용 권장. 카메라 내장 마이크도 인정되나 클리핑(찢어짐)이 없어야 합니다.</li>
+              <li><strong>주변 소음</strong> — 에어컨 · 휴대폰 알림음 · 외부 차량 소음 등이 들어가지 않도록 주의해 주세요.</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <!-- 파일 규격 -->
+        <div class="clf-accordion" data-acc>
+          <button type="button" class="clf-acc-trigger" onclick="clfVidToggleAcc(this)">
+            <span class="clf-acc-title"><span class="clf-acc-icon">3</span> 파일 규격 (File Specification)</span>
+            <span class="clf-acc-arrow">▼</span>
+          </button>
+          <div class="clf-acc-body"><div class="clf-acc-inner">
+            <ul class="clf-acc-list">
+              <li><strong>파일 형식</strong> — <code>.mp4</code> 권장 (<code>.mov</code> · <code>.avi</code> 가능)</li>
+              <li><strong>용량 제한</strong> — 최대 <code>2GB</code> 이내. 초과 시 YouTube · Vimeo 링크 제출 권장.</li>
+              <li><strong>파일명 규칙</strong> — <code>분야_성명_곡명.mp4</code><br><span style="color:#888!important;font-size:12px!important;">예) 피아노_홍길동_Chopin Etude Op.10-4.mp4</span></li>
+              <li><strong>영상 길이</strong> — 별도 제한 없음. 8~15분이 일반적입니다.</li>
+              <li><strong>YouTube · Vimeo</strong> — <code>'미등록(Unlisted)'</code> 또는 <code>'공개(Public)'</code>만 가능. <code>'비공개(Private)'</code>은 심사 불가.</li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 로그인 블록 -->
+      <div id="vid-loginBlock" class="clf-form-block" data-vid-anim>
+        <div class="clf-detail-label">
+          <span class="clf-detail-label-en">Login</span>
+          <span class="clf-detail-label-ko">로그인</span>
+          <span class="clf-detail-label-divider"></span>
+        </div>
+        <p class="clf-form-block-desc">서류 제출 시 등록한 이메일과 비밀번호로 로그인해 주세요.</p>
+        <div class="clf-fg">
+          <div class="clf-field">
+            <div class="clf-field-label">이메일</div>
+            <input class="clf-input" type="email" id="vid-loginEmail" placeholder="name@example.com" autocomplete="email">
+          </div>
+          <div class="clf-field">
+            <div class="clf-field-label">비밀번호</div>
+            <input class="clf-input" type="password" id="vid-loginPw" placeholder="비밀번호" autocomplete="current-password">
+          </div>
+        </div>
+        <div id="vid-loginError" class="clf-login-error"></div>
+        <div style="margin-top:20px !important;">
+          <button type="button" id="vid-loginBtn" class="clf-submit" style="padding:14px 56px !important;">로 그 인</button>
+        </div>
+      </div>
+
+      <!-- 로그인 후 유저 정보 + 제출 폼 -->
+      <div id="vid-loggedInBlock" style="display:none !important;">
+
+        <!-- 유저 정보 카드 -->
+        <div class="clf-form-block" data-vid-anim>
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Identification</span>
+            <span class="clf-detail-label-ko">참가자 확인</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+          <div class="clf-user-card">
+            <div class="clf-user-card-info" id="vid-userInfo">—</div>
+            <button type="button" id="vid-logoutBtn" class="clf-logout-btn">로그아웃</button>
+          </div>
+        </div>
+
+        <!-- 이미 제출한 경우 -->
+        <div id="vid-alreadySubmitted" class="clf-form-block" style="display:none !important;">
+          <div class="clf-already-submitted">
+            ✓ 영상이 이미 제출되었습니다.<br>
+            <span id="vid-submittedLink" style="word-break:break-all !important;"></span>
+          </div>
+        </div>
+
+      <!-- 제출 폼 -->
+      <form id="clf-videoForm" novalidate>
+
+        <!-- 영상 링크 -->
+        <div class="clf-form-block" data-vid-anim>
+          <div class="clf-detail-label">
+            <span class="clf-detail-label-en">Video Link</span>
+            <span class="clf-detail-label-ko">영상 링크 입력</span>
+            <span class="clf-detail-label-divider"></span>
+          </div>
+
+          <div class="clf-filename-guide">
+            <div class="clf-filename-guide-text">
+              <div class="clf-filename-guide-label">영상 파일명 규칙</div>
+              <div class="clf-filename-guide-rule"><code>분야_성명_곡명.mp4</code></div>
+              <div class="clf-filename-guide-ex">예) <code style="background:#fff;color:#A8872A;padding:1px 8px;border-radius:6px;font-family:'Pretendard Variable',Pretendard,monospace;font-size:12.5px;font-weight:700;border:1px solid #E8DDB5;">피아노_홍길동_Chopin Etude Op.10-4.mp4</code> · 항목 사이는 언더바(_)로 연결</div>
+            </div>
+            <button type="button" class="clf-help-btn" id="clf-howToUploadBtn2" aria-label="업로드 방법 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              업로드 방법 알아보기
+            </button>
+          </div>
+
+          <div class="clf-field clf-full" style="margin-bottom:18px !important;">
+            <div class="clf-field-label">영상 공유 링크 <span class="clf-req">*</span></div>
+            <input class="clf-input" type="url" id="vidLink" name="videoLink" placeholder="https://drive.google.com/..." required>
+            <div class="clf-field-help">제출 전 <strong style="color:#0C3D40 !important;">시크릿(비로그인) 창에서 링크가 정상적으로 열리는지</strong> 반드시 확인해 주세요.</div>
+          </div>
+
+          <div class="clf-fg">
+            <div class="clf-field">
+              <div class="clf-field-label">연주곡 작곡가 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="vidComposer" name="vComposer" placeholder="예) F. Chopin" required>
+            </div>
+            <div class="clf-field">
+              <div class="clf-field-label">연주곡 곡명 <span class="clf-req">*</span></div>
+              <input class="clf-input" type="text" id="vidPiece" name="vPiece" placeholder="예) Etude Op.10 No.4" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- 제출 -->
+        <div class="clf-submit-area" data-vid-anim>
+          <button type="submit" class="clf-submit">영 상  제 출</button>
+          <div class="clf-submit-hint">제출 후 입력하신 이메일로 접수 확인 메일이 발송됩니다.</div>
+        </div>
+      </form>
+
+      </div><!-- /vid-loggedInBlock -->
+
+    </div>
+  </div>
+
+  <!-- 완료 모달 -->
+  <div class="clf-modal-bd" id="vidSuccessModal">
+    <div class="clf-modal">
+      <h3>Video Submitted</h3>
+      <div class="clf-modal-title">영상이 정상 제출되었습니다</div>
+      <p>입력하신 이메일로 접수 확인 메일이 발송됩니다.<br>심사 결과는 추후 개별 통지됩니다.</p>
+      <div class="clf-modal-ref" id="vidRefDisplay"></div>
+      <button type="button" class="clf-modal-close" id="vidModalClose">확 인</button>
+    </div>
+  </div>
+
+  <!-- 업로드 방법 모달 -->
+  <div class="clf-modal-bd" id="howToUploadModal2" role="dialog" aria-modal="true">
+    <div class="clf-modal clf-modal-wide">
+      <h3>How to Upload</h3>
+      <div class="clf-modal-title">구글 드라이브 영상 업로드 방법</div>
+      <p class="clf-modal-desc">아래 순서대로 진행하시면 심사용 영상 링크를 만드실 수 있습니다.</p>
+      <ol class="clf-gdrive-steps">
+        <li><span class="clf-gdrive-num">1</span><div><strong>drive.google.com</strong> 접속 후 본인 구글 계정으로 로그인합니다.</div></li>
+        <li><span class="clf-gdrive-num">2</span><div>좌측 상단 <strong>[+ 새로 만들기]</strong> → <strong>[파일 업로드]</strong> 클릭 후 영상 파일을 선택합니다.<br><span style="color:#888;font-size:12.5px;">파일명: <code>분야_성명_곡명.mp4</code></span></div></li>
+        <li><span class="clf-gdrive-num">3</span><div>업로드 완료 후 해당 파일을 <strong>우클릭 → [공유]</strong></div></li>
+        <li><span class="clf-gdrive-num">4</span><div><strong>일반 액세스</strong>를 <code>제한됨</code> → <code>링크가 있는 모든 사용자</code>로 변경</div></li>
+        <li><span class="clf-gdrive-num">5</span><div>권한 <code>뷰어</code> 유지, <strong>[링크 복사]</strong> 클릭</div></li>
+        <li><span class="clf-gdrive-num">6</span><div>복사된 링크를 <strong>영상 공유 링크</strong> 입력란에 붙여넣기<br><span style="color:#888;font-size:12.5px;">시크릿 창에서 정상 재생 확인 필수</span></div></li>
+      </ol>
+      <div class="clf-modal-actions">
+        <button type="button" class="clf-modal-secondary" id="howToUploadClose2">닫 기</button>
+        <a class="clf-modal-open-drive" href="https://drive.google.com" target="_blank" rel="noopener noreferrer">
+          구글 드라이브 열기
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../assets/config.js"></script>
+<script>
+var SUPABASE_URL = 'https://qldtlzqlsssfdmkxoirn.supabase.co';
+var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsZHRsenFsc3NzZmRta3hvaXJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2MTk1MTYsImV4cCI6MjA5NTE5NTUxNn0.3uBMsRnrnwPH9Nn-6pDTnXjzLjmPA7K3mkNic0iynLE';
+var sb2 = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+/* 스크롤 인 애니메이션 */
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vid-visible'); });
+  }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('[data-vid-anim]').forEach(function(el){ obs.observe(el); });
+})();
+
+/* ── 로그인/로그아웃 UI 전환 ── */
+function showLoginBlock() {
+  document.getElementById('vid-loginBlock').style.setProperty('display', 'block', 'important');
+  document.getElementById('vid-loggedInBlock').style.setProperty('display', 'none', 'important');
+}
+
+function showLoggedInBlock(appData) {
+  document.getElementById('vid-loginBlock').style.setProperty('display', 'none', 'important');
+  document.getElementById('vid-loggedInBlock').style.setProperty('display', 'block', 'important');
+
+  var info = document.getElementById('vid-userInfo');
+  if (info) {
+    info.innerHTML =
+      '<strong>' + (appData.name_ko || '—') + '</strong>' +
+      ' &nbsp;·&nbsp; ' + (appData.email || '—') +
+      ' &nbsp;·&nbsp; 접수번호 ' + (appData.ref_number || '—');
+  }
+
+  /* 이미 제출한 경우 */
+  var alreadyEl = document.getElementById('vid-alreadySubmitted');
+  var formEl    = document.getElementById('clf-videoForm');
+  if (appData.video_link) {
+    if (alreadyEl) {
+      alreadyEl.style.setProperty('display', 'block', 'important');
+      var linkEl = document.getElementById('vid-submittedLink');
+      if (linkEl) linkEl.innerHTML = '제출된 링크: <a href="' + appData.video_link + '" target="_blank" rel="noopener" style="color:#0C3D40 !important;word-break:break-all !important;">' + appData.video_link + '</a>';
+    }
+    if (formEl) formEl.style.setProperty('display', 'none', 'important');
+  } else {
+    if (alreadyEl) alreadyEl.style.setProperty('display', 'none', 'important');
+    if (formEl)    formEl.style.setProperty('display', 'block', 'important');
+  }
+}
+
+/* ── 페이지 로드 시 세션 확인 ── */
+(async function init() {
+  var { data: { session } } = await sb2.auth.getSession();
+  if (!session) { showLoginBlock(); return; }
+
+  var { data: appData } = await sb2
+    .from('concours_applications')
+    .select('name_ko, email, ref_number, video_link')
+    .eq('user_id', session.user.id)
+    .maybeSingle();
+
+  if (!appData) {
+    showLoginBlock();
+    var errEl = document.getElementById('vid-loginError');
+    if (errEl) { errEl.textContent = '서류 제출 내역이 없습니다. 서류를 먼저 제출해 주세요.'; errEl.classList.add('clf-show'); }
+    await sb2.auth.signOut();
+    return;
+  }
+  showLoggedInBlock(appData);
+})();
+
+/* ── 로그인 버튼 ── */
+document.getElementById('vid-loginBtn').addEventListener('click', async function() {
+  var email = (document.getElementById('vid-loginEmail').value || '').trim();
+  var pw    = (document.getElementById('vid-loginPw').value    || '').trim();
+  var errEl = document.getElementById('vid-loginError');
+  errEl.classList.remove('clf-show');
+
+  if (!email || !pw) { errEl.textContent = '이메일과 비밀번호를 입력해 주세요.'; errEl.classList.add('clf-show'); return; }
+
+  var btn = this;
+  btn.disabled = true; btn.textContent = '로그인 중...';
+
+  var { data: { session }, error } = await sb2.auth.signInWithPassword({ email: email, password: pw });
+
+  if (error || !session) {
+    errEl.textContent = '이메일 또는 비밀번호가 올바르지 않습니다.';
+    errEl.classList.add('clf-show');
+    btn.disabled = false; btn.textContent = '로 그 인';
+    return;
+  }
+
+  var { data: appData } = await sb2
+    .from('concours_applications')
+    .select('name_ko, email, ref_number, video_link')
+    .eq('user_id', session.user.id)
+    .maybeSingle();
+
+  if (!appData) {
+    errEl.textContent = '서류 제출 내역이 없습니다. 서류를 먼저 제출해 주세요.';
+    errEl.classList.add('clf-show');
+    btn.disabled = false; btn.textContent = '로 그 인';
+    await sb2.auth.signOut();
+    return;
+  }
+
+  showLoggedInBlock(appData);
+});
+
+/* 엔터키 로그인 */
+document.getElementById('vid-loginPw').addEventListener('keydown', function(e){
+  if (e.key === 'Enter') document.getElementById('vid-loginBtn').click();
+});
+
+/* ── 로그아웃 ── */
+document.getElementById('vid-logoutBtn').addEventListener('click', async function() {
+  await sb2.auth.signOut();
+  showLoginBlock();
+  document.getElementById('vid-loginEmail').value = '';
+  document.getElementById('vid-loginPw').value = '';
+});
+
+/* ── 영상 폼 제출 ── */
+document.getElementById('clf-videoForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var form = e.target;
+
+  form.querySelectorAll('.clf-error-msg').forEach(function(el){ el.remove(); });
+  form.querySelectorAll('.clf-input-error').forEach(function(el){ el.classList.remove('clf-input-error'); });
+
+  var isValid = true, firstInvalid = null;
+  form.querySelectorAll('[required]').forEach(function(input){
+    var ok = true, msg = '필수 항목입니다. 작성해 주세요.';
+    if (!input.value.trim()) { ok = false; }
+    else if (!input.validity.valid) { ok = false; msg = '올바른 형식으로 입력해 주세요.'; }
+    if (!ok) {
+      isValid = false;
+      input.classList.add('clf-input-error');
+      var err = document.createElement('div');
+      err.className = 'clf-error-msg'; err.textContent = msg;
+      input.parentNode.insertBefore(err, input.nextSibling);
+      if (!firstInvalid) firstInvalid = input;
+    }
+  });
+  if (!isValid) { if (firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth', block:'center'}); return; }
+
+  var { data: { session } } = await sb2.auth.getSession();
+  if (!session) { alert('로그인이 필요합니다.'); showLoginBlock(); return; }
+
+  var submitBtn = form.querySelector('.clf-submit');
+  var origText  = submitBtn.textContent;
+  submitBtn.disabled = true; submitBtn.style.setProperty('opacity', '.6', 'important'); submitBtn.textContent = '제출 중...';
+
+  var fd        = new FormData(form);
+  var videoLink = (fd.get('videoLink') || '').trim();
+  var composer  = (fd.get('vComposer') || '').trim();
+  var piece     = (fd.get('vPiece')    || '').trim();
+  var now       = new Date().toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'});
+
+  /* ── GAS 백업 ── */
+  if (GAS_URL && GAS_URL.indexOf('GOOGLE_APPS_SCRIPT_URL') !== 0) {
+    fetch(GAS_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ formType:'video', submittedAt:now, email:session.user.email, videoLink:videoLink, vComposer:composer, vPiece:piece })
+    }).catch(function(err){ console.error('GAS error', err); });
+  }
+
+  /* ── Supabase UPDATE ── */
+  var { error } = await sb2.from('concours_applications').update({
+    video_link:         videoLink,
+    video_composer:     composer,
+    video_piece:        piece,
+    video_submitted_at: now,
+    updated_at:         new Date().toISOString()
+  }).eq('user_id', session.user.id);
+
+  if (error) {
+    console.error('Supabase error:', error.message);
+    alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    submitBtn.disabled = false; submitBtn.style.setProperty('opacity','1','important'); submitBtn.textContent = origText;
+    return;
+  }
+
+  document.getElementById('vidRefDisplay').textContent = session.user.email;
+  document.getElementById('vidSuccessModal').classList.add('clf-show');
+});
+
+document.getElementById('vidModalClose').addEventListener('click', function(){ window.location.reload(); });
+
+/* ── 업로드 방법 모달 ── */
+(function(){
+  var howToBtn   = document.getElementById('clf-howToUploadBtn2');
+  var howToModal = document.getElementById('howToUploadModal2');
+  var howToClose = document.getElementById('howToUploadClose2');
+  function openH(){ howToModal.classList.add('clf-show'); document.body.style.overflow='hidden'; }
+  function closeH(){ howToModal.classList.remove('clf-show'); document.body.style.overflow=''; }
+  if(howToBtn)   howToBtn.addEventListener('click', openH);
+  if(howToClose) howToClose.addEventListener('click', closeH);
+  if(howToModal) howToModal.addEventListener('click', function(e){ if(e.target===howToModal) closeH(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && howToModal.classList.contains('clf-show')) closeH(); });
+})();
+
+function clfVidToggleAcc(btn){
+  var acc = btn.closest('.clf-accordion');
+  if(acc) acc.classList.toggle('clf-open');
+}
+</script>
+
+</body>
+</html>

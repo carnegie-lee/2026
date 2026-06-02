@@ -776,7 +776,7 @@ function clearInstErrors() {
         addressCity:      payload.address_city,
         addressDistrict:  payload.address_district,
         photoData:        photoUrl,
-        idCardData:       idCardUrl,
+        idCardSubmitted:  idCardUrl ? 'Y' : 'N',
         schoolName:       payload.school_name,
         career:           payload.career,
         awards:           payload.awards,
