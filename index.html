@@ -807,11 +807,14 @@
               </div>
 
               <!-- 1. 개인정보 수집·이용 -->
-              <div class="clf-agree-item">
+              <div class="clf-agree-item" style="flex-wrap: wrap;">
                 <input type="checkbox" id="agree1" required>
-                <label for="agree1">
-                  <strong>[필수] <span class="clf-req">*</span> 개인정보 수집·이용에 동의합니다</strong>
-                  <div class="clf-agree-detail">
+                <div style="flex: 1; display:flex; flex-direction:column;">
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label for="agree1" style="flex:1;"><strong>[필수] <span class="clf-req">*</span> 개인정보 수집·이용에 동의합니다</strong></label>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
+                  </div>
+                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
                     <strong style="color:#0C3D40 !important;">▸ 수집 항목</strong><br>
                     성명, 생년월일, 성별, 연락처, 이메일, 학교명·전공, 활동 경력, 수상 내역, 유입 경로, 연주 영상, 프로필 사진<br><br>
                     <strong style="color:#0C3D40 !important;">▸ 수집·이용 목적</strong><br>
@@ -821,15 +824,18 @@
                     <strong style="color:#0C3D40 !important;">▸ 동의 거부 권리</strong><br>
                     본 개인정보 수집·이용에 대한 동의를 거부할 수 있으며, 동의 거부 시 콩쿠르 참가가 불가합니다.
                   </div>
-                </label>
+                </div>
               </div>
 
               <!-- 2. 연주 영상 사용권 -->
-              <div class="clf-agree-item">
+              <div class="clf-agree-item" style="flex-wrap: wrap;">
                 <input type="checkbox" id="agree2" required>
-                <label for="agree2">
-                  <strong>[필수] <span class="clf-req">*</span> 연주 영상 및 콘텐츠 사용권에 동의합니다</strong>
-                  <div class="clf-agree-detail">
+                <div style="flex: 1; display:flex; flex-direction:column;">
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label for="agree2" style="flex:1;"><strong>[필수] <span class="clf-req">*</span> 연주 영상 및 콘텐츠 사용권에 동의합니다</strong></label>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
+                  </div>
+                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
                     <strong style="color:#0C3D40 !important;">▸ 저작권 귀속</strong><br>
                     제출된 모든 연주 영상의 원 저작권은 <strong>참가자 본인</strong>에게 귀속됩니다.<br><br>
                     <strong style="color:#0C3D40 !important;">▸ 재단 사용권 범위</strong><br>
@@ -838,46 +844,55 @@
                     <strong style="color:#0C3D40 !important;">▸ 본선 무대 촬영</strong><br>
                     본선 진출자는 본선 무대 공연 영상·사진이 행사 기록 및 향후 홍보 자료로 활용될 수 있음에 동의합니다.
                   </div>
-                </label>
+                </div>
               </div>
 
               <!-- 3. 초상권 사용 -->
-              <div class="clf-agree-item">
+              <div class="clf-agree-item" style="flex-wrap: wrap;">
                 <input type="checkbox" id="agree3" required>
-                <label for="agree3">
-                  <strong>[필수] <span class="clf-req">*</span> 초상권 사용에 동의합니다</strong>
-                  <div class="clf-agree-detail">
+                <div style="flex: 1; display:flex; flex-direction:column;">
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label for="agree3" style="flex:1;"><strong>[필수] <span class="clf-req">*</span> 초상권 사용에 동의합니다</strong></label>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
+                  </div>
+                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
                     <strong style="color:#0C3D40 !important;">▸ 동의 범위</strong><br>
                     본선 무대, 리허설 등 행사 현장에서 촬영된 본인의 사진·영상에 대한 사용에 동의합니다.<br><br>
                     <strong style="color:#0C3D40 !important;">▸ 활용 매체</strong><br>
                     재단 공식 홈페이지·SNS, 보도자료, 도록, 영상 기록물, 향후 재단 행사 홍보물 등.
                   </div>
-                </label>
+                </div>
               </div>
 
               <!-- 4. 참가비 환불 불가 -->
-              <div class="clf-agree-item">
+              <div class="clf-agree-item" style="flex-wrap: wrap;">
                 <input type="checkbox" id="agree4" required>
-                <label for="agree4">
-                  <strong>[필수] <span class="clf-req">*</span> 참가비 환불 불가 규정에 동의합니다</strong>
-                  <div class="clf-agree-detail">
+                <div style="flex: 1; display:flex; flex-direction:column;">
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label for="agree4" style="flex:1;"><strong>[필수] <span class="clf-req">*</span> 참가비 환불 불가 규정에 동의합니다</strong></label>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
+                  </div>
+                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
                     납부한 <strong>참가비(300,000원)</strong>는 어떠한 사유로도 반환되지 않음을 충분히 인지하고 동의합니다. 참가비 납입과 함께
                     콩쿠르
                     참가 접수가 정식으로 완료됩니다.
                   </div>
-                </label>
+                </div>
               </div>
 
               <!-- 5. 마케팅 (선택) -->
-              <div class="clf-agree-item">
+              <div class="clf-agree-item" style="flex-wrap: wrap;">
                 <input type="checkbox" id="agree5">
-                <label for="agree5">
-                  <span class="clf-agree-optional-tag">선택</span><strong>마케팅 정보 수신에 동의합니다</strong>
-                  <div class="clf-agree-detail">
+                <div style="flex: 1; display:flex; flex-direction:column;">
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label for="agree5" style="flex:1;"><span class="clf-agree-optional-tag">선택</span><strong>마케팅 정보 수신에 동의합니다</strong></label>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:0; outline:none;">▼ 보기</button>
+                  </div>
+                  <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
                     향후 카네기리 재단의 공모전·콘서트·전시 등 행사 안내 및 뉴스레터를 이메일·문자로 수신함에 동의합니다. 거부 시 마케팅 정보는 발송되지 않으나, 본 콩쿠르 운영 안내 메일은 정상
                     발송됩니다.
                   </div>
-                </label>
+                </div>
               </div>
             </div>
           </div>

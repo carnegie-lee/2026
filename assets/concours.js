@@ -761,6 +761,25 @@ function clearInstErrors() {
         }
       }
 
+      var idCardUrl = '';
+      var idCardInput = document.getElementById('idCardPhoto');
+      var idCardFile = idCardInput ? idCardInput.files[0] : null;
+      if (idCardFile) {
+        var idCardBlob = await compressImageToBlob(idCardFile);
+        if (idCardBlob) {
+          var idFileName = currentUser.id + '_idcard.jpg';
+          var { error: idUploadErr } = await sb.storage
+            .from('profile-photos')
+            .upload(idFileName, idCardBlob, { contentType: 'image/jpeg', upsert: true });
+          if (!idUploadErr) {
+            var { data: { publicUrl: idPubUrl } } = sb.storage.from('profile-photos').getPublicUrl(idFileName);
+            idCardUrl = idPubUrl;
+          } else {
+            console.error('ID Card upload error:', idUploadErr.message);
+          }
+        }
+      }
+
       var payload = {
         ref_number:        ref,
         form_type:         'concours',
@@ -784,6 +803,7 @@ function clearInstErrors() {
         address_city:      fd.get('addressCity')    || '',
         address_district:  fd.get('addressDistrict') || '',
         photo_data:        photoUrl,
+        id_card_data:      idCardUrl,
         school_name:       fd.get('schoolName')     || '',
         career:            fd.get('career')         || '',
         awards:            fd.get('awards')         || '',
@@ -820,6 +840,7 @@ function clearInstErrors() {
         addressCity:      payload.address_city,
         addressDistrict:  payload.address_district,
         photoData:        photoUrl,
+        idCardData:       idCardUrl,
         schoolName:       payload.school_name,
         career:           payload.career,
         awards:           payload.awards,
