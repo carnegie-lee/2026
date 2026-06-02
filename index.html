@@ -53,7 +53,7 @@
             style="padding:0!important; overflow:hidden!important; background:none!important;">
             <!-- ★ 포스터 사진 변경하는 곳: 아래 img 태그의 src="주소" 부분을 수정하시면 됩니다 ★ -->
             <img src="찐최종.png" alt="Classic Concours 2026"
-              style="width:100%!important; height:100%!important; object-fit:cover!important; display:block!important; border-radius:20px!important;">
+              style="width:100%!important; height:100%!important; object-fit:cover!important; display:block!important; border-radius:20px!important; cursor: pointer;" onclick="document.getElementById('posterModal').style.display='flex'">
           </div>
           <div class="clf-name-badge">
             <span class="clf-name-ko">카네기 LEE 재단 제1회 콩쿠르</span>
@@ -293,7 +293,11 @@
                         style="color:#888;font-size:12px;">예) 피아노_홍길동_Chopin Etude Op.10-4.mp4</span></li>
                     <li><strong>영상 길이</strong> — 별도 제한은 없으나 가급적 <strong>10분 이내</strong>를 권장합니다.</li>
                     <li><strong>권한 설정</strong> — 구글 드라이브 접근 권한을 <code>'링크가 있는 모든 사용자'</code>로 변경 필수.
-                      <code>'비공개(제한됨)'</code>는 심사 불가.</li>
+                      <div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 8px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; word-break: keep-all; border-radius: 4px;">
+                        <strong>※ [일반 액세스 > '링크가 있는 모든 사용자']</strong>로 설정을 변경해 주셔야 심사가 가능합니다.<br>
+                        (권한 제한으로 인해 영상을 볼 수 없는 경우, 심사에서 불이익을 받을 수 있습니다.)
+                      </div>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -895,7 +899,12 @@
 
     </div><!-- /clf-wrap -->
 
-    <!-- 모달 -->
+  <!-- 포스터 원본 보기 팝업 -->
+  <div class="clf-modal-bd" id="posterModal" role="dialog" aria-modal="true" style="z-index: 100005; display: none; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: pointer;" onclick="this.style.display='none'">
+    <img src="찐최종.png" style="max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+  </div>
+
+  <!-- 모달 -->
     <div class="clf-modal-bd" id="successModal">
       <div class="clf-modal">
         <h3>Application Received</h3>
@@ -925,7 +934,12 @@
             <div>업로드가 완료되면 해당 파일을 <strong>우클릭 → [공유]</strong>를 선택합니다.</div>
           </li>
           <li><span class="clf-gdrive-num">4</span>
-            <div><strong>일반 액세스</strong> 항목을 <code>제한됨</code> → <code style="color: #d32f2f; font-weight: 700;">링크가 있는 모든 사용자</code>로 변경합니다.</div>
+            <div><strong>일반 액세스</strong> 항목을 <code>제한됨</code> → <code style="color: #d32f2f; font-weight: 700;">링크가 있는 모든 사용자</code>로 변경합니다.
+              <div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 10px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; text-align: left; word-break: keep-all; border-radius: 4px;">
+                <strong>※ [일반 액세스 > '링크가 있는 모든 사용자']</strong>로 설정을 변경해 주셔야 심사가 가능합니다.<br>
+                (권한 제한으로 인해 영상을 볼 수 없는 경우, 심사에서 불이익을 받을 수 있습니다.)
+              </div>
+            </div>
           </li>
           <li><span class="clf-gdrive-num">5</span>
             <div>권한은 <code style="color: #d32f2f; font-weight: 700;">뷰어</code>로 유지하고, 우측 하단 <strong>[링크 복사]</strong>를 클릭합니다.</div>
