@@ -1053,32 +1053,32 @@
         </div>
       </div>
     </div>
+    <!-- 공지사항 팝업 -->
+    <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none;">
+      <div class="clf-modal clf-modal-wide" style="max-width: 500px; padding: 30px;">
+        <h3 style="color: #0C3D40; font-size: 18px; margin-bottom: 15px;">[공지] 제1회 카네기Lee 재단 콩쿠르 예선(영상 심사) 일정 변경 안내</h3>
+        <div style="font-size: 14.5px; color: #444; line-height: 1.6; text-align: left; word-break: keep-all;">
+          <p>안녕하십니까, 카네기Lee 재단입니다.<br>
+          제1회 신인 아티스트 선발전에 보내주시는 많은 관심과 성원에 감사드립니다.</p>
+          <p style="margin-top: 10px;">참가자분들의 원활한 영상 준비를 돕고자, 예선(영상 심사) 일정이 아래와 같이 변경되었음을 안내해 드립니다.</p>
+          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+            <p style="margin: 0; color: #666; text-decoration: line-through; font-size: 13.5px;">변경 전: 2026년 06월 01일(월) ~ 2026년 6월 26일(금) 24:00까지</p>
+            <p style="margin: 8px 0 0 0; color: #d32f2f; font-weight: bold; font-size: 14.5px;">변경 후: [2026.06.01(월) ~ 06.26 서류·영상 접수 (마감 6.26(금) 16:00) 까지]</p>
+          </div>
+          <p>영상 제출 시간 변경으로 인해 혼선을 드린 점 너른 양해 부탁드리며, 실력 있는 아티스트분들의 많은 참여를 기다립니다.</p>
+          <p style="margin-top: 10px; font-weight: bold; color: #0C3D40;">문의: 카네기LEE 재단 사무국 1588-8418<br>(카카오톡 채널: 카네기리 재단)</p>
+        </div>
+        <div class="clf-modal-actions" style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E4E4E4; padding-top: 16px;">
+          <label style="font-size: 13.5px; color: #666; display: flex; align-items: center; gap: 6px; cursor: pointer; margin: 0;">
+            <input type="checkbox" id="noticeHideToday" style="accent-color: #0C3D40; width: 16px; height: 16px;"> 오늘 하루 보지 않기
+          </label>
+          <button type="button" class="clf-modal-close" id="noticeClose" style="margin: 0; padding: 10px 24px; font-size: 14.5px; background: #0C3D40; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">닫 기</button>
+        </div>
+      </div>
+    </div>
 
   </div><!-- /clf-dir -->
 
-  <!-- 공지사항 팝업 -->
-  <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none;">
-    <div class="clf-modal clf-modal-wide" style="max-width: 500px; padding: 30px;">
-      <h3 style="color: #0C3D40; font-size: 18px; margin-bottom: 15px;">[공지] 제1회 카네기Lee 재단 콩쿠르 예선(영상 심사) 일정 변경 안내</h3>
-      <div style="font-size: 14.5px; color: #444; line-height: 1.6; text-align: left; word-break: keep-all;">
-        <p>안녕하십니까, 카네기Lee 재단입니다.<br>
-        제1회 신인 아티스트 선발전에 보내주시는 많은 관심과 성원에 감사드립니다.</p>
-        <p style="margin-top: 10px;">참가자분들의 원활한 영상 준비를 돕고자, 예선(영상 심사) 일정이 아래와 같이 변경되었음을 안내해 드립니다.</p>
-        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-          <p style="margin: 0; color: #666; text-decoration: line-through; font-size: 13.5px;">변경 전: 2026년 06월 01일(월) ~ 2026년 6월 26일(금) 24:00까지</p>
-          <p style="margin: 8px 0 0 0; color: #d32f2f; font-weight: bold; font-size: 14.5px;">변경 후: [2026.06.01(월) ~ 06.26 서류·영상 접수 (마감 6.26(금) 16:00) 까지]</p>
-        </div>
-        <p>영상 제출 시간 변경으로 인해 혼선을 드린 점 너른 양해 부탁드리며, 실력 있는 아티스트분들의 많은 참여를 기다립니다.</p>
-        <p style="margin-top: 10px; font-weight: bold; color: #0C3D40;">문의: 카네기LEE 재단 사무국 1588-8418<br>(카카오톡 채널: 카네기리 재단)</p>
-      </div>
-      <div class="clf-modal-actions" style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E4E4E4; padding-top: 16px;">
-        <label style="font-size: 13.5px; color: #666; display: flex; align-items: center; gap: 6px; cursor: pointer; margin: 0;">
-          <input type="checkbox" id="noticeHideToday" style="accent-color: #0C3D40; width: 16px; height: 16px;"> 오늘 하루 보지 않기
-        </label>
-        <button type="button" class="clf-modal-close" id="noticeClose" style="margin: 0; padding: 10px 24px; font-size: 14.5px; background: #0C3D40; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">닫 기</button>
-      </div>
-    </div>
-  </div>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var noticeModal = document.getElementById("noticeModal");
