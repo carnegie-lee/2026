@@ -52,6 +52,7 @@ CREATE TABLE concours_applications (
   address_city     TEXT,
   address_district TEXT,
   photo_data       TEXT,
+  id_card_data     TEXT,
 
   -- 학력 · 경력
   school_name      TEXT,
@@ -86,6 +87,31 @@ CREATE POLICY "app_insert_own" ON concours_applications
 
 CREATE POLICY "app_update_own" ON concours_applications
   FOR UPDATE USING (auth.uid() = user_id);
+
+-- ※ 이미 운영 중인 DB라면(테이블 DROP 없이) 아래 한 줄만 실행해 컬럼을 추가하세요:
+-- ALTER TABLE concours_applications ADD COLUMN IF NOT EXISTS id_card_data TEXT;
+
+
+-- ════════════════════════════════════════════
+--  신분증 사본 저장용 비공개 버킷 (id-cards)
+--
+--  1) Storage → New bucket → 이름 'id-cards' → Public 체크 해제(비공개) 생성
+--  2) 아래 정책 실행
+--     · 로그인 사용자는 본인 user_id로 시작하는 파일만 업로드/수정/조회 가능
+--     · 조회(SELECT)는 본인 것만 → 서명 URL 생성에 필요
+--     · 외부/타인 접근 불가, 관리자(service_role)만 전체 열람
+-- ════════════════════════════════════════════
+CREATE POLICY "idcard_insert_own" ON storage.objects
+  FOR INSERT TO authenticated
+  WITH CHECK ( bucket_id = 'id-cards' AND name LIKE auth.uid()::text || '%' );
+
+CREATE POLICY "idcard_update_own" ON storage.objects
+  FOR UPDATE TO authenticated
+  USING ( bucket_id = 'id-cards' AND name LIKE auth.uid()::text || '%' );
+
+CREATE POLICY "idcard_select_own" ON storage.objects
+  FOR SELECT TO authenticated
+  USING ( bucket_id = 'id-cards' AND name LIKE auth.uid()::text || '%' );
 
 
 -- ════════════════════════════════════════════

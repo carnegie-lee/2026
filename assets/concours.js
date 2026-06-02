@@ -45,10 +45,8 @@ var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 /* ══════════════════════════════════════════════
    날짜 상수
    ══════════════════════════════════════════════ */
-/* 서류·영상 통합 접수: 2026.06.01 ~ 06.26(금) 16:00 */
+/* 서류·영상 통합 접수: 2026.06.01 ~ 06.26(금) 16:00 (단일 통합 폼) */
 var DOC_DEADLINE = new Date('2026-06-26T16:00:00+09:00');
-var VID_OPEN     = new Date('2026-06-26T16:02:00+09:00');
-var VID_DEADLINE = new Date('2026-06-26T16:00:00+09:00');
 var CONFIRM_REDIRECT = new URL('confirm.html', window.location.href).href;
 
 /* ══════════════════════════════════════════════
@@ -72,16 +70,6 @@ async function saveApplication(userId, payload) {
     { onConflict: 'user_id' }
   );
 }
-async function saveVideoSubmission(userId, payload) {
-  return sb.from('concours_applications').update({
-    video_link:        payload.video_link,
-    video_composer:    payload.composer,
-    video_piece:       payload.piece,
-    video_submitted_at: payload.submitted_at,
-    updated_at:        new Date().toISOString()
-  }).eq('user_id', userId);
-}
-
 /* ══════════════════════════════════════════════
    DB 컬럼(snake_case) → 폼 필드명(camelCase) 변환
    ══════════════════════════════════════════════ */
@@ -391,7 +379,6 @@ function clearInstErrors() {
     if (nameEl) nameEl.textContent = ((appData && appData.name_ko) ? appData.name_ko : user.email) + ' 님, 안녕하세요 👋';
 
     renderSubmission(appData);
-    renderVideoSection(user, appData);
   }
 
   function renderSubmission(data) {
@@ -427,86 +414,6 @@ function clearInstErrors() {
         '</div><div class="clf-submitted-val">' + (r[1] || '—').replace(/\n/g, '<br>') + '</div></div>';
     });
     el.innerHTML = html + '</div>';
-  }
-
-  function renderVideoSection(user, appData) {
-    var lockEl = document.getElementById('clf-videoLocked');
-    var openEl = document.getElementById('clf-videoOpen');
-    var formEl = document.getElementById('clf-videoForm');
-    var doneEl = document.getElementById('clf-videoAlreadySubmitted');
-    var now2   = new Date();
-    var inPeriod = now2 >= VID_OPEN && now2 < VID_DEADLINE;
-
-    if (!appData || !appData.name_ko) {
-      if (lockEl) {
-        lockEl.style.setProperty('display', 'block', 'important');
-        document.getElementById('clf-vl-title').textContent = '서류를 제출하지 않으셨습니다';
-        document.getElementById('clf-vl-desc').textContent  = '영상 제출은 서류를 제출한 참가자만 가능합니다.';
-        document.getElementById('clf-vl-date').textContent  = '';
-      }
-      if (openEl) openEl.style.setProperty('display', 'none', 'important');
-      return;
-    }
-
-    if (!inPeriod) {
-      if (lockEl) {
-        lockEl.style.setProperty('display', 'block', 'important');
-        if (now2 < VID_OPEN) {
-          document.getElementById('clf-vl-title').textContent = '영상 제출 기간이 아닙니다';
-          document.getElementById('clf-vl-desc').textContent  = '서류 접수 마감(6월 5일 18:00) 이후 영상 제출이 열립니다.';
-          document.getElementById('clf-vl-date').textContent  = '2026년 6월 5일(금) 18:00 이후 열림';
-        } else {
-          document.getElementById('clf-vl-title').textContent = '영상 제출이 마감되었습니다';
-          document.getElementById('clf-vl-desc').textContent  = '영상 제출 마감: 2026년 6월 26일 18:00\n합격자 발표: 2026년 7월 3일';
-          document.getElementById('clf-vl-date').textContent  = '마감 완료';
-        }
-      }
-      if (openEl) openEl.style.setProperty('display', 'none', 'important');
-      return;
-    }
-
-    if (lockEl) lockEl.style.setProperty('display', 'none', 'important');
-    if (openEl) openEl.style.setProperty('display', 'block', 'important');
-
-    if (appData && appData.video_link) {
-      if (doneEl) doneEl.style.setProperty('display', 'block', 'important');
-      if (formEl) formEl.style.setProperty('display', 'none', 'important');
-      var lnk = document.getElementById('clf-myVideoLink');
-      var cmp = document.getElementById('clf-myVComposer');
-      var pce = document.getElementById('clf-myVPiece');
-      if (lnk) lnk.textContent = appData.video_link     || '—';
-      if (cmp) cmp.textContent = appData.video_composer || '—';
-      if (pce) pce.textContent = appData.video_piece    || '—';
-    } else {
-      if (doneEl) doneEl.style.setProperty('display', 'none', 'important');
-      if (formEl) formEl.style.setProperty('display', 'block', 'important');
-      setupVideoForm(user, appData);
-    }
-  }
-
-  function setupVideoForm(user, appData) {
-    var btn = document.getElementById('clf-videoSubmitBtn');
-    if (!btn || btn._bound) return;
-    btn._bound = true;
-    btn.addEventListener('click', async function () {
-      var link     = (document.getElementById('clf-videoLinkInput').value || '').trim();
-      var composer = (document.getElementById('clf-videoComposer').value  || '').trim();
-      var piece    = (document.getElementById('clf-videoPiece').value     || '').trim();
-      if (!link || !composer || !piece) { alert('영상 링크, 작곡가, 곡명을 모두 입력해 주세요.'); return; }
-      if (!link.startsWith('http')) { alert('올바른 URL을 입력해 주세요.'); return; }
-      btn.disabled = true; btn.textContent = '제출 중...';
-      var { error } = await saveVideoSubmission(user.id, {
-        ref_number: appData ? appData.ref_number : '',
-        video_link: link, composer: composer, piece: piece,
-        submitted_at: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })
-      });
-      if (error) {
-        alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-        btn.disabled = false; btn.textContent = '영 상 제 출 하 기';
-        return;
-      }
-      document.getElementById('videoSuccessModal').classList.add('clf-show');
-    });
   }
 
   /* ════════════════════════════════════
@@ -591,13 +498,6 @@ function clearInstErrors() {
     var esBox = document.getElementById('clf-emailSentBox');
     if (esBox) esBox.style.setProperty('display', 'none', 'important');
     if (loginBox) loginBox.style.setProperty('display', 'block', 'important');
-  });
-
-  var videoModalClose = document.getElementById('videoModalClose');
-  if (videoModalClose) videoModalClose.addEventListener('click', async function () {
-    document.getElementById('videoSuccessModal').classList.remove('clf-show');
-    var { data: { user } } = await sb.auth.getUser();
-    if (user) await showMyPage(user);
   });
 
   /* ════════════════════
@@ -791,21 +691,23 @@ function clearInstErrors() {
         }
       }
 
+      /* ── 신분증 사본 업로드 (비공개 id-cards 버킷) ── */
       var idCardUrl = '';
       var idCardInput = document.getElementById('idCardPhoto');
       var idCardFile = idCardInput ? idCardInput.files[0] : null;
       if (idCardFile) {
         var idCardBlob = await compressImageToBlob(idCardFile);
         if (idCardBlob) {
-          var idFileName = currentUser.id + '_idcard.jpg';
+          var idFileName = currentUser.id + '.jpg';
           var { error: idUploadErr } = await sb.storage
-            .from('profile-photos')
+            .from('id-cards')
             .upload(idFileName, idCardBlob, { contentType: 'image/jpeg', upsert: true });
           if (!idUploadErr) {
-            var { data: { publicUrl: idPubUrl } } = sb.storage.from('profile-photos').getPublicUrl(idFileName);
-            idCardUrl = idPubUrl;
+            /* 비공개 버킷 — 공개 URL 대신 장기(10년) 서명 URL 저장. RLS 보호 DB row에서만 노출됨 */
+            var { data: idSigned } = await sb.storage.from('id-cards').createSignedUrl(idFileName, 315360000);
+            if (idSigned) idCardUrl = idSigned.signedUrl;
           } else {
-            console.error('ID Card upload error:', idUploadErr.message);
+            console.error('ID card upload error:', idUploadErr.message);
           }
         }
       }
@@ -978,7 +880,7 @@ function clearInstErrors() {
   /* Escape 키로 모달 닫기 */
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    ['howToUploadModal', 'videoSuccessModal', 'successModal'].forEach(function (id) {
+    ['howToUploadModal', 'successModal'].forEach(function (id) {
       var m = document.getElementById(id);
       if (m && m.classList.contains('clf-show')) { m.classList.remove('clf-show'); document.body.style.overflow = ''; }
     });

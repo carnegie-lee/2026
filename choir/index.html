@@ -446,6 +446,75 @@
       .clf-dir .clf-page-title { font-size: 26px !important; }
       .clf-dir .clf-detail-text { word-break: keep-all !important; overflow-wrap: anywhere !important; }
     }
+
+    /* ── 상단 퀵바 스타일 (메인 페이지와 동일) ── */
+    .clf-dir .clf-quick-bar {
+      position: fixed !important;
+      top: 0 !important; left: 0 !important; right: 0 !important;
+      z-index: 99999 !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      backdrop-filter: blur(10px) !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 10px 16px !important;
+      border-bottom: 1px solid #E4E4E4 !important;
+    }
+    .clf-dir .clf-quick-logo { display: flex !important; align-items: center !important; }
+    .clf-dir .clf-quick-logo img { height: 24px !important; display: block !important; }
+    .clf-dir .clf-quick-btns { display: flex !important; align-items: center !important; gap: 8px !important; }
+    .clf-dir .clf-quick-btn {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      text-decoration: none !important;
+      color: #111 !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      background: #fff !important;
+      padding: 9px 14px !important;
+      border-radius: 30px !important;
+      border: 1px solid #E4E4E4 !important;
+      transition: all 0.2s !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02) !important;
+      white-space: nowrap !important;
+    }
+    .clf-dir .clf-quick-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05) !important;
+      border-color: #0C3D40 !important;
+      color: #0C3D40 !important;
+    }
+    .clf-dir .clf-quick-btn.clf-kakao {
+      background: #FEE500 !important;
+      border-color: #FEE500 !important;
+      color: #000000 !important;
+    }
+    .clf-dir .clf-quick-btn.clf-kakao:hover { border-color: #F4DC00 !important; }
+    .clf-dir .clf-quick-icon { font-size: 16px !important; }
+    body .clf-dir { padding-top: 60px !important; }
+    @media (max-width: 480px) {
+      .clf-dir .clf-quick-text { display: none !important; }
+      .clf-dir .clf-quick-btn {
+        padding: 0 !important;
+        width: 36px !important; height: 36px !important;
+        border-radius: 50% !important;
+        gap: 0 !important;
+      }
+      .clf-dir .clf-quick-icon { font-size: 16px !important; margin: 0 !important; }
+      .clf-dir .clf-quick-btns { gap: 6px !important; }
+      .clf-dir .clf-quick-logo img { height: 20px !important; }
+    }
+    @media (min-width: 768px) {
+      .clf-dir .clf-quick-bar { padding: 14px 6vw !important; }
+      .clf-dir .clf-quick-btns { gap: 12px !important; }
+      .clf-dir .clf-quick-btn { padding: 10px 20px !important; font-size: 14.5px !important; }
+      .clf-dir .clf-quick-icon { font-size: 18px !important; }
+      .clf-dir .clf-quick-logo img { height: 28px !important; }
+    }
     </style>
 </head>
 <body>
@@ -455,7 +524,7 @@
     <!-- 퀵 메뉴 (상단 고정) -->
     <div class="clf-quick-bar">
       <a href="#" class="clf-quick-logo">
-        <img src="../top_logo.png" alt="Carnegie LEE Foundation">
+        <img src="../carnegie-lee-logo.png" alt="Carnegie LEE Foundation">
       </a>
       <div class="clf-quick-btns">
         <a href="../카네기LEE재단_제1회 콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기">
