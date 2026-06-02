@@ -574,6 +574,14 @@
                 <input type="hidden" id="photoData" name="photoData">
               </div>
 
+              <div class="clf-field clf-full" style="margin-bottom:8px !important;">
+                <div class="clf-field-label">증명 서류 (여권 또는 주민등록증 사본) <span class="clf-req">*</span></div>
+                <input class="clf-input" type="file" id="idCardPhoto" accept="image/*" required
+                  style="padding:10px !important;">
+                <div class="clf-field-help">생년월일 등 본인 확인용 증빙 서류 이미지 파일.</div>
+                <input type="hidden" id="idCardData" name="idCardData">
+              </div>
+
               <div class="clf-field">
                 <div class="clf-field-label">성명 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="text" id="nameKo" name="nameKo" placeholder="홍길동" required>
@@ -1098,12 +1106,15 @@
       var noticeModal = document.getElementById("noticeModal");
       var noticeCloseBtn = document.getElementById("noticeClose");
       var noticeHideTodayCb = document.getElementById("noticeHideToday");
+      var quickBar = document.querySelector(".clf-quick-bar");
       
       if (!noticeModal) return;
 
       var hideUntil = localStorage.getItem("clf_notice_hide_until_v2");
       if (!hideUntil || new Date().getTime() > parseInt(hideUntil, 10)) {
+        noticeModal.style.setProperty("z-index", "100000", "important");
         noticeModal.style.display = "flex";
+        if (quickBar) quickBar.style.setProperty("display", "none", "important"); // 팝업 뜰때 상단바 숨김
         setTimeout(function() { noticeModal.classList.add("clf-show"); }, 50);
       }
       
@@ -1114,6 +1125,7 @@
           localStorage.setItem("clf_notice_hide_until_v2", tomorrow.getTime());
         }
         noticeModal.classList.remove("clf-show");
+        if (quickBar) quickBar.style.removeProperty("display"); // 팝업 닫을때 상단바 다시 표시 (고정됨)
         setTimeout(function() { noticeModal.style.display = "none"; }, 300);
       });
     });
