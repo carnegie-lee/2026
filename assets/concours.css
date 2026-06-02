@@ -2501,3 +2501,26 @@
     flex: 1 !important;
     font-weight: 500 !important;
   }
+
+/* ── 특전 태그 (Awards/Benefits) ── */
+.clf-dir .clf-benefit-tag {
+  display:inline-block !important;
+  padding:3px 9px !important;
+  border-radius:6px !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+  letter-spacing:.06em !important;
+  margin-right:8px !important;
+  vertical-align:1px !important;
+  white-space:nowrap !important;
+}
+.clf-dir .clf-benefit-tag-all {
+  background:#E8F4F1 !important;
+  color:#0C3D40 !important;
+  border:1px solid #C2D9D2 !important;
+}
+.clf-dir .clf-benefit-tag-top {
+  background:#FAF0D6 !important;
+  color:#A8872A !important;
+  border:1px solid #E8DDB5 !important;
+}

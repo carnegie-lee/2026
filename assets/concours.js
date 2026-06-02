@@ -454,7 +454,7 @@ function clearInstErrors() {
         if (now2 < VID_OPEN) {
           document.getElementById('clf-vl-title').textContent = '영상 제출 기간이 아닙니다';
           document.getElementById('clf-vl-desc').textContent  = '서류 접수 마감(6월 5일 18:00) 이후 영상 제출이 열립니다.';
-          document.getElementById('clf-vl-date').textContent  = '2026년 6월 5일 18:00 이후 열림';
+          document.getElementById('clf-vl-date').textContent  = '2026년 6월 5일(금) 18:00 이후 열림';
         } else {
           document.getElementById('clf-vl-title').textContent = '영상 제출이 마감되었습니다';
           document.getElementById('clf-vl-desc').textContent  = '영상 제출 마감: 2026년 6월 26일 18:00\n합격자 발표: 2026년 7월 3일';
@@ -703,6 +703,36 @@ function clearInstErrors() {
         }
       });
       form.querySelectorAll('[data-has-error]').forEach(function (el) { delete el.dataset.hasError; });
+
+      /* 법정대리인 동의 검사 */
+      var isUnder14 = document.getElementById('ageUnder14') && document.getElementById('ageUnder14').checked;
+      if (isUnder14) {
+        var gFields = [
+          { id: 'guardianConsent', type: 'checkbox', msg: '만 14세 미만 참가자는 법정대리인 동의가 필수입니다.' },
+          { id: 'guardianName', type: 'text', msg: '법정대리인 성명을 입력해 주세요.' },
+          { id: 'guardianRelation', type: 'text', msg: '참가자와의 관계를 입력해 주세요.' },
+          { id: 'guardianPhone', type: 'text', msg: '법정대리인 연락처를 입력해 주세요.' }
+        ];
+        gFields.forEach(function(f) {
+          var el = document.getElementById(f.id);
+          if (!el) return;
+          var ok = true;
+          if (f.type === 'checkbox' && !el.checked) ok = false;
+          if (f.type === 'text' && !el.value.trim()) ok = false;
+          if (!ok) {
+            isValid = false;
+            var target = f.type === 'checkbox' ? el.closest('.clf-agree-item') : el;
+            if (f.type === 'text') el.classList.add('clf-input-error');
+            if (target && !target.dataset.hasError) {
+              var errEl = document.createElement('div');
+              errEl.className = 'clf-error-msg'; errEl.textContent = f.msg;
+              target.parentNode.insertBefore(errEl, target.nextSibling);
+              target.dataset.hasError = 'true';
+            }
+            if (!firstInvalid) firstInvalid = (f.type === 'checkbox' ? target : el);
+          }
+        });
+      }
       if (!isValid) {
         if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
@@ -814,6 +844,10 @@ function clearInstErrors() {
         video_piece:       fd.get('vPiece')         || '',
         video_submitted_at: new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
         marketing_consent: (document.getElementById('agree5') && document.getElementById('agree5').checked) ? 'Y' : 'N',
+        guardian_consent:  (document.getElementById('guardianConsent') && document.getElementById('guardianConsent').checked) ? 'Y' : 'N',
+        guardian_name:     fd.get('guardianName')   || '',
+        guardian_relation: fd.get('guardianRelation') || '',
+        guardian_phone:    fd.get('guardianPhone')  || '',
         is_test:           isTestAccount(currentUser.email),
       };
 
@@ -849,7 +883,11 @@ function clearInstErrors() {
         videoLink:        payload.video_link,
         vComposer:        payload.video_composer,
         vPiece:           payload.video_piece,
-        marketingConsent: payload.marketing_consent
+        marketingConsent: payload.marketing_consent,
+        guardianConsent:  payload.guardian_consent,
+        guardianName:     payload.guardian_name,
+        guardianRelation: payload.guardian_relation,
+        guardianPhone:    payload.guardian_phone
       };
       fetch(GAS_URL, {
         method: 'POST',
