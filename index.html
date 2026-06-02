@@ -6,23 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>2026 클래식 콩쿠르 참가신청 - Carnegie LEE Foundation</title>
 
-  <link rel="icon" type="image/svg+xml" href="carnegie-lee.svg">
-  <link rel="icon" type="image/png" href="carnegie-lee.png">
-  <link rel="apple-touch-icon" href="carnegie-lee.png">
-
-  <link rel="stylesheet" href="assets/concours.css?v=6">
+  <link rel="stylesheet" href="assets/concours.css?v=7">
 
   <div class="clf-dir">
 
     <!-- 퀵 메뉴 (상단 고정) -->
     <div class="clf-quick-bar">
       <a href="#" class="clf-quick-logo">
-        <img src="carnegie-lee-logo.png" alt="Carnegie LEE Foundation">
+        <img src="top_logo.png" alt="Carnegie LEE Foundation">
       </a>
       <div class="clf-quick-btns">
-        <a href="카네기LEE재단_제1회 콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기">
+        <a href="모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 보기">
           <span class="clf-quick-icon">📄</span>
-          <span class="clf-quick-text">모집요강 미리보기</span>
+          <span class="clf-quick-text">모집요강 다운로드</span>
         </a>
         <a href="http://pf.kakao.com/_KxobGX" target="_blank" class="clf-quick-btn clf-kakao">
           <span class="clf-quick-icon">💬</span>
@@ -83,7 +79,7 @@
 
       <!-- 첨부파일 (공식 홈페이지 스타일) -->
       <div class="clf-attachment-box" data-dir-anim>
-        <a href="카네기LEE재단_제1회 콩쿠르_모집요강.pdf" download class="clf-attachment-link">
+        <a href="카네기LEE재단_제1회 콩쿠르_모집요강.pdf" target="_blank" class="clf-attachment-link">
           <span class="clf-attachment-icon">💾</span>
           <span class="clf-attachment-name">카네기LEE재단 제1회 콩쿠르 모집요강.pdf</span>
         </a>
@@ -106,6 +102,8 @@
               </li>
               <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
                   class="clf-detail-text"><strong>2026.07.03</strong> 합격자 발표</span></li>
+              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
+                  class="clf-detail-text"><strong>2026.07.13(월)</strong> 콩쿠르 본선 경연</span></li>
               <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
                   class="clf-detail-text"><strong>2026.08.11(화)</strong> [ 카네기LEE 재단 창립 7주년 기념 조수미 초청 콘서트] 당일</span></li>
             </ul>
@@ -293,7 +291,7 @@
                     <li><strong>용량 제한</strong> — 최대 <code>2GB</code> 이내.</li>
                     <li><strong>파일명 규칙</strong> — <code>분야_성명_곡명.mp4</code><br><span
                         style="color:#888;font-size:12px;">예) 피아노_홍길동_Chopin Etude Op.10-4.mp4</span></li>
-                    <li><strong>영상 길이</strong> — 별도 제한 없음. 8~15분이 일반적입니다.</li>
+                    <li><strong>영상 길이</strong> — 별도 제한은 없으나 가급적 <strong>10분 이내</strong>를 권장합니다.</li>
                     <li><strong>권한 설정</strong> — 구글 드라이브 접근 권한을 <code>'링크가 있는 모든 사용자'</code>로 변경 필수.
                       <code>'비공개(제한됨)'</code>는 심사 불가.</li>
                   </ul>
@@ -1058,9 +1056,57 @@
 
   </div><!-- /clf-dir -->
 
+  <!-- 공지사항 팝업 -->
+  <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none;">
+    <div class="clf-modal clf-modal-wide" style="max-width: 500px; padding: 30px;">
+      <h3 style="color: #0C3D40; font-size: 18px; margin-bottom: 15px;">[공지] 제1회 카네기Lee 재단 콩쿠르 예선(영상 심사) 일정 변경 안내</h3>
+      <div style="font-size: 14.5px; color: #444; line-height: 1.6; text-align: left; word-break: keep-all;">
+        <p>안녕하십니까, 카네기Lee 재단입니다.<br>
+        제1회 신인 아티스트 선발전에 보내주시는 많은 관심과 성원에 감사드립니다.</p>
+        <p style="margin-top: 10px;">참가자분들의 원활한 영상 준비를 돕고자, 예선(영상 심사) 일정이 아래와 같이 변경되었음을 안내해 드립니다.</p>
+        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+          <p style="margin: 0; color: #666; text-decoration: line-through; font-size: 13.5px;">변경 전: 2026년 06월 01일(월) ~ 2026년 6월 26일(금) 24:00까지</p>
+          <p style="margin: 8px 0 0 0; color: #d32f2f; font-weight: bold; font-size: 14.5px;">변경 후: [2026.06.01(월) ~ 06.26 서류·영상 접수 (마감 6.26(금) 16:00) 까지]</p>
+        </div>
+        <p>영상 제출 시간 변경으로 인해 혼선을 드린 점 너른 양해 부탁드리며, 실력 있는 아티스트분들의 많은 참여를 기다립니다.</p>
+        <p style="margin-top: 10px; font-weight: bold; color: #0C3D40;">문의: 카네기LEE 재단 사무국 1588-8418<br>(카카오톡 채널: 카네기리 재단)</p>
+      </div>
+      <div class="clf-modal-actions" style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E4E4E4; padding-top: 16px;">
+        <label style="font-size: 13.5px; color: #666; display: flex; align-items: center; gap: 6px; cursor: pointer; margin: 0;">
+          <input type="checkbox" id="noticeHideToday" style="accent-color: #0C3D40; width: 16px; height: 16px;"> 오늘 하루 보지 않기
+        </label>
+        <button type="button" class="clf-modal-close" id="noticeClose" style="margin: 0; padding: 10px 24px; font-size: 14.5px; background: #0C3D40; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">닫 기</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var noticeModal = document.getElementById("noticeModal");
+      var noticeCloseBtn = document.getElementById("noticeClose");
+      var noticeHideTodayCb = document.getElementById("noticeHideToday");
+      
+      if (!noticeModal) return;
+
+      var hideUntil = localStorage.getItem("clf_notice_hide_until_v2");
+      if (!hideUntil || new Date().getTime() > parseInt(hideUntil, 10)) {
+        noticeModal.style.display = "flex";
+        setTimeout(function() { noticeModal.classList.add("clf-show"); }, 50);
+      }
+      
+      noticeCloseBtn.addEventListener("click", function() {
+        if (noticeHideTodayCb.checked) {
+          var tomorrow = new Date();
+          tomorrow.setHours(24,0,0,0);
+          localStorage.setItem("clf_notice_hide_until_v2", tomorrow.getTime());
+        }
+        noticeModal.classList.remove("clf-show");
+        setTimeout(function() { noticeModal.style.display = "none"; }, 300);
+      });
+    });
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
   <script src="assets/concours.js?v=20260601_1"></script>
   </body>
-
 </html>
