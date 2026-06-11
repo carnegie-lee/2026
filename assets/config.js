@@ -1,4 +1,4 @@
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbz7gsXxSxKenW7hiXL_E1XWfy64_7GhHrHc3mM9PnHdrAqq_oFr3Kme7Z6FoJNVvaql/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbyVrniBVZxM0NH93tRDRoBqhMF7mHcrnbW2lZpDPqzKJryjO4Ums08YbNx5T5ikr1U0/exec';
 
 // 모집요강 PDF — 제목/파일명이 바뀌면 아래 두 줄만 수정하면 전 페이지(index·choir·exhibition)에 자동 반영됩니다.
 var PDF_FILE  = '카네기LEE_재단_제1회_신인아티스트_콩쿠르_모집요강.pdf'; // 실제 PDF 파일명 (저장소 루트에 위치)
