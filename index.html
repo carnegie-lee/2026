@@ -1177,18 +1177,9 @@
       </div>
     </div>
     <!-- 공지사항 팝업 -->
-    <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none;">
-      <div class="clf-modal clf-modal-wide" style="max-width: 650px; padding: 0; overflow: hidden; background: transparent; border-radius: 12px; box-shadow: none;">
-        <div style="background: #fff; text-align: center; border-radius: 12px 12px 0 0;">
-          <img src="carnegielee_notice_v2.png" alt="공지사항" style="max-height: 65vh; max-width: 100%; width: auto; display: inline-block; object-fit: contain;">
-        </div>
-        <div class="clf-modal-actions" style="margin-top: 0; display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 16px 20px; border-radius: 0 0 12px 12px;">
-          <label style="font-size: 13.5px; color: #666; display: flex; align-items: center; gap: 6px; cursor: pointer; margin: 0;">
-            <input type="checkbox" id="noticeHideToday" style="accent-color: #0C3D40; width: 16px; height: 16px;"> 오늘 하루 보지 않기
-          </label>
-          <button type="button" class="clf-modal-close" id="noticeClose" style="margin: 0; padding: 8px 20px; font-size: 14px; background: #0C3D40; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">닫기</button>
-        </div>
-      </div>
+    <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: pointer;">
+      <div style="position: absolute; top: 20px; right: 25px; color: white; font-size: 36px; font-weight: 300; cursor: pointer; z-index: 100006; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.5);" id="noticeClose">&times;</div>
+      <img src="carnegielee_notice_v2.png" alt="공지사항" style="max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     </div>
 
   </div><!-- /clf-dir -->
@@ -1197,12 +1188,11 @@
     document.addEventListener("DOMContentLoaded", function() {
       var noticeModal = document.getElementById("noticeModal");
       var noticeCloseBtn = document.getElementById("noticeClose");
-      var noticeHideTodayCb = document.getElementById("noticeHideToday");
       var quickBar = document.querySelector(".clf-quick-bar");
       
       if (!noticeModal) return;
 
-      var hideUntil = localStorage.getItem("clf_notice_hide_until_v4");
+      var hideUntil = localStorage.getItem("clf_notice_hide_until_v5");
       if (!hideUntil || new Date().getTime() > parseInt(hideUntil, 10)) {
         noticeModal.style.setProperty("z-index", "100000", "important");
         noticeModal.style.display = "flex";
@@ -1210,21 +1200,27 @@
         setTimeout(function() { noticeModal.classList.add("clf-show"); }, 50);
       }
       
-      noticeCloseBtn.addEventListener("click", function() {
-        if (noticeHideTodayCb.checked) {
-          var tomorrow = new Date();
-          tomorrow.setHours(24,0,0,0);
-          localStorage.setItem("clf_notice_hide_until_v4", tomorrow.getTime());
-        }
+      noticeCloseBtn.addEventListener("click", function(e) {
+        if(e) e.stopPropagation();
+        var tomorrow = new Date();
+        tomorrow.setHours(24,0,0,0);
+        localStorage.setItem("clf_notice_hide_until_v5", tomorrow.getTime());
+        
         noticeModal.classList.remove("clf-show");
         if (quickBar) quickBar.style.removeProperty("display"); // 팝업 닫을때 상단바 다시 표시 (고정됨)
         setTimeout(function() { noticeModal.style.display = "none"; }, 300);
+      });
+      
+      noticeModal.addEventListener("click", function(e) {
+        if(e.target === this) {
+          noticeCloseBtn.click();
+        }
       });
     });
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
-  <script src="assets/concours.js?v=20260611_1"></script>
+  <script src="assets/concours.js?v=20260611_3"></script>
   </body>
 </html>
