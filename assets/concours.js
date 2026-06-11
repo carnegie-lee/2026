@@ -332,23 +332,7 @@ function clearInstErrors() {
   /* 현재 Supabase 세션 확인 */
   var { data: { session } } = await sb.auth.getSession();
 
-  var quickBtns = document.querySelectorAll('.clf-quick-btn');
-  quickBtns.forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      sb.auth.getSession().then(function(res) {
-        if (res.data && res.data.session) {
-          if (btn.target === '_blank') {
-            window.open(btn.href, '_blank');
-          } else {
-            window.location.href = btn.href;
-          }
-        } else {
-          openAuthModal();
-        }
-      });
-    });
-  });
+
 
   /* ════════════════════
      서류 접수 기간 중
@@ -367,9 +351,6 @@ function clearInstErrors() {
       
       var acc = document.getElementById('detailAccordion');
       if (acc) acc.style.setProperty('display', 'block', 'important');
-      
-      var att = document.getElementById('clf-attachment-box');
-      if (att) att.style.setProperty('display', 'block', 'important');
     }
 
     /* 이미 제출한 경우 폼 복원 + 잠금 */
@@ -399,8 +380,6 @@ function clearInstErrors() {
 
     var acc = document.getElementById('detailAccordion');
     if (acc) acc.style.setProperty('display', 'block', 'important');
-    var att = document.getElementById('clf-attachment-box');
-    if (att) att.style.setProperty('display', 'block', 'important');
 
     var appData = await getApplication(user.id);
 
@@ -860,8 +839,6 @@ function clearInstErrors() {
       
       var acc = document.getElementById('detailAccordion');
       if (acc) acc.style.setProperty('display', 'block', 'important');
-      var att = document.getElementById('clf-attachment-box');
-      if (att) att.style.setProperty('display', 'block', 'important');
       
       fillFormFromData(dbToFormFields(appData));
       lockApplyForm();
@@ -1055,8 +1032,6 @@ function clfToggleAcc(btn) {
       
       var acc = document.getElementById('detailAccordion');
       if (acc) acc.style.setProperty('display', 'block', 'important');
-      var att = document.getElementById('clf-attachment-box');
-      if (att) att.style.setProperty('display', 'block', 'important');
       
       setTimeout(function () { formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
     }
