@@ -1180,7 +1180,7 @@
     <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none;">
       <div class="clf-modal clf-modal-wide" style="max-width: 650px; padding: 0; overflow: hidden; background: transparent; border-radius: 12px; box-shadow: none;">
         <div style="background: #fff; text-align: center; border-radius: 12px 12px 0 0;">
-          <img src="carnegielee_notice.png" alt="공지사항" style="max-height: 65vh; max-width: 100%; width: auto; display: inline-block; object-fit: contain;">
+          <img src="carnegielee_notice_v2.png" alt="공지사항" style="max-height: 65vh; max-width: 100%; width: auto; display: inline-block; object-fit: contain;">
         </div>
         <div class="clf-modal-actions" style="margin-top: 0; display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 16px 20px; border-radius: 0 0 12px 12px;">
           <label style="font-size: 13.5px; color: #666; display: flex; align-items: center; gap: 6px; cursor: pointer; margin: 0;">
@@ -1202,7 +1202,7 @@
       
       if (!noticeModal) return;
 
-      var hideUntil = localStorage.getItem("clf_notice_hide_until_v3");
+      var hideUntil = localStorage.getItem("clf_notice_hide_until_v4");
       if (!hideUntil || new Date().getTime() > parseInt(hideUntil, 10)) {
         noticeModal.style.setProperty("z-index", "100000", "important");
         noticeModal.style.display = "flex";
@@ -1214,7 +1214,7 @@
         if (noticeHideTodayCb.checked) {
           var tomorrow = new Date();
           tomorrow.setHours(24,0,0,0);
-          localStorage.setItem("clf_notice_hide_until_v3", tomorrow.getTime());
+          localStorage.setItem("clf_notice_hide_until_v4", tomorrow.getTime());
         }
         noticeModal.classList.remove("clf-show");
         if (quickBar) quickBar.style.removeProperty("display"); // 팝업 닫을때 상단바 다시 표시 (고정됨)
