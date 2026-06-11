@@ -346,6 +346,9 @@ function clearInstErrors() {
     if (session) {
       var ae = document.getElementById('clf-acctEmail');
       if (ae && !ae.value) ae.value = session.user.email;
+      
+      var acc = document.getElementById('detailAccordion');
+      if (acc) acc.style.setProperty('display', 'block', 'important');
     }
 
     /* 이미 제출한 경우 폼 복원 + 잠금 */
@@ -372,6 +375,9 @@ function clearInstErrors() {
   async function showMyPage(user) {
     if (authPanel) authPanel.style.setProperty('display', 'none', 'important');
     if (myPage)    myPage.style.setProperty('display', 'block', 'important');
+
+    var acc = document.getElementById('detailAccordion');
+    if (acc) acc.style.setProperty('display', 'block', 'important');
 
     var appData = await getApplication(user.id);
 
@@ -828,6 +834,10 @@ function clearInstErrors() {
       if (applyWrap) applyWrap.classList.add('clf-form-visible');
       var ae = document.getElementById('clf-acctEmail');
       if (ae && !ae.value) ae.value = sess.user.email;
+      
+      var acc = document.getElementById('detailAccordion');
+      if (acc) acc.style.setProperty('display', 'block', 'important');
+      
       fillFormFromData(dbToFormFields(appData));
       lockApplyForm();
     } catch (err) { /* noop */ }
@@ -1017,6 +1027,10 @@ function clfToggleAcc(btn) {
       var acctSection = document.getElementById('clf-acctSection');
       if (acctCallout) acctCallout.style.setProperty('display', 'none', 'important');
       if (acctSection) acctSection.style.setProperty('display', 'none', 'important');
+      
+      var acc = document.getElementById('detailAccordion');
+      if (acc) acc.style.setProperty('display', 'block', 'important');
+      
       setTimeout(function () { formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
     }
     /* 이미 제출한 계정이면 복원 + 잠금 */

@@ -73,8 +73,8 @@
     }
     .clf-dir .clf-detail-text .sub {
       display: block !important;
-      font-size: 13px !important;
-      color: #888 !important;
+      font-size: 13.5px !important;
+      color: #555 !important;
       margin-top: 6px !important;
       font-weight: 400 !important;
     }
@@ -131,7 +131,7 @@
           <div class="clf-photo-frame"
             style="padding:0!important; overflow:hidden!important; background:none!important;">
             <!-- ★ 포스터 사진 변경하는 곳: 아래 img 태그의 src="주소" 부분을 수정하시면 됩니다 ★ -->
-            <img src="찐최종.png" alt="Classic Concours 2026"
+            <img src="콩쿠르 포스터.png" alt="Classic Concours 2026"
               style="width:100%!important; height:100%!important; object-fit:cover!important; display:block!important; border-radius:20px!important; cursor: pointer;" onclick="document.getElementById('posterModal').classList.add('clf-show')">
           </div>
           <div class="clf-name-badge">
@@ -187,6 +187,15 @@
                   class="clf-detail-text"><strong>2026.08.11(화)</strong> [ 카네기LEE 재단 창립 7주년 기념 조수미 초청 콘서트] 당일</span></li>
             </ul>
           </div>
+
+          <!-- 로그인 후 표시될 상세 안내 아코디언 -->
+          <div class="clf-accordion" data-acc id="detailAccordion" style="display: none; margin-top: 20px;">
+            <button type="button" class="clf-acc-trigger" onclick="clfToggleAcc(this)" style="background: #0C3D40; color: #fff; border-radius: 12px; padding: 18px 24px;">
+              <span class="clf-acc-title" style="font-weight:700;">상세 안내 (지원자격 ~ 영상 가이드) 보기</span>
+              <span class="clf-acc-arrow" style="color: #fff;">▼</span>
+            </button>
+            <div class="clf-acc-body">
+              <div class="clf-acc-inner" style="padding: 20px 0;">
 
           <div class="clf-detail-block" data-dir-delay="2">
             <div class="clf-detail-label">
@@ -248,21 +257,20 @@
             </ul>
             <!-- updated awards tags -->
             <div class="clf-detail-label" style="margin-top:24px;">
-              <span class="clf-detail-label-en">Participation Benefit</span>
-              <span class="clf-detail-label-ko">참가자 전원 혜택</span>
+              <span class="clf-detail-label-en">Special Benefit</span>
+              <span class="clf-detail-label-ko">참가자 특별 혜택</span>
               <span class="clf-detail-label-divider"></span>
             </div>
             <div class="clf-callout" style="background:#FFF6E5 !important; border-left:3px solid #C9A84C !important;">
               <div class="clf-callout-icon" style="background:#C9A84C !important; color:#fff !important;">🎉</div>
               <div>
-                <strong>참가자 전원, &lt;카네기LEE 재단 창립 7주년 기념 조수미 초청 콘서트&gt; 초청</strong><br>
-                본 콩쿠르에 참가해 주시는 모든 분을 <strong>창립 7주년 기념 콘서트</strong>에 초청해 드립니다.
-                <span style="display:block; font-size:12.5px; color:#7d6420; margin-top:6px;">※ 선착순 100명에 한하여 제공됩니다.</span>
+                <strong>선착순 100인 한정 혜택! &lt;카네기LEE 재단 창립 7주년 기념 조수미 초청 콘서트&gt; 특별 초청</strong><br>
+                본 콩쿠르에 참가해 주시는 분들 중 <strong>선착순 100인에게만</strong> <strong>창립 7주년 기념 콘서트</strong> 특별 초청 혜택을 제공합니다.
               </div>
             </div>
 
-            <div style="margin-top:16px; font-size:12.5px; color:#888; line-height:1.7;">
-              <strong style="color:#666;">※ 유의사항</strong><br>
+            <div style="margin-top:16px; font-size:13px; color:#555; line-height:1.7;">
+              <strong style="color:#444;">※ 유의사항</strong><br>
               · 심사 결과에 따라 수상자는 없을 수 있습니다.<br>
               · 상금은 대한민국 세법에 따라 세금을 공제한 후 상금 지급계약에 따라 지급합니다.
             </div>
@@ -352,7 +360,9 @@
             </div>
           </div>
 
-
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -386,7 +396,7 @@
             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
             <polyline points="16 2 22 8 12 18 9 18 9 15" />
           </svg>
-          참가 신청서 작성하기
+          로그인 후 상세안내 받기 및 참가신청
         </button>
       </div>
 
@@ -1008,7 +1018,7 @@
   <!-- 포스터 원본 보기 팝업 -->
   <div class="clf-modal-bd" id="posterModal" role="dialog" aria-modal="true" style="z-index: 100005; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: pointer;" onclick="this.classList.remove('clf-show')">
     <div style="position: absolute; top: 20px; right: 25px; color: white; font-size: 36px; font-weight: 300; cursor: pointer; z-index: 100006; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">&times;</div>
-    <img src="찐최종.png" style="max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <img src="콩쿠르 포스터.png" style="max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
   </div>
 
   <!-- 모달 -->
@@ -1176,24 +1186,13 @@
     </div>
     <!-- 공지사항 팝업 -->
     <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none;">
-      <div class="clf-modal clf-modal-wide" style="max-width: 500px; padding: 30px;">
-        <h3 style="color: #0C3D40; font-size: 18px; margin-bottom: 15px;">[공지] 제1회 카네기Lee 재단 콩쿠르 예선(영상 심사) 일정 변경 안내</h3>
-        <div style="font-size: 14.5px; color: #444; line-height: 1.6; text-align: left; word-break: keep-all;">
-          <p>안녕하십니까, 카네기Lee 재단입니다.<br>
-          제1회 신인 아티스트 선발전에 보내주시는 많은 관심과 성원에 감사드립니다.</p>
-          <p style="margin-top: 10px;">참가자분들의 원활한 영상 준비를 돕고자, 예선(영상 심사) 일정이 아래와 같이 변경되었음을 안내해 드립니다.</p>
-          <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-            <p style="margin: 0; color: #666; text-decoration: line-through; font-size: 13.5px;">변경 전: 2026년 06월 01일(월) ~ 2026년 6월 26일(금) 24:00까지</p>
-            <p style="margin: 8px 0 0 0; color: #d32f2f; font-weight: bold; font-size: 14.5px;">변경 후: [2026.06.01(월) ~ 06.26(금) 서류·영상 접수 (마감 6.26(금) 16:00) 까지]</p>
-          </div>
-          <p>영상 제출 시간 변경으로 인해 혼선을 드린 점 너른 양해 부탁드리며, 실력 있는 아티스트분들의 많은 참여를 기다립니다.</p>
-          <p style="margin-top: 10px; font-weight: bold; color: #0C3D40;">문의: 카네기LEE 재단 사무국 1588-8418<br>(카카오톡 채널: 카네기리 재단)</p>
-        </div>
-        <div class="clf-modal-actions" style="margin-top: 25px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E4E4E4; padding-top: 16px;">
+      <div class="clf-modal clf-modal-wide" style="max-width: 500px; padding: 0; overflow: hidden; background: transparent; border-radius: 12px; box-shadow: none;">
+        <img src="carnegielee_notice.png" alt="공지사항" style="width: 100%; display: block; border-radius: 12px 12px 0 0;">
+        <div class="clf-modal-actions" style="margin-top: 0; display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 16px 20px; border-radius: 0 0 12px 12px;">
           <label style="font-size: 13.5px; color: #666; display: flex; align-items: center; gap: 6px; cursor: pointer; margin: 0;">
             <input type="checkbox" id="noticeHideToday" style="accent-color: #0C3D40; width: 16px; height: 16px;"> 오늘 하루 보지 않기
           </label>
-          <button type="button" class="clf-modal-close" id="noticeClose" style="margin: 0; padding: 10px 24px; font-size: 14.5px; background: #0C3D40; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">닫 기</button>
+          <button type="button" class="clf-modal-close" id="noticeClose" style="margin: 0; padding: 8px 20px; font-size: 14px; background: #0C3D40; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">닫기</button>
         </div>
       </div>
     </div>
@@ -1209,7 +1208,7 @@
       
       if (!noticeModal) return;
 
-      var hideUntil = localStorage.getItem("clf_notice_hide_until_v2");
+      var hideUntil = localStorage.getItem("clf_notice_hide_until_v3");
       if (!hideUntil || new Date().getTime() > parseInt(hideUntil, 10)) {
         noticeModal.style.setProperty("z-index", "100000", "important");
         noticeModal.style.display = "flex";
@@ -1221,7 +1220,7 @@
         if (noticeHideTodayCb.checked) {
           var tomorrow = new Date();
           tomorrow.setHours(24,0,0,0);
-          localStorage.setItem("clf_notice_hide_until_v2", tomorrow.getTime());
+          localStorage.setItem("clf_notice_hide_until_v3", tomorrow.getTime());
         }
         noticeModal.classList.remove("clf-show");
         if (quickBar) quickBar.style.removeProperty("display"); // 팝업 닫을때 상단바 다시 표시 (고정됨)
@@ -1232,6 +1231,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
-  <script src="assets/concours.js?v=20260602_3"></script>
+  <script src="assets/concours.js?v=20260611_1"></script>
   </body>
 </html>
