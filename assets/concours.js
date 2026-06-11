@@ -9,6 +9,11 @@
   }
 })();
 
+/* ── GA4 이벤트 전송 헬퍼 (gtag 미로딩/차단 시에도 안전) ── */
+function clfGA(name, params) {
+  try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {}
+}
+
 /* ── 유입경로 한글 라벨 (회원가입 알림용) — GAS mapUtmSourceToKo 와 동일 규칙 ── */
 function clfReferralLabel() {
   var urlP   = new URLSearchParams(window.location.search);
@@ -470,6 +475,7 @@ function clearInstErrors() {
       }
       err.classList.add('clf-show'); return;
     }
+    clfGA('login', { method: 'password', source: clfReferralLabel() });
     await showMyPage(data.user);
   });
   ['clf-loginEmail', 'clf-loginPw'].forEach(function (id) {
@@ -498,6 +504,7 @@ function clearInstErrors() {
       }
       err.classList.add('clf-show'); return;
     }
+    clfGA('sign_up', { method: 'password', source: clfReferralLabel() });
     if (regBox) regBox.style.setProperty('display', 'none', 'important');
     var esBox = document.getElementById('clf-emailSentBox');
     if (esBox) esBox.style.setProperty('display', 'block', 'important');
@@ -587,6 +594,13 @@ function clearInstErrors() {
      ════════════════════ */
   var applyForm = document.getElementById('clf-applyForm');
   if (applyForm) {
+    /* 신청서 첫 입력 시 1회만 form_start 전송 */
+    var clfFormStarted = false;
+    applyForm.addEventListener('input', function () {
+      if (clfFormStarted) return;
+      clfFormStarted = true;
+      clfGA('form_start', { form_name: 'concours_application', source: clfReferralLabel() });
+    });
     applyForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       var form = e.target;
@@ -824,6 +838,7 @@ function clearInstErrors() {
       }
 
       document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
+      clfGA('form_submit', { form_name: 'concours_application', source: clfReferralLabel() });
       document.getElementById('successModal').classList.add('clf-show');
       if (!error && !isTestAccount(currentUser.email)) lockApplyForm();
       else {
@@ -985,6 +1000,7 @@ function clfToggleAcc(btn) {
       }
       err.classList.add('clf-show'); return;
     }
+    clfGA('login', { method: 'password', source: clfReferralLabel() });
     var ae = document.getElementById('clf-acctEmail'); if (ae) ae.value = em;
     try {
       var sn = sessionStorage.getItem('clf_reg_name');
@@ -1025,6 +1041,7 @@ function clfToggleAcc(btn) {
       err.classList.add('clf-show'); return;
     }
 
+    clfGA('sign_up', { method: 'password', source: clfReferralLabel() });
     try { sessionStorage.setItem('clf_reg_name', name); sessionStorage.setItem('clf_reg_phone', phone); } catch(e){}
     showInstEmailSent();
   });

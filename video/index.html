@@ -660,6 +660,9 @@ function showLoggedInBlock(appData) {
 })();
 
 /* ── 로그인 버튼 ── */
+/* ── GA4 이벤트 전송 헬퍼 (gtag 미로딩/차단 시에도 안전) ── */
+function clfVidGA(name, params){ try { if (window.gtag) window.gtag('event', name, params || {}); } catch(e){} }
+
 document.getElementById('vid-loginBtn').addEventListener('click', async function() {
   var email = (document.getElementById('vid-loginEmail').value || '').trim();
   var pw    = (document.getElementById('vid-loginPw').value    || '').trim();
@@ -694,6 +697,7 @@ document.getElementById('vid-loginBtn').addEventListener('click', async function
     return;
   }
 
+  clfVidGA('login', { method: 'password', form_name: 'video_submission' });
   showLoggedInBlock(appData);
 });
 
@@ -772,9 +776,22 @@ document.getElementById('clf-videoForm').addEventListener('submit', async functi
     return;
   }
 
+  clfVidGA('video_submit', { form_name: 'video_submission' });
   document.getElementById('vidRefDisplay').textContent = session.user.email;
   document.getElementById('vidSuccessModal').classList.add('clf-show');
 });
+
+/* 영상 폼 첫 입력 시 1회만 form_start 전송 */
+(function(){
+  var vf = document.getElementById('clf-videoForm');
+  if (!vf) return;
+  var started = false;
+  vf.addEventListener('input', function(){
+    if (started) return;
+    started = true;
+    clfVidGA('form_start', { form_name: 'video_submission' });
+  });
+})();
 
 document.getElementById('vidModalClose').addEventListener('click', function(){ window.location.reload(); });
 
