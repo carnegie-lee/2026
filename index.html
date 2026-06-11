@@ -1177,9 +1177,15 @@
       </div>
     </div>
     <!-- 공지사항 팝업 -->
-    <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: pointer;">
-      <div style="position: absolute; top: 20px; right: 25px; color: white; font-size: 36px; font-weight: 300; cursor: pointer; z-index: 100006; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.5);" id="noticeClose">&times;</div>
-      <img src="carnegielee_notice_v2.png" alt="공지사항" style="max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; flex-direction: column;">
+      <img src="carnegielee_notice_v2.png" alt="공지사항" style="max-width: 95%; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+      
+      <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 500px; padding: 0 20px;">
+        <label style="font-size: 14.5px; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 8px; cursor: pointer; margin: 0;">
+          <input type="checkbox" id="noticeHideToday" style="accent-color: #0C3D40; width: 18px; height: 18px;"> 오늘 하루 보지 않기
+        </label>
+        <button type="button" id="noticeCloseBtn" style="padding: 10px 28px; font-size: 15px; background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; cursor: pointer; font-weight: 500; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">닫기</button>
+      </div>
     </div>
 
   </div><!-- /clf-dir -->
@@ -1187,12 +1193,13 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var noticeModal = document.getElementById("noticeModal");
-      var noticeCloseBtn = document.getElementById("noticeClose");
+      var noticeCloseBtn = document.getElementById("noticeCloseBtn");
+      var noticeHideTodayCb = document.getElementById("noticeHideToday");
       var quickBar = document.querySelector(".clf-quick-bar");
       
       if (!noticeModal) return;
 
-      var hideUntil = localStorage.getItem("clf_notice_hide_until_v5");
+      var hideUntil = localStorage.getItem("clf_notice_hide_until_v6");
       if (!hideUntil || new Date().getTime() > parseInt(hideUntil, 10)) {
         noticeModal.style.setProperty("z-index", "100000", "important");
         noticeModal.style.display = "flex";
@@ -1200,20 +1207,27 @@
         setTimeout(function() { noticeModal.classList.add("clf-show"); }, 50);
       }
       
-      noticeCloseBtn.addEventListener("click", function(e) {
-        if(e) e.stopPropagation();
-        var tomorrow = new Date();
-        tomorrow.setHours(24,0,0,0);
-        localStorage.setItem("clf_notice_hide_until_v5", tomorrow.getTime());
-        
+      var closeNotice = function() {
+        if (noticeHideTodayCb && noticeHideTodayCb.checked) {
+          var tomorrow = new Date();
+          tomorrow.setHours(24,0,0,0);
+          localStorage.setItem("clf_notice_hide_until_v6", tomorrow.getTime());
+        }
         noticeModal.classList.remove("clf-show");
         if (quickBar) quickBar.style.removeProperty("display"); // 팝업 닫을때 상단바 다시 표시 (고정됨)
         setTimeout(function() { noticeModal.style.display = "none"; }, 300);
-      });
+      };
+
+      if (noticeCloseBtn) {
+        noticeCloseBtn.addEventListener("click", function(e) {
+          if(e) e.stopPropagation();
+          closeNotice();
+        });
+      }
       
       noticeModal.addEventListener("click", function(e) {
         if(e.target === this) {
-          noticeCloseBtn.click();
+          closeNotice();
         }
       });
     });
@@ -1221,6 +1235,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
-  <script src="assets/concours.js?v=20260611_3"></script>
+  <script src="assets/concours.js?v=20260611_4"></script>
   </body>
 </html>
