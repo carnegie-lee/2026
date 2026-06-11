@@ -344,13 +344,24 @@ function clearInstErrors() {
 
     if (openBtn) openBtn.addEventListener('click', openAuthModal);
 
-    /* 이미 로그인된 경우 계정 이메일 자동 입력 */
+    /* 이미 로그인된 경우 폼 활성화 및 상세내용 표시 */
     if (session) {
+      var formSection = document.getElementById('apply');
+      var btnWrap     = document.getElementById('clf-applyBtnWrap');
+      if (formSection) {
+        formSection.classList.add('clf-form-visible');
+        if (btnWrap) btnWrap.style.setProperty('display', 'none', 'important');
+        var acctCallout = document.getElementById('clf-acctCallout');
+        var acctSection = document.getElementById('clf-acctSection');
+        if (acctCallout) acctCallout.style.setProperty('display', 'none', 'important');
+        if (acctSection) acctSection.style.setProperty('display', 'none', 'important');
+        
+        var acc = document.getElementById('detailAccordion');
+        if (acc) acc.style.setProperty('display', 'contents', 'important');
+      }
+      
       var ae = document.getElementById('clf-acctEmail');
       if (ae && !ae.value) ae.value = session.user.email;
-      
-      var acc = document.getElementById('detailAccordion');
-      if (acc) acc.style.setProperty('display', 'block', 'important');
     }
 
     /* 이미 제출한 경우 폼 복원 + 잠금 */
@@ -379,7 +390,7 @@ function clearInstErrors() {
     if (myPage)    myPage.style.setProperty('display', 'block', 'important');
 
     var acc = document.getElementById('detailAccordion');
-    if (acc) acc.style.setProperty('display', 'block', 'important');
+    if (acc) acc.style.setProperty('display', 'contents', 'important');
 
     var appData = await getApplication(user.id);
 
@@ -838,7 +849,7 @@ function clearInstErrors() {
       if (ae && !ae.value) ae.value = sess.user.email;
       
       var acc = document.getElementById('detailAccordion');
-      if (acc) acc.style.setProperty('display', 'block', 'important');
+      if (acc) acc.style.setProperty('display', 'contents', 'important');
       
       fillFormFromData(dbToFormFields(appData));
       lockApplyForm();
@@ -1031,7 +1042,7 @@ function clfToggleAcc(btn) {
       if (acctSection) acctSection.style.setProperty('display', 'none', 'important');
       
       var acc = document.getElementById('detailAccordion');
-      if (acc) acc.style.setProperty('display', 'block', 'important');
+      if (acc) acc.style.setProperty('display', 'contents', 'important');
       
       setTimeout(function () { formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
     }
