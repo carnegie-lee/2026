@@ -1520,6 +1520,10 @@
       align-items: stretch !important;
     }
 
+    .clf-dir .clf-filename-guide-text {
+      flex: 0 0 auto !important;
+    }
+
     .clf-dir .clf-help-btn {
       width: 100% !important;
       justify-content: center !important;

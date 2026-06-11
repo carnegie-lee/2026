@@ -157,7 +157,7 @@
       </div>
 
       <!-- 첨부파일 (공식 홈페이지 스타일) -->
-      <div class="clf-attachment-box" data-dir-anim>
+      <div class="clf-attachment-box" id="clf-attachment-box" data-dir-anim style="display: none;">
         <a href="카네기LEE재단_제1회 콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href>
           <span class="clf-attachment-icon">💾</span>
           <span class="clf-attachment-name" data-pdf-title>카네기LEE재단 제1회 콩쿠르 모집요강.pdf</span>
@@ -188,14 +188,8 @@
             </ul>
           </div>
 
-          <!-- 로그인 후 표시될 상세 안내 아코디언 -->
-          <div class="clf-accordion" data-acc id="detailAccordion" style="display: none; margin-top: 20px;">
-            <button type="button" class="clf-acc-trigger" onclick="clfToggleAcc(this)" style="background: #0C3D40; color: #fff; border-radius: 12px; padding: 18px 24px;">
-              <span class="clf-acc-title" style="font-weight:700;">상세 안내 (지원자격 ~ 영상 가이드) 보기</span>
-              <span class="clf-acc-arrow" style="color: #fff;">▼</span>
-            </button>
-            <div class="clf-acc-body">
-              <div class="clf-acc-inner" style="padding: 20px 0;">
+          <!-- 로그인 후 표시될 상세 안내 -->
+          <div id="detailAccordion" style="display: none; margin-top: 20px;">
 
           <div class="clf-detail-block" data-dir-delay="2">
             <div class="clf-detail-label">
@@ -360,8 +354,6 @@
             </div>
           </div>
 
-              </div>
-            </div>
           </div>
 
         </div>
@@ -1187,7 +1179,9 @@
     <!-- 공지사항 팝업 -->
     <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none;">
       <div class="clf-modal clf-modal-wide" style="max-width: 500px; padding: 0; overflow: hidden; background: transparent; border-radius: 12px; box-shadow: none;">
-        <img src="carnegielee_notice.png" alt="공지사항" style="width: 100%; display: block; border-radius: 12px 12px 0 0;">
+        <div style="background: #fff; text-align: center; border-radius: 12px 12px 0 0;">
+          <img src="carnegielee_notice.png" alt="공지사항" style="max-height: 65vh; max-width: 100%; width: auto; display: inline-block; object-fit: contain;">
+        </div>
         <div class="clf-modal-actions" style="margin-top: 0; display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 16px 20px; border-radius: 0 0 12px 12px;">
           <label style="font-size: 13.5px; color: #666; display: flex; align-items: center; gap: 6px; cursor: pointer; margin: 0;">
             <input type="checkbox" id="noticeHideToday" style="accent-color: #0C3D40; width: 16px; height: 16px;"> 오늘 하루 보지 않기
