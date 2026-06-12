@@ -72,6 +72,7 @@
       'img.poster': 'poster_11_en.png',
       'pdf.guideline': 'guideline_zh.pdf',
       'pdf.guidelineTitle': '卡内基LEE财团 古典音乐比赛 招募简章.pdf',
+      'img.posterTitle': '卡内基LEE财团 古典音乐比赛 海报.png',
       /* 상세: 모집부문 */
       'sec.categories': '招募组别',
       'categories.list':
@@ -281,6 +282,7 @@
       'img.poster': 'poster_11_en.png',
       'pdf.guideline': 'guideline_en.pdf',
       'pdf.guidelineTitle': 'Carnegie LEE Foundation Classic Concours Guidelines.pdf',
+      'img.posterTitle': 'Carnegie LEE Foundation Classic Concours Poster.png',
       /* Details: categories */
       'sec.categories': 'Eligible Categories',
       'categories.list':
