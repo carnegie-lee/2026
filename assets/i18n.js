@@ -68,7 +68,8 @@
       'ph.regPw': '6位以上,字母+数字',
       'reg.pw2': '确认密码 <span style="color:#B54E3A">*</span>',
       'ph.regPw2': '请再次输入密码',
-      'reg.agree': '[必填] 我已阅读并同意服务条款及个人信息收集·使用。'
+      'reg.agree': '[必填] 我已阅读并同意服务条款及个人信息收集·使用。',
+      'img.poster': 'poster_11_en.png'
     },
 
     en: {
@@ -127,13 +128,15 @@
       'ph.regPw': '6+ chars, letters & numbers',
       'reg.pw2': 'Confirm password <span style="color:#B54E3A">*</span>',
       'ph.regPw2': 'Re-enter your password',
-      'reg.agree': '[Required] I agree to the Terms of Service and the collection & use of personal information.'
+      'reg.agree': '[Required] I agree to the Terms of Service and the collection & use of personal information.',
+      'img.poster': 'poster_11_en.png'
     }
   };
 
   var origText = new WeakMap();
   var origHTML = new WeakMap();
   var origPH   = new WeakMap();
+  var origSrc  = new WeakMap();
 
   function get(lang, key) {
     return (DICT[lang] && DICT[lang][key] != null) ? DICT[lang][key] : null;
@@ -154,6 +157,11 @@
       if (!origPH.has(el)) origPH.set(el, el.getAttribute('placeholder') || '');
       var t = (lang === 'ko') ? null : get(lang, el.getAttribute('data-i18n-ph'));
       el.setAttribute('placeholder', (t == null) ? origPH.get(el) : t);
+    });
+    document.querySelectorAll('[data-i18n-src]').forEach(function (el) {
+      if (!origSrc.has(el)) origSrc.set(el, el.getAttribute('src') || '');
+      var t = (lang === 'ko') ? null : get(lang, el.getAttribute('data-i18n-src'));
+      el.setAttribute('src', (t == null) ? origSrc.get(el) : t);
     });
 
     document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ko'));
