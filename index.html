@@ -12,7 +12,7 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>2026 클래식 콩쿠르 참가신청 - Carnegie LEE Foundation</title>
+  <title data-i18n="page.title">2026 클래식 콩쿠르 참가신청 - Carnegie LEE Foundation</title>
 
   <link rel="stylesheet" href="assets/concours.css?v=20260602_8">
   <style>
@@ -223,8 +223,8 @@
         <!-- 마감 배너 (서류 마감 후 표시) -->
         <div id="clf-closedBanner" class="clf-closed-banner">
           <div class="clf-closed-icon">🔒</div>
-          <div class="clf-closed-title">참가 접수가 마감되었습니다</div>
-          <div class="clf-closed-desc">
+          <div class="clf-closed-title" data-i18n="closeBanner.title">참가 접수가 마감되었습니다</div>
+          <div class="clf-closed-desc" data-i18n-html="closeBanner.desc">
             접수 기간: 2026년 6월 1일 ~ 6월 30일(화) 18:00<br>
             <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px;">
               <strong>[추가 접수 문의]</strong><br>
@@ -256,54 +256,54 @@
         style="display:none!important; padding-top:48px !important; border-top:1px solid #E4E4E4 !important; margin-top:48px !important;">
         <!-- 로그인 박스 -->
         <div id="clf-loginBox" class="clf-auth-box">
-          <div class="clf-auth-title">🔑 로그인</div>
-          <div class="clf-auth-sub">서류 제출 시 등록한 이메일과 비밀번호로 로그인하시면<br>제출한 서류 내용을 확인하고 영상을 제출할 수 있습니다.</div>
+          <div class="clf-auth-title" data-i18n="auth.loginTitle">🔑 로그인</div>
+          <div class="clf-auth-sub" data-i18n-html="auth.loginSub">서류 제출 시 등록한 이메일과 비밀번호로 로그인하시면<br>제출한 서류 내용을 확인하고 영상을 제출할 수 있습니다.</div>
           <div class="clf-auth-error" id="clf-loginError"></div>
           <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-loginEmail">이메일</label>
+            <label class="clf-auth-label" for="clf-loginEmail" data-i18n="f.email">이메일</label>
             <input class="clf-input" type="email" id="clf-loginEmail" placeholder="name@example.com">
           </div>
           <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-loginPw">비밀번호</label>
-            <input class="clf-input" type="password" id="clf-loginPw" placeholder="비밀번호 입력">
+            <label class="clf-auth-label" for="clf-loginPw" data-i18n="f.password">비밀번호</label>
+            <input class="clf-input" type="password" id="clf-loginPw" placeholder="비밀번호 입력" data-i18n-ph="ph.password">
           </div>
-          <button class="clf-auth-btn" id="clf-loginBtn">로그인</button>
-          <div class="clf-auth-switch">아직 서류를 제출하지 않으셨나요? <a id="clf-goRegister">회원가입</a></div>
+          <button class="clf-auth-btn" id="clf-loginBtn" data-i18n="auth.loginBtn">로그인</button>
+          <div class="clf-auth-switch"><span data-i18n="auth.noSubmit">아직 서류를 제출하지 않으셨나요?</span> <a id="clf-goRegister" data-i18n="auth.register">회원가입</a></div>
         </div>
 
         <!-- 회원가입 박스 -->
         <div id="clf-registerBox" class="clf-auth-box" style="display:none!important;">
-          <div class="clf-auth-title">📋 회원가입</div>
-          <div class="clf-auth-sub">서류 제출 전 계정을 만들어 주세요.<br>제출 후 언제든 로그인해서 내용을 확인할 수 있습니다.</div>
+          <div class="clf-auth-title" data-i18n="auth.regTitle">📋 회원가입</div>
+          <div class="clf-auth-sub" data-i18n-html="auth.regSub">서류 제출 전 계정을 만들어 주세요.<br>제출 후 언제든 로그인해서 내용을 확인할 수 있습니다.</div>
           <div class="clf-auth-error" id="clf-registerError"></div>
           <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-regEmail">이메일</label>
+            <label class="clf-auth-label" for="clf-regEmail" data-i18n="f.email">이메일</label>
             <input class="clf-input" type="email" id="clf-regEmail" placeholder="name@example.com">
           </div>
           <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-regPw">비밀번호</label>
-            <input class="clf-input" type="password" id="clf-regPw" placeholder="6자 이상">
+            <label class="clf-auth-label" for="clf-regPw" data-i18n="f.password">비밀번호</label>
+            <input class="clf-input" type="password" id="clf-regPw" placeholder="6자 이상" data-i18n-ph="ph.regPw">
           </div>
           <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-regPw2">비밀번호 확인</label>
-            <input class="clf-input" type="password" id="clf-regPw2" placeholder="비밀번호 재입력">
+            <label class="clf-auth-label" for="clf-regPw2" data-i18n="auth.pwConfirm">비밀번호 확인</label>
+            <input class="clf-input" type="password" id="clf-regPw2" placeholder="비밀번호 재입력" data-i18n-ph="ph.regPw2">
           </div>
-          <button class="clf-auth-btn" id="clf-registerBtn">가입하기</button>
-          <div class="clf-auth-switch">이미 계정이 있으신가요? <a id="clf-goLogin">로그인</a></div>
+          <button class="clf-auth-btn" id="clf-registerBtn" data-i18n="auth.regBtn">가입하기</button>
+          <div class="clf-auth-switch"><span data-i18n="auth.haveAccount">이미 계정이 있으신가요?</span> <a id="clf-goLogin" data-i18n="auth.login">로그인</a></div>
         </div>
 
         <!-- 이메일 인증 안내 -->
         <div id="clf-emailSentBox" class="clf-auth-box" style="display:none!important;">
           <div style="text-align:center; padding: 16px 0;">
             <div style="font-size:32px; margin-bottom:14px;">&#9993;</div>
-            <div class="clf-auth-title">인증 이메일이 발송되었습니다</div>
-            <div class="clf-auth-sub" style="margin-bottom:20px;">
+            <div class="clf-auth-title" data-i18n="modal.emailSentTitle">인증 이메일이 발송되었습니다</div>
+            <div class="clf-auth-sub" style="margin-bottom:20px;" data-i18n-html="modal.emailSentBody">
               입력하신 이메일로 인증 메일을 보냈습니다.<br>
               이메일을 확인하고 인증 링크를 클릭해 주세요.<br>
               인증 완료 후 다시 돌아와서 로그인해 주세요.
             </div>
-            <button class="clf-auth-btn" id="clf-emailSentOkBtn">확인 (로그인으로 이동)</button>
-            <div style="margin-top:12px; font-size:12.5px; color:#999;">이메일이 도착하지 않으면 스팸 폴더를 확인해 주세요.</div>
+            <button class="clf-auth-btn" id="clf-emailSentOkBtn" data-i18n="auth.emailSentOk">확인 (로그인으로 이동)</button>
+            <div style="margin-top:12px; font-size:12.5px; color:#999;" data-i18n="modal.spamNote">이메일이 도착하지 않으면 스팸 폴더를 확인해 주세요.</div>
           </div>
         </div>
       </div>
@@ -317,9 +317,9 @@
         <div class="clf-user-bar">
           <div>
             <div class="clf-user-bar-name" id="clf-myPageName">안녕하세요 👋</div>
-            <div class="clf-user-bar-sub">제출한 서류 내용은 수정이 불가합니다.</div>
+            <div class="clf-user-bar-sub" data-i18n="myPage.sub">제출한 서류 내용은 수정이 불가합니다.</div>
           </div>
-          <button class="clf-logout-btn" id="clf-logoutBtn">로그아웃</button>
+          <button class="clf-logout-btn" id="clf-logoutBtn" data-i18n="myPage.logout">로그아웃</button>
         </div>
 
         <!-- 제출한 서류 내용 읽기전용 뷰 -->
@@ -937,7 +937,7 @@
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
                     <label for="agree1" style="flex:1; margin:0;" data-i18n-html="form.agree1Label"><strong>[필수] <span class="clf-req">*</span> 개인정보 수집·이용에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼' : '▲';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;" data-i18n-html="form.agree1Detail">
                     <strong style="color:#0C3D40 !important;">▸ 수집 항목</strong><br>
@@ -958,7 +958,7 @@
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
                     <label for="agree2" style="flex:1; margin:0;" data-i18n-html="form.agree2Label"><strong>[필수] <span class="clf-req">*</span> 연주 영상 및 콘텐츠 사용권에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼' : '▲';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;" data-i18n-html="form.agree2Detail">
                     <strong style="color:#0C3D40 !important;">▸ 저작권 귀속</strong><br>
@@ -978,7 +978,7 @@
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
                     <label for="agree3" style="flex:1; margin:0;" data-i18n-html="form.agree3Label"><strong>[필수] <span class="clf-req">*</span> 초상권 사용에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼' : '▲';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;" data-i18n-html="form.agree3Detail">
                     <strong style="color:#0C3D40 !important;">▸ 동의 범위</strong><br>
@@ -995,7 +995,7 @@
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
                     <label for="agree4" style="flex:1; margin:0;" data-i18n-html="form.agree4Label"><strong>[필수] <span class="clf-req">*</span> 참가비 환불 불가 규정에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼' : '▲';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;" data-i18n-html="form.agree4Detail">
                     납부한 <strong>참가비(100,000원)</strong>는 어떠한 사유로도 반환되지 않음을 충분히 인지하고 동의합니다. 참가비 납입과 함께
@@ -1011,7 +1011,7 @@
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
                     <label for="agree5" style="flex:1; margin:0;" data-i18n-html="form.agree5Label"><span class="clf-agree-optional-tag">선택</span><strong>마케팅 정보 수신에 동의합니다</strong></label>
-                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
+                    <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼' : '▲';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;" data-i18n-html="form.agree5Detail">
                     향후 카네기리 재단의 공모전·콘서트·전시 등 행사 안내 및 뉴스레터를 이메일·문자로 수신함에 동의합니다. 거부 시 마케팅 정보는 발송되지 않으나, 본 콩쿠르 운영 안내 메일은 정상
