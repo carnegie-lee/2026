@@ -50,8 +50,8 @@ var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 /* ══════════════════════════════════════════════
    날짜 상수
    ══════════════════════════════════════════════ */
-/* 서류·영상 통합 접수: 2026.06.01 ~ 06.26(금) 16:00 (단일 통합 폼) */
-var DOC_DEADLINE = new Date('2026-06-26T16:00:00+09:00');
+/* 서류·영상 통합 접수: 2026.06.01 ~ 06.30(화) 18:00 (단일 통합 폼) */
+var DOC_DEADLINE = new Date('2026-06-30T18:00:00+09:00');
 var CONFIRM_REDIRECT = new URL('confirm.html', window.location.href).href;
 
 /* ══════════════════════════════════════════════
