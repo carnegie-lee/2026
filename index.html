@@ -95,7 +95,8 @@
         <img src="carnegie-lee-logo.png" alt="Carnegie LEE Foundation">
       </a>
       <div class="clf-quick-btns">
-        <a href="카네기LEE재단_제1회 콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기" data-pdf-href>
+        <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기" data-pdf-href
+          onclick="return clfGuidePreview(event)">
           <span class="clf-quick-icon">📄</span>
           <span class="clf-quick-text">모집요강 미리보기</span>
         </a>
@@ -109,6 +110,21 @@
         </a>
       </div>
     </div>
+
+    <!-- 모집요강 미리보기: 로그인 전에는 PDF 대신 로그인 모달 -->
+    <script>
+      function clfGuidePreview(e) {
+        // #detailAccordion 가 display:none 이면 로그인 전(상세 잠금) 상태
+        var acc = document.getElementById('detailAccordion');
+        var loggedIn = acc && window.getComputedStyle(acc).display !== 'none';
+        if (!loggedIn) {
+          if (e && e.preventDefault) e.preventDefault();
+          if (typeof openAuthModal === 'function') openAuthModal();
+          return false;
+        }
+        return true; // 로그인 후에는 PDF 정상 열림
+      }
+    </script>
 
     <!-- ① 헤더 -->
     <div class="clf-phero">
@@ -131,7 +147,7 @@
           <div class="clf-photo-frame"
             style="padding:0!important; overflow:hidden!important; background:none!important;">
             <!-- ★ 포스터 사진 변경하는 곳: 아래 img 태그의 src="주소" 부분을 수정하시면 됩니다 ★ -->
-            <img src="콩쿠르 포스터.png" alt="Classic Concours 2026"
+            <img src="11일 포스터.png" alt="Classic Concours 2026"
               style="width:100%!important; height:100%!important; object-fit:cover!important; display:block!important; border-radius:20px!important; cursor: pointer;" onclick="document.getElementById('posterModal').classList.add('clf-show')">
           </div>
           <div class="clf-name-badge">
@@ -306,9 +322,9 @@
           <!-- 모집요강 PDF (로그인 후 첫 항목, 전체 폭) -->
           <div class="clf-attachment-box" id="clf-attachment-box" data-dir-anim
             style="grid-column:1/-1 !important; margin-top:48px !important;">
-            <a href="카네기LEE재단_제1회 콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href>
+            <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href>
               <span class="clf-attachment-icon">💾</span>
-              <span class="clf-attachment-name" data-pdf-title>카네기LEE재단 제1회 콩쿠르 모집요강.pdf</span>
+              <span class="clf-attachment-name" data-pdf-title>카네기리재단_클래식콩쿠르_모집요강.pdf</span>
             </a>
           </div>
 
@@ -1008,7 +1024,7 @@
   <!-- 포스터 원본 보기 팝업 -->
   <div class="clf-modal-bd" id="posterModal" role="dialog" aria-modal="true" style="z-index: 100005; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: pointer;" onclick="this.classList.remove('clf-show')">
     <div style="position: absolute; top: 20px; right: 25px; color: white; font-size: 36px; font-weight: 300; cursor: pointer; z-index: 100006; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">&times;</div>
-    <img src="콩쿠르 포스터.png" style="max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <img src="11일 포스터.png" style="max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
   </div>
 
   <!-- 모달 -->
