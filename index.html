@@ -89,24 +89,39 @@
 
   <div class="clf-dir">
 
+    <!-- 다국어 전환 스위처 스타일 -->
+    <style>
+      .clf-lang-switch { display:inline-flex; align-items:center; gap:2px; background:#F1F1F0; border-radius:999px; padding:3px; margin-right:8px; }
+      .clf-lang-switch button { border:none; background:transparent; cursor:pointer; font-size:12px; font-weight:600; color:#6b6b6b; padding:5px 10px; border-radius:999px; line-height:1; transition:all .15s; font-family:inherit; }
+      .clf-lang-switch button:hover { color:#111; }
+      .clf-lang-switch button.clf-lang-active { background:#fff; color:#0C3D40; box-shadow:0 1px 3px rgba(0,0,0,.12); }
+      @media (max-width:560px){ .clf-lang-switch button { padding:5px 8px; font-size:11px; } }
+    </style>
+
     <!-- 퀵 메뉴 (상단 고정) -->
     <div class="clf-quick-bar">
       <a href="#" class="clf-quick-logo">
         <img src="carnegie-lee-logo.png" alt="Carnegie LEE Foundation">
       </a>
       <div class="clf-quick-btns">
+        <!-- 언어 전환 (한국어 / 中文 / English) -->
+        <div class="clf-lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="ko" onclick="clfSetLang('ko')">한국어</button>
+          <button type="button" data-lang-btn="zh" onclick="clfSetLang('zh')">中文</button>
+          <button type="button" data-lang-btn="en" onclick="clfSetLang('en')">EN</button>
+        </div>
         <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기" data-pdf-href
           onclick="return clfGuidePreview(event)">
           <span class="clf-quick-icon">📄</span>
-          <span class="clf-quick-text">모집요강 미리보기</span>
+          <span class="clf-quick-text" data-i18n="qb.guide">모집요강 미리보기</span>
         </a>
         <a href="http://pf.kakao.com/_KxobGX" target="_blank" class="clf-quick-btn clf-kakao">
           <span class="clf-quick-icon">💬</span>
-          <span class="clf-quick-text">카톡 문의</span>
+          <span class="clf-quick-text" data-i18n="qb.kakao">카톡 문의</span>
         </a>
         <a href="tel:1588-8418" class="clf-quick-btn">
           <span class="clf-quick-icon">📞</span>
-          <span class="clf-quick-text">재단 전화</span>
+          <span class="clf-quick-text" data-i18n="qb.phone">재단 전화</span>
         </a>
       </div>
     </div>
@@ -130,8 +145,8 @@
     <div class="clf-phero">
 
       <div class="clf-page-title-wrap">
-        <h1 class="clf-page-title">참가신청</h1>
-        <div class="clf-page-sub">카네기 LEE 재단 제1회 콩쿠르</div>
+        <h1 class="clf-page-title" data-i18n="hdr.title">참가신청</h1>
+        <div class="clf-page-sub" data-i18n="hdr.sub">카네기 LEE 재단 제1회 콩쿠르</div>
       </div>
     </div>
 
@@ -151,21 +166,21 @@
               style="width:100%!important; height:100%!important; object-fit:cover!important; display:block!important; border-radius:20px!important; cursor: pointer;" onclick="document.getElementById('posterModal').classList.add('clf-show')">
           </div>
           <div class="clf-name-badge">
-            <span class="clf-name-ko">카네기 LEE 재단 제1회 콩쿠르</span>
-            <span class="clf-name-nick">&lt;뉴욕 카네기 홀 신인아티스트 선발전&gt;<br>카네기LEE 재단 창립 7주년 기념 조수미 초청 콘서트</span>
+            <span class="clf-name-ko" data-i18n="intro.nameko">카네기 LEE 재단 제1회 콩쿠르</span>
+            <span class="clf-name-nick" data-i18n-html="intro.namenick">&lt;뉴욕 카네기 홀 신인아티스트 선발전&gt;<br>카네기LEE 재단 창립 7주년 기념 조수미 초청 콘서트</span>
           </div>
         </div>
 
         <div class="clf-greeting-col">
-          <h2 class="clf-greeting-h2">
+          <h2 class="clf-greeting-h2" data-i18n-html="intro.h2">
             입시생부터 현역 아티스트까지,<br>차세대 음악 인재를 발굴합니다
           </h2>
-          <p class="clf-greeting-p">카네기 Lee 재단 창립 7주년과 세계적인 소프라노 조수미의 데뷔 40주년을 기념하여 개최되는 본 콩쿠르는, 차세대 음악 인재 발굴·육성을 위한 인재
+          <p class="clf-greeting-p" data-i18n="intro.p1">카네기 Lee 재단 창립 7주년과 세계적인 소프라노 조수미의 데뷔 40주년을 기념하여 개최되는 본 콩쿠르는, 차세대 음악 인재 발굴·육성을 위한 인재
             양성
             사업의 일환으로 진행됩니다.</p>
-          <p class="clf-greeting-p">입시 준비생부터 현재 무대에서 활동하고 있는 현역 아티스트까지, 기악 및 성악 분야에서 본인의 역량과 경력을 충분히 갖추신 분이라면 누구나 참여하실 수
+          <p class="clf-greeting-p" data-i18n="intro.p2">입시 준비생부터 현재 무대에서 활동하고 있는 현역 아티스트까지, 기악 및 성악 분야에서 본인의 역량과 경력을 충분히 갖추신 분이라면 누구나 참여하실 수
             있습니다.</p>
-          <p class="clf-greeting-p">참가지원서와 연주 영상을 한 번에 제출하는 단일 전형으로 본선 진출자를 선발하며, 본선 경연을 거쳐 입상하신 분께는 미국 뉴욕
+          <p class="clf-greeting-p" data-i18n="intro.p3">참가지원서와 연주 영상을 한 번에 제출하는 단일 전형으로 본선 진출자를 선발하며, 본선 경연을 거쳐 입상하신 분께는 미국 뉴욕
             카네기홀(Carnegie Hall) 연주 무대를 비롯한 차세대 아티스트로 발돋움할 수 있는 전폭적인 혜택이 주어집니다.</p>
 
         </div>
@@ -180,10 +195,10 @@
           <div class="clf-detail-block" data-dir-delay="1" style="grid-column:1/-1 !important;">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Schedule</span>
-              <span class="clf-detail-label-ko">공식 일정</span>
+              <span class="clf-detail-label-ko" data-i18n="sec.schedule">공식 일정</span>
               <span class="clf-detail-label-divider"></span>
             </div>
-            <ul class="clf-detail-list">
+            <ul class="clf-detail-list" data-i18n-html="schedule.list">
               <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
                   class="clf-detail-text"><strong>2026.06.01(월) ~ 06.30(화)</strong> 서류·영상 접수 <span
                     style="color:#B54E3A;font-weight:700;">(마감 6.30(화) 18:00)</span></span>
@@ -230,7 +245,7 @@
             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
             <polyline points="16 2 22 8 12 18 9 18 9 15" />
           </svg>
-          참가 신청서 작성하기
+          <span data-i18n="btn.apply">참가 신청서 작성하기</span>
         </button>
       </div>
 
@@ -1252,5 +1267,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
   <script src="assets/concours.js?v=20260612_1"></script>
+  <script src="assets/i18n.js?v=20260612_1"></script>
   </body>
 </html>
