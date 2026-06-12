@@ -156,18 +156,37 @@
 
       </div>
 
-      <!-- 첨부파일 (공식 홈페이지 스타일) -->
-      <div class="clf-attachment-box" id="clf-attachment-box" data-dir-anim>
-        <a href="카네기LEE재단_제1회 콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href>
-          <span class="clf-attachment-icon">💾</span>
-          <span class="clf-attachment-name" data-pdf-title>카네기LEE재단 제1회 콩쿠르 모집요강.pdf</span>
-        </a>
+      <!-- 공식 일정 (인트로 바로 아래 독립 섹션) -->
+      <div class="clf-profile-detail" id="schedule-top"
+        style="border-top:none !important; padding-top:0 !important; margin-top:40px !important; margin-bottom:0 !important;"
+        data-dir-anim>
+        <div class="clf-detail-grid">
+          <div class="clf-detail-block" data-dir-delay="1" style="grid-column:1/-1 !important;">
+            <div class="clf-detail-label">
+              <span class="clf-detail-label-en">Schedule</span>
+              <span class="clf-detail-label-ko">공식 일정</span>
+              <span class="clf-detail-label-divider"></span>
+            </div>
+            <ul class="clf-detail-list">
+              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
+                  class="clf-detail-text"><strong>2026.06.01(월) ~ 06.26(금)</strong> 서류·영상 접수 <span
+                    style="color:#B54E3A;font-weight:700;">(마감 6.26(금) 16:00)</span></span>
+              </li>
+              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
+                  class="clf-detail-text"><strong>2026.07.03(금) 18:00</strong> 합격자 발표</span></li>
+              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
+                  class="clf-detail-text"><strong>2026.07.13(월)</strong> 콩쿠르 본선 경연</span></li>
+              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
+                  class="clf-detail-text"><strong>2026.08.11(화)</strong> [ 카네기LEE 재단 창립 7주년 기념 조수미 초청 콘서트] 당일</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <!-- ════════════════════════════════════
          참가신청 버튼 / 마감 배너 / 영상제출
          ════════════════════════════════════ -->
-      <div class="clf-apply-btn-wrap" id="clf-applyBtnWrap" data-dir-anim>
+      <div class="clf-apply-btn-wrap" id="clf-applyBtnWrap" data-dir-anim style="border-top:none !important;">
         <!-- 마감 배너 (서류 마감 후 표시) -->
         <div id="clf-closedBanner" class="clf-closed-banner">
           <div class="clf-closed-icon">🔒</div>
@@ -277,31 +296,21 @@
       </div>
 
       <!-- 상세 -->
-      <div class="clf-profile-detail" id="guide" data-dir-anim>
+      <div class="clf-profile-detail" id="guide" data-dir-anim
+        style="border-top:none; padding-top:0; margin-bottom:0;">
         <div class="clf-detail-grid">
-
-          <div class="clf-detail-block" data-dir-delay="1">
-            <div class="clf-detail-label">
-              <span class="clf-detail-label-en">Schedule</span>
-              <span class="clf-detail-label-ko">공식 일정</span>
-              <span class="clf-detail-label-divider"></span>
-            </div>
-            <ul class="clf-detail-list">
-              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
-                  class="clf-detail-text"><strong>2026.06.01(월) ~ 06.26(금)</strong> 서류·영상 접수 <span
-                    style="color:#B54E3A;font-weight:700;">(마감 6.26(금) 16:00)</span></span>
-              </li>
-              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
-                  class="clf-detail-text"><strong>2026.07.03(금) 18:00</strong> 합격자 발표</span></li>
-              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
-                  class="clf-detail-text"><strong>2026.07.13(월)</strong> 콩쿠르 본선 경연</span></li>
-              <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
-                  class="clf-detail-text"><strong>2026.08.11(화)</strong> [ 카네기LEE 재단 창립 7주년 기념 조수미 초청 콘서트] 당일</span></li>
-            </ul>
-          </div>
 
           <!-- 로그인 후 표시될 상세 안내 -->
           <div id="detailAccordion" style="display: none; margin-top: 20px;">
+
+          <!-- 모집요강 PDF (로그인 후 첫 항목, 전체 폭) -->
+          <div class="clf-attachment-box" id="clf-attachment-box" data-dir-anim
+            style="grid-column:1/-1 !important; margin-top:48px !important;">
+            <a href="카네기LEE재단_제1회 콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href>
+              <span class="clf-attachment-icon">💾</span>
+              <span class="clf-attachment-name" data-pdf-title>카네기LEE재단 제1회 콩쿠르 모집요강.pdf</span>
+            </a>
+          </div>
 
           <div class="clf-detail-block" data-dir-delay="2">
             <div class="clf-detail-label">
