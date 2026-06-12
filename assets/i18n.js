@@ -69,6 +69,27 @@
       'reg.pw2': '确认密码 <span style="color:#B54E3A">*</span>',
       'ph.regPw2': '请再次输入密码',
       'reg.agree': '[必填] 我已阅读并同意服务条款及个人信息收集·使用。',
+      /* 성공/업로드/공지 모달 + 약관 상세 */
+      'success.title': '报名已成功提交',
+      'success.body': '报名表与视频已一并成功提交。<br>确认邮件将发送至您填写的邮箱。<br>登录后可在「我的页面」查看提交内容。',
+      'success.ok': '确认',
+      'up.title': 'Google 云端硬盘视频上传方法',
+      'up.desc': '按以下步骤操作,即可生成用于评审的视频链接。',
+      'up.s1': '访问 <strong>drive.google.com</strong>,使用本人 Google 账号登录。',
+      'up.s2': '点击左上角 <strong>[+ 新建]</strong> → <strong>[文件上传]</strong>,选择视频文件。<br><span style="color:#888;font-size:12.5px;">文件名务必保存为 <code>组别_姓名_曲名.mp4</code> 格式。例)钢琴_张三_Chopin Etude Op.10-4.mp4</span>',
+      'up.s3': '上传完成后,<strong>右键点击</strong>该文件 → 选择 <strong>[共享]</strong>。',
+      'up.s4': '将 <strong>常规访问</strong> 由 <code>受限</code> 改为 <code style="color: #d32f2f; font-weight: 700;">知道链接的所有人</code>。<div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 10px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; text-align: left; word-break: keep-all; border-radius: 4px;"><strong>※ 须将设置改为 [常规访问 &gt; 知道链接的所有人]</strong> 方可评审。<br>(若因权限受限无法观看视频,可能在评审中受到不利影响。)</div>',
+      'up.s5': '权限保持为 <code style="color: #d32f2f; font-weight: 700;">查看者</code>,点击右下角 <strong>[复制链接]</strong>。',
+      'up.s6': '将复制的链接粘贴到 <strong>视频共享链接</strong> 输入框。<br><span style="color:#888;font-size:12.5px;">提交前请务必在隐身窗口确认能否正常播放。</span>',
+      'up.close': '关闭',
+      'up.openDrive': '打开 Google 云端硬盘',
+      'notice.hideToday': '今天不再显示',
+      'notice.close': '关闭',
+      'form.agree1Detail': '<strong style="color:#0C3D40 !important;">▸ 收集项目</strong><br>姓名、出生年月日、性别、联系方式、邮箱、学校名称·专业、活动经历、获奖经历、了解渠道、演奏视频、证件照<br><br><strong style="color:#0C3D40 !important;">▸ 收集·使用目的</strong><br>用于本次比赛的参赛者识别、评审、获奖公布、颁奖及运营相关通知<br><br><strong style="color:#0C3D40 !important;">▸ 保存及使用期限</strong><br>比赛结束后保存3年后销毁(依据相关法令负有保存义务的,在该期限内保存)<br><br><strong style="color:#0C3D40 !important;">▸ 拒绝同意的权利</strong><br>您有权拒绝本个人信息的收集·使用;拒绝同意将无法参加比赛。',
+      'form.agree2Detail': '<strong style="color:#0C3D40 !important;">▸ 著作权归属</strong><br>所提交全部演奏视频的原著作权归<strong>参赛者本人</strong>所有。<br><br><strong style="color:#0C3D40 !important;">▸ 基金会使用权范围</strong><br>主办·承办方(卡内基LEE基金会)仅在活动对外宣传、决赛舞台记录视频制作、基金会社交媒体·官网发布、画册·媒体报道等<strong>非营利活动运营及宣传目的</strong>范围内,合法使用参赛者的视频·照片。<br><br><strong style="color:#0C3D40 !important;">▸ 决赛舞台拍摄</strong><br>决赛入围者同意其决赛舞台演出的视频·照片可用于活动记录及今后的宣传资料。',
+      'form.agree3Detail': '<strong style="color:#0C3D40 !important;">▸ 同意范围</strong><br>同意使用在决赛舞台、彩排等活动现场拍摄的本人照片·视频。<br><br><strong style="color:#0C3D40 !important;">▸ 使用媒介</strong><br>基金会官网·社交媒体、新闻稿、画册、影像记录、今后基金会活动宣传物等。',
+      'form.agree4Detail': '本人充分知悉并同意:已缴纳的<strong>报名费(100,000韩元)</strong>不因任何理由退还。缴纳报名费后,比赛报名即正式完成。',
+      'form.agree5Detail': '同意通过邮件·短信接收今后卡内基LEE基金会的征集·音乐会·展览等活动通知及简讯。拒绝时将不再发送营销信息,但本次比赛的运营通知邮件仍会正常发送。',
       'img.poster': 'poster_11_en.png',
       'pdf.guideline': 'guideline_zh.pdf',
       'pdf.guidelineTitle': '卡内基LEE财团 古典音乐比赛 招募简章.pdf',
@@ -222,7 +243,9 @@
       'form.submitBtn': '提交报名表',
       'form.submitHint': '提交后,确认邮件将发送至您填写的邮箱。',
       'form.footerInquiry': '<strong>[咨询] 卡内基LEE基金会事务局</strong><br>电话:<a href="tel:1588-8418" style="color:#0C3D40; text-decoration:none; font-weight:700;">1588-8418</a><br>邮箱:<a href="mailto:info@carnegielee.org" style="color:#0C3D40; text-decoration:none; font-weight:700;">info@carnegielee.org</a><br>咨询时间:10:00 ~ 18:00',
-      'img.poster': 'poster_11_en.png'
+      'img.poster': 'poster_11_en.png',
+      'form.fileChoose': '选择文件',
+      'form.fileNoChosen': '未选择文件'
     },
 
     en: {
@@ -282,6 +305,27 @@
       'reg.pw2': 'Confirm password <span style="color:#B54E3A">*</span>',
       'ph.regPw2': 'Re-enter your password',
       'reg.agree': '[Required] I agree to the Terms of Service and the collection & use of personal information.',
+      /* Success / upload / notice modals + agreement details */
+      'success.title': 'Your application has been received',
+      'success.body': 'Your application and video have been submitted successfully.<br>A confirmation email will be sent to the address you entered.<br>After logging in, you can review your submission on My Page.',
+      'success.ok': 'OK',
+      'up.title': 'How to upload your video to Google Drive',
+      'up.desc': 'Follow the steps below to create a video link for judging.',
+      'up.s1': 'Go to <strong>drive.google.com</strong> and log in with your Google account.',
+      'up.s2': 'Click <strong>[+ New]</strong> → <strong>[File upload]</strong> at the top left and select your video file.<br><span style="color:#888;font-size:12.5px;">Save the file name in the format <code>category_name_title.mp4</code>. e.g. Piano_JohnDoe_Chopin Etude Op.10-4.mp4</span>',
+      'up.s3': 'When the upload is finished, <strong>right-click</strong> the file → choose <strong>[Share]</strong>.',
+      'up.s4': 'Change <strong>General access</strong> from <code>Restricted</code> to <code style="color: #d32f2f; font-weight: 700;">Anyone with the link</code>.<div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 10px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; text-align: left; word-break: keep-all; border-radius: 4px;"><strong>※ You must change the setting to [General access &gt; Anyone with the link]</strong> for judging to be possible.<br>(If the video cannot be viewed due to restricted permissions, it may be disadvantaged in judging.)</div>',
+      'up.s5': 'Keep the permission as <code style="color: #d32f2f; font-weight: 700;">Viewer</code> and click <strong>[Copy link]</strong> at the bottom right.',
+      'up.s6': 'Paste the copied link into the <strong>Video share link</strong> field.<br><span style="color:#888;font-size:12.5px;">Before submitting, make sure it plays in an incognito window.</span>',
+      'up.close': 'Close',
+      'up.openDrive': 'Open Google Drive',
+      'notice.hideToday': 'Don’t show again today',
+      'notice.close': 'Close',
+      'form.agree1Detail': '<strong style="color:#0C3D40 !important;">▸ Items collected</strong><br>Name, date of birth, gender, contact, email, school & major, career, awards, referral source, performance video, profile photo<br><br><strong style="color:#0C3D40 !important;">▸ Purpose of collection & use</strong><br>Identifying participants, judging, announcing winners, awards, and operational notices for this concours<br><br><strong style="color:#0C3D40 !important;">▸ Retention & use period</strong><br>Retained for 3 years after the concours ends, then destroyed (kept for the required period where retention is mandated by law)<br><br><strong style="color:#0C3D40 !important;">▸ Right to refuse</strong><br>You may refuse consent to this collection & use of personal information; if you refuse, you cannot participate.',
+      'form.agree2Detail': '<strong style="color:#0C3D40 !important;">▸ Copyright ownership</strong><br>The original copyright of all submitted performance videos belongs to <strong>the participant</strong>.<br><br><strong style="color:#0C3D40 !important;">▸ Scope of the Foundation’s usage rights</strong><br>The organizer (Carnegie LEE Foundation) may lawfully use participants’ videos/photos only for <strong>non-profit event operation and promotion</strong> — external promotion, production of final-stage record videos, posting on the Foundation’s social media/website, catalogs, press, etc.<br><br><strong style="color:#0C3D40 !important;">▸ Final-stage filming</strong><br>Finalists agree that videos/photos of their final-stage performance may be used as event records and for future promotional materials.',
+      'form.agree3Detail': '<strong style="color:#0C3D40 !important;">▸ Scope of consent</strong><br>I consent to the use of my photos/videos taken at the event (final stage, rehearsals, etc.).<br><br><strong style="color:#0C3D40 !important;">▸ Media used</strong><br>The Foundation’s official website/social media, press releases, catalogs, video records, future event promotion materials, etc.',
+      'form.agree4Detail': 'I fully understand and agree that the <strong>participation fee (KRW 100,000)</strong>, once paid, is not refunded for any reason. Your entry is officially complete upon payment of the fee.',
+      'form.agree5Detail': 'I agree to receive notices and newsletters about the Carnegie LEE Foundation’s future competitions, concerts, exhibitions, etc. by email/SMS. If you decline, marketing information will not be sent, but operational notice emails for this concours will still be sent.',
       'img.poster': 'poster_11_en.png',
       'pdf.guideline': 'guideline_en.pdf',
       'pdf.guidelineTitle': 'Carnegie LEE Foundation Classic Concours Guidelines.pdf',
@@ -435,7 +479,9 @@
       'form.submitBtn': 'Submit Application',
       'form.submitHint': 'A confirmation email will be sent to the address you entered.',
       'form.footerInquiry': '<strong>[Inquiries] Carnegie LEE Foundation Office</strong><br>Tel: <a href="tel:1588-8418" style="color:#0C3D40; text-decoration:none; font-weight:700;">1588-8418</a><br>Email: <a href="mailto:info@carnegielee.org" style="color:#0C3D40; text-decoration:none; font-weight:700;">info@carnegielee.org</a><br>Hours: 10:00 ~ 18:00',
-      'img.poster': 'poster_11_en.png'
+      'img.poster': 'poster_11_en.png',
+      'form.fileChoose': 'Choose File',
+      'form.fileNoChosen': 'No file chosen'
     }
   };
 
@@ -488,7 +534,20 @@
       el.setAttribute('href', (t == null) ? origHref.get(el) : t);
     });
 
-    document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ko'));
+    document.querySelectorAll('.clf-file-text').forEach(function(el) {
+      var input = el.parentElement.querySelector('input[type="file"]');
+      if (!input || !input.files || input.files.length === 0) {
+        var t = (lang === 'ko') ? null : get(lang, 'form.fileNoChosen');
+        el.textContent = (t == null) ? '선택된 파일 없음' : t;
+      }
+    });
+
+    var htmlLang = lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ko');
+    document.documentElement.setAttribute('lang', htmlLang);
+    // 네이티브 날짜/시간 입력칸의 표기 형식을 언어에 맞춤 (브라우저 best-effort)
+    document.querySelectorAll('input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"]').forEach(function (el) {
+      el.setAttribute('lang', htmlLang);
+    });
     document.querySelectorAll('[data-lang-btn]').forEach(function (b) {
       b.classList.toggle('clf-lang-active', b.getAttribute('data-lang-btn') === lang);
     });
@@ -501,6 +560,71 @@
   function init() {
     var saved = 'ko';
     try { saved = localStorage.getItem(LANG_KEY) || 'ko'; } catch (e) { /* noop */ }
+    apply(saved);
+    
+    // Convert default file inputs into custom translatable UI
+    document.querySelectorAll('input[type="file"]').forEach(function(input) {
+      if (input.closest('.clf-upload')) return; // Skip drag & drop areas
+      if (input.parentElement.classList.contains('clf-custom-file-wrap')) return;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'clf-custom-file-wrap';
+      wrap.style.display = 'flex';
+      wrap.style.alignItems = 'center';
+      wrap.style.gap = '10px';
+      wrap.style.width = '100%';
+      wrap.style.padding = '8px 12px';
+      wrap.style.background = '#F8F9FA';
+      wrap.style.border = '1px solid #E4E4E4';
+      wrap.style.borderLeft = '3px solid #EAF3F3';
+      wrap.style.borderRadius = '10px';
+      wrap.style.boxSizing = 'border-box';
+      
+      input.parentNode.insertBefore(wrap, input);
+      wrap.appendChild(input);
+      input.style.display = 'none';
+      
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.setAttribute('data-i18n', 'form.fileChoose');
+      btn.textContent = '파일 선택';
+      btn.style.padding = '6px 12px';
+      btn.style.background = '#fff';
+      btn.style.border = '1px solid #ccc';
+      btn.style.borderRadius = '4px';
+      btn.style.fontSize = '12.5px';
+      btn.style.cursor = 'pointer';
+      btn.style.color = '#333';
+      
+      var text = document.createElement('span');
+      text.className = 'clf-file-text';
+      text.textContent = '선택된 파일 없음';
+      text.style.fontSize = '13.5px';
+      text.style.color = '#888';
+      text.style.flex = '1';
+      text.style.overflow = 'hidden';
+      text.style.textOverflow = 'ellipsis';
+      text.style.whiteSpace = 'nowrap';
+      
+      btn.onclick = function() { input.click(); };
+      
+      input.addEventListener('change', function() {
+        if (this.files && this.files.length > 0) {
+          text.textContent = this.files[0].name;
+          text.style.color = '#111';
+        } else {
+          var currentLang = window.__clfLang || 'ko';
+          var t = (currentLang === 'ko') ? null : get(currentLang, 'form.fileNoChosen');
+          text.textContent = (t == null) ? '선택된 파일 없음' : t;
+          text.style.color = '#888';
+        }
+      });
+      
+      wrap.appendChild(btn);
+      wrap.appendChild(text);
+    });
+    
+    // Apply translation for the newly created elements right away
     apply(saved);
   }
 
