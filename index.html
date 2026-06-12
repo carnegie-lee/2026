@@ -236,7 +236,7 @@
         <!-- D-day 타이머 -->
         <div class="clf-dday-timer-wrap" style="display:none !important;">
           <div class="clf-dday-icon">⏳</div>
-          <div class="clf-dday-text">접수 마감까지 <span class="clf-dday-time"></span> 남았습니다</div>
+          <div class="clf-dday-text"><span data-i18n="timer.left">접수 마감까지</span> <span class="clf-dday-time"></span> <span data-i18n="timer.remain">남았습니다</span></div>
         </div>
         <!-- 신청 버튼 -->
         <button id="clf-applyOpenBtn" class="clf-apply-open-btn" type="button">
@@ -1022,7 +1022,7 @@
             <div class="clf-dday-timer-wrap"
               style="display:none !important; margin-bottom: 24px !important; margin-top: 10px !important;">
               <div class="clf-dday-icon">⏳</div>
-              <div class="clf-dday-text">접수 마감까지 <span class="clf-dday-time"></span> 남았습니다</div>
+              <div class="clf-dday-text"><span data-i18n="timer.left">접수 마감까지</span> <span class="clf-dday-time"></span> <span data-i18n="timer.remain">남았습니다</span></div>
             </div>
           </div>
           <div class="clf-submit-area">
@@ -1119,32 +1119,32 @@
             <div class="clf-inst-modal-logo-mark">C</div>
             <div class="clf-inst-modal-logo-text">
               Carnegie LEE Foundation
-              <small>클래식 콩쿠르 2026 참가 신청</small>
+              <small data-i18n="modal.subtitle">클래식 콩쿠르 2026 참가 신청</small>
             </div>
           </div>
           <button class="clf-inst-modal-x" id="clf-instModalX" aria-label="닫기">&#x2715;</button>
         </div>
         <!-- 탭 -->
         <div class="clf-inst-tabs">
-          <button class="clf-inst-tab clf-inst-active" id="clf-instTabLogin" type="button">로그인</button>
-          <button class="clf-inst-tab" id="clf-instTabReg" type="button">회원가입</button>
+          <button class="clf-inst-tab clf-inst-active" id="clf-instTabLogin" type="button" data-i18n="modal.tabLogin">로그인</button>
+          <button class="clf-inst-tab" id="clf-instTabReg" type="button" data-i18n="modal.tabReg">회원가입</button>
         </div>
         <!-- 로그인 패널 -->
         <div id="clf-instLoginPanel" class="clf-inst-body">
           <div class="clf-inst-error" id="clf-instLoginErr"></div>
           <div class="clf-inst-field">
-            <label class="clf-inst-label" for="clf-instLoginEmail">이메일</label>
+            <label class="clf-inst-label" for="clf-instLoginEmail" data-i18n="f.email">이메일</label>
             <input class="clf-inst-input" type="email" id="clf-instLoginEmail" placeholder="name@example.com"
               autocomplete="email">
           </div>
           <div class="clf-inst-field">
-            <label class="clf-inst-label" for="clf-instLoginPw">비밀번호</label>
-            <input class="clf-inst-input" type="password" id="clf-instLoginPw" placeholder="비밀번호 입력"
+            <label class="clf-inst-label" for="clf-instLoginPw" data-i18n="f.password">비밀번호</label>
+            <input class="clf-inst-input" type="password" id="clf-instLoginPw" placeholder="비밀번호 입력" data-i18n-ph="ph.password"
               autocomplete="current-password">
           </div>
-          <button class="clf-inst-submit" id="clf-instLoginBtn" type="button">로그인 후 신청서 작성</button>
-          <div class="clf-inst-divider"><span>아직 계정이 없으신가요?</span></div>
-          <button class="clf-inst-submit" id="clf-instGoReg" type="button"
+          <button class="clf-inst-submit" id="clf-instLoginBtn" type="button" data-i18n="modal.loginBtn">로그인 후 신청서 작성</button>
+          <div class="clf-inst-divider"><span data-i18n="modal.noAccount">아직 계정이 없으신가요?</span></div>
+          <button class="clf-inst-submit" id="clf-instGoReg" type="button" data-i18n="modal.goRegBtn"
             style="background:#fff!important;color:#0C3D40!important;border:1.5px solid #0C3D40!important;">회원가입 후 신청서
             작성</button>
         </div>
@@ -1154,57 +1154,57 @@
 
           <div style="display:flex; gap:10px;">
             <div class="clf-inst-field" style="flex:1;">
-              <label class="clf-inst-label" for="clf-instRegName">이름 <span style="color:#B54E3A">*</span></label>
-              <input class="clf-inst-input" type="text" id="clf-instRegName" placeholder="홍길동" autocomplete="name">
+              <label class="clf-inst-label" for="clf-instRegName" data-i18n-html="reg.name">이름 <span style="color:#B54E3A">*</span></label>
+              <input class="clf-inst-input" type="text" id="clf-instRegName" placeholder="홍길동" data-i18n-ph="ph.name" autocomplete="name">
             </div>
             <div class="clf-inst-field" style="flex:1;">
-              <label class="clf-inst-label" for="clf-instRegPhone">연락처 <span style="color:#B54E3A">*</span></label>
+              <label class="clf-inst-label" for="clf-instRegPhone" data-i18n-html="reg.phone">연락처 <span style="color:#B54E3A">*</span></label>
               <input class="clf-inst-input" type="tel" id="clf-instRegPhone" placeholder="010-1234-5678"
                 autocomplete="tel">
             </div>
           </div>
 
           <div class="clf-inst-field">
-            <label class="clf-inst-label" for="clf-instRegEmail">이메일 (아이디) <span style="color:#B54E3A">*</span></label>
-            <input class="clf-inst-input" type="email" id="clf-instRegEmail" placeholder="로그인에 사용할 이메일"
+            <label class="clf-inst-label" for="clf-instRegEmail" data-i18n-html="reg.email">이메일 (아이디) <span style="color:#B54E3A">*</span></label>
+            <input class="clf-inst-input" type="email" id="clf-instRegEmail" placeholder="로그인에 사용할 이메일" data-i18n-ph="ph.regEmail"
               autocomplete="username">
           </div>
           <div class="clf-inst-field">
-            <label class="clf-inst-label" for="clf-instRegPw">비밀번호 <span style="color:#B54E3A">*</span></label>
-            <input class="clf-inst-input" type="password" id="clf-instRegPw" placeholder="6자 이상 영문+숫자"
+            <label class="clf-inst-label" for="clf-instRegPw" data-i18n-html="reg.pw">비밀번호 <span style="color:#B54E3A">*</span></label>
+            <input class="clf-inst-input" type="password" id="clf-instRegPw" placeholder="6자 이상 영문+숫자" data-i18n-ph="ph.regPw"
               autocomplete="new-password">
           </div>
           <div class="clf-inst-field">
-            <label class="clf-inst-label" for="clf-instRegPw2">비밀번호 확인 <span style="color:#B54E3A">*</span></label>
-            <input class="clf-inst-input" type="password" id="clf-instRegPw2" placeholder="비밀번호 재입력"
+            <label class="clf-inst-label" for="clf-instRegPw2" data-i18n-html="reg.pw2">비밀번호 확인 <span style="color:#B54E3A">*</span></label>
+            <input class="clf-inst-input" type="password" id="clf-instRegPw2" placeholder="비밀번호 재입력" data-i18n-ph="ph.regPw2"
               autocomplete="new-password">
           </div>
 
           <div class="clf-inst-checkbox-wrap">
             <input type="checkbox" class="clf-inst-checkbox" id="clf-instRegAgree">
-            <label class="clf-inst-label clf-inst-checkbox-label" for="clf-instRegAgree">
+            <label class="clf-inst-label clf-inst-checkbox-label" for="clf-instRegAgree" data-i18n="reg.agree">
               [필수] 이용약관 및 개인정보 수집·이용에 동의합니다.
             </label>
           </div>
 
-          <button class="clf-inst-submit" id="clf-instRegBtn" type="button">가입 후 신청서 작성</button>
+          <button class="clf-inst-submit" id="clf-instRegBtn" type="button" data-i18n="modal.regBtn">가입 후 신청서 작성</button>
         </div>
         <!-- 이메일 인증 안내 패널 -->
         <div id="clf-instEmailSentPanel" class="clf-inst-body" style="display:none;">
           <div style="text-align:center; padding: 20px 0;">
             <div style="font-size:40px; margin-bottom:16px;">&#9993;</div>
-            <div style="font-size:18px; font-weight:700; color:#0C3D40; margin-bottom:10px;">인증 이메일이 발송되었습니다</div>
-            <div style="font-size:14px; color:#666; line-height:1.7; margin-bottom:20px;">
+            <div style="font-size:18px; font-weight:700; color:#0C3D40; margin-bottom:10px;" data-i18n="modal.emailSentTitle">인증 이메일이 발송되었습니다</div>
+            <div style="font-size:14px; color:#666; line-height:1.7; margin-bottom:20px;" data-i18n-html="modal.emailSentBody">
               입력하신 이메일로 인증 메일을 보냈습니다.<br>
               이메일을 확인하고 <strong>인증 링크를 클릭</strong>해 주세요.<br><br>
               인증 완료 후 다시 돌아와서 <strong>로그인</strong>해 주세요.
             </div>
-            <button class="clf-inst-submit" id="clf-instEmailSentOk" type="button">확인</button>
-            <div style="margin-top:14px; font-size:12.5px; color:#999;">이메일이 도착하지 않으면 스팸 폴더를 확인해 주세요.</div>
+            <button class="clf-inst-submit" id="clf-instEmailSentOk" type="button" data-i18n="modal.emailSentOk">확인</button>
+            <div style="margin-top:14px; font-size:12.5px; color:#999;" data-i18n="modal.spamNote">이메일이 도착하지 않으면 스팸 폴더를 확인해 주세요.</div>
           </div>
         </div>
         <!-- 푸터 -->
-        <div class="clf-inst-footer">
+        <div class="clf-inst-footer" data-i18n-html="modal.footer">
           <strong>카네기 Lee 재단</strong> &middot; 2026 클래식 콩쿠르 &middot; 운영사무국 <a href="tel:1588-8418"
             style="color:#0C3D40;font-weight:700;text-decoration:none;">1588-8418</a><br>
           계정 정보는 제출 내역 확인을 위한 로그인 시 사용됩니다.

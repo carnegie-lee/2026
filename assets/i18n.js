@@ -38,7 +38,37 @@
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.08.11(周二)</strong> [卡内基LEE基金会 成立7周年纪念 曹秀美邀请音乐会] 当天</span></li>',
       /* 신청 버튼 */
       'btn.apply': '填写报名表',
-      'btn.applyClosed': '报名已截止'
+      'btn.applyClosed': '报名已截止',
+      /* D-day 타이머 */
+      'timer.left': '距报名截止还有',
+      'timer.remain': '',
+      /* 로그인 / 회원가입 모달 */
+      'modal.subtitle': '古典音乐比赛 2026 报名',
+      'modal.tabLogin': '登录',
+      'modal.tabReg': '注册',
+      'modal.loginBtn': '登录并填写报名表',
+      'modal.noAccount': '还没有账号?',
+      'modal.goRegBtn': '注册并填写报名表',
+      'modal.regBtn': '注册并填写报名表',
+      'modal.emailSentTitle': '验证邮件已发送',
+      'modal.emailSentBody': '我们已向您填写的邮箱发送了验证邮件。<br>请查收邮件并<strong>点击验证链接</strong>。<br><br>验证完成后请返回本页并<strong>登录</strong>。',
+      'modal.emailSentOk': '确认',
+      'modal.spamNote': '如果没有收到邮件,请检查垃圾邮件文件夹。',
+      'modal.footer': '<strong>卡内基Lee基金会</strong> &middot; 2026古典音乐比赛 &middot; 运营事务局 <a href="tel:1588-8418" style="color:#0C3D40;font-weight:700;text-decoration:none;">1588-8418</a><br>账号信息用于登录以查看您的提交内容。',
+      /* 공용 폼 라벨/플레이스홀더 */
+      'f.email': '邮箱',
+      'f.password': '密码',
+      'ph.password': '请输入密码',
+      'reg.name': '姓名 <span style="color:#B54E3A">*</span>',
+      'ph.name': '张三',
+      'reg.phone': '联系电话 <span style="color:#B54E3A">*</span>',
+      'reg.email': '邮箱(账号) <span style="color:#B54E3A">*</span>',
+      'ph.regEmail': '用于登录的邮箱',
+      'reg.pw': '密码 <span style="color:#B54E3A">*</span>',
+      'ph.regPw': '6位以上,字母+数字',
+      'reg.pw2': '确认密码 <span style="color:#B54E3A">*</span>',
+      'ph.regPw2': '请再次输入密码',
+      'reg.agree': '[必填] 我已阅读并同意服务条款及个人信息收集·使用。'
     },
 
     en: {
@@ -67,7 +97,37 @@
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.08.11 (Tue)</strong> [Carnegie LEE Foundation 7th Anniversary — Sumi Jo Invitational Concert] day</span></li>',
       /* Apply button */
       'btn.apply': 'Fill out the application',
-      'btn.applyClosed': 'Applications closed'
+      'btn.applyClosed': 'Applications closed',
+      /* D-day timer */
+      'timer.left': '',
+      'timer.remain': 'left until the deadline',
+      /* Login / sign-up modal */
+      'modal.subtitle': 'Classical Concours 2026 — Application',
+      'modal.tabLogin': 'Log in',
+      'modal.tabReg': 'Sign up',
+      'modal.loginBtn': 'Log in & start application',
+      'modal.noAccount': "Don't have an account yet?",
+      'modal.goRegBtn': 'Sign up & start application',
+      'modal.regBtn': 'Sign up & start application',
+      'modal.emailSentTitle': 'Verification email sent',
+      'modal.emailSentBody': "We've sent a verification email to the address you entered.<br>Please check your inbox and <strong>click the verification link</strong>.<br><br>Once verified, come back here and <strong>log in</strong>.",
+      'modal.emailSentOk': 'OK',
+      'modal.spamNote': "If the email doesn't arrive, please check your spam folder.",
+      'modal.footer': '<strong>Carnegie Lee Foundation</strong> &middot; 2026 Classical Concours &middot; Office <a href="tel:1588-8418" style="color:#0C3D40;font-weight:700;text-decoration:none;">1588-8418</a><br>Your account is used to log in and review your submission.',
+      /* Common form labels / placeholders */
+      'f.email': 'Email',
+      'f.password': 'Password',
+      'ph.password': 'Enter your password',
+      'reg.name': 'Name <span style="color:#B54E3A">*</span>',
+      'ph.name': 'e.g. John Smith',
+      'reg.phone': 'Phone <span style="color:#B54E3A">*</span>',
+      'reg.email': 'Email (ID) <span style="color:#B54E3A">*</span>',
+      'ph.regEmail': 'Email to use for login',
+      'reg.pw': 'Password <span style="color:#B54E3A">*</span>',
+      'ph.regPw': '6+ chars, letters & numbers',
+      'reg.pw2': 'Confirm password <span style="color:#B54E3A">*</span>',
+      'ph.regPw2': 'Re-enter your password',
+      'reg.agree': '[Required] I agree to the Terms of Service and the collection & use of personal information.'
     }
   };
 
