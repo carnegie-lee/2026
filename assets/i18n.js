@@ -69,6 +69,9 @@
       'reg.pw2': '确认密码 <span style="color:#B54E3A">*</span>',
       'ph.regPw2': '请再次输入密码',
       'reg.agree': '[必填] 我已阅读并同意服务条款及个人信息收集·使用。',
+      'img.poster': 'poster_11_en.png',
+      'pdf.guideline': 'guideline_zh.pdf',
+      'pdf.guidelineTitle': '卡内基LEE财团 古典音乐比赛 招募简章.pdf',
       /* 상세: 모집부문 */
       'sec.categories': '招募组别',
       'categories.list':
@@ -88,7 +91,7 @@
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">最优秀奖</span><strong>卡内基LEE最优秀奖</strong><span class="sub">提供美国纽约卡内基音乐厅(Carnegie Hall)演出机会(机票由基金会承担)· [卡内基LEE基金会成立7周年纪念 曹秀美邀请音乐会] 正式开场演出 · 颁发理事长奖牌</span></span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">优秀奖</span><strong>卡内基LEE优秀奖</strong><span class="sub">提供美国纽约卡内基音乐厅(Carnegie Hall)演出机会(机票及食宿费自理)· [卡内基LEE基金会成立7周年纪念 曹秀美邀请音乐会] 正式开场演出 · 颁发理事长奖牌</span></span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-all">1~10名</span><strong>共同礼遇</strong><span class="sub">持续参与基金会主办的国内外文化活动并获得演出机会 · 在曹秀美音乐会官方节目册中单独整版刊登个人简介 · 正式受邀出席与艺术家及企业家共同参加的私人庆功酒会</span></span></li>' +
-        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag" style="background:#FDF5F6 !important; color:#B54E3A !important; border:1px solid #F6DFE2 !important;">限10名</span><strong>特别奖</strong><span class="sub">麦塞纳企业家奖(每人1,000,000韩元)· 发放奖学金(共10,000,000韩元)</span></span></li>',
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-benefit-tag" style="background:#FDF5F6 !important; color:#B54E3A !important; border:1px solid #F6DFE2 !important;">限10名</span><strong>特别奖</strong><span class="sub">麦塞纳企业家奖(每人1,000,000韩元)· 发放奖学金(共10,000,000韩元)</span></span></li>',
       /* 상세: 특별혜택 */
       'sec.benefit': '参赛者专属福利',
       'benefit.callout': '<strong>全体参赛者福利!&lt;卡内基LEE基金会成立7周年纪念 曹秀美邀请音乐会&gt; 当日门票2张赞助</strong><br>基金会向本次比赛<strong>全体参赛者</strong>赞助8月11日(周二)<strong>成立7周年纪念 曹秀美邀请音乐会</strong>当日活动门票<strong>2张</strong>。',
@@ -120,6 +123,101 @@
         '<li><strong>文件命名规则</strong> — <code>组别_姓名_曲名.mp4</code><br><span style="color:#888;font-size:12px;">例)钢琴_张三_Chopin Etude Op.10-4.mp4</span></li>' +
         '<li><strong>视频时长</strong> — 无特别限制,按实际演奏时间提交(通常 <strong>8~15分钟左右</strong>)。</li>' +
         '<li><strong>权限设置</strong> — 须将 Google 云端硬盘访问权限更改为 <code>“知道链接的所有人”</code>。<div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 8px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; word-break: keep-all; border-radius: 4px;"><strong>※ 须将设置更改为 [常规访问 &gt; “知道链接的所有人”]</strong> 方可进行评审。<br>(若因权限受限导致无法观看视频,可能在评审中受到不利影响。)</div></li>',
+      /* ── 신청서 폼 ── */
+      'form.introko': '报名表',
+      'form.introdesc': '请准确填写以下各项,并在底部一并提交<strong>演奏视频共享链接</strong>。报名表与视频一次性提交。(报名截止:6/30(周二) 17:00 中国时间)',
+      'form.acctCallout': '<strong>需创建登录账号</strong><br>提交后可在「我的页面」查看提交内容。请务必牢记邮箱与密码。',
+      'form.secAccount': '账号设置',
+      'form.acctDesc': '请设置用于登录的邮箱与密码。(可与下方「参赛者信息」中的邮箱相同)',
+      'form.acctEmail': '账号邮箱 <span class="clf-req">*</span>',
+      'form.acctPw': '设置密码 <span class="clf-req">*</span>',
+      'ph.acctPw': '6位以上(建议字母+数字)',
+      'form.secCategory': '参赛组别',
+      'form.divLabel': '比赛分类 <span class="clf-req">*</span>',
+      'form.divInstrumental': '器乐 (Instrumental)',
+      'form.divVocal': '声乐 (Vocal)',
+      'form.divOther': '其他',
+      'ph.divEtc': '请填写其他分类(例:作曲、指挥、国乐等)',
+      'form.divEtcHelp': '如分类不明确,请提前咨询运营事务局。',
+      'form.instLabel': '具体乐器 <span class="clf-req">*</span>',
+      'form.selPlaceholder': '— 请选择 —',
+      'form.selPick': '— 请选择 —',
+      'form.ogKeyboard': '键盘', 'form.ogStrings': '弦乐', 'form.ogWoodwind': '木管', 'form.ogBrass': '铜管', 'form.ogPercussion': '打击乐',
+      'inst.piano': '钢琴 (Piano)', 'inst.organ': '管风琴 (Organ)', 'inst.harpsichord': '羽管键琴 (Harpsichord)',
+      'inst.violin': '小提琴 (Violin)', 'inst.viola': '中提琴 (Viola)', 'inst.cello': '大提琴 (Cello)', 'inst.bass': '低音提琴 (Double Bass)', 'inst.harp': '竖琴 (Harp)', 'inst.guitar': '古典吉他 (Classical Guitar)',
+      'inst.flute': '长笛 (Flute)', 'inst.oboe': '双簧管 (Oboe)', 'inst.clarinet': '单簧管 (Clarinet)', 'inst.bassoon': '大管 (Bassoon)', 'inst.sax': '萨克斯 (Saxophone)',
+      'inst.horn': '圆号 (Horn)', 'inst.trumpet': '小号 (Trumpet)', 'inst.trombone': '长号 (Trombone)', 'inst.tuba': '大号 (Tuba)',
+      'inst.marimba': '马林巴 (Marimba)', 'inst.timpani': '定音鼓 (Timpani)', 'inst.percussion': '打击乐 (Percussion)',
+      'inst.chamber': '室内乐 (Chamber Music)', 'opt.etcInput': '其他(直接填写)',
+      'ph.instEtc': '请填写具体乐器',
+      'form.vocalGenre': '专业体裁',
+      'voc.opera': '歌剧·咏叹调', 'voc.lied': '德国艺术歌曲 (Lied)', 'voc.korean': '韩国艺术歌曲', 'voc.oratorio': '清唱剧·宗教音乐',
+      'ph.vocalEtc': '请填写专业体裁',
+      'form.secParticipant': '参赛者信息',
+      'form.profilePhoto': '本人确认用证件照(正面) <span class="clf-req">*</span>',
+      'form.profileHelp': '用手机拍摄的正面照片亦可。(用于本人确认)',
+      'form.idDoc': '证明文件(护照或身份证复印件) <span class="clf-req">*</span>',
+      'form.idDocHelp': '用于确认出生年月日等身份的证明文件图片。<strong style="color:#B54E3A;">※ 韩国身份证后7位号码请务必遮挡后再提交。</strong>',
+      'form.nameKo': '姓名 <span class="clf-req">*</span>',
+      'form.birth': '出生年月日 <span class="clf-req">*</span>',
+      'form.ageConfirm': '年龄确认 <span class="clf-req">*</span>',
+      'form.ageOver14': '满14周岁以上', 'form.ageUnder14': '未满14周岁',
+      'form.guardianNote': '※ 未满14周岁的参赛者需法定代理人同意。',
+      'form.guardianConsent': '本人作为未满14周岁参赛者的法定代理人,同意其参加卡内基LEE基金会第一届比赛及个人信息的收集·使用。 <span class="clf-req">*</span>',
+      'form.guardianName': '法定代理人姓名 <span class="clf-req">*</span>',
+      'form.guardianRelation': '与参赛者关系 <span class="clf-req">*</span>',
+      'ph.guardianRelation': '父、母等',
+      'form.guardianPhone': '联系电话 <span class="clf-req">*</span>',
+      'form.gender': '性别', 'form.genderF': '女', 'form.genderM': '男', 'form.genderNA': '不填写',
+      'form.phone': '手机号码 <span class="clf-req">*</span>',
+      'form.email': '邮箱 <span class="clf-req">*</span>',
+      'form.addrCity': '地址(省·市) <span class="clf-req">*</span>',
+      'form.addrCityPh': '— 选择省·市 —',
+      'form.addrDistrict': '地址(区·县) <span class="clf-req">*</span>',
+      'form.addrDistrictPh': '— 选择区·县 —',
+      'form.secEducation': '学历·经历·获奖',
+      'form.schoolName': '学校名称·专业 <span class="clf-req">*</span>',
+      'ph.schoolName': '例)首尔大学音乐学院 钢琴专业',
+      'form.career': '活动经历(所属团体·舞台经历) <span class="clf-req">*</span>',
+      'ph.career': '• 2025~至今 OOO 乐团客席团员&#10;• 2024 OOO 音乐节独奏协演&#10;• ...',
+      'form.careerHelp': '现役艺术家可填写主要舞台·所属·活动;备考生可填写目前的授课老师等。',
+      'form.awardsField': '主要获奖经历 <span class="clf-req">*</span>',
+      'ph.awardsField': '• 2025 OOO 比赛第1名&#10;• 2024 OOO 国际比赛获奖&#10;• 无获奖经历请填写「无」',
+      'form.secVideo': '演奏视频提交',
+      'form.videoDesc': '自选曲目1首。请务必参阅上方<strong>视频拍摄·提交指南</strong>后再填写共享链接。',
+      'form.fnGuideLabel': '视频文件命名规则',
+      'form.fnGuideEx': '例)钢琴_张三_Chopin Etude Op.10-4.mp4 · 各项之间用下划线(_)连接',
+      'form.howToUpload': '了解上传方法',
+      'form.videoLink': '视频共享链接 <span class="clf-req">*</span>',
+      'form.videoLinkHelp': '提交前请务必在<strong style="color:#0C3D40;">隐身(未登录)窗口中确认链接能否正常打开</strong>。',
+      'form.vComposer': '曲目作曲家 <span class="clf-req">*</span>',
+      'ph.vComposer': '例)F. Chopin',
+      'form.vPiece': '曲目名称 <span class="clf-req">*</span>',
+      'ph.vPiece': '例)Etude Op.10 No.4',
+      'form.secReferral': '了解渠道',
+      'form.referralDesc': '您是通过何种渠道得知本次比赛的?将作为今后通知的参考。',
+      'form.referralLabel': '了解渠道 <span class="clf-req">*</span>',
+      'ref.web': '卡内基Lee基金会官方网站', 'ref.sns': '基金会社交媒体(Instagram·Facebook 等)', 'ref.youtube': 'YouTube 视频·广告', 'ref.search': 'Naver·Google 等搜索', 'ref.community': '音乐相关社区·论坛', 'ref.school': '学校·培训机构通知', 'ref.professor': '指导教授·老师推荐', 'ref.friend': '熟人·同行推荐', 'ref.press': '媒体报道·新闻', 'ref.poster': '海报·传单',
+      'ph.referralEtc': '请填写您了解本次比赛的渠道',
+      'form.secPayment': '报名费说明',
+      'form.payDesc': '提交材料后,请向以下账户缴纳报名费。',
+      'form.payFeeSub': '所有提交者均须缴纳',
+      'form.payUnit': '韩元 / 每人',
+      'form.payDeadlineLabel': '缴费截止',
+      'form.paySub2': '银行转账或信用卡缴纳',
+      'form.payDeadlineDate': '2026.06.30(周二) 17:00 中国时间',
+      'form.payNote1': '<strong class="clf-warn">⚠ 不可退款说明</strong><br>已缴纳的<strong>报名费在任何情况下均不退还。</strong>请慎重缴纳。<br><br><span style="font-size:16px; color:#B54E3A; font-weight:700;">汇款时务必采用 [콩+出生年月日6位+姓名] 的格式。</span><br><span style="font-size:15px; color:#0C3D40; font-weight:700;">(例:콩020312洪吉童)</span>',
+      'form.payNote2': '<strong style="color:#0C3D40 !important;">▸ 报名确认说明</strong><br>须同时确认材料·视频提交与<strong>报名费缴纳后,比赛报名方正式完成</strong>。<br><span style="color: #d32f2f; font-weight: 700;">※ 汇款人姓名务必采用 [콩+出生年月日6位+姓名] 格式,以便快速确认。</span>',
+      'form.secAgreement': '条款同意',
+      'form.agreeAll': '<strong>同意全部条款</strong><span class="clf-agree-master-sub">一并同意4项必填与1项选填。</span>',
+      'form.agree1Label': '<strong>[必填] <span class="clf-req">*</span> 同意个人信息的收集·使用</strong>',
+      'form.agree2Label': '<strong>[必填] <span class="clf-req">*</span> 同意演奏视频及内容的使用权</strong>',
+      'form.agree3Label': '<strong>[必填] <span class="clf-req">*</span> 同意肖像权使用</strong>',
+      'form.agree4Label': '<strong>[必填] <span class="clf-req">*</span> 同意报名费不可退款规定</strong>',
+      'form.agree5Label': '<span class="clf-agree-optional-tag">选填</span><strong>同意接收营销信息</strong>',
+      'form.submitBtn': '提交报名表',
+      'form.submitHint': '提交后,确认邮件将发送至您填写的邮箱。',
+      'form.footerInquiry': '<strong>[咨询] 卡内基LEE基金会事务局</strong><br>电话:<a href="tel:1588-8418" style="color:#0C3D40; text-decoration:none; font-weight:700;">1588-8418</a><br>邮箱:<a href="mailto:info@carnegielee.org" style="color:#0C3D40; text-decoration:none; font-weight:700;">info@carnegielee.org</a><br>咨询时间:10:00 ~ 18:00',
       'img.poster': 'poster_11_en.png'
     },
 
@@ -180,6 +278,9 @@
       'reg.pw2': 'Confirm password <span style="color:#B54E3A">*</span>',
       'ph.regPw2': 'Re-enter your password',
       'reg.agree': '[Required] I agree to the Terms of Service and the collection & use of personal information.',
+      'img.poster': 'poster_11_en.png',
+      'pdf.guideline': 'guideline_en.pdf',
+      'pdf.guidelineTitle': 'Carnegie LEE Foundation Classic Concours Guidelines.pdf',
       /* Details: categories */
       'sec.categories': 'Eligible Categories',
       'categories.list':
@@ -199,7 +300,7 @@
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">First Prize</span><strong>Carnegie LEE First Prize</strong><span class="sub">A performance opportunity at Carnegie Hall, New York (airfare covered by the Foundation) · Official opening performance at the [Carnegie LEE Foundation 7th Anniversary — Sumi Jo Invitational Concert] · Chairman&#39;s plaque</span></span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">Second Prize</span><strong>Carnegie LEE Second Prize</strong><span class="sub">A performance opportunity at Carnegie Hall, New York (airfare & accommodation at own expense) · Official opening performance at the [Carnegie LEE Foundation 7th Anniversary — Sumi Jo Invitational Concert] · Chairman&#39;s plaque</span></span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-all">Ranks 1–10</span><strong>Common Benefits</strong><span class="sub">Ongoing participation in the Foundation&#39;s domestic & international cultural events with performance opportunities · A dedicated full-page profile in the official Sumi Jo concert program book · Official invitation to a private after-party reception with artists and business leaders</span></span></li>' +
-        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag" style="background:#FDF5F6 !important; color:#B54E3A !important; border:1px solid #F6DFE2 !important;">10 only</span><strong>Special Prize</strong><span class="sub">Mécénat Patron Award (KRW 1,000,000 each) · Scholarships (KRW 10,000,000 total)</span></span></li>',
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-benefit-tag" style="background:#FDF5F6 !important; color:#B54E3A !important; border:1px solid #F6DFE2 !important;">10 only</span><strong>Special Prize</strong><span class="sub">Mécénat Patron Award (KRW 1,000,000 each) · Scholarships (KRW 10,000,000 total)</span></span></li>',
       /* Details: special benefit */
       'sec.benefit': 'Participant Benefit',
       'benefit.callout': '<strong>A benefit for every participant! 2 tickets to the &lt;Carnegie LEE Foundation 7th Anniversary — Sumi Jo Invitational Concert&gt;</strong><br>The Foundation sponsors <strong>2 tickets</strong> to the <strong>7th Anniversary Sumi Jo Invitational Concert</strong> on Aug 11 (Tue) for <strong>every participant</strong> of this concours.',
@@ -231,14 +332,111 @@
         '<li><strong>File-name rule</strong> — <code>category_name_title.mp4</code><br><span style="color:#888;font-size:12px;">e.g. Piano_JohnSmith_Chopin Etude Op.10-4.mp4</span></li>' +
         '<li><strong>Video length</strong> — No specific limit; submit at the actual performance length (typically <strong>around 8–15 minutes</strong>).</li>' +
         '<li><strong>Sharing permission</strong> — You must change Google Drive access to <code>“Anyone with the link.”</code><div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 8px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; word-break: keep-all; border-radius: 4px;"><strong>※ Change the setting to [General access &gt; “Anyone with the link”]</strong> so that judging is possible.<br>(If the video cannot be viewed due to restricted permissions, it may be disadvantaged in judging.)</div></li>',
+      /* ── Application form ── */
+      'form.introko': 'Application Form',
+      'form.introdesc': 'Please fill in the items below accurately and submit your <strong>performance video share link</strong> at the bottom. The application and video are submitted together. (Deadline: Jun 30 (Tue) 05:00 New York/EDT)',
+      'form.acctCallout': '<strong>A login account is required</strong><br>After submitting, you can review your submission on My Page. Please remember your email and password.',
+      'form.secAccount': 'Account Setup',
+      'form.acctDesc': 'Set the email and password you will use to log in. (You may use the same email as in the Participant Information below.)',
+      'form.acctEmail': 'Account email <span class="clf-req">*</span>',
+      'form.acctPw': 'Set password <span class="clf-req">*</span>',
+      'ph.acctPw': '6+ chars (letters & numbers recommended)',
+      'form.secCategory': 'Category',
+      'form.divLabel': 'Competition field <span class="clf-req">*</span>',
+      'form.divInstrumental': 'Instrumental',
+      'form.divVocal': 'Vocal',
+      'form.divOther': 'Other',
+      'ph.divEtc': 'Enter your field (e.g. composition, conducting, traditional music)',
+      'form.divEtcHelp': 'If your field is unclear, please contact the office in advance.',
+      'form.instLabel': 'Instrument <span class="clf-req">*</span>',
+      'form.selPlaceholder': '— Please select —',
+      'form.selPick': '— Select —',
+      'form.ogKeyboard': 'Keyboard', 'form.ogStrings': 'Strings', 'form.ogWoodwind': 'Woodwind', 'form.ogBrass': 'Brass', 'form.ogPercussion': 'Percussion',
+      'inst.piano': 'Piano', 'inst.organ': 'Organ', 'inst.harpsichord': 'Harpsichord',
+      'inst.violin': 'Violin', 'inst.viola': 'Viola', 'inst.cello': 'Cello', 'inst.bass': 'Double Bass', 'inst.harp': 'Harp', 'inst.guitar': 'Classical Guitar',
+      'inst.flute': 'Flute', 'inst.oboe': 'Oboe', 'inst.clarinet': 'Clarinet', 'inst.bassoon': 'Bassoon', 'inst.sax': 'Saxophone',
+      'inst.horn': 'Horn', 'inst.trumpet': 'Trumpet', 'inst.trombone': 'Trombone', 'inst.tuba': 'Tuba',
+      'inst.marimba': 'Marimba', 'inst.timpani': 'Timpani', 'inst.percussion': 'Percussion',
+      'inst.chamber': 'Chamber Music', 'opt.etcInput': 'Other (enter manually)',
+      'ph.instEtc': 'Enter your instrument',
+      'form.vocalGenre': 'Genre',
+      'voc.opera': 'Opera & Aria', 'voc.lied': 'German Lied', 'voc.korean': 'Korean Art Song', 'voc.oratorio': 'Oratorio & Sacred Music',
+      'ph.vocalEtc': 'Enter your genre',
+      'form.secParticipant': 'Participant',
+      'form.profilePhoto': 'Profile photo for ID (front) <span class="clf-req">*</span>',
+      'form.profileHelp': 'A front-facing photo taken with a smartphone is fine. (for identity check)',
+      'form.idDoc': 'ID document (passport or ID-card copy) <span class="clf-req">*</span>',
+      'form.idDocHelp': 'An image of an ID document confirming your date of birth, etc. <strong style="color:#B54E3A;">※ For a Korean ID card, mask the last 7 digits before submitting.</strong>',
+      'form.nameKo': 'Name <span class="clf-req">*</span>',
+      'form.birth': 'Date of birth <span class="clf-req">*</span>',
+      'form.ageConfirm': 'Age confirmation <span class="clf-req">*</span>',
+      'form.ageOver14': '14 or older', 'form.ageUnder14': 'Under 14',
+      'form.guardianNote': '※ Participants under 14 require legal-guardian consent.',
+      'form.guardianConsent': 'As the legal guardian of a participant under 14, I consent to their participation in the Carnegie LEE Foundation 1st Concours and to the collection & use of personal information. <span class="clf-req">*</span>',
+      'form.guardianName': 'Guardian name <span class="clf-req">*</span>',
+      'form.guardianRelation': 'Relationship <span class="clf-req">*</span>',
+      'ph.guardianRelation': 'e.g. father, mother',
+      'form.guardianPhone': 'Phone <span class="clf-req">*</span>',
+      'form.gender': 'Gender', 'form.genderF': 'Female', 'form.genderM': 'Male', 'form.genderNA': 'Prefer not to say',
+      'form.phone': 'Mobile phone <span class="clf-req">*</span>',
+      'form.email': 'Email <span class="clf-req">*</span>',
+      'form.addrCity': 'Address (Province/City) <span class="clf-req">*</span>',
+      'form.addrCityPh': '— Select province/city —',
+      'form.addrDistrict': 'Address (District) <span class="clf-req">*</span>',
+      'form.addrDistrictPh': '— Select district —',
+      'form.secEducation': 'Education · Career · Awards',
+      'form.schoolName': 'School & major <span class="clf-req">*</span>',
+      'ph.schoolName': 'e.g. Seoul National Univ., Piano major',
+      'form.career': 'Career (affiliations · stage experience) <span class="clf-req">*</span>',
+      'ph.career': '• 2025–present, guest member of OOO Orchestra&#10;• 2024, soloist at OOO Festival&#10;• ...',
+      'form.careerHelp': 'Active artists may list major performances/affiliations; students may list their current teacher, etc.',
+      'form.awardsField': 'Major awards <span class="clf-req">*</span>',
+      'ph.awardsField': '• 2025, 1st place at OOO Competition&#10;• 2024, prize at OOO International Competition&#10;• If none, write “None”',
+      'form.secVideo': 'Performance Video',
+      'form.videoDesc': 'One free-choice piece. Please read the <strong>Video Filming & Submission Guide</strong> above, then enter your share link.',
+      'form.fnGuideLabel': 'Video file-name rule',
+      'form.fnGuideEx': 'e.g. Piano_JohnSmith_Chopin Etude Op.10-4.mp4 · join items with underscores (_)',
+      'form.howToUpload': 'How to upload',
+      'form.videoLink': 'Video share link <span class="clf-req">*</span>',
+      'form.videoLinkHelp': 'Before submitting, be sure to <strong style="color:#0C3D40;">check that the link opens in an incognito (logged-out) window</strong>.',
+      'form.vComposer': 'Composer <span class="clf-req">*</span>',
+      'ph.vComposer': 'e.g. F. Chopin',
+      'form.vPiece': 'Title of piece <span class="clf-req">*</span>',
+      'ph.vPiece': 'e.g. Etude Op.10 No.4',
+      'form.secReferral': 'Referral',
+      'form.referralDesc': 'How did you hear about this concours? It helps us with future outreach.',
+      'form.referralLabel': 'How you heard <span class="clf-req">*</span>',
+      'ref.web': 'Carnegie Lee Foundation official website', 'ref.sns': 'Foundation social media (Instagram, Facebook, etc.)', 'ref.youtube': 'YouTube video / ad', 'ref.search': 'Search (Naver, Google, etc.)', 'ref.community': 'Music community / forum', 'ref.school': 'School / academy notice', 'ref.professor': 'Professor / teacher recommendation', 'ref.friend': 'Friend / colleague recommendation', 'ref.press': 'Press / news', 'ref.poster': 'Poster / flyer',
+      'ph.referralEtc': 'Please enter how you heard about it',
+      'form.secPayment': 'Payment',
+      'form.payDesc': 'After submitting, please pay the participation fee to the account below.',
+      'form.payFeeSub': 'Paid by all applicants',
+      'form.payUnit': 'KRW / per person',
+      'form.payDeadlineLabel': 'Payment deadline',
+      'form.paySub2': 'Bank transfer or credit card',
+      'form.payDeadlineDate': 'Jun 30, 2026 (Tue) 05:00 (New York/EDT)',
+      'form.payNote1': '<strong class="clf-warn">⚠ No refunds</strong><br>The participation fee, once paid, <strong>is not refunded under any circumstances.</strong> Please pay carefully.<br><br><span style="font-size:16px; color:#B54E3A; font-weight:700;">When transferring, you must use the format [콩 + 6-digit birthdate + name].</span><br><span style="font-size:15px; color:#0C3D40; font-weight:700;">(e.g. 콩020312HongGilDong)</span>',
+      'form.payNote2': '<strong style="color:#0C3D40 !important;">▸ Confirmation of entry</strong><br>Your entry is officially complete only when <strong>both the document/video submission and the fee payment are confirmed</strong>。<br><span style="color: #d32f2f; font-weight: 700;">※ Please set the depositor name in the format [콩 + 6-digit birthdate + name] for quick confirmation.</span>',
+      'form.secAgreement': 'Agreement',
+      'form.agreeAll': '<strong>I agree to all terms</strong><span class="clf-agree-master-sub">Agree at once to 4 required items and 1 optional item.</span>',
+      'form.agree1Label': '<strong>[Required] <span class="clf-req">*</span> I agree to the collection & use of personal information</strong>',
+      'form.agree2Label': '<strong>[Required] <span class="clf-req">*</span> I agree to the usage rights for the performance video and content</strong>',
+      'form.agree3Label': '<strong>[Required] <span class="clf-req">*</span> I agree to the use of my likeness (portrait rights)</strong>',
+      'form.agree4Label': '<strong>[Required] <span class="clf-req">*</span> I agree to the no-refund policy for the participation fee</strong>',
+      'form.agree5Label': '<span class="clf-agree-optional-tag">Optional</span><strong>I agree to receive marketing information</strong>',
+      'form.submitBtn': 'Submit Application',
+      'form.submitHint': 'A confirmation email will be sent to the address you entered.',
+      'form.footerInquiry': '<strong>[Inquiries] Carnegie LEE Foundation Office</strong><br>Tel: <a href="tel:1588-8418" style="color:#0C3D40; text-decoration:none; font-weight:700;">1588-8418</a><br>Email: <a href="mailto:info@carnegielee.org" style="color:#0C3D40; text-decoration:none; font-weight:700;">info@carnegielee.org</a><br>Hours: 10:00 ~ 18:00',
       'img.poster': 'poster_11_en.png'
     }
   };
 
-  var origText = new WeakMap();
-  var origHTML = new WeakMap();
-  var origPH   = new WeakMap();
-  var origSrc  = new WeakMap();
+  var origText  = new WeakMap();
+  var origHTML  = new WeakMap();
+  var origPH    = new WeakMap();
+  var origSrc   = new WeakMap();
+  var origHref  = new WeakMap();
+  var origLabel = new WeakMap();
 
   function get(lang, key) {
     return (DICT[lang] && DICT[lang][key] != null) ? DICT[lang][key] : null;
@@ -246,9 +444,20 @@
 
   function apply(lang) {
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      if (!origText.has(el)) origText.set(el, el.textContent);
+      if (!origText.has(el)) {
+        origText.set(el, el.textContent);
+        // <option> 은 번역해도 제출값(value)은 한국어 원본으로 고정 (concours.js 저장 안전)
+        if (el.tagName === 'OPTION' && !el.hasAttribute('value')) {
+          el.setAttribute('value', el.textContent.trim());
+        }
+      }
       var t = (lang === 'ko') ? null : get(lang, el.getAttribute('data-i18n'));
       el.textContent = (t == null) ? origText.get(el) : t;
+    });
+    document.querySelectorAll('[data-i18n-label]').forEach(function (el) {
+      if (!origLabel.has(el)) origLabel.set(el, el.getAttribute('label') || '');
+      var t = (lang === 'ko') ? null : get(lang, el.getAttribute('data-i18n-label'));
+      el.setAttribute('label', (t == null) ? origLabel.get(el) : t);
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
       if (!origHTML.has(el)) origHTML.set(el, el.innerHTML);
@@ -264,6 +473,11 @@
       if (!origSrc.has(el)) origSrc.set(el, el.getAttribute('src') || '');
       var t = (lang === 'ko') ? null : get(lang, el.getAttribute('data-i18n-src'));
       el.setAttribute('src', (t == null) ? origSrc.get(el) : t);
+    });
+    document.querySelectorAll('[data-i18n-href]').forEach(function (el) {
+      if (!origHref.has(el)) origHref.set(el, el.getAttribute('href') || '');
+      var t = (lang === 'ko') ? null : get(lang, el.getAttribute('data-i18n-href'));
+      el.setAttribute('href', (t == null) ? origHref.get(el) : t);
     });
 
     document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ko'));

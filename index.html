@@ -110,7 +110,7 @@
           <button type="button" data-lang-btn="zh" onclick="clfSetLang('zh')">中文</button>
           <button type="button" data-lang-btn="en" onclick="clfSetLang('en')">EN</button>
         </div>
-        <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기" data-pdf-href
+        <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기" data-pdf-href data-i18n-href="pdf.guideline"
           onclick="return clfGuidePreview(event)">
           <span class="clf-quick-icon">📄</span>
           <span class="clf-quick-text" data-i18n="qb.guide">모집요강 미리보기</span>
@@ -339,9 +339,9 @@
           <!-- 모집요강 PDF (로그인 후 첫 항목, 전체 폭) -->
           <div class="clf-attachment-box" id="clf-attachment-box" data-dir-anim
             style="grid-column:1/-1 !important; margin-top:48px !important;">
-            <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href>
+            <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href data-i18n-href="pdf.guideline">
               <span class="clf-attachment-icon">💾</span>
-              <span class="clf-attachment-name" data-pdf-title>카네기리재단_클래식콩쿠르_모집요강.pdf</span>
+              <span class="clf-attachment-name" data-pdf-title data-i18n="pdf.guidelineTitle">카네기리재단_클래식콩쿠르_모집요강.pdf</span>
             </a>
           </div>
 
@@ -509,14 +509,14 @@
 
         <div class="clf-form-intro">
           <div class="clf-form-intro-en">APPLICATION FORM</div>
-          <h2 class="clf-form-intro-ko">참가 신청서</h2>
-          <p class="clf-form-intro-desc">아래 항목을 정확히 입력하시고, 하단의 <strong>연주 영상 공유 링크</strong>까지 함께 제출해 주세요. 서류와 영상은 한 번에 접수됩니다. (접수 마감: 6/30(화) 18:00)</p>
+          <h2 class="clf-form-intro-ko" data-i18n="form.introko">참가 신청서</h2>
+          <p class="clf-form-intro-desc" data-i18n-html="form.introdesc">아래 항목을 정확히 입력하시고, 하단의 <strong>연주 영상 공유 링크</strong>까지 함께 제출해 주세요. 서류와 영상은 한 번에 접수됩니다. (접수 마감: 6/30(화) 18:00)</p>
         </div>
 
         <!-- 계정 생성 안내 -->
         <div class="clf-callout" id="clf-acctCallout" style="max-width:880px!important; margin:0 auto 32px!important;">
           <div class="clf-callout-icon">🔑</div>
-          <div><strong>로그인 계정 생성 필요</strong><br>제출 후 마이페이지에서 제출 내역을 확인하실 수 있습니다. 반드시 이메일과 비밀번호를 기억해
+          <div data-i18n-html="form.acctCallout"><strong>로그인 계정 생성 필요</strong><br>제출 후 마이페이지에서 제출 내역을 확인하실 수 있습니다. 반드시 이메일과 비밀번호를 기억해
             주세요.</div>
         </div>
 
@@ -525,18 +525,18 @@
           <div class="clf-form-block">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Account</span>
-              <span class="clf-detail-label-ko">계정 설정</span>
+              <span class="clf-detail-label-ko" data-i18n="form.secAccount">계정 설정</span>
               <span class="clf-detail-label-divider"></span>
             </div>
-            <p class="clf-form-block-desc">로그인에 사용할 이메일과 비밀번호를 설정해 주세요. (아래 참가자 정보의 이메일과 동일하게 입력하시면 됩니다)</p>
+            <p class="clf-form-block-desc" data-i18n="form.acctDesc">로그인에 사용할 이메일과 비밀번호를 설정해 주세요. (아래 참가자 정보의 이메일과 동일하게 입력하시면 됩니다)</p>
             <div class="clf-fg">
               <div class="clf-field">
-                <div class="clf-field-label">계정 이메일 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.acctEmail">계정 이메일 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="email" id="clf-acctEmail" placeholder="name@example.com" required>
               </div>
               <div class="clf-field">
-                <div class="clf-field-label">비밀번호 설정 <span class="clf-req">*</span></div>
-                <input class="clf-input" type="password" id="clf-acctPw" placeholder="6자 이상 (영문+숫자 권장)" required>
+                <div class="clf-field-label" data-i18n-html="form.acctPw">비밀번호 설정 <span class="clf-req">*</span></div>
+                <input class="clf-input" type="password" id="clf-acctPw" placeholder="6자 이상 (영문+숫자 권장)" data-i18n-ph="ph.acctPw" required>
               </div>
             </div>
           </div>
@@ -548,71 +548,71 @@
           <div class="clf-form-block">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Category</span>
-              <span class="clf-detail-label-ko">참가 부문</span>
+              <span class="clf-detail-label-ko" data-i18n="form.secCategory">참가 부문</span>
               <span class="clf-detail-label-divider"></span>
             </div>
 
             <div class="clf-field clf-full" style="margin-bottom:18px !important;">
-              <div class="clf-field-label">경연 분야 <span class="clf-req">*</span></div>
+              <div class="clf-field-label" data-i18n-html="form.divLabel">경연 분야 <span class="clf-req">*</span></div>
               <div class="clf-pill-group">
                 <span class="clf-pill"><input type="radio" id="div1" name="division" value="기악" required><label
-                    for="div1">기악 (Instrumental)</label></span>
-                <span class="clf-pill"><input type="radio" id="div2" name="division" value="성악"><label for="div2">성악
+                    for="div1" data-i18n="form.divInstrumental">기악 (Instrumental)</label></span>
+                <span class="clf-pill"><input type="radio" id="div2" name="division" value="성악"><label for="div2" data-i18n="form.divVocal">성악
                     (Vocal)</label></span>
                 <span class="clf-pill"><input type="radio" id="div3" name="division" value="기타"><label
-                    for="div3">기타</label></span>
+                    for="div3" data-i18n="form.divOther">기타</label></span>
               </div>
               <!-- 분야 기타 입력란 -->
               <div id="divisionEtcBox" class="clf-etc-input">
                 <input class="clf-input" type="text" id="divisionEtc" name="divisionEtc"
-                  placeholder="기타 분야를 직접 입력해 주세요 (예: 작곡, 지휘, 국악 등)">
-                <div class="clf-field-help">분야가 명확치 않은 경우 운영사무국으로 사전 문의 바랍니다.</div>
+                  placeholder="기타 분야를 직접 입력해 주세요 (예: 작곡, 지휘, 국악 등)" data-i18n-ph="ph.divEtc">
+                <div class="clf-field-help" data-i18n="form.divEtcHelp">분야가 명확치 않은 경우 운영사무국으로 사전 문의 바랍니다.</div>
               </div>
             </div>
 
             <!-- 기악 선택 시 -->
             <div id="instrumentBox" class="clf-fg" style="display:none !important;">
               <div class="clf-field">
-                <div class="clf-field-label">세부 악기 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.instLabel">세부 악기 <span class="clf-req">*</span></div>
                 <select class="clf-select clf-with-etc" id="instrument" name="instrument" data-etc="instrumentEtcBox">
-                  <option value="">— 선택해 주세요 —</option>
-                  <optgroup label="건반">
-                    <option>피아노 (Piano)</option>
-                    <option>오르간 (Organ)</option>
-                    <option>하프시코드 (Harpsichord)</option>
+                  <option value="" data-i18n="form.selPlaceholder">— 선택해 주세요 —</option>
+                  <optgroup label="건반" data-i18n-label="form.ogKeyboard">
+                    <option data-i18n="inst.piano">피아노 (Piano)</option>
+                    <option data-i18n="inst.organ">오르간 (Organ)</option>
+                    <option data-i18n="inst.harpsichord">하프시코드 (Harpsichord)</option>
                   </optgroup>
-                  <optgroup label="현악">
-                    <option>바이올린 (Violin)</option>
-                    <option>비올라 (Viola)</option>
-                    <option>첼로 (Cello)</option>
-                    <option>더블베이스 (Double Bass)</option>
-                    <option>하프 (Harp)</option>
-                    <option>클래식 기타 (Classical Guitar)</option>
+                  <optgroup label="현악" data-i18n-label="form.ogStrings">
+                    <option data-i18n="inst.violin">바이올린 (Violin)</option>
+                    <option data-i18n="inst.viola">비올라 (Viola)</option>
+                    <option data-i18n="inst.cello">첼로 (Cello)</option>
+                    <option data-i18n="inst.bass">더블베이스 (Double Bass)</option>
+                    <option data-i18n="inst.harp">하프 (Harp)</option>
+                    <option data-i18n="inst.guitar">클래식 기타 (Classical Guitar)</option>
                   </optgroup>
-                  <optgroup label="목관">
-                    <option>플루트 (Flute)</option>
-                    <option>오보에 (Oboe)</option>
-                    <option>클라리넷 (Clarinet)</option>
-                    <option>바순 (Bassoon)</option>
-                    <option>색소폰 (Saxophone)</option>
+                  <optgroup label="목관" data-i18n-label="form.ogWoodwind">
+                    <option data-i18n="inst.flute">플루트 (Flute)</option>
+                    <option data-i18n="inst.oboe">오보에 (Oboe)</option>
+                    <option data-i18n="inst.clarinet">클라리넷 (Clarinet)</option>
+                    <option data-i18n="inst.bassoon">바순 (Bassoon)</option>
+                    <option data-i18n="inst.sax">색소폰 (Saxophone)</option>
                   </optgroup>
-                  <optgroup label="금관">
-                    <option>호른 (Horn)</option>
-                    <option>트럼펫 (Trumpet)</option>
-                    <option>트롬본 (Trombone)</option>
-                    <option>튜바 (Tuba)</option>
+                  <optgroup label="금관" data-i18n-label="form.ogBrass">
+                    <option data-i18n="inst.horn">호른 (Horn)</option>
+                    <option data-i18n="inst.trumpet">트럼펫 (Trumpet)</option>
+                    <option data-i18n="inst.trombone">트롬본 (Trombone)</option>
+                    <option data-i18n="inst.tuba">튜바 (Tuba)</option>
                   </optgroup>
-                  <optgroup label="타악">
-                    <option>마림바 (Marimba)</option>
-                    <option>팀파니 (Timpani)</option>
-                    <option>타악기 (Percussion)</option>
+                  <optgroup label="타악" data-i18n-label="form.ogPercussion">
+                    <option data-i18n="inst.marimba">마림바 (Marimba)</option>
+                    <option data-i18n="inst.timpani">팀파니 (Timpani)</option>
+                    <option data-i18n="inst.percussion">타악기 (Percussion)</option>
                   </optgroup>
-                  <option>실내악 (Chamber Music)</option>
-                  <option value="기타">기타 (직접 입력)</option>
+                  <option data-i18n="inst.chamber">실내악 (Chamber Music)</option>
+                  <option value="기타" data-i18n="opt.etcInput">기타 (직접 입력)</option>
                 </select>
                 <div id="instrumentEtcBox" class="clf-etc-input">
                   <input class="clf-input" type="text" id="instrumentEtc" name="instrumentEtc"
-                    placeholder="세부 악기를 직접 입력해 주세요">
+                    placeholder="세부 악기를 직접 입력해 주세요" data-i18n-ph="ph.instEtc">
                 </div>
               </div>
             </div>
@@ -620,18 +620,18 @@
             <!-- 성악 선택 시 -->
             <div id="vocalBox" class="clf-fg" style="display:none !important;">
               <div class="clf-field">
-                <div class="clf-field-label">전공 장르</div>
+                <div class="clf-field-label" data-i18n="form.vocalGenre">전공 장르</div>
                 <select class="clf-select clf-with-etc" id="vocalGenre" name="vocalGenre" data-etc="vocalGenreEtcBox">
-                  <option value="">— 선택 —</option>
-                  <option>오페라 · 아리아</option>
-                  <option>독일 가곡 (Lied)</option>
-                  <option>한국 가곡</option>
-                  <option>오라토리오 · 종교음악</option>
-                  <option value="기타">기타 (직접 입력)</option>
+                  <option value="" data-i18n="form.selPick">— 선택 —</option>
+                  <option data-i18n="voc.opera">오페라 · 아리아</option>
+                  <option data-i18n="voc.lied">독일 가곡 (Lied)</option>
+                  <option data-i18n="voc.korean">한국 가곡</option>
+                  <option data-i18n="voc.oratorio">오라토리오 · 종교음악</option>
+                  <option value="기타" data-i18n="opt.etcInput">기타 (직접 입력)</option>
                 </select>
                 <div id="vocalGenreEtcBox" class="clf-etc-input">
                   <input class="clf-input" type="text" id="vocalGenreEtc" name="vocalGenreEtc"
-                    placeholder="전공 장르를 직접 입력해 주세요">
+                    placeholder="전공 장르를 직접 입력해 주세요" data-i18n-ph="ph.vocalEtc">
                 </div>
               </div>
             </div>
@@ -641,101 +641,101 @@
           <div class="clf-form-block">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Participant</span>
-              <span class="clf-detail-label-ko">참가자 정보</span>
+              <span class="clf-detail-label-ko" data-i18n="form.secParticipant">참가자 정보</span>
               <span class="clf-detail-label-divider"></span>
             </div>
 
             <div class="clf-fg">
               <div class="clf-field clf-full" style="margin-bottom:8px !important;">
-                <div class="clf-field-label">본인 확인용 프로필 사진 (정면) <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.profilePhoto">본인 확인용 프로필 사진 (정면) <span class="clf-req">*</span></div>
                 <input class="clf-input" type="file" id="profilePhoto" accept="image/*" required
                   style="padding:10px !important;">
-                <div class="clf-field-help">스마트폰으로 촬영한 정면 사진도 가능합니다. (본인 확인용)</div>
+                <div class="clf-field-help" data-i18n="form.profileHelp">스마트폰으로 촬영한 정면 사진도 가능합니다. (본인 확인용)</div>
                 <!-- 압축된 이미지 데이터를 담을 숨김 필드 -->
                 <input type="hidden" id="photoData" name="photoData">
               </div>
 
               <div class="clf-field clf-full" style="margin-bottom:8px !important;">
-                <div class="clf-field-label">증명 서류 (여권 또는 주민등록증 사본) <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.idDoc">증명 서류 (여권 또는 주민등록증 사본) <span class="clf-req">*</span></div>
                 <input class="clf-input" type="file" id="idCardPhoto" accept="image/*" required
                   style="padding:10px !important;">
-                <div class="clf-field-help">생년월일 등 본인 확인용 증빙 서류 이미지 파일. <strong style="color:#B54E3A;">※ 주민등록증 뒷번호(7자리)는 반드시 가린 후 제출해 주세요.</strong></div>
+                <div class="clf-field-help" data-i18n-html="form.idDocHelp">생년월일 등 본인 확인용 증빙 서류 이미지 파일. <strong style="color:#B54E3A;">※ 주민등록증 뒷번호(7자리)는 반드시 가린 후 제출해 주세요.</strong></div>
                 <input type="hidden" id="idCardData" name="idCardData">
               </div>
 
               <div class="clf-field">
-                <div class="clf-field-label">성명 <span class="clf-req">*</span></div>
-                <input class="clf-input" type="text" id="nameKo" name="nameKo" placeholder="홍길동" required>
+                <div class="clf-field-label" data-i18n-html="form.nameKo">성명 <span class="clf-req">*</span></div>
+                <input class="clf-input" type="text" id="nameKo" name="nameKo" placeholder="홍길동" data-i18n-ph="ph.name" required>
               </div>
               <div class="clf-field">
-                <div class="clf-field-label">생년월일 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.birth">생년월일 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="date" id="birth" name="birth" required>
               </div>
 
               <div class="clf-field">
-                <div class="clf-field-label">연령 확인 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.ageConfirm">연령 확인 <span class="clf-req">*</span></div>
                 <div class="clf-pill-group">
-                  <span class="clf-pill"><input type="radio" id="ageOver14" name="ageGroup" value="over14" required onchange="document.getElementById('guardianBlock').style.display='none';"><label for="ageOver14">만 14세 이상</label></span>
-                  <span class="clf-pill"><input type="radio" id="ageUnder14" name="ageGroup" value="under14" required onchange="document.getElementById('guardianBlock').style.display='block';"><label for="ageUnder14">만 14세 미만</label></span>
+                  <span class="clf-pill"><input type="radio" id="ageOver14" name="ageGroup" value="over14" required onchange="document.getElementById('guardianBlock').style.display='none';"><label for="ageOver14" data-i18n="form.ageOver14">만 14세 이상</label></span>
+                  <span class="clf-pill"><input type="radio" id="ageUnder14" name="ageGroup" value="under14" required onchange="document.getElementById('guardianBlock').style.display='block';"><label for="ageUnder14" data-i18n="form.ageUnder14">만 14세 미만</label></span>
                 </div>
               </div>
 
               <!-- 법정대리인 동의 영역 (만 14세 미만 선택 시에만 표시됨) -->
               <div id="guardianBlock" style="display:none; background:#F8F9FA; padding:16px; border-radius:10px; margin-bottom:20px; border:1px solid #E9ECEF;">
-                <div style="font-size:13.5px; font-weight:700; color:#B54E3A; margin-bottom:12px;">※ 만 14세 미만 참가자는 법정대리인의 동의가 필요합니다.</div>
+                <div style="font-size:13.5px; font-weight:700; color:#B54E3A; margin-bottom:12px;" data-i18n="form.guardianNote">※ 만 14세 미만 참가자는 법정대리인의 동의가 필요합니다.</div>
                 
                 <div class="clf-agree-item" style="padding:0 !important; gap:8px !important; margin-bottom:12px;">
                   <input type="checkbox" id="guardianConsent" name="guardianConsent" style="margin-top:0 !important;">
-                  <label for="guardianConsent" style="font-size:13px !important; color:#444;">
+                  <label for="guardianConsent" style="font-size:13px !important; color:#444;" data-i18n-html="form.guardianConsent">
                     본인은 만 14세 미만 참가자의 법정대리인으로서 카네기LEE 재단 제1회 콩쿠르 참가 및 개인정보 수집·이용에 동의합니다. <span class="clf-req">*</span>
                   </label>
                 </div>
 
                 <div style="display:flex; gap:10px; flex-wrap:wrap;">
                   <div style="flex:1; min-width:120px;">
-                    <div style="font-size:12px; color:#666; margin-bottom:4px;">법정대리인 성명 <span class="clf-req">*</span></div>
-                    <input type="text" class="clf-input" id="guardianName" name="guardianName" placeholder="홍길동" style="padding:8px !important; font-size:13px;">
+                    <div style="font-size:12px; color:#666; margin-bottom:4px;" data-i18n-html="form.guardianName">법정대리인 성명 <span class="clf-req">*</span></div>
+                    <input type="text" class="clf-input" id="guardianName" name="guardianName" placeholder="홍길동" data-i18n-ph="ph.name" style="padding:8px !important; font-size:13px;">
                   </div>
                   <div style="flex:1; min-width:100px;">
-                    <div style="font-size:12px; color:#666; margin-bottom:4px;">참가자와의 관계 <span class="clf-req">*</span></div>
-                    <input type="text" class="clf-input" id="guardianRelation" name="guardianRelation" placeholder="부, 모 등" style="padding:8px !important; font-size:13px;">
+                    <div style="font-size:12px; color:#666; margin-bottom:4px;" data-i18n-html="form.guardianRelation">참가자와의 관계 <span class="clf-req">*</span></div>
+                    <input type="text" class="clf-input" id="guardianRelation" name="guardianRelation" placeholder="부, 모 등" data-i18n-ph="ph.guardianRelation" style="padding:8px !important; font-size:13px;">
                   </div>
                   <div style="flex:1; min-width:140px;">
-                    <div style="font-size:12px; color:#666; margin-bottom:4px;">연락처 <span class="clf-req">*</span></div>
+                    <div style="font-size:12px; color:#666; margin-bottom:4px;" data-i18n-html="form.guardianPhone">연락처 <span class="clf-req">*</span></div>
                     <input type="tel" class="clf-input" id="guardianPhone" name="guardianPhone" placeholder="010-0000-0000" style="padding:8px !important; font-size:13px;">
                   </div>
                 </div>
               </div>
               <div class="clf-field">
-                <div class="clf-field-label">성별</div>
+                <div class="clf-field-label" data-i18n="form.gender">성별</div>
                 <div class="clf-pill-group">
                   <span class="clf-pill"><input type="radio" id="g1" name="gender" value="여"><label
-                      for="g1">여</label></span>
+                      for="g1" data-i18n="form.genderF">여</label></span>
                   <span class="clf-pill"><input type="radio" id="g2" name="gender" value="남"><label
-                      for="g2">남</label></span>
-                  <span class="clf-pill"><input type="radio" id="g3" name="gender" value="기재안함"><label for="g3">기재 안
+                      for="g2" data-i18n="form.genderM">남</label></span>
+                  <span class="clf-pill"><input type="radio" id="g3" name="gender" value="기재안함"><label for="g3" data-i18n="form.genderNA">기재 안
                       함</label></span>
                 </div>
               </div>
               <div class="clf-field">
-                <div class="clf-field-label">휴대전화 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.phone">휴대전화 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
               </div>
               <div class="clf-field">
-                <div class="clf-field-label">이메일 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.email">이메일 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="email" id="email" name="email" placeholder="name@example.com" required>
               </div>
               <div class="clf-field clf-full" style="display:flex; gap:12px; margin-bottom: 0 !important;">
                 <div style="flex:1;">
-                  <div class="clf-field-label">주소 (시·도) <span class="clf-req">*</span></div>
+                  <div class="clf-field-label" data-i18n-html="form.addrCity">주소 (시·도) <span class="clf-req">*</span></div>
                   <select class="clf-select" id="addressCity" name="addressCity" required>
-                    <option value="">— 시·도 선택 —</option>
+                    <option value="" data-i18n="form.addrCityPh">— 시·도 선택 —</option>
                   </select>
                 </div>
                 <div style="flex:1;">
-                  <div class="clf-field-label">주소 (시·군·구) <span class="clf-req">*</span></div>
+                  <div class="clf-field-label" data-i18n-html="form.addrDistrict">주소 (시·군·구) <span class="clf-req">*</span></div>
                   <select class="clf-select" id="addressDistrict" name="addressDistrict" required>
-                    <option value="">— 시·군·구 선택 —</option>
+                    <option value="" data-i18n="form.addrDistrictPh">— 시·군·구 선택 —</option>
                   </select>
                 </div>
               </div>
@@ -746,26 +746,26 @@
           <div class="clf-form-block">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Education · Career · Awards</span>
-              <span class="clf-detail-label-ko">학력 · 경력 · 수상</span>
+              <span class="clf-detail-label-ko" data-i18n="form.secEducation">학력 · 경력 · 수상</span>
               <span class="clf-detail-label-divider"></span>
             </div>
 
             <div class="clf-fg">
               <div class="clf-field clf-full">
-                <div class="clf-field-label">학교명 · 전공 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.schoolName">학교명 · 전공 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="text" id="schoolName" name="schoolName"
-                  placeholder="예) 서울대학교 음악대학 피아노 전공" required>
+                  placeholder="예) 서울대학교 음악대학 피아노 전공" data-i18n-ph="ph.schoolName" required>
               </div>
               <div class="clf-field clf-full">
-                <div class="clf-field-label">활동 경력 (소속 단체 · 무대 경력) <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.career">활동 경력 (소속 단체 · 무대 경력) <span class="clf-req">*</span></div>
                 <textarea class="clf-textarea" id="career" name="career"
-                  placeholder="• 2025~현재 OOO 오케스트라 객원 단원&#10;• 2024 OOO 페스티벌 솔리스트 협연&#10;• ..." required></textarea>
-                <div class="clf-field-help">현역 아티스트는 주요 무대·소속·활동을, 입시 준비생은 현재 레슨 선생님 등을 자유롭게 기재해 주세요.</div>
+                  placeholder="• 2025~현재 OOO 오케스트라 객원 단원&#10;• 2024 OOO 페스티벌 솔리스트 협연&#10;• ..." data-i18n-ph="ph.career" required></textarea>
+                <div class="clf-field-help" data-i18n="form.careerHelp">현역 아티스트는 주요 무대·소속·활동을, 입시 준비생은 현재 레슨 선생님 등을 자유롭게 기재해 주세요.</div>
               </div>
               <div class="clf-field clf-full">
-                <div class="clf-field-label">주요 수상 내역 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.awardsField">주요 수상 내역 <span class="clf-req">*</span></div>
                 <textarea class="clf-textarea" id="awards" name="awards"
-                  placeholder="• 2025 OOO 콩쿠르 1위&#10;• 2024 OOO 국제 콩쿠르 입상&#10;• 수상 내역이 없는 경우 '없음'으로 기재"
+                  placeholder="• 2025 OOO 콩쿠르 1위&#10;• 2024 OOO 국제 콩쿠르 입상&#10;• 수상 내역이 없는 경우 '없음'으로 기재" data-i18n-ph="ph.awardsField"
                   required></textarea>
               </div>
             </div>
@@ -775,16 +775,16 @@
           <div class="clf-form-block">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Video</span>
-              <span class="clf-detail-label-ko">연주 영상 제출</span>
+              <span class="clf-detail-label-ko" data-i18n="form.secVideo">연주 영상 제출</span>
               <span class="clf-detail-label-divider"></span>
             </div>
-            <p class="clf-form-block-desc">자유곡 1곡. 위의 <strong>영상 촬영 · 제출 가이드</strong>를 반드시 확인 후 공유 링크를 입력해 주세요.</p>
+            <p class="clf-form-block-desc" data-i18n-html="form.videoDesc">자유곡 1곡. 위의 <strong>영상 촬영 · 제출 가이드</strong>를 반드시 확인 후 공유 링크를 입력해 주세요.</p>
 
             <div class="clf-filename-guide">
               <div class="clf-filename-guide-text">
-                <div class="clf-filename-guide-label">영상 파일명 규칙</div>
+                <div class="clf-filename-guide-label" data-i18n="form.fnGuideLabel">영상 파일명 규칙</div>
                 <div class="clf-filename-guide-rule"><code>분야_성명_곡명.mp4</code></div>
-                <div class="clf-filename-guide-ex">예) 피아노_홍길동_Chopin Etude Op.10-4.mp4 · 항목 사이는 언더바(_)로 연결</div>
+                <div class="clf-filename-guide-ex" data-i18n="form.fnGuideEx">예) 피아노_홍길동_Chopin Etude Op.10-4.mp4 · 항목 사이는 언더바(_)로 연결</div>
               </div>
               <button type="button" class="clf-help-btn" id="clf-howToUploadBtn2" aria-label="업로드 방법 보기">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
@@ -793,25 +793,25 @@
                   <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
                   <line x1="12" y1="17" x2="12.01" y2="17" />
                 </svg>
-                업로드 방법 알아보기
+                <span data-i18n="form.howToUpload">업로드 방법 알아보기</span>
               </button>
             </div>
 
             <div class="clf-fg">
               <div class="clf-field clf-full">
-                <div class="clf-field-label">영상 공유 링크 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.videoLink">영상 공유 링크 <span class="clf-req">*</span></div>
                 <input class="clf-input" type="url" id="videoLink" name="videoLink"
                   placeholder="https://drive.google.com/..." required>
-                <div class="clf-field-help">제출 전 <strong style="color:#0C3D40;">시크릿(비로그인) 창에서 링크가 정상적으로 열리는지</strong>
+                <div class="clf-field-help" data-i18n-html="form.videoLinkHelp">제출 전 <strong style="color:#0C3D40;">시크릿(비로그인) 창에서 링크가 정상적으로 열리는지</strong>
                   반드시 확인해 주세요.</div>
               </div>
               <div class="clf-field">
-                <div class="clf-field-label">연주곡 작곡가 <span class="clf-req">*</span></div>
-                <input class="clf-input" type="text" id="vComposer" name="vComposer" placeholder="예) F. Chopin" required>
+                <div class="clf-field-label" data-i18n-html="form.vComposer">연주곡 작곡가 <span class="clf-req">*</span></div>
+                <input class="clf-input" type="text" id="vComposer" name="vComposer" placeholder="예) F. Chopin" data-i18n-ph="ph.vComposer" required>
               </div>
               <div class="clf-field">
-                <div class="clf-field-label">연주곡 곡명 <span class="clf-req">*</span></div>
-                <input class="clf-input" type="text" id="vPiece" name="vPiece" placeholder="예) Etude Op.10 No.4" required>
+                <div class="clf-field-label" data-i18n-html="form.vPiece">연주곡 곡명 <span class="clf-req">*</span></div>
+                <input class="clf-input" type="text" id="vPiece" name="vPiece" placeholder="예) Etude Op.10 No.4" data-i18n-ph="ph.vPiece" required>
               </div>
             </div>
           </div>
@@ -820,32 +820,32 @@
           <div class="clf-form-block">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Referral</span>
-              <span class="clf-detail-label-ko">유입 경로</span>
+              <span class="clf-detail-label-ko" data-i18n="form.secReferral">유입 경로</span>
               <span class="clf-detail-label-divider"></span>
             </div>
-            <p class="clf-form-block-desc">본 콩쿠르를 어떤 경로로 알게 되셨나요? 향후 안내에 참고됩니다.</p>
+            <p class="clf-form-block-desc" data-i18n="form.referralDesc">본 콩쿠르를 어떤 경로로 알게 되셨나요? 향후 안내에 참고됩니다.</p>
 
             <div class="clf-fg">
               <div class="clf-field clf-full">
-                <div class="clf-field-label">알게 된 경로 <span class="clf-req">*</span></div>
+                <div class="clf-field-label" data-i18n-html="form.referralLabel">알게 된 경로 <span class="clf-req">*</span></div>
                 <select class="clf-select clf-with-etc" id="referral" name="referral" data-etc="referralEtcBox"
                   required>
-                  <option value="">— 선택해 주세요 —</option>
-                  <option>카네기 Lee 재단 공식 홈페이지</option>
-                  <option>재단 SNS (인스타그램 · 페이스북 등)</option>
-                  <option>유튜브 영상 · 광고</option>
-                  <option>네이버 · 구글 등 검색</option>
-                  <option>음악 관련 커뮤니티 · 카페</option>
-                  <option>학교 · 학원 안내</option>
-                  <option>지도교수 · 선생님 추천</option>
-                  <option>지인 · 동료 추천</option>
-                  <option>언론 보도 · 기사</option>
-                  <option>포스터 · 전단지</option>
-                  <option value="기타">기타 (직접 입력)</option>
+                  <option value="" data-i18n="form.selPlaceholder">— 선택해 주세요 —</option>
+                  <option data-i18n="ref.web">카네기 Lee 재단 공식 홈페이지</option>
+                  <option data-i18n="ref.sns">재단 SNS (인스타그램 · 페이스북 등)</option>
+                  <option data-i18n="ref.youtube">유튜브 영상 · 광고</option>
+                  <option data-i18n="ref.search">네이버 · 구글 등 검색</option>
+                  <option data-i18n="ref.community">음악 관련 커뮤니티 · 카페</option>
+                  <option data-i18n="ref.school">학교 · 학원 안내</option>
+                  <option data-i18n="ref.professor">지도교수 · 선생님 추천</option>
+                  <option data-i18n="ref.friend">지인 · 동료 추천</option>
+                  <option data-i18n="ref.press">언론 보도 · 기사</option>
+                  <option data-i18n="ref.poster">포스터 · 전단지</option>
+                  <option value="기타" data-i18n="opt.etcInput">기타 (직접 입력)</option>
                 </select>
                 <div id="referralEtcBox" class="clf-etc-input">
                   <input class="clf-input" type="text" id="referralEtc" name="referralEtc"
-                    placeholder="어떤 경로로 알게 되셨는지 직접 입력해 주세요">
+                    placeholder="어떤 경로로 알게 되셨는지 직접 입력해 주세요" data-i18n-ph="ph.referralEtc">
                 </div>
               </div>
             </div>
@@ -855,28 +855,28 @@
           <div class="clf-form-block" id="payment">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Payment</span>
-              <span class="clf-detail-label-ko">참가비 안내</span>
+              <span class="clf-detail-label-ko" data-i18n="form.secPayment">참가비 안내</span>
               <span class="clf-detail-label-divider"></span>
             </div>
-            <p class="clf-form-block-desc">서류 제출 후, 아래 계좌로 참가비를 납부해 주세요.</p>
+            <p class="clf-form-block-desc" data-i18n="form.payDesc">서류 제출 후, 아래 계좌로 참가비를 납부해 주세요.</p>
 
             <div class="clf-pay-box">
               <div class="clf-pay-amount">
                 <div>
                   <div class="clf-pay-amount-label">PARTICIPATION FEE</div>
-                  <div class="clf-pay-amount-sub">서류 제출자 전원 납부</div>
+                  <div class="clf-pay-amount-sub" data-i18n="form.payFeeSub">서류 제출자 전원 납부</div>
                 </div>
                 <div class="clf-pay-amount-value">
-                  100,000<span class="clf-unit">원 / 1인</span>
+                  100,000<span class="clf-unit" data-i18n="form.payUnit">원 / 1인</span>
                 </div>
               </div>
 
               <div class="clf-pay-deadline">
                 <div>
-                  <div class="clf-pay-deadline-label">납부 마감</div>
-                  <div class="clf-pay-amount-sub" style="margin-top:4px !important;">은행 계좌 또는 신용카드 납부</div>
+                  <div class="clf-pay-deadline-label" data-i18n="form.payDeadlineLabel">납부 마감</div>
+                  <div class="clf-pay-amount-sub" style="margin-top:4px !important;" data-i18n="form.paySub2">은행 계좌 또는 신용카드 납부</div>
                 </div>
-                <div class="clf-pay-deadline-date">2026. 06. 30 (화) 18:00</div>
+                <div class="clf-pay-deadline-date" data-i18n="form.payDeadlineDate">2026. 06. 30 (화) 18:00</div>
               </div>
 
               <dl class="clf-pay-info" style="gap: 16px 20px !important; align-items: center !important;">
@@ -892,7 +892,7 @@
                 </dd>
               </dl>
 
-              <div class="clf-pay-note">
+              <div class="clf-pay-note" data-i18n-html="form.payNote1">
                 <strong class="clf-warn">⚠ 환불 불가 안내</strong><br>
                 납부된 <strong>참가비는 어떠한 경우에도 반환되지 않습니다.</strong> 신중히 납부해 주시기 바랍니다.<br><br>
                 <span style="font-size:16px; color:#B54E3A; font-weight:700;">반드시 [콩+생년월일6자리+이름] 형식으로 입금해
@@ -900,7 +900,7 @@
                 <span style="font-size:15px; color:#0C3D40; font-weight:700;">(예: 콩020312홍길동)</span>
               </div>
 
-              <div class="clf-pay-note" style="border-left-color:#0C3D40 !important;">
+              <div class="clf-pay-note" style="border-left-color:#0C3D40 !important;" data-i18n-html="form.payNote2">
                 <strong style="color:#0C3D40 !important;">▸ 접수 확정 안내</strong><br>
                 서류·영상 제출과 <strong>참가비 납입이 모두 확인되어야 콩쿠르 참가 접수가 정식으로 완료</strong>됩니다.<br>
                 <span style="color: #d32f2f; font-weight: 700;">※ 입금자명을 반드시 [콩+생년월일6자리+이름] 형식으로 맞춰 주셔야 빠른 확인이 가능합니다.</span>
@@ -912,7 +912,7 @@
           <div class="clf-form-block">
             <div class="clf-detail-label">
               <span class="clf-detail-label-en">Agreement</span>
-              <span class="clf-detail-label-ko">약관 동의</span>
+              <span class="clf-detail-label-ko" data-i18n="form.secAgreement">약관 동의</span>
               <span class="clf-detail-label-divider"></span>
             </div>
 
@@ -920,7 +920,7 @@
               <!-- 전체 동의 마스터 -->
               <div class="clf-agree-item clf-agree-master">
                 <input type="checkbox" id="agreeAll">
-                <label for="agreeAll">
+                <label for="agreeAll" data-i18n-html="form.agreeAll">
                   <strong>모든 약관에 동의합니다</strong>
                   <span class="clf-agree-master-sub">필수 항목 4개와 선택 항목 1개에 일괄 동의합니다.</span>
                 </label>
@@ -931,7 +931,7 @@
                 <input type="checkbox" id="agree1" required>
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree1" style="flex:1; margin:0;"><strong>[필수] <span class="clf-req">*</span> 개인정보 수집·이용에 동의합니다</strong></label>
+                    <label for="agree1" style="flex:1; margin:0;" data-i18n-html="form.agree1Label"><strong>[필수] <span class="clf-req">*</span> 개인정보 수집·이용에 동의합니다</strong></label>
                     <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
@@ -952,7 +952,7 @@
                 <input type="checkbox" id="agree2" required>
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree2" style="flex:1; margin:0;"><strong>[필수] <span class="clf-req">*</span> 연주 영상 및 콘텐츠 사용권에 동의합니다</strong></label>
+                    <label for="agree2" style="flex:1; margin:0;" data-i18n-html="form.agree2Label"><strong>[필수] <span class="clf-req">*</span> 연주 영상 및 콘텐츠 사용권에 동의합니다</strong></label>
                     <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
@@ -972,7 +972,7 @@
                 <input type="checkbox" id="agree3" required>
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree3" style="flex:1; margin:0;"><strong>[필수] <span class="clf-req">*</span> 초상권 사용에 동의합니다</strong></label>
+                    <label for="agree3" style="flex:1; margin:0;" data-i18n-html="form.agree3Label"><strong>[필수] <span class="clf-req">*</span> 초상권 사용에 동의합니다</strong></label>
                     <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
@@ -989,7 +989,7 @@
                 <input type="checkbox" id="agree4" required>
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree4" style="flex:1; margin:0;"><strong>[필수] <span class="clf-req">*</span> 참가비 환불 불가 규정에 동의합니다</strong></label>
+                    <label for="agree4" style="flex:1; margin:0;" data-i18n-html="form.agree4Label"><strong>[필수] <span class="clf-req">*</span> 참가비 환불 불가 규정에 동의합니다</strong></label>
                     <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
@@ -1005,7 +1005,7 @@
                 <input type="checkbox" id="agree5">
                 <div style="flex: 1;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <label for="agree5" style="flex:1; margin:0;"><span class="clf-agree-optional-tag">선택</span><strong>마케팅 정보 수신에 동의합니다</strong></label>
+                    <label for="agree5" style="flex:1; margin:0;" data-i18n-html="form.agree5Label"><span class="clf-agree-optional-tag">선택</span><strong>마케팅 정보 수신에 동의합니다</strong></label>
                     <button type="button" onclick="var detail = this.parentElement.nextElementSibling; detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; this.textContent = detail.style.display === 'none' ? '▼ 보기' : '▲ 접기';" style="background:none; border:none; color:#888; font-size:12px; cursor:pointer; padding:4px 0 4px 12px; outline:none;">▼ 보기</button>
                   </div>
                   <div class="clf-agree-detail" style="display:none; cursor:default; line-height:1.6;">
@@ -1026,12 +1026,12 @@
             </div>
           </div>
           <div class="clf-submit-area">
-            <button type="submit" class="clf-submit">참 가 신 청 서 제 출</button>
-            <div class="clf-submit-hint">제출 후 입력하신 이메일로 접수 확인 메일이 발송됩니다.</div>
+            <button type="submit" class="clf-submit" data-i18n="form.submitBtn">참 가 신 청 서 제 출</button>
+            <div class="clf-submit-hint" data-i18n="form.submitHint">제출 후 입력하신 이메일로 접수 확인 메일이 발송됩니다.</div>
           </div>
 
           <!-- 문의 안내 푸터 -->
-          <div style="margin-top: 50px; padding-top: 24px; border-top: 1px solid #eee; text-align: center; color: #666; font-size: 14px; line-height: 1.8;">
+          <div style="margin-top: 50px; padding-top: 24px; border-top: 1px solid #eee; text-align: center; color: #666; font-size: 14px; line-height: 1.8;" data-i18n-html="form.footerInquiry">
             <strong>[문의] 카네기리재단 사무국</strong><br>
             전화번호: <a href="tel:1588-8418" style="color:#0C3D40; text-decoration:none; font-weight:700;">1588-8418</a><br>
             이메일: <a href="mailto:info@carnegielee.org" style="color:#0C3D40; text-decoration:none; font-weight:700;">info@carnegielee.org</a><br>
@@ -1271,6 +1271,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
   <script src="assets/concours.js?v=20260612_1"></script>
-  <script src="assets/i18n.js?v=20260612_2"></script>
+  <script src="assets/i18n.js?v=20260612_3"></script>
   </body>
 </html>
