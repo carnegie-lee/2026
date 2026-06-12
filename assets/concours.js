@@ -1061,7 +1061,10 @@ function clfToggleAcc(btn) {
       var acc = document.getElementById('detailAccordion');
       if (acc) acc.style.setProperty('display', 'contents', 'important');
       
-      setTimeout(function () { formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
+      setTimeout(function () { 
+        var targetBox = document.getElementById('clf-attachment-box') || formSection;
+        targetBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
+      }, 150);
     }
     /* 이미 제출한 계정이면 복원 + 잠금 */
     if (user && !isTestAccount(user.email)) {
