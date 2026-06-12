@@ -69,6 +69,57 @@
       'reg.pw2': '确认密码 <span style="color:#B54E3A">*</span>',
       'ph.regPw2': '请再次输入密码',
       'reg.agree': '[必填] 我已阅读并同意服务条款及个人信息收集·使用。',
+      /* 상세: 모집부문 */
+      'sec.categories': '招募组别',
+      'categories.list':
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>声乐及器乐全部组别</strong>(乐器不限)</span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>仅限个人参赛</strong> · 不接受团体参赛</span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">预选及复赛各提交 <strong>自选曲目1首</strong> 演奏视频<br><span style="font-size:12px; color:#666;">※ 预选与复赛不可使用同一曲目。</span></span></li>',
+      /* 상세: 제출자료 */
+      'sec.submission': '提交材料',
+      'submission.list':
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">在线<strong>报名</strong>(含经历·学历)</span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>演奏视频共享链接</strong>(单一镜头无剪辑原片)· 与报名表<strong>同时提交</strong></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">所有曲目原则上须<strong>背谱演奏</strong></span></li>',
+      /* 상세: 시상내역 */
+      'sec.awards': '奖项设置',
+      'awards.list':
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">大奖</span><strong>卡内基LEE大奖</strong><span class="sub">提供美国纽约卡内基音乐厅(Carnegie Hall)演出机会(机票、食宿费全额由基金会承担)· [卡内基LEE基金会成立7周年纪念 曹秀美邀请音乐会] 正式开场单独演出 · 颁发理事长奖牌</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">最优秀奖</span><strong>卡内基LEE最优秀奖</strong><span class="sub">提供美国纽约卡内基音乐厅(Carnegie Hall)演出机会(机票由基金会承担)· [卡内基LEE基金会成立7周年纪念 曹秀美邀请音乐会] 正式开场演出 · 颁发理事长奖牌</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">优秀奖</span><strong>卡内基LEE优秀奖</strong><span class="sub">提供美国纽约卡内基音乐厅(Carnegie Hall)演出机会(机票及食宿费自理)· [卡内基LEE基金会成立7周年纪念 曹秀美邀请音乐会] 正式开场演出 · 颁发理事长奖牌</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-all">1~10名</span><strong>共同礼遇</strong><span class="sub">持续参与基金会主办的国内外文化活动并获得演出机会 · 在曹秀美音乐会官方节目册中单独整版刊登个人简介 · 正式受邀出席与艺术家及企业家共同参加的私人庆功酒会</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag" style="background:#FDF5F6 !important; color:#B54E3A !important; border:1px solid #F6DFE2 !important;">限10名</span><strong>特别奖</strong><span class="sub">麦塞纳企业家奖(每人1,000,000韩元)· 发放奖学金(共10,000,000韩元)</span></span></li>',
+      /* 상세: 특별혜택 */
+      'sec.benefit': '参赛者专属福利',
+      'benefit.callout': '<strong>全体参赛者福利!&lt;卡内基LEE基金会成立7周年纪念 曹秀美邀请音乐会&gt; 当日门票2张赞助</strong><br>基金会向本次比赛<strong>全体参赛者</strong>赞助8月11日(周二)<strong>成立7周年纪念 曹秀美邀请音乐会</strong>当日活动门票<strong>2张</strong>。',
+      'awards.notice': '<strong style="color:#444;">※ 注意事项</strong><br>· 根据评审结果,可能不产生获奖者。<br>· 奖金将依据大韩民国税法扣除税款后,按奖金支付协议发放。',
+      /* 상세: 영상 가이드 */
+      'sec.videoguide': '视频拍摄·提交指南',
+      'vg.intro': '自选曲目1首。请务必阅读以下指南后,在报名表底部提交视频链接。',
+      'vg.memo': '<strong>所有曲目原则上须背谱(暗谱)演奏。</strong><br>请以不看乐谱、凭记忆演奏为前提选择曲目。看谱演奏的视频可能被排除在评审之外。',
+      'vg.acc1title': '<span class="clf-acc-icon">1</span> 拍摄指南 (Filming Guide)',
+      'vg.acc1list':
+        '<li><strong>必须全身入镜</strong> — 演奏者从头到脚及整件乐器都须完整出现在画面中。(声乐须上半身全身+表情清晰可见)</li>' +
+        '<li><strong>本人确认报幕</strong> — 视频开始前须面向镜头,用本人声音说出<strong>"出生年月日(如020025)。姓名。曲目名。现在开始"</strong>后再开始演奏。</li>' +
+        '<li><strong>无剪辑单一镜头</strong> — 须为从头到尾一次性录制的原片。剪辑·多机位合成·画面分割·字幕插入·音频修饰均<strong>禁止</strong>。</li>' +
+        '<li><strong>固定机位</strong> — 使用三脚架等固定拍摄。禁止变焦推近·拉远·摇移。</li>' +
+        '<li><strong>分辨率</strong> — 建议 <code>1920×1080 (FHD)</code> 以上,<code>1280×720 (HD)</code> 以上为必须。</li>' +
+        '<li><strong>亮度·照明</strong> — 演奏者的面部与手部动作须清晰可辨。禁止逆光拍摄。</li>' +
+        '<li><strong>录制有效期</strong> — 仅认可2026年1月1日以后的拍摄。</li>',
+      'vg.acc2title': '<span class="clf-acc-icon">2</span> 音频指南 (Audio Guide)',
+      'vg.acc2list':
+        '<li><strong>现场同期录音</strong> — 须为与视频同时录制的原声音频。禁止单独录音后再覆盖到视频的配音·后期处理。</li>' +
+        '<li><strong>禁止音频修饰</strong> — 均衡器(EQ)·混响·压缩器·噪声门等一切后期修饰均禁止。</li>' +
+        '<li><strong>麦克风</strong> — 建议使用外接麦克风。相机内置麦克风亦可,但不得出现破音(削波)。</li>' +
+        '<li><strong>环境噪音</strong> — 请注意避免空调·手机提示音·外部车辆噪音等混入。</li>',
+      'vg.acc3title': '<span class="clf-acc-icon">3</span> 文件规格 (File Specification)',
+      'vg.acc3list':
+        '<li><strong>提交方式</strong> — 须先上传至 <strong>Google 云端硬盘</strong>,再提交 <strong>“共享链接”</strong>。<span style="color:#888;">(YouTube·Vimeo 等其他平台不可)</span></li>' +
+        '<li><strong>文件格式</strong> — 建议 <code>.mp4</code> 或 <code>.mov</code> <span style="color:#888;">(<code>.avi</code>·<code>.wmv</code>·<code>.mkv</code> 等不予受理)</span></li>' +
+        '<li><strong>容量限制</strong> — 最大 <code>2GB</code> 以内。</li>' +
+        '<li><strong>文件命名规则</strong> — <code>组别_姓名_曲名.mp4</code><br><span style="color:#888;font-size:12px;">例)钢琴_张三_Chopin Etude Op.10-4.mp4</span></li>' +
+        '<li><strong>视频时长</strong> — 无特别限制,按实际演奏时间提交(通常 <strong>8~15分钟左右</strong>)。</li>' +
+        '<li><strong>权限设置</strong> — 须将 Google 云端硬盘访问权限更改为 <code>“知道链接的所有人”</code>。<div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 8px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; word-break: keep-all; border-radius: 4px;"><strong>※ 须将设置更改为 [常规访问 &gt; “知道链接的所有人”]</strong> 方可进行评审。<br>(若因权限受限导致无法观看视频,可能在评审中受到不利影响。)</div></li>',
       'img.poster': 'poster_11_en.png'
     },
 
@@ -129,6 +180,57 @@
       'reg.pw2': 'Confirm password <span style="color:#B54E3A">*</span>',
       'ph.regPw2': 'Re-enter your password',
       'reg.agree': '[Required] I agree to the Terms of Service and the collection & use of personal information.',
+      /* Details: categories */
+      'sec.categories': 'Eligible Categories',
+      'categories.list':
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>All vocal & instrumental categories</strong> (no instrument restriction)</span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>Individual entry only</strong> · team entries are not accepted</span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">Submit a performance video of <strong>one free-choice piece</strong> for each of the preliminary and main rounds<br><span style="font-size:12px; color:#666;">※ The preliminary and main rounds may not use the same piece.</span></span></li>',
+      /* Details: submission */
+      'sec.submission': 'What to Submit',
+      'submission.list':
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">Online <strong>application</strong> (including career & education)</span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>Performance video share link</strong> (single-take, unedited original) · submitted <strong>together with</strong> the application</span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text">All pieces must, in principle, be <strong>performed from memory</strong></span></li>',
+      /* Details: awards */
+      'sec.awards': 'Awards & Prizes',
+      'awards.list':
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">Grand Prize</span><strong>Carnegie LEE Grand Prize</strong><span class="sub">A performance opportunity at Carnegie Hall, New York (airfare & accommodation fully covered by the Foundation) · Official solo opening performance at the [Carnegie LEE Foundation 7th Anniversary — Sumi Jo Invitational Concert] · Chairman&#39;s plaque</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">First Prize</span><strong>Carnegie LEE First Prize</strong><span class="sub">A performance opportunity at Carnegie Hall, New York (airfare covered by the Foundation) · Official opening performance at the [Carnegie LEE Foundation 7th Anniversary — Sumi Jo Invitational Concert] · Chairman&#39;s plaque</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-top">Second Prize</span><strong>Carnegie LEE Second Prize</strong><span class="sub">A performance opportunity at Carnegie Hall, New York (airfare & accommodation at own expense) · Official opening performance at the [Carnegie LEE Foundation 7th Anniversary — Sumi Jo Invitational Concert] · Chairman&#39;s plaque</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag clf-benefit-tag-all">Ranks 1–10</span><strong>Common Benefits</strong><span class="sub">Ongoing participation in the Foundation&#39;s domestic & international cultural events with performance opportunities · A dedicated full-page profile in the official Sumi Jo concert program book · Official invitation to a private after-party reception with artists and business leaders</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><span class="clf-benefit-tag" style="background:#FDF5F6 !important; color:#B54E3A !important; border:1px solid #F6DFE2 !important;">10 only</span><strong>Special Prize</strong><span class="sub">Mécénat Patron Award (KRW 1,000,000 each) · Scholarships (KRW 10,000,000 total)</span></span></li>',
+      /* Details: special benefit */
+      'sec.benefit': 'Participant Benefit',
+      'benefit.callout': '<strong>A benefit for every participant! 2 tickets to the &lt;Carnegie LEE Foundation 7th Anniversary — Sumi Jo Invitational Concert&gt;</strong><br>The Foundation sponsors <strong>2 tickets</strong> to the <strong>7th Anniversary Sumi Jo Invitational Concert</strong> on Aug 11 (Tue) for <strong>every participant</strong> of this concours.',
+      'awards.notice': '<strong style="color:#444;">※ Notes</strong><br>· Depending on the judging results, there may be no award recipients.<br>· Prize money is paid after tax is withheld under Korean tax law, in accordance with the prize payment agreement.',
+      /* Details: video guide */
+      'sec.videoguide': 'Video Filming & Submission Guide',
+      'vg.intro': 'One free-choice piece. Please read the guide below, then submit your video link at the bottom of the application.',
+      'vg.memo': '<strong>All pieces must, in principle, be performed from memory.</strong><br>Please choose pieces on the premise of performing without sheet music. Videos performed while reading the score may be excluded from judging.',
+      'vg.acc1title': '<span class="clf-acc-icon">1</span> Filming Guide',
+      'vg.acc1list':
+        '<li><strong>Full-body shot required</strong> — The performer from head to feet and the entire instrument must be within the frame. (For vocalists, the full upper body and a clearly visible facial expression.)</li>' +
+        '<li><strong>Identity slate</strong> — Before playing, face the camera and say aloud in your own voice <strong>“Date of birth (e.g. 020025). Name. Title of the piece. I will now begin,”</strong> then start performing.</li>' +
+        '<li><strong>Single, unedited take</strong> — It must be an original recorded in one continuous take. Cut editing, multi-camera compositing, split screen, subtitles and audio correction are all <strong>prohibited</strong>.</li>' +
+        '<li><strong>Fixed camera</strong> — Fixed shooting using a tripod or similar. Zoom-in, zoom-out and panning are all prohibited.</li>' +
+        '<li><strong>Resolution</strong> — <code>1920×1080 (FHD)</code> or higher recommended; <code>1280×720 (HD)</code> or higher required.</li>' +
+        '<li><strong>Brightness & lighting</strong> — The performer’s face and hand movements must be clearly identifiable. No backlighting.</li>' +
+        '<li><strong>Recording validity</strong> — Only footage filmed on or after January 1, 2026 is accepted.</li>',
+      'vg.acc2title': '<span class="clf-acc-icon">2</span> Audio Guide',
+      'vg.acc2list':
+        '<li><strong>Live simultaneous recording</strong> — The audio must be the original sound recorded at the same time as the video. Dubbing or post-processing by recording separately and overlaying it is prohibited.</li>' +
+        '<li><strong>No audio correction</strong> — Any post-processing such as equalizer (EQ), reverb, compressor or noise gate is prohibited.</li>' +
+        '<li><strong>Microphone</strong> — An external microphone is recommended. A camera’s built-in mic is accepted, but there must be no clipping (distortion).</li>' +
+        '<li><strong>Ambient noise</strong> — Please ensure air-conditioner sounds, phone notifications, outside traffic noise, etc. are not included.</li>',
+      'vg.acc3title': '<span class="clf-acc-icon">3</span> File Specification',
+      'vg.acc3list':
+        '<li><strong>Submission method</strong> — You must upload to <strong>Google Drive</strong> and submit the <strong>“share link.”</strong> <span style="color:#888;">(YouTube, Vimeo and other platforms are not allowed)</span></li>' +
+        '<li><strong>File format</strong> — <code>.mp4</code> or <code>.mov</code> recommended <span style="color:#888;">(<code>.avi</code>, <code>.wmv</code>, <code>.mkv</code>, etc. are not accepted)</span></li>' +
+        '<li><strong>Size limit</strong> — Up to <code>2GB</code>.</li>' +
+        '<li><strong>File-name rule</strong> — <code>category_name_title.mp4</code><br><span style="color:#888;font-size:12px;">e.g. Piano_JohnSmith_Chopin Etude Op.10-4.mp4</span></li>' +
+        '<li><strong>Video length</strong> — No specific limit; submit at the actual performance length (typically <strong>around 8–15 minutes</strong>).</li>' +
+        '<li><strong>Sharing permission</strong> — You must change Google Drive access to <code>“Anyone with the link.”</code><div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 8px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; word-break: keep-all; border-radius: 4px;"><strong>※ Change the setting to [General access &gt; “Anyone with the link”]</strong> so that judging is possible.<br>(If the video cannot be viewed due to restricted permissions, it may be disadvantaged in judging.)</div></li>',
       'img.poster': 'poster_11_en.png'
     }
   };
