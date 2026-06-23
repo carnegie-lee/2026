@@ -505,9 +505,15 @@ function clearInstErrors() {
       err.classList.add('clf-show'); return;
     }
     clfGA('sign_up', { method: 'password', source: clfReferralLabel() });
-    if (regBox) regBox.style.setProperty('display', 'none', 'important');
-    var esBox = document.getElementById('clf-emailSentBox');
-    if (esBox) esBox.style.setProperty('display', 'block', 'important');
+    if (data.session) {
+      /* 이메일 인증 OFF: 가입 즉시 로그인됨 → 바로 마이페이지 */
+      await showMyPage(data.user);
+    } else {
+      /* 이메일 인증 ON(폴백): 인증 메일 발송 안내 */
+      if (regBox) regBox.style.setProperty('display', 'none', 'important');
+      var esBox = document.getElementById('clf-emailSentBox');
+      if (esBox) esBox.style.setProperty('display', 'block', 'important');
+    }
   });
 
   var logoutBtn = document.getElementById('clf-logoutBtn');
@@ -1043,7 +1049,16 @@ function clfToggleAcc(btn) {
 
     clfGA('sign_up', { method: 'password', source: clfReferralLabel() });
     try { sessionStorage.setItem('clf_reg_name', name); sessionStorage.setItem('clf_reg_phone', phone); } catch(e){}
-    showInstEmailSent();
+    if (data.session) {
+      /* 이메일 인증 OFF: 가입 즉시 로그인됨 → 바로 서류 폼으로 */
+      var ae = document.getElementById('clf-acctEmail'); if (ae) ae.value = em;
+      var fn = document.getElementById('nameKo'); if (fn && !fn.value) fn.value = name;
+      var fp = document.getElementById('phone'); if (fp && !fp.value) fp.value = phone;
+      await proceedToForm(data.user);
+    } else {
+      /* 이메일 인증 ON(폴백): 인증 메일 발송 안내 */
+      showInstEmailSent();
+    }
   });
 
   async function proceedToForm(user) {
