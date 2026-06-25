@@ -29,6 +29,8 @@
 | 유튜브 광고 | `/concours/youtube/` |
 | 학교 | `/concours/school/` |
 | 개인 인스타그램 | `/concours/instagram-personal/` |
+| 재단 공식 인스타 | `/concours/instagram-official/` |
+| 링크트리 | `/concours/linktree/` |
 | 입시 학원/선생님 | `/concours/academy-ipsi/` |
 | 성인 학원/선생님 | `/concours/academy-adult/` |
 | 사이트 (자연유입) | `/concours/site/` |
@@ -44,6 +46,8 @@
 | 유튜브 광고 | `/exhibition/youtube/` |
 | 학교 | `/exhibition/school/` |
 | 개인 인스타그램 | `/exhibition/instagram-personal/` |
+| 재단 공식 인스타 | `/exhibition/instagram-official/` |
+| 링크트리 | `/exhibition/linktree/` |
 | 입시 학원/선생님 | `/exhibition/academy-ipsi/` |
 | 성인 학원/선생님 | `/exhibition/academy-adult/` |
 | 사이트 (자연유입) | `/exhibition/site/` |
@@ -59,6 +63,8 @@
 | 유튜브 광고 | `/choir/youtube/` |
 | 학교 | `/choir/school/` |
 | 개인 인스타그램 | `/choir/instagram-personal/` |
+| 재단 공식 인스타 | `/choir/instagram-official/` |
+| 링크트리 | `/choir/linktree/` |
 | 입시 학원/선생님 | `/choir/academy-ipsi/` |
 | 성인 학원/선생님 | `/choir/academy-adult/` |
 | 사이트 (자연유입) | `/choir/site/` |
@@ -76,6 +82,8 @@
 | youtube | youtube | paid | yt_ad | 유료DB |
 | school | school | free | school | 무료DB |
 | instagram-personal | instagram | free | organic_insta | 무료DB |
+| instagram-official | official_insta | free | official_insta | 무료DB |
+| linktree | linktree | free | linktree | 무료DB |
 | academy-ipsi | academy | free | ipsi | 무료DB |
 | academy-adult | academy | free | adult | 무료DB |
 | site | site | free | organic | 무료DB |
