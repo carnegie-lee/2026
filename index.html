@@ -200,118 +200,6 @@
         </div>
       </div>
 
-      <!-- ════════════════════════════════════
-         참가신청 버튼 / 마감 배너 / 영상제출
-         ════════════════════════════════════ -->
-      <div class="clf-apply-btn-wrap" id="clf-applyBtnWrap" data-dir-anim style="border-top:none !important;">
-        <!-- 마감 배너 (서류 마감 후 표시) -->
-        <div id="clf-closedBanner" class="clf-closed-banner">
-          <div class="clf-closed-icon">🔒</div>
-          <div class="clf-closed-title" data-i18n="closeBanner.title">참가 접수가 마감되었습니다</div>
-          <div class="clf-closed-desc" data-i18n-html="closeBanner.desc">
-            접수 기간: 2026년 6월 1일 ~ 6월 30일(화) 18:00<br>
-            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px;">
-              <strong>[추가 접수 문의]</strong><br>
-              마감 이후 추가 접수를 희망하시는 분은 아래 사무국으로 개별 문의 바랍니다.<br>
-              전화: <a href="tel:1588-8418" style="color:inherit;font-weight:700;text-decoration:underline;">1588-8418</a> | 이메일: <a href="mailto:info@carnegielee.org" style="color:inherit;font-weight:700;text-decoration:underline;">info@carnegielee.org</a>
-            </div>
-          </div>
-        </div>
-        <!-- D-day 타이머 -->
-        <div class="clf-dday-timer-wrap" style="display:none !important;">
-          <div class="clf-dday-icon">⏳</div>
-          <div class="clf-dday-text"><span data-i18n="timer.left">접수 마감까지</span> <span class="clf-dday-time"></span> <span data-i18n="timer.remain">남았습니다</span></div>
-        </div>
-        <!-- 신청 버튼 -->
-        <button id="clf-applyOpenBtn" class="clf-apply-open-btn" type="button">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-            <polyline points="16 2 22 8 12 18 9 18 9 15" />
-          </svg>
-          <span data-i18n="btn.apply">참가 신청서 작성하기</span>
-        </button>
-      </div>
-
-      <!-- ════════════════════════════════════
-         로그인 / 가입 패널 (서류 마감 후)
-         ════════════════════════════════════ -->
-      <div id="clf-authPanel"
-        style="display:none!important; padding-top:48px !important; border-top:1px solid #E4E4E4 !important; margin-top:48px !important;">
-        <!-- 로그인 박스 -->
-        <div id="clf-loginBox" class="clf-auth-box">
-          <div class="clf-auth-title" data-i18n="auth.loginTitle">🔑 로그인</div>
-          <div class="clf-auth-sub" data-i18n-html="auth.loginSub">서류 제출 시 등록한 이메일과 비밀번호로 로그인하시면<br>제출한 서류 내용을 확인하고 영상을 제출할 수 있습니다.</div>
-          <div class="clf-auth-error" id="clf-loginError"></div>
-          <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-loginEmail" data-i18n="f.email">이메일</label>
-            <input class="clf-input" type="email" id="clf-loginEmail" placeholder="name@example.com">
-          </div>
-          <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-loginPw" data-i18n="f.password">비밀번호</label>
-            <input class="clf-input" type="password" id="clf-loginPw" placeholder="비밀번호 입력" data-i18n-ph="ph.password">
-          </div>
-          <button class="clf-auth-btn" id="clf-loginBtn" data-i18n="auth.loginBtn">로그인</button>
-          <div class="clf-auth-switch"><span data-i18n="auth.noSubmit">아직 서류를 제출하지 않으셨나요?</span> <a id="clf-goRegister" data-i18n="auth.register">회원가입</a></div>
-        </div>
-
-        <!-- 회원가입 박스 -->
-        <div id="clf-registerBox" class="clf-auth-box" style="display:none!important;">
-          <div class="clf-auth-title" data-i18n="auth.regTitle">📋 회원가입</div>
-          <div class="clf-auth-sub" data-i18n-html="auth.regSub">서류 제출 전 계정을 만들어 주세요.<br>제출 후 언제든 로그인해서 내용을 확인할 수 있습니다.</div>
-          <div class="clf-auth-error" id="clf-registerError"></div>
-          <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-regEmail" data-i18n="f.email">이메일</label>
-            <input class="clf-input" type="email" id="clf-regEmail" placeholder="name@example.com">
-          </div>
-          <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-regPw" data-i18n="f.password">비밀번호</label>
-            <input class="clf-input" type="password" id="clf-regPw" placeholder="6자 이상" data-i18n-ph="ph.regPw">
-          </div>
-          <div class="clf-auth-field">
-            <label class="clf-auth-label" for="clf-regPw2" data-i18n="auth.pwConfirm">비밀번호 확인</label>
-            <input class="clf-input" type="password" id="clf-regPw2" placeholder="비밀번호 재입력" data-i18n-ph="ph.regPw2">
-          </div>
-          <button class="clf-auth-btn" id="clf-registerBtn" data-i18n="auth.regBtn">가입하기</button>
-          <div class="clf-auth-switch"><span data-i18n="auth.haveAccount">이미 계정이 있으신가요?</span> <a id="clf-goLogin" data-i18n="auth.login">로그인</a></div>
-        </div>
-
-        <!-- 이메일 인증 안내 -->
-        <div id="clf-emailSentBox" class="clf-auth-box" style="display:none!important;">
-          <div style="text-align:center; padding: 16px 0;">
-            <div style="font-size:32px; margin-bottom:14px;">&#9993;</div>
-            <div class="clf-auth-title" data-i18n="modal.emailSentTitle">인증 이메일이 발송되었습니다</div>
-            <div class="clf-auth-sub" style="margin-bottom:20px;" data-i18n-html="modal.emailSentBody">
-              입력하신 이메일로 인증 메일을 보냈습니다.<br>
-              이메일을 확인하고 인증 링크를 클릭해 주세요.<br>
-              인증 완료 후 다시 돌아와서 로그인해 주세요.
-            </div>
-            <button class="clf-auth-btn" id="clf-emailSentOkBtn" data-i18n="auth.emailSentOk">확인 (로그인으로 이동)</button>
-            <div style="margin-top:12px; font-size:12.5px; color:#999;" data-i18n="modal.spamNote">이메일이 도착하지 않으면 스팸 폴더를 확인해 주세요.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ════════════════════════════════════
-         로그인 후 — 내 신청 내역 + 영상제출
-         ════════════════════════════════════ -->
-      <div id="clf-myPage"
-        style="display:none!important; padding-top:48px !important; border-top:1px solid #E4E4E4 !important; margin-top:48px !important;">
-        <!-- 사용자 바 -->
-        <div class="clf-user-bar">
-          <div>
-            <div class="clf-user-bar-name" id="clf-myPageName">안녕하세요 👋</div>
-            <div class="clf-user-bar-sub" data-i18n="myPage.sub">제출한 서류 내용은 수정이 불가합니다.</div>
-          </div>
-          <button class="clf-logout-btn" id="clf-logoutBtn" data-i18n="myPage.logout">로그아웃</button>
-        </div>
-
-        <!-- 제출한 서류 내용 읽기전용 뷰 -->
-        <div id="clf-mySubmission">
-          <!-- JS로 채워짐 -->
-        </div>
-      </div>
-
       <!-- 상세 -->
       <div class="clf-profile-detail" id="guide" data-dir-anim
         style="border-top:none; padding-top:0; margin-bottom:0;">
@@ -488,6 +376,118 @@
 
           </div>
 
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════
+         참가신청 버튼 / 마감 배너 / 영상제출
+         ════════════════════════════════════ -->
+      <div class="clf-apply-btn-wrap" id="clf-applyBtnWrap" data-dir-anim style="border-top:none !important;">
+        <!-- 마감 배너 (서류 마감 후 표시) -->
+        <div id="clf-closedBanner" class="clf-closed-banner">
+          <div class="clf-closed-icon">🔒</div>
+          <div class="clf-closed-title" data-i18n="closeBanner.title">참가 접수가 마감되었습니다</div>
+          <div class="clf-closed-desc" data-i18n-html="closeBanner.desc">
+            접수 기간: 2026년 6월 1일 ~ 6월 30일(화) 18:00<br>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px;">
+              <strong>[추가 접수 문의]</strong><br>
+              마감 이후 추가 접수를 희망하시는 분은 아래 사무국으로 개별 문의 바랍니다.<br>
+              전화: <a href="tel:1588-8418" style="color:inherit;font-weight:700;text-decoration:underline;">1588-8418</a> | 이메일: <a href="mailto:info@carnegielee.org" style="color:inherit;font-weight:700;text-decoration:underline;">info@carnegielee.org</a>
+            </div>
+          </div>
+        </div>
+        <!-- D-day 타이머 -->
+        <div class="clf-dday-timer-wrap" style="display:none !important;">
+          <div class="clf-dday-icon">⏳</div>
+          <div class="clf-dday-text"><span data-i18n="timer.left">접수 마감까지</span> <span class="clf-dday-time"></span> <span data-i18n="timer.remain">남았습니다</span></div>
+        </div>
+        <!-- 신청 버튼 -->
+        <button id="clf-applyOpenBtn" class="clf-apply-open-btn" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+            <polyline points="16 2 22 8 12 18 9 18 9 15" />
+          </svg>
+          <span data-i18n="btn.apply">참가 신청서 작성하기</span>
+        </button>
+      </div>
+
+      <!-- ════════════════════════════════════
+         로그인 / 가입 패널 (서류 마감 후)
+         ════════════════════════════════════ -->
+      <div id="clf-authPanel"
+        style="display:none!important; padding-top:48px !important; border-top:1px solid #E4E4E4 !important; margin-top:48px !important;">
+        <!-- 로그인 박스 -->
+        <div id="clf-loginBox" class="clf-auth-box">
+          <div class="clf-auth-title" data-i18n="auth.loginTitle">🔑 로그인</div>
+          <div class="clf-auth-sub" data-i18n-html="auth.loginSub">서류 제출 시 등록한 이메일과 비밀번호로 로그인하시면<br>제출한 서류 내용을 확인하고 영상을 제출할 수 있습니다.</div>
+          <div class="clf-auth-error" id="clf-loginError"></div>
+          <div class="clf-auth-field">
+            <label class="clf-auth-label" for="clf-loginEmail" data-i18n="f.email">이메일</label>
+            <input class="clf-input" type="email" id="clf-loginEmail" placeholder="name@example.com">
+          </div>
+          <div class="clf-auth-field">
+            <label class="clf-auth-label" for="clf-loginPw" data-i18n="f.password">비밀번호</label>
+            <input class="clf-input" type="password" id="clf-loginPw" placeholder="비밀번호 입력" data-i18n-ph="ph.password">
+          </div>
+          <button class="clf-auth-btn" id="clf-loginBtn" data-i18n="auth.loginBtn">로그인</button>
+          <div class="clf-auth-switch"><span data-i18n="auth.noSubmit">아직 서류를 제출하지 않으셨나요?</span> <a id="clf-goRegister" data-i18n="auth.register">회원가입</a></div>
+        </div>
+
+        <!-- 회원가입 박스 -->
+        <div id="clf-registerBox" class="clf-auth-box" style="display:none!important;">
+          <div class="clf-auth-title" data-i18n="auth.regTitle">📋 회원가입</div>
+          <div class="clf-auth-sub" data-i18n-html="auth.regSub">서류 제출 전 계정을 만들어 주세요.<br>제출 후 언제든 로그인해서 내용을 확인할 수 있습니다.</div>
+          <div class="clf-auth-error" id="clf-registerError"></div>
+          <div class="clf-auth-field">
+            <label class="clf-auth-label" for="clf-regEmail" data-i18n="f.email">이메일</label>
+            <input class="clf-input" type="email" id="clf-regEmail" placeholder="name@example.com">
+          </div>
+          <div class="clf-auth-field">
+            <label class="clf-auth-label" for="clf-regPw" data-i18n="f.password">비밀번호</label>
+            <input class="clf-input" type="password" id="clf-regPw" placeholder="6자 이상" data-i18n-ph="ph.regPw">
+          </div>
+          <div class="clf-auth-field">
+            <label class="clf-auth-label" for="clf-regPw2" data-i18n="auth.pwConfirm">비밀번호 확인</label>
+            <input class="clf-input" type="password" id="clf-regPw2" placeholder="비밀번호 재입력" data-i18n-ph="ph.regPw2">
+          </div>
+          <button class="clf-auth-btn" id="clf-registerBtn" data-i18n="auth.regBtn">가입하기</button>
+          <div class="clf-auth-switch"><span data-i18n="auth.haveAccount">이미 계정이 있으신가요?</span> <a id="clf-goLogin" data-i18n="auth.login">로그인</a></div>
+        </div>
+
+        <!-- 이메일 인증 안내 -->
+        <div id="clf-emailSentBox" class="clf-auth-box" style="display:none!important;">
+          <div style="text-align:center; padding: 16px 0;">
+            <div style="font-size:32px; margin-bottom:14px;">&#9993;</div>
+            <div class="clf-auth-title" data-i18n="modal.emailSentTitle">인증 이메일이 발송되었습니다</div>
+            <div class="clf-auth-sub" style="margin-bottom:20px;" data-i18n-html="modal.emailSentBody">
+              입력하신 이메일로 인증 메일을 보냈습니다.<br>
+              이메일을 확인하고 인증 링크를 클릭해 주세요.<br>
+              인증 완료 후 다시 돌아와서 로그인해 주세요.
+            </div>
+            <button class="clf-auth-btn" id="clf-emailSentOkBtn" data-i18n="auth.emailSentOk">확인 (로그인으로 이동)</button>
+            <div style="margin-top:12px; font-size:12.5px; color:#999;" data-i18n="modal.spamNote">이메일이 도착하지 않으면 스팸 폴더를 확인해 주세요.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════
+         로그인 후 — 내 신청 내역 + 영상제출
+         ════════════════════════════════════ -->
+      <div id="clf-myPage"
+        style="display:none!important; padding-top:48px !important; border-top:1px solid #E4E4E4 !important; margin-top:48px !important;">
+        <!-- 사용자 바 -->
+        <div class="clf-user-bar">
+          <div>
+            <div class="clf-user-bar-name" id="clf-myPageName">안녕하세요 👋</div>
+            <div class="clf-user-bar-sub" data-i18n="myPage.sub">제출한 서류 내용은 수정이 불가합니다.</div>
+          </div>
+          <button class="clf-logout-btn" id="clf-logoutBtn" data-i18n="myPage.logout">로그아웃</button>
+        </div>
+
+        <!-- 제출한 서류 내용 읽기전용 뷰 -->
+        <div id="clf-mySubmission">
+          <!-- JS로 채워짐 -->
         </div>
       </div>
 
