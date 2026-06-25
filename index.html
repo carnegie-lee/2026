@@ -110,8 +110,7 @@
           <button type="button" data-lang-btn="zh" onclick="clfSetLang('zh')">中文</button>
           <button type="button" data-lang-btn="en" onclick="clfSetLang('en')">EN</button>
         </div>
-        <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기" data-pdf-href data-i18n-href="pdf.guideline"
-          onclick="return clfGuidePreview(event)">
+        <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기" data-pdf-href data-i18n-href="pdf.guideline">
           <span class="clf-quick-icon">📄</span>
           <span class="clf-quick-text" data-i18n="qb.guide">모집요강 미리보기</span>
         </a>
@@ -125,21 +124,6 @@
         </a>
       </div>
     </div>
-
-    <!-- 모집요강 미리보기: 로그인 전에는 PDF 대신 로그인 모달 -->
-    <script>
-      function clfGuidePreview(e) {
-        // #detailAccordion 가 display:none 이면 로그인 전(상세 잠금) 상태
-        var acc = document.getElementById('detailAccordion');
-        var loggedIn = acc && window.getComputedStyle(acc).display !== 'none';
-        if (!loggedIn) {
-          if (e && e.preventDefault) e.preventDefault();
-          if (typeof openAuthModal === 'function') openAuthModal();
-          return false;
-        }
-        return true; // 로그인 후에는 PDF 정상 열림
-      }
-    </script>
 
     <!-- ① 헤더 -->
     <div class="clf-phero">
@@ -333,10 +317,7 @@
         style="border-top:none; padding-top:0; margin-bottom:0;">
         <div class="clf-detail-grid">
 
-          <!-- 로그인 후 표시될 상세 안내 -->
-          <div id="detailAccordion" style="display: none; margin-top: 20px;">
-
-          <!-- 모집요강 및 포스터 다운로드 (로그인 후 첫 항목, 전체 폭) -->
+          <!-- 모집요강 및 포스터 다운로드 (로그인 전후 항상 표시, 전체 폭) -->
           <div class="clf-attachment-box" id="clf-attachment-box" data-dir-anim
             style="grid-column:1/-1 !important; margin-top:48px !important;">
             <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href data-i18n-href="pdf.guideline">
@@ -349,6 +330,9 @@
               <span class="clf-attachment-name" data-i18n="img.posterTitle">카네기리재단_클래식콩쿠르_포스터.png</span>
             </a>
           </div>
+
+          <!-- 상세 안내 (로그인 전후 항상 표시) -->
+          <div id="detailAccordion" style="margin-top: 20px;">
 
           <div class="clf-detail-block" data-dir-delay="2">
             <div class="clf-detail-label">
@@ -444,7 +428,7 @@
                   <ul class="clf-acc-list" data-i18n-html="vg.acc1list">
                     <li><strong>전신 촬영 필수</strong> — 연주자의 머리부터 발끝, 악기 전체가 화면 안에 모두 들어와야 합니다. (성악의 경우 상반신 전체 + 표정이 명확히
                       보이도록)</li>
-                    <li><strong>본인 확인 슬레이트</strong> — 영상 시작 전 정면을 향해 반드시 육성으로 <strong>"생년월일(020025). 이름. 연주곡명. 시작하겠습니다"</strong> 라고 말한 후 연주를 시작해야 합니다.</li>
+                    <li><strong>본인 확인 슬레이트 (선택 사항)</strong> — 영상 시작 전 정면을 향해 육성으로 "생년월일. 이름. 연주곡명"을 말하는 것은 자율입니다. <strong style="color:#B54E3A;">생략 시 제출 영상 파일명에 반드시 본인 이름(성명)을 기재해야 합니다.</strong></li>
                     <li><strong>무편집 단일 테이크</strong> — 처음부터 끝까지 한 번에 녹화한 원본이어야 합니다. 컷 편집 · 다중 카메라 합성 · 화면 분할 · 자막
                       삽입 · 음향 보정 모두 <strong>금지</strong>입니다.</li>
                     <li><strong>고정 카메라</strong> — 삼각대 등을 활용한 고정 촬영. 줌인 · 줌아웃 · 패닝 모두 금지.</li>
@@ -790,6 +774,14 @@
                 <div class="clf-filename-guide-label" data-i18n="form.fnGuideLabel">영상 파일명 규칙</div>
                 <div class="clf-filename-guide-rule"><code data-i18n="form.fnRuleFormat">분야_성명_곡명.mp4</code></div>
                 <div class="clf-filename-guide-ex" data-i18n="form.fnGuideEx">예) 피아노_홍길동_Chopin Etude Op.10-4.mp4 · 항목 사이는 언더바(_)로 연결</div>
+                <div style="margin-top:6px; color:#B54E3A; font-weight:600; font-size:12.5px; word-break:keep-all;">※ 육성 자기소개가 자율화됨에 따라, 본인 확인을 위해 파일명에 <span style="text-decoration:underline;">반드시 '성명(이름)'을 기재</span>해 주시기 바랍니다.</div>
+                <a href="https://drive.google.com" target="_blank" style="display:inline-flex; align-items:center; margin-top:10px; background:#fff; border:1px solid #DADCE0; color:#1a73e8; padding:6px 12px; border-radius:6px; text-decoration:none; font-weight:700; font-size:13px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                  <svg style="width:16px; height:16px; margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
+                  <span data-i18n="btn.goDrive">구글 드라이브 가기</span>
+                </a>
               </div>
               <button type="button" class="clf-help-btn" id="clf-howToUploadBtn2" aria-label="업로드 방법 보기">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
@@ -1218,9 +1210,34 @@
     </div>
     <!-- 공지사항 팝업 -->
     <div class="clf-modal-bd" id="noticeModal" role="dialog" aria-modal="true" style="z-index: 100000; display: none; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; flex-direction: column;">
-      <img src="carnegielee_notice_v2.png" alt="공지사항" style="max-width: 95%; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
       
-      <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 500px; padding: 0 20px;">
+      <!-- 텍스트 기반 팝업 안내창 -->
+      <div style="background: #fff; width: 95%; max-width: 480px; max-height: 80vh; overflow-y: auto; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); padding: 32px 28px; box-sizing: border-box; position: relative;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div style="display: inline-block; background: #FFF6E5; color: #C9A84C; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-bottom: 12px; border: 1px solid #F3E4B8;">안내사항</div>
+          <h2 style="margin: 0; font-size: 22px; font-weight: 800; color: #0C3D40; line-height: 1.4; word-break: keep-all;">영상 앞 자기소개 관련<br>추가 안내</h2>
+        </div>
+        
+        <div style="font-size: 15px; color: #444; line-height: 1.6; word-break: keep-all;">
+          <p style="margin-top: 0; margin-bottom: 16px;">
+            최근 공지된 <strong style="color: #0C3D40;">"영상 시작 전 육성 자기소개(생년월일, 이름, 곡명)"</strong> 규정에 대해 안내드립니다.
+          </p>
+          <div style="background: #F8F9FA; padding: 18px; border-radius: 12px; border-left: 4px solid #C9A84C; margin-bottom: 16px;">
+            <p style="margin: 0; color: #333; font-weight: 500;">
+              해당 규정 신설 이전에 영상을 촬영하셨거나 여러 이유로 촬영이 번거로우시다는 문의가 많아, <strong>해당 규정을 '필수'에서 '자율(선택)'로 변경</strong>합니다.
+            </p>
+          </div>
+          <p style="margin-top: 0; margin-bottom: 16px;">
+            <strong style="color: #B54E3A; font-size: 16px;">따라서 영상 내 자기소개는 생략하셔도 무방하며, 제출하지 않으셔도 심사에 어떠한 불이익도 없습니다.</strong>
+          </p>
+          <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; color: #666; line-height: 1.6;">
+            <li style="margin-bottom: 6px;">자기소개 없이 바로 연주를 시작하는 영상으로 제출하셔도 괜찮습니다.</li>
+            <li>단, <strong>연주 영상 자체</strong>는 기존 규정대로 중간 끊김이 없는 무편집 단일 테이크 원본이어야 합니다.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 480px; padding: 0 10px;">
         <label style="font-size: 14.5px; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 8px; cursor: pointer; margin: 0;">
           <input type="checkbox" id="noticeHideToday" style="accent-color: #0C3D40; width: 18px; height: 18px;"> <span data-i18n="notice.hideToday">오늘 하루 보지 않기</span>
         </label>
@@ -1239,7 +1256,7 @@
       
       if (!noticeModal) return;
 
-      var hideUntil = localStorage.getItem("clf_notice_hide_until_v6");
+      var hideUntil = localStorage.getItem("clf_notice_hide_until_v8");
       if (!hideUntil || new Date().getTime() > parseInt(hideUntil, 10)) {
         noticeModal.style.setProperty("z-index", "100000", "important");
         noticeModal.style.display = "flex";
@@ -1251,7 +1268,7 @@
         if (noticeHideTodayCb && noticeHideTodayCb.checked) {
           var tomorrow = new Date();
           tomorrow.setHours(24,0,0,0);
-          localStorage.setItem("clf_notice_hide_until_v6", tomorrow.getTime());
+          localStorage.setItem("clf_notice_hide_until_v8", tomorrow.getTime());
         }
         noticeModal.classList.remove("clf-show");
         if (quickBar) quickBar.style.removeProperty("display"); // 팝업 닫을때 상단바 다시 표시 (고정됨)

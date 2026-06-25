@@ -8,7 +8,7 @@ var PDF_TITLE = '카네기리재단 클래식콩쿠르 모집요강.pdf'; // 화
   // config.js 자신의 위치에서 사이트 루트(절대경로)를 계산 → 하위 폴더(../)에서도 동일하게 동작
   var src = (document.currentScript && document.currentScript.src) || '';
   var base = src.replace(/assets\/config\.js.*$/, '');
-  var href = base + encodeURIComponent(PDF_FILE);
+  var href = base + encodeURIComponent(PDF_FILE) + '?v=' + new Date().getTime();
 
   document.querySelectorAll('[data-pdf-href]').forEach(function (a) {
     a.setAttribute('href', href);

@@ -1219,9 +1219,23 @@
     var h = Math.floor((diff / (1000 * 60 * 60)) % 24);
     var m = Math.floor((diff / 1000 / 60) % 60);
     var s = Math.floor((diff / 1000) % 60);
-    var txt = '';
-    if (d > 0) txt += d + '일 ';
-    txt += String(h).padStart(2,'0') + '시간 ' + String(m).padStart(2,'0') + '분 ' + String(s).padStart(2,'0') + '초';
+    var lang = window.__clfLang;
+    if (!lang) {
+      var hLang = document.documentElement.lang.toLowerCase();
+      if (hLang.indexOf('en') !== -1) lang = 'en';
+      else if (hLang.indexOf('zh') !== -1) lang = 'zh';
+      else lang = 'ko';
+    }
+    var dStr = '일 ', hStr = '시간 ', mStr = '분 ', sStr = '초';
+    if (lang === 'en') {
+      dStr = 'd '; hStr = 'h '; mStr = 'm '; sStr = 's';
+    } else if (lang === 'zh') {
+      dStr = '天 '; hStr = '小时 '; mStr = '分 '; sStr = '秒';
+    }
+    var txt = (d > 0 ? d + dStr : '') +
+      String(h).padStart(2, '0') + hStr +
+      String(m).padStart(2, '0') + mStr +
+      String(s).padStart(2, '0') + sStr;
     ddayTexts.forEach(function(el) { el.textContent = txt; });
     return true;
   }
