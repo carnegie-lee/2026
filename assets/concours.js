@@ -32,7 +32,10 @@ function clfReferralLabel() {
     case 'school':    case 'univ':           label = '학교'; break;
     case 'prep_academy':  case 'academy_prep':  label = '입시 학원/선생님'; break;
     case 'adult_academy': case 'academy_adult': label = '성인 학원/선생님'; break;
-    case 'site':      case 'homepage':       label = '사이트'; break;
+    case 'site':                             label = '사이트'; break;
+    case 'homepage':                         label = '홈페이지'; break;
+    case 'official_insta':                   label = '인스타 신청폼'; break;
+    case 'insta_bio':                        label = '재단 인스타'; break;
     case 'kakao':     case 'kakaotalk':      label = '카카오톡'; break;
     case 'qr':                               label = 'QR'; break;
     default: label = source;

@@ -10,7 +10,7 @@ CHANNELS=(
   "youtube|youtube|paid|yt_ad|유튜브 광고"
   "school|school|free|school|학교"
   "instagram-personal|instagram|free|organic_insta|개인 인스타그램"
-  "instagram-official|official_insta|free|official_insta|재단 공식 인스타"
+  "instagram-official|insta_bio|free|insta_bio|재단 인스타"
   "homepage|homepage|free|homepage|재단 홈페이지"
   "academy-ipsi|academy|free|ipsi|입시 학원/선생님"
   "academy-adult|academy|free|adult|성인 학원/선생님"
