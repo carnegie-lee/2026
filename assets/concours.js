@@ -310,8 +310,6 @@ function clearInstErrors() {
     if (acc) acc.style.setProperty('display', 'contents', 'important');
     var box = document.getElementById('clf-attachment-box');
     if (box) box.style.setProperty('display', 'block', 'important');
-    var guide = document.getElementById('clf-quickGuideBtn');
-    if (guide) guide.style.setProperty('display', 'flex', 'important');
   }
 
   /* 주소 드롭다운 초기화 */
@@ -360,7 +358,20 @@ function clearInstErrors() {
   /* 현재 Supabase 세션 확인 */
   var { data: { session } } = await sb.auth.getSession();
 
-
+  /* 모집요강 미리보기: 로그인 전에는 PDF 대신 로그인 유도 */
+  var quickGuideBtn = document.getElementById('clf-quickGuideBtn');
+  if (quickGuideBtn) {
+    quickGuideBtn.addEventListener('click', function (e) {
+      if (session) return; /* 로그인 상태면 PDF 그대로 열기 */
+      e.preventDefault();
+      if (docOpen) {
+        openAuthModal();
+      } else if (authPanel) {
+        authPanel.style.setProperty('display', 'block', 'important');
+        authPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
 
   /* ════════════════════
      서류 접수 기간 중
