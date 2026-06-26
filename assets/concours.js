@@ -40,6 +40,11 @@ function clfReferralLabel() {
     case 'corp_long':                        label = '기업(긴)'; break;
     case 'corp_short':                       label = '기업(짧)'; break;
     case 'poster':                           label = '포스터'; break;
+    case 'juingong':                         label = '주인공'; break;
+    case 'juingong_concours':                label = '주인공 콩쿨'; break;
+    case 'corp':                             label = '기업'; break;
+    case 'magazine':                         label = '메거진'; break;
+    case 'josumi':                           label = '조수미'; break;
     case 'kakao':     case 'kakaotalk':      label = '카카오톡'; break;
     case 'qr':                               label = 'QR'; break;
     default: label = source;

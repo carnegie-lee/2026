@@ -16,7 +16,8 @@ CHANNELS=(
   "academy-adult|academy|free|adult|성인 학원/선생님"
   "site|site|free|organic|사이트 (자연유입)"
 )
-# 주: cltory / corp-long / corp-short / poster(클토리·기업 긴/짧·포스터)는 #apply 직행이라
+# 주: cltory / corp-long / corp-short / poster / juingong / juingong-concours / corp / magazine /
+#     josumi (클토리·기업 긴/짧·포스터·주인공·주인공 콩쿨·기업·메거진·조수미)는 #apply 직행이라
 #     이 생성기로 만들지 않고 concours/ 아래 수동 작성함. 여기 추가하면 #apply 없이 덮어쓰니 주의.
 
 # 섹션 정의: 폴더|타이틀|리다이렉트 기준경로
