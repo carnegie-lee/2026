@@ -16,6 +16,8 @@ CHANNELS=(
   "academy-adult|academy|free|adult|성인 학원/선생님"
   "site|site|free|organic|사이트 (자연유입)"
 )
+# 주: cltory / corp-long / corp-short(클토리·기업 긴/짧)는 #apply 직행이라 이 생성기로 만들지 않고
+#     concours/ 아래 수동 작성함. 여기 추가하면 #apply 없이 덮어쓰니 주의.
 
 # 섹션 정의: 폴더|타이틀|리다이렉트 기준경로
 SECTIONS=(

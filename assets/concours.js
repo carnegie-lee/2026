@@ -36,6 +36,9 @@ function clfReferralLabel() {
     case 'homepage':                         label = '홈페이지'; break;
     case 'official_insta':                   label = '인스타 신청폼'; break;
     case 'insta_bio':                        label = '재단 인스타'; break;
+    case 'cltory':                           label = '클토리'; break;
+    case 'corp_long':                        label = '기업(긴)'; break;
+    case 'corp_short':                       label = '기업(짧)'; break;
     case 'kakao':     case 'kakaotalk':      label = '카카오톡'; break;
     case 'qr':                               label = 'QR'; break;
     default: label = source;
