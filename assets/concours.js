@@ -304,6 +304,16 @@ function clearInstErrors() {
   var authPanel    = document.getElementById('clf-authPanel');
   var myPage       = document.getElementById('clf-myPage');
 
+  /* 로그인 후에만 노출: 모집요강 미리보기 / 다운로드 + 상세 안내 */
+  function clfRevealGatedContent() {
+    var acc = document.getElementById('detailAccordion');
+    if (acc) acc.style.setProperty('display', 'contents', 'important');
+    var box = document.getElementById('clf-attachment-box');
+    if (box) box.style.setProperty('display', 'block', 'important');
+    var guide = document.getElementById('clf-quickGuideBtn');
+    if (guide) guide.style.setProperty('display', 'flex', 'important');
+  }
+
   /* 주소 드롭다운 초기화 */
   initAddressDropdowns();
 
@@ -373,11 +383,10 @@ function clearInstErrors() {
         var acctSection = document.getElementById('clf-acctSection');
         if (acctCallout) acctCallout.style.setProperty('display', 'none', 'important');
         if (acctSection) acctSection.style.setProperty('display', 'none', 'important');
-        
-        var acc = document.getElementById('detailAccordion');
-        if (acc) acc.style.setProperty('display', 'contents', 'important');
+
+        clfRevealGatedContent();
       }
-      
+
       var ae = document.getElementById('clf-acctEmail');
       if (ae && !ae.value) ae.value = session.user.email;
     }
@@ -407,8 +416,7 @@ function clearInstErrors() {
     if (authPanel) authPanel.style.setProperty('display', 'none', 'important');
     if (myPage)    myPage.style.setProperty('display', 'block', 'important');
 
-    var acc = document.getElementById('detailAccordion');
-    if (acc) acc.style.setProperty('display', 'contents', 'important');
+    clfRevealGatedContent();
 
     var appData = await getApplication(user.id);
 
@@ -881,10 +889,9 @@ function clearInstErrors() {
       if (applyWrap) applyWrap.classList.add('clf-form-visible');
       var ae = document.getElementById('clf-acctEmail');
       if (ae && !ae.value) ae.value = sess.user.email;
-      
-      var acc = document.getElementById('detailAccordion');
-      if (acc) acc.style.setProperty('display', 'contents', 'important');
-      
+
+      clfRevealGatedContent();
+
       fillFormFromData(dbToFormFields(appData));
       lockApplyForm();
     } catch (err) { /* noop */ }
@@ -1085,11 +1092,10 @@ function clfToggleAcc(btn) {
       var acctSection = document.getElementById('clf-acctSection');
       if (acctCallout) acctCallout.style.setProperty('display', 'none', 'important');
       if (acctSection) acctSection.style.setProperty('display', 'none', 'important');
-      
-      var acc = document.getElementById('detailAccordion');
-      if (acc) acc.style.setProperty('display', 'contents', 'important');
-      
-      setTimeout(function () { 
+
+      clfRevealGatedContent();
+
+      setTimeout(function () {
         var targetBox = document.getElementById('clf-attachment-box') || formSection;
         targetBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
       }, 150);

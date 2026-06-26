@@ -110,7 +110,7 @@
           <button type="button" data-lang-btn="zh" onclick="clfSetLang('zh')">中文</button>
           <button type="button" data-lang-btn="en" onclick="clfSetLang('en')">EN</button>
         </div>
-        <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" title="모집요강 미리보기" data-pdf-href data-i18n-href="pdf.guideline">
+        <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" target="_blank" class="clf-quick-btn" id="clf-quickGuideBtn" title="모집요강 미리보기" data-pdf-href data-i18n-href="pdf.guideline" style="display:none;">
           <span class="clf-quick-icon">📄</span>
           <span class="clf-quick-text" data-i18n="qb.guide">모집요강 미리보기</span>
         </a>
@@ -205,9 +205,9 @@
         style="border-top:none; padding-top:0; margin-bottom:0;">
         <div class="clf-detail-grid">
 
-          <!-- 모집요강 및 포스터 다운로드 (로그인 전후 항상 표시, 전체 폭) -->
+          <!-- 모집요강 및 포스터 다운로드 (로그인 후에만 표시, 전체 폭) -->
           <div class="clf-attachment-box" id="clf-attachment-box" data-dir-anim
-            style="grid-column:1/-1 !important; margin-top:48px !important;">
+            style="grid-column:1/-1 !important; margin-top:48px !important; display:none !important;">
             <a href="카네기리재단_클래식콩쿠르_모집요강.pdf" download class="clf-attachment-link" data-pdf-href data-i18n-href="pdf.guideline">
               <span class="clf-attachment-icon">💾</span>
               <span class="clf-attachment-name" data-pdf-title data-i18n="pdf.guidelineTitle">카네기리재단_클래식콩쿠르_모집요강.pdf</span>
