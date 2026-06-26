@@ -39,6 +39,7 @@ function clfReferralLabel() {
     case 'cltory':                           label = '클토리'; break;
     case 'corp_long':                        label = '기업(긴)'; break;
     case 'corp_short':                       label = '기업(짧)'; break;
+    case 'poster':                           label = '포스터'; break;
     case 'kakao':     case 'kakaotalk':      label = '카카오톡'; break;
     case 'qr':                               label = 'QR'; break;
     default: label = source;
