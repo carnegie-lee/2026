@@ -205,10 +205,8 @@ function fillFormFromData(formData) {
   var dv   = formData.division || '';
   var inst = document.getElementById('instrumentBox');
   var voc  = document.getElementById('vocalBox');
-  var etc  = document.getElementById('divisionEtcBox');
   if (inst) inst.style.setProperty('display', dv === '기악' ? 'grid' : 'none', 'important');
   if (voc)  voc.style.setProperty('display',  dv === '성악' ? 'grid' : 'none', 'important');
-  if (etc && dv === '기타') etc.classList.add('clf-show');
 
   /* 기타 옵션 박스 복원 */
   form.querySelectorAll('.clf-with-etc').forEach(function (sel) {
@@ -585,16 +583,12 @@ function clearInstErrors() {
     r.addEventListener('change', function (e) {
       var inst    = document.getElementById('instrumentBox');
       var voc     = document.getElementById('vocalBox');
-      var etc     = document.getElementById('divisionEtcBox');
       var instSel = document.getElementById('instrument');
-      var etcInp  = document.getElementById('divisionEtc');
       inst.style.setProperty('display', 'none', 'important');
       voc.style.setProperty('display', 'none', 'important');
-      etc.classList.remove('clf-show');
-      instSel.removeAttribute('required'); etcInp.removeAttribute('required');
+      instSel.removeAttribute('required');
       if (e.target.value === '기악')     { inst.style.setProperty('display', 'grid', 'important'); instSel.setAttribute('required', ''); }
       else if (e.target.value === '성악') { voc.style.setProperty('display', 'grid', 'important'); }
-      else if (e.target.value === '기타') { etc.classList.add('clf-show'); etcInp.setAttribute('required', ''); }
     });
   });
 
