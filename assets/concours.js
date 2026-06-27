@@ -750,6 +750,14 @@ function clearInstErrors() {
       submitBtn.style.setProperty('opacity', '.6', 'important');
       submitBtn.textContent = '제출 중...';
 
+      function clfReenableSubmit() {
+        submitBtn.disabled = false;
+        submitBtn.style.setProperty('opacity', '1', 'important');
+        submitBtn.textContent = origText;
+      }
+
+      try {
+
       var ref    = 'CLF-2026-' + Math.floor(100000 + Math.random() * 900000);
       var urlP   = new URLSearchParams(window.location.search);
       var medium = urlP.get('utm_medium') || sessionStorage.getItem('utm_medium') || 'free';
@@ -760,18 +768,23 @@ function clearInstErrors() {
       var photoFile = photoInput ? photoInput.files[0] : null;
       if (photoFile) {
         var compressedBlob = await compressImageToBlob(photoFile);
-        if (compressedBlob) {
-          var fileName = currentUser.id + '.jpg';
-          var { error: uploadErr } = await sb.storage
-            .from('profile-photos')
-            .upload(fileName, compressedBlob, { contentType: 'image/jpeg', upsert: true });
-          if (!uploadErr) {
-            var { data: { publicUrl } } = sb.storage.from('profile-photos').getPublicUrl(fileName);
-            photoUrl = publicUrl;
-          } else {
-            console.error('Photo upload error:', uploadErr.message);
-          }
+        if (!compressedBlob) {
+          alert('프로필 사진 이미지를 인식하지 못했습니다.\n아이폰 사진(HEIC) 형식일 수 있어요.\nJPG 또는 PNG로 변환해 다시 첨부한 뒤 제출해 주세요.');
+          clfReenableSubmit();
+          return;
         }
+        var fileName = currentUser.id + '.jpg';
+        var { error: uploadErr } = await sb.storage
+          .from('profile-photos')
+          .upload(fileName, compressedBlob, { contentType: 'image/jpeg', upsert: true });
+        if (uploadErr) {
+          console.error('Photo upload error:', uploadErr.message);
+          alert('프로필 사진 업로드에 실패했습니다.\n로그인이 만료되었을 수 있어요. 페이지를 새로고침 후 다시 로그인하여 제출해 주세요.\n\n(' + uploadErr.message + ')');
+          clfReenableSubmit();
+          return;
+        }
+        var { data: { publicUrl } } = sb.storage.from('profile-photos').getPublicUrl(fileName);
+        photoUrl = publicUrl;
       }
 
       /* ── 신분증 사본 업로드 (비공개 id-cards 버킷) ── */
@@ -780,19 +793,24 @@ function clearInstErrors() {
       var idCardFile = idCardInput ? idCardInput.files[0] : null;
       if (idCardFile) {
         var idCardBlob = await compressImageToBlob(idCardFile);
-        if (idCardBlob) {
-          var idFileName = currentUser.id + '.jpg';
-          var { error: idUploadErr } = await sb.storage
-            .from('id-cards')
-            .upload(idFileName, idCardBlob, { contentType: 'image/jpeg', upsert: true });
-          if (!idUploadErr) {
-            /* 비공개 버킷 — 공개 URL 대신 장기(10년) 서명 URL 저장. RLS 보호 DB row에서만 노출됨 */
-            var { data: idSigned } = await sb.storage.from('id-cards').createSignedUrl(idFileName, 315360000);
-            if (idSigned) idCardUrl = idSigned.signedUrl;
-          } else {
-            console.error('ID card upload error:', idUploadErr.message);
-          }
+        if (!idCardBlob) {
+          alert('신분증 사본 이미지를 인식하지 못했습니다.\n아이폰 사진(HEIC) 형식일 수 있어요.\nJPG 또는 PNG로 변환해 다시 첨부한 뒤 제출해 주세요.');
+          clfReenableSubmit();
+          return;
         }
+        var idFileName = currentUser.id + '.jpg';
+        var { error: idUploadErr } = await sb.storage
+          .from('id-cards')
+          .upload(idFileName, idCardBlob, { contentType: 'image/jpeg', upsert: true });
+        if (idUploadErr) {
+          console.error('ID card upload error:', idUploadErr.message);
+          alert('신분증 사본 업로드에 실패했습니다.\n로그인이 만료되었을 수 있어요. 페이지를 새로고침 후 다시 로그인하여 제출해 주세요.\n\n(' + idUploadErr.message + ')');
+          clfReenableSubmit();
+          return;
+        }
+        /* 비공개 버킷 — 공개 URL 대신 장기(10년) 서명 URL 저장. RLS 보호 DB row에서만 노출됨 */
+        var { data: idSigned } = await sb.storage.from('id-cards').createSignedUrl(idFileName, 315360000);
+        if (idSigned) idCardUrl = idSigned.signedUrl;
       }
 
       var payload = {
@@ -891,10 +909,12 @@ function clearInstErrors() {
       clfGA('form_submit', { form_name: 'concours_application', source: clfReferralLabel() });
       document.getElementById('successModal').classList.add('clf-show');
       if (!error && !isTestAccount(currentUser.email)) lockApplyForm();
-      else {
-        submitBtn.disabled = false;
-        submitBtn.style.setProperty('opacity', '1', 'important');
-        submitBtn.textContent = origText;
+      else clfReenableSubmit();
+
+      } catch (err) {
+        console.error('Submit failed:', err);
+        alert('제출 중 오류가 발생했습니다.\n인터넷 연결을 확인하고 다시 시도해 주세요.\n문제가 계속되면 카카오톡 문의로 연락 주세요.\n\n(오류: ' + (err && err.message ? err.message : err) + ')');
+        clfReenableSubmit();
       }
     });
   }
