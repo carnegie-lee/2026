@@ -301,6 +301,37 @@ function clearInstErrors() {
 }
 
 /* ══════════════════════════════════════════════
+   비밀번호 재설정 메일 발송 (공유 헬퍼)
+   ══════════════════════════════════════════════ */
+async function clfSendPwReset(emailId, errEl, linkEl) {
+  var fld = document.getElementById(emailId);
+  var em  = ((fld && fld.value) || '').trim().toLowerCase();
+  if (errEl) errEl.classList.remove('clf-show');
+  if (!em) {
+    if (errEl) { errEl.textContent = '이메일을 입력한 뒤 다시 눌러주세요.'; errEl.classList.add('clf-show'); }
+    if (fld) fld.focus();
+    return;
+  }
+  if (linkEl) { linkEl.style.pointerEvents = 'none'; linkEl.textContent = '메일 발송 중...'; }
+  var redirectTo = new URL('reset-password.html', location.href).href;
+  var { error } = await sb.auth.resetPasswordForEmail(em, { redirectTo: redirectTo });
+  if (error) {
+    if (errEl) { errEl.textContent = '메일 발송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.'; errEl.classList.add('clf-show'); }
+    if (linkEl) { linkEl.style.pointerEvents = ''; linkEl.textContent = '비밀번호를 잊으셨나요?'; }
+    return;
+  }
+  clfGA('password_reset_request', { source: clfReferralLabel() });
+  if (linkEl) {
+    linkEl.removeAttribute('data-i18n');
+    linkEl.textContent = '✓ 재설정 메일을 보냈습니다. 메일함(스팸함 포함)을 확인해 주세요.';
+    linkEl.style.color = '#2E7D32';
+    linkEl.style.cursor = 'default';
+    linkEl.style.textDecoration = 'none';
+    linkEl.style.pointerEvents = '';
+  }
+}
+
+/* ══════════════════════════════════════════════
    메인 초기화 (async IIFE)
    ══════════════════════════════════════════════ */
 (async function () {
@@ -523,6 +554,11 @@ function clearInstErrors() {
   ['clf-loginEmail', 'clf-loginPw'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('keydown', function (e) { if (e.key === 'Enter' && panelLoginBtn) panelLoginBtn.click(); });
+  });
+
+  var forgotLink = document.getElementById('clf-forgotPwLink');
+  if (forgotLink) forgotLink.addEventListener('click', function () {
+    clfSendPwReset('clf-loginEmail', document.getElementById('clf-loginError'), forgotLink);
   });
 
   var panelRegBtn = document.getElementById('clf-registerBtn');
@@ -1079,6 +1115,11 @@ function clfToggleAcc(btn) {
       sessionStorage.removeItem('clf_reg_phone');
     } catch(e){}
     await proceedToForm(data.user);
+  });
+
+  var instForgotLink = document.getElementById('clf-instForgotPwLink');
+  if (instForgotLink) instForgotLink.addEventListener('click', function () {
+    clfSendPwReset('clf-instLoginEmail', document.getElementById('clf-instLoginErr'), instForgotLink);
   });
 
   /* ── 모달 회원가입 ── */
