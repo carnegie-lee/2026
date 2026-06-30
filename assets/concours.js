@@ -682,8 +682,11 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
       clfFormStarted = true;
       clfGA('form_start', { form_name: 'concours_application', source: clfReferralLabel() });
     });
+    var submitInFlight = false;   /* 중복 제출 가드: 여러 번 눌러도 GAS(슬랙)·접수는 1회만 */
     applyForm.addEventListener('submit', async function (e) {
       e.preventDefault();
+      if (submitInFlight) return;   /* 이미 처리 중이면 무시 — 중복 제출/슬랙 알림 중복 방지 */
+      submitInFlight = true;
       var form = e.target;
 
       /* 에러 초기화 */
@@ -754,11 +757,12 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
         }
         /* 모바일에서는 인라인 빨간 글씨가 잘 안 보여 '반응 없음'으로 느낌 → 팝업으로 명확히 안내 */
         alert('작성되지 않은 필수 항목이 있습니다.\n빨간색으로 표시된 항목을 확인해 주세요.\n(프로필 사진·신분증 첨부, 약관 동의 체크도 확인해 주세요)');
+        submitInFlight = false;
         return;
       }
 
       /* 최종 확인 — 반드시 await 이전(클릭 제스처 컨텍스트)에서 호출해야 모바일(iOS Safari 등)에서 확인창이 표시됨 */
-      if (!confirm('제출하시면 내용을 수정하기 어렵습니다.\n작성하신 내용을 다시 한 번 확인하셨나요? 그대로 제출하시겠습니까?')) return;
+      if (!confirm('제출하시면 내용을 수정하기 어렵습니다.\n작성하신 내용을 다시 한 번 확인하셨나요? 그대로 제출하시겠습니까?')) { submitInFlight = false; return; }
 
       /* Supabase 세션 확인 — 없으면 로그인 요구 */
       var { data: { session: curSess } } = await sb.auth.getSession();
@@ -767,6 +771,7 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
       if (!currentUser) {
         alert('로그인이 필요합니다.\n로그인이 만료되었을 수 있어요. 페이지를 새로고침 후 다시 로그인하여 제출해 주세요.');
         openAuthModal();
+        submitInFlight = false;
         return;
       }
 
@@ -776,6 +781,7 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
         if (existing) {
           alert('이 계정으로 이미 제출된 서류가 있습니다.\n마이페이지에서 제출 내역을 확인해 주세요.');
           lockApplyForm();
+          submitInFlight = false;
           return;
         }
       }
@@ -787,6 +793,7 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
       submitBtn.textContent = '제출 중...';
 
       function clfReenableSubmit() {
+        submitInFlight = false;
         submitBtn.disabled = false;
         submitBtn.style.setProperty('opacity', '1', 'important');
         submitBtn.textContent = origText;
