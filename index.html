@@ -185,7 +185,7 @@
             <ul class="clf-detail-list" data-i18n-html="schedule.list">
               <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
                   class="clf-detail-text"><strong>2026.06.01(월) ~ 06.30(화)</strong> 서류·영상 접수 <span
-                    style="color:#B54E3A;font-weight:700;">(마감 6.30(화) 18:00 한국시간)</span></span>
+                    style="color:#B54E3A;font-weight:700;">(마감 6.30(화) 22:00 한국시간)</span></span>
               </li>
               <li class="clf-detail-item"><span class="clf-detail-dot"></span><span
                   class="clf-detail-text"><strong>2026.07.03(금)</strong> 본선 진출자 발표</span></li>
@@ -388,12 +388,7 @@
           <div class="clf-closed-icon">🔒</div>
           <div class="clf-closed-title" data-i18n="closeBanner.title">참가 접수가 마감되었습니다</div>
           <div class="clf-closed-desc" data-i18n-html="closeBanner.desc">
-            접수 기간: 2026년 6월 1일 ~ 6월 30일(화) 18:00<br>
-            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px;">
-              <strong>[추가 접수 문의]</strong><br>
-              마감 이후 추가 접수를 희망하시는 분은 아래 사무국으로 개별 문의 바랍니다.<br>
-              전화: <a href="tel:1588-8418" style="color:inherit;font-weight:700;text-decoration:underline;">1588-8418</a> | 이메일: <a href="mailto:info@carnegielee.org" style="color:inherit;font-weight:700;text-decoration:underline;">info@carnegielee.org</a>
-            </div>
+            접수 기간: 2026년 6월 1일 ~ 6월 30일(화) 22:00
           </div>
         </div>
         <!-- D-day 타이머 -->
@@ -500,7 +495,7 @@
         <div class="clf-form-intro">
           <div class="clf-form-intro-en">APPLICATION FORM</div>
           <h2 class="clf-form-intro-ko" data-i18n="form.introko">참가 신청서</h2>
-          <p class="clf-form-intro-desc" data-i18n-html="form.introdesc">아래 항목을 정확히 입력하시고, 하단의 <strong>연주 영상 공유 링크</strong>까지 함께 제출해 주세요. 서류와 영상은 한 번에 접수됩니다. (접수 마감: 6/30(화) 18:00)</p>
+          <p class="clf-form-intro-desc" data-i18n-html="form.introdesc">아래 항목을 정확히 입력하시고, 하단의 <strong>연주 영상 공유 링크</strong>까지 함께 제출해 주세요. 서류와 영상은 한 번에 접수됩니다. (접수 마감: 6/30(화) 22:00)</p>
         </div>
 
         <!-- 계정 생성 안내 -->
@@ -866,7 +861,7 @@
                   <div class="clf-pay-deadline-label" data-i18n="form.payDeadlineLabel">납부 마감</div>
                   <div class="clf-pay-amount-sub" style="margin-top:4px !important;" data-i18n="form.paySub2">계좌이체만 가능</div>
                 </div>
-                <div class="clf-pay-deadline-date" data-i18n="form.payDeadlineDate">2026. 06. 30 (화) 18:00</div>
+                <div class="clf-pay-deadline-date" data-i18n="form.payDeadlineDate">2026. 06. 30 (화) 22:00</div>
               </div>
 
               <dl class="clf-pay-info" style="gap: 16px 20px !important; align-items: center !important;">
@@ -1121,6 +1116,12 @@
         </div>
         <!-- 로그인 패널 -->
         <div id="clf-instLoginPanel" class="clf-inst-body">
+          <div data-i18n-html="auth.extNotice" style="background:#FDF6EC; border:1px solid #F0D9A8; border-radius:10px; padding:13px 15px; margin-bottom:16px; font-size:13px; line-height:1.65; color:#7A4F1C;">
+            <strong style="display:block; margin-bottom:5px; color:#B54E3A;">📢 접수 마감 연장 안내</strong>
+            신청·영상 업로드가 마감 시간에 집중되어, 보다 원활한 접수를 위해 마감 시간을 <strong>오늘(화) 오후 10시(22:00)</strong>까지 연장합니다.<br>
+            연장 접수는 <strong>금일 18:00 이전 가입자</strong>에 한해 가능하며, 신규 회원가입은 종료되었습니다.<br>
+            <span style="color:#B54E3A;">※ 22:00 이후에는 시스템이 자동 마감되어 추가 접수가 불가합니다.</span>
+          </div>
           <div class="clf-inst-error" id="clf-instLoginErr"></div>
           <div class="clf-inst-field">
             <label class="clf-inst-label" for="clf-instLoginEmail" data-i18n="f.email">이메일</label>
@@ -1289,7 +1290,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
-  <script src="assets/concours.js?v=20260630_2"></script>
-  <script src="assets/i18n.js?v=20260612_4"></script>
+  <script src="assets/concours.js?v=20260630_3"></script>
+  <script src="assets/i18n.js?v=20260630_3"></script>
   </body>
 </html>

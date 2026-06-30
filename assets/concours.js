@@ -63,8 +63,10 @@ var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 /* ══════════════════════════════════════════════
    날짜 상수
    ══════════════════════════════════════════════ */
-/* 서류·영상 통합 접수: 2026.06.01 ~ 06.30(화) 18:00 (단일 통합 폼) */
-var DOC_DEADLINE = new Date('2026-06-30T18:00:00+09:00');
+/* 서류·영상 통합 접수: 2026.06.01 ~ 06.30(화) → 마감 22:00로 긴급 연장 (단일 통합 폼) */
+var DOC_DEADLINE = new Date('2026-06-30T22:00:00+09:00');
+/* 마감 연장 접수: 기존 가입자만 로그인하여 신청 가능. 신규 회원가입은 차단(로그인만 허용). */
+var SIGNUP_OPEN = false;
 var CONFIRM_REDIRECT = new URL('confirm.html', window.location.href).href;
 
 /* ══════════════════════════════════════════════
@@ -262,6 +264,7 @@ function closeAuthModal() {
   document.body.style.overflow = '';
 }
 function showInstTab(tab) {
+  if (!SIGNUP_OPEN) tab = 'login';   /* 회원가입 차단 — 항상 로그인 탭만 노출 */
   var lp = document.getElementById('clf-instLoginPanel');
   var rp = document.getElementById('clf-instRegPanel');
   var ep = document.getElementById('clf-instEmailSentPanel');
@@ -522,6 +525,15 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
   var goReg    = document.getElementById('clf-goRegister');
   var goLogin  = document.getElementById('clf-goLogin');
 
+  /* 회원가입 차단 — 인라인 패널의 회원가입 박스/전환 링크 숨김(로그인만 노출) */
+  if (!SIGNUP_OPEN) {
+    if (regBox) regBox.style.setProperty('display', 'none', 'important');
+    if (goReg) {
+      var goRegSwitch = goReg.closest('.clf-auth-switch');   /* "아직 서류를 제출하지 않으셨나요? 회원가입" 줄 */
+      if (goRegSwitch) goRegSwitch.style.setProperty('display', 'none', 'important');
+    }
+  }
+
   if (goReg) goReg.addEventListener('click', function () {
     if (loginBox) loginBox.style.setProperty('display', 'none', 'important');
     if (regBox)   regBox.style.setProperty('display', 'block', 'important');
@@ -564,6 +576,7 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
 
   var panelRegBtn = document.getElementById('clf-registerBtn');
   if (panelRegBtn) panelRegBtn.addEventListener('click', async function () {
+    if (!SIGNUP_OPEN) return;   /* 회원가입 차단 */
     var em  = (document.getElementById('clf-regEmail').value  || '').trim().toLowerCase();
     var pw  = (document.getElementById('clf-regPw').value     || '').trim();
     var pw2 = (document.getElementById('clf-regPw2').value    || '').trim();
@@ -688,6 +701,16 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
       if (submitInFlight) return;   /* 이미 처리 중이면 무시 — 중복 제출/슬랙 알림 중복 방지 */
       submitInFlight = true;
       var form = e.target;
+
+      /* 마감 하드 블럭 — 22:00 이후에는 폼을 열어둔 상태라도 제출 불가 */
+      if (new Date() >= DOC_DEADLINE) {
+        alert('접수가 마감되었습니다.\n마감 시각(2026.06.30 22:00)이 지나 더 이상 제출할 수 없습니다.');
+        submitInFlight = false;
+        lockApplyForm();
+        var cb = document.getElementById('clf-closedBanner');
+        if (cb) cb.style.setProperty('display', 'block', 'important');
+        return;
+      }
 
       /* 에러 초기화 */
       form.querySelectorAll('.clf-error-msg').forEach(function (el) { el.remove(); });
@@ -1083,6 +1106,16 @@ function clfToggleAcc(btn) {
   if (tabR) tabR.addEventListener('click', function () { showInstTab('reg');   clearInstErrors(); });
   if (goRegBtn) goRegBtn.addEventListener('click', function () { showInstTab('reg'); clearInstErrors(); });
 
+  /* 회원가입 차단 — 회원가입 탭/버튼/구분선 숨김(로그인만 노출) */
+  if (!SIGNUP_OPEN) {
+    if (tabR) tabR.style.setProperty('display', 'none', 'important');
+    if (goRegBtn) {
+      goRegBtn.style.setProperty('display', 'none', 'important');
+      var goRegDivider = goRegBtn.previousElementSibling;   /* "아직 계정이 없으신가요?" 구분선 */
+      if (goRegDivider) goRegDivider.style.setProperty('display', 'none', 'important');
+    }
+  }
+
   var emailSentOkBtn = document.getElementById('clf-instEmailSentOk');
   if (emailSentOkBtn) emailSentOkBtn.addEventListener('click', function () {
     var ep = document.getElementById('clf-instEmailSentPanel');
@@ -1145,6 +1178,7 @@ function clfToggleAcc(btn) {
 
   /* ── 모달 회원가입 ── */
   if (regBtn) regBtn.addEventListener('click', async function () {
+    if (!SIGNUP_OPEN) return;   /* 회원가입 차단 */
     var name  = (document.getElementById('clf-instRegName').value  || '').trim();
     var phone = (document.getElementById('clf-instRegPhone').value || '').trim();
     var em    = (document.getElementById('clf-instRegEmail').value || '').trim().toLowerCase();

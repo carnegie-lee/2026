@@ -31,7 +31,7 @@
       /* 공식 일정 */
       'sec.schedule': '官方日程',
       'schedule.list':
-        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.06.01(周一) ~ 06.30(周二)</strong> 报名表·视频提交 <span style="color:#B54E3A;font-weight:700;">(截止 6.30(周二) 17:00 中国时间)</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.06.01(周一) ~ 06.30(周二)</strong> 报名表·视频提交 <span style="color:#B54E3A;font-weight:700;">(截止 6.30(周二) 21:00 中国时间)</span></span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.03(周五)</strong> 复赛入围者公布</span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.13(周一)</strong> 复赛(现场评审)</span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.16(周四)</strong> 决赛(现场评审)</span></li>' +
@@ -88,7 +88,8 @@
       /* 마감 배너 / 마감 후 로그인 패널 / 마이페이지 / title */
       'page.title': '2026古典音乐比赛 报名 - Carnegie LEE Foundation',
       'closeBanner.title': '报名已截止',
-      'closeBanner.desc': '报名期间:2026年6月1日 ~ 6月30日(周二) 18:00 韩国时间<br><div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px;"><strong>[补充报名咨询]</strong><br>如希望在截止后补充报名,请通过以下事务局单独咨询。<br>电话:<a href="tel:1588-8418" style="color:inherit;font-weight:700;text-decoration:underline;">1588-8418</a> | 邮箱:<a href="mailto:info@carnegielee.org" style="color:inherit;font-weight:700;text-decoration:underline;">info@carnegielee.org</a></div>',
+      'closeBanner.desc': '报名期间:2026年6月1日 ~ 6月30日(周二) 22:00 韩国时间',
+      'auth.extNotice': '<strong style="display:block; margin-bottom:5px; color:#B54E3A;">📢 报名截止时间延长通知</strong>由于报名·视频上传集中在截止时间,为保障顺利报名,截止时间延长至<strong>今日(周二)21:00(中国时间)</strong>。<br>延长报名仅限<strong>今日17:00(中国时间)前完成注册的会员</strong>,新会员注册已结束。<br><span style="color:#B54E3A;">※ 21:00(中国时间)之后系统将自动关闭,无法补充报名。</span>',
       'auth.loginTitle': '🔑 登录',
       'auth.loginSub': '使用提交材料时注册的邮箱与密码登录,<br>即可查看已提交的材料并提交视频。',
       'auth.loginBtn': '登录',
@@ -166,7 +167,7 @@
         '<li><strong>权限设置</strong> — 须将 Google 云端硬盘访问权限更改为 <code>“知道链接的所有人”</code>。<div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 8px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; word-break: keep-all; border-radius: 4px;"><strong>※ 须将设置更改为 [常规访问 &gt; “知道链接的所有人”]</strong> 方可进行评审。<br>(若因权限受限导致无法观看视频,可能在评审中受到不利影响。)</div></li>',
       /* ── 신청서 폼 ── */
       'form.introko': '报名表',
-      'form.introdesc': '请准确填写以下各项,并在底部一并提交<strong>演奏视频共享链接</strong>。报名表与视频一次性提交。(报名截止:6/30(周二) 17:00 中国时间)',
+      'form.introdesc': '请准确填写以下各项,并在底部一并提交<strong>演奏视频共享链接</strong>。报名表与视频一次性提交。(报名截止:6/30(周二) 21:00 中国时间)',
       'form.acctCallout': '<strong>需创建登录账号</strong><br>提交后可在「我的页面」查看提交内容。请务必牢记邮箱与密码。',
       'form.secAccount': '账号设置',
       'form.acctDesc': '请设置用于登录的邮箱与密码。(可与下方「参赛者信息」中的邮箱相同)',
@@ -247,7 +248,7 @@
       'form.payUnit': '韩元 / 每人',
       'form.payDeadlineLabel': '缴费截止',
       'form.paySub2': '仅限银行转账',
-      'form.payDeadlineDate': '2026.06.30(周二) 17:00 中国时间',
+      'form.payDeadlineDate': '2026.06.30(周二) 21:00 中国时间',
       'form.payNote1': '<strong class="clf-warn">⚠ 不可退款说明</strong><br>已缴纳的<strong>报名费在任何情况下均不退还。</strong>请慎重缴纳。<br><br><span style="font-size:16px; color:#B54E3A; font-weight:700;">汇款时务必采用 [콩+出生年月日6位+姓名] 的格式。</span><br><span style="font-size:15px; color:#0C3D40; font-weight:700;">(例:콩020312洪吉童)</span>',
       'form.payNote2': '<strong style="color:#0C3D40 !important;">▸ 报名确认说明</strong><br>须同时确认材料·视频提交与<strong>报名费缴纳后,比赛报名方正式完成</strong>。<br><span style="color: #d32f2f; font-weight: 700;">※ 汇款人姓名务必采用 [콩+出生年月日6位+姓名] 格式,以便快速确认。</span>',
       'form.secAgreement': '条款同意',
@@ -284,7 +285,7 @@
       /* Official schedule */
       'sec.schedule': 'Official Schedule',
       'schedule.list':
-        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.06.01 (Mon) – 06.30 (Tue)</strong> Application &amp; video submission <span style="color:#B54E3A;font-weight:700;">(deadline Jun 30 (Tue) 05:00, New York / EDT)</span></span></li>' +
+        '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.06.01 (Mon) – 06.30 (Tue)</strong> Application &amp; video submission <span style="color:#B54E3A;font-weight:700;">(deadline Jun 30 (Tue) 09:00, New York / EDT)</span></span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.03 (Fri)</strong> Main-round participants announced</span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.13 (Mon)</strong> Main Round (in-person judging)</span></li>' +
         '<li class="clf-detail-item"><span class="clf-detail-dot"></span><span class="clf-detail-text"><strong>2026.07.16 (Thu)</strong> Final Round (in-person judging)</span></li>' +
@@ -341,7 +342,8 @@
       /* Closed banner / post-deadline auth panel / My Page / title */
       'page.title': '2026 Classical Concours Application - Carnegie LEE Foundation',
       'closeBanner.title': 'Applications are closed',
-      'closeBanner.desc': 'Application period: Jun 1 – Jun 30 (Tue) 18:00 KST, 2026<br><div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); font-size: 14px;"><strong>[Late application inquiries]</strong><br>If you wish to apply after the deadline, please contact the office individually.<br>Tel: <a href="tel:1588-8418" style="color:inherit;font-weight:700;text-decoration:underline;">1588-8418</a> | Email: <a href="mailto:info@carnegielee.org" style="color:inherit;font-weight:700;text-decoration:underline;">info@carnegielee.org</a></div>',
+      'closeBanner.desc': 'Application period: Jun 1 – Jun 30 (Tue) 22:00 KST, 2026',
+      'auth.extNotice': '<strong style="display:block; margin-bottom:5px; color:#B54E3A;">📢 Application Deadline Extended</strong>As submissions and video uploads concentrated near the deadline, the deadline has been extended to <strong>today (Tue) 09:00 (New York/EDT)</strong> for smoother processing.<br>Extended applications are limited to <strong>members who registered before 05:00 (New York/EDT) today</strong>; new sign-ups are now closed.<br><span style="color:#B54E3A;">※ After 09:00 (New York/EDT), the system closes automatically and no further applications can be submitted.</span>',
       'auth.loginTitle': '🔑 Log in',
       'auth.loginSub': 'Log in with the email and password you registered when submitting<br>to review your submission and upload your video.',
       'auth.loginBtn': 'Log in',
@@ -419,7 +421,7 @@
         '<li><strong>Sharing permission</strong> — You must change Google Drive access to <code>“Anyone with the link.”</code><div style="background: #fff0f0; border-left: 3px solid #d32f2f; padding: 10px 14px; margin-top: 8px; font-size: 13.5px; color: #d32f2f; line-height: 1.5; word-break: keep-all; border-radius: 4px;"><strong>※ Change the setting to [General access &gt; “Anyone with the link”]</strong> so that judging is possible.<br>(If the video cannot be viewed due to restricted permissions, it may be disadvantaged in judging.)</div></li>',
       /* ── Application form ── */
       'form.introko': 'Application Form',
-      'form.introdesc': 'Please fill in the items below accurately and submit your <strong>performance video share link</strong> at the bottom. The application and video are submitted together. (Deadline: Jun 30 (Tue) 05:00 New York/EDT)',
+      'form.introdesc': 'Please fill in the items below accurately and submit your <strong>performance video share link</strong> at the bottom. The application and video are submitted together. (Deadline: Jun 30 (Tue) 09:00 New York/EDT)',
       'form.acctCallout': '<strong>A login account is required</strong><br>After submitting, you can review your submission on My Page. Please remember your email and password.',
       'form.secAccount': 'Account Setup',
       'form.acctDesc': 'Set the email and password you will use to log in. (You may use the same email as in the Participant Information below.)',
@@ -500,7 +502,7 @@
       'form.payUnit': 'KRW / per person',
       'form.payDeadlineLabel': 'Payment deadline',
       'form.paySub2': 'Bank transfer only',
-      'form.payDeadlineDate': 'Jun 30, 2026 (Tue) 05:00 (New York/EDT)',
+      'form.payDeadlineDate': 'Jun 30, 2026 (Tue) 09:00 (New York/EDT)',
       'form.payNote1': '<strong class="clf-warn">⚠ No refunds</strong><br>The participation fee, once paid, <strong>is not refunded under any circumstances.</strong> Please pay carefully.<br><br><span style="font-size:16px; color:#B54E3A; font-weight:700;">When transferring, you must use the format [콩 + 6-digit birthdate + name].</span><br><span style="font-size:15px; color:#0C3D40; font-weight:700;">(e.g. 콩020312HongGilDong)</span>',
       'form.payNote2': '<strong style="color:#0C3D40 !important;">▸ Confirmation of entry</strong><br>Your entry is officially complete only when <strong>both the document/video submission and the fee payment are confirmed</strong>。<br><span style="color: #d32f2f; font-weight: 700;">※ Please set the depositor name in the format [콩 + 6-digit birthdate + name] for quick confirmation.</span>',
       'form.secAgreement': 'Agreement',
