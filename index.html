@@ -1208,6 +1208,13 @@
       
       <!-- 텍스트 기반 팝업 안내창 -->
       <div style="background: #fff; width: 95%; max-width: 480px; max-height: 80vh; overflow-y: auto; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); padding: 32px 28px; box-sizing: border-box; position: relative;">
+        <!-- 🔴 접수 마감 연장 안내 (최우선) -->
+        <div data-i18n-html="notice.extension" style="background:#FDECEC; border:1.5px solid #E8B4B4; border-radius:14px; padding:20px 18px; margin-bottom:24px; word-break:keep-all;">
+          <div style="display:inline-block; background:#B54E3A; color:#fff; font-size:12.5px; font-weight:700; padding:5px 13px; border-radius:20px; margin-bottom:12px;">📢 접수 마감 연장</div>
+          <h2 style="margin:0 0 12px; font-size:21px; font-weight:800; color:#B54E3A; line-height:1.4;">접수 마감이 오늘<br>오후 10시(22:00)로 연장되었습니다</h2>
+          <p style="margin:0 0 10px; font-size:14.5px; color:#444; line-height:1.65;">신청·영상 업로드가 마감 시간에 집중되어, 보다 원활한 접수를 위해 마감 시간을 <strong style="color:#B54E3A;">오늘(화) 오후 10시(22:00)</strong>까지 연장합니다.</p>
+          <p style="margin:0; font-size:13.5px; color:#666; line-height:1.65;">연장 접수는 <strong>금일 18:00 이전 가입자</strong>에 한해 가능하며, 신규 회원가입은 종료되었습니다.<br><span style="color:#B54E3A;">※ 22:00 이후에는 시스템이 자동 마감되어 추가 접수가 불가합니다.</span></p>
+        </div>
         <div style="text-align: center; margin-bottom: 24px;">
           <div style="display: inline-block; background: #FFF6E5; color: #C9A84C; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-bottom: 12px; border: 1px solid #F3E4B8;">안내사항</div>
           <h2 style="margin: 0; font-size: 22px; font-weight: 800; color: #0C3D40; line-height: 1.4; word-break: keep-all;">영상 앞 자기소개 관련<br>추가 안내</h2>
@@ -1254,7 +1261,7 @@
       
       if (!noticeModal) return;
 
-      var hideUntil = localStorage.getItem("clf_notice_hide_until_v8");
+      var hideUntil = localStorage.getItem("clf_notice_hide_until_v9");
       if (!hideUntil || new Date().getTime() > parseInt(hideUntil, 10)) {
         noticeModal.style.setProperty("z-index", "100000", "important");
         noticeModal.style.display = "flex";
@@ -1266,7 +1273,7 @@
         if (noticeHideTodayCb && noticeHideTodayCb.checked) {
           var tomorrow = new Date();
           tomorrow.setHours(24,0,0,0);
-          localStorage.setItem("clf_notice_hide_until_v8", tomorrow.getTime());
+          localStorage.setItem("clf_notice_hide_until_v9", tomorrow.getTime());
         }
         noticeModal.classList.remove("clf-show");
         if (quickBar) quickBar.style.removeProperty("display"); // 팝업 닫을때 상단바 다시 표시 (고정됨)
@@ -1291,6 +1298,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="assets/config.js"></script>
   <script src="assets/concours.js?v=20260630_3"></script>
-  <script src="assets/i18n.js?v=20260630_3"></script>
+  <script src="assets/i18n.js?v=20260630_4"></script>
   </body>
 </html>
