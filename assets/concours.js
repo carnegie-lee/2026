@@ -934,16 +934,29 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
         body: JSON.stringify(gasPayload)
       }).catch(function(e) { console.error('GAS sync error', e); });
 
-      /* ── Supabase 저장: GAS와 독립적 ── */
-      var { error } = await saveApplication(currentUser.id, payload);
-      if (error) {
-        console.error('Supabase save error:', error.message);
+      /* ── Supabase 저장: GAS와 독립적. 제출의 마지막 단계라 여기서 실패하면
+         시트(GAS)엔 row가 남지만 DB엔 안 남는 '조용한 실패'가 됨.
+         방지책: 1회 자동 재시도(과부하 순간 대비) → 그래도 실패하면 성공 모달을
+         띄우지 않고 명확히 에러를 알린 뒤 폼을 잠그지 않아 재제출이 가능하게 함. ── */
+      var saveErr = null;
+      for (var attempt = 0; attempt < 2; attempt++) {
+        if (attempt > 0) await new Promise(function (r) { setTimeout(r, 600); });
+        var saveResp = await saveApplication(currentUser.id, payload);
+        saveErr = saveResp.error;
+        if (!saveErr) break;
+        console.error('Supabase save error (attempt ' + (attempt + 1) + '):', saveErr.message);
+      }
+
+      if (saveErr) {
+        alert('접수 정보 저장에 실패했습니다. ⚠️\n아직 접수가 완료되지 않았습니다.\n\n잠시 후 아래 \'제출\' 버튼을 다시 한 번 눌러 주세요.\n계속 실패하면 이 화면을 캡처해서 카카오톡 문의로 꼭 연락 주세요.\n\n(오류: ' + (saveErr.message || saveErr) + ')');
+        clfReenableSubmit();
+        return;
       }
 
       document.getElementById('refNumber').textContent = '접수번호 · ' + ref;
       clfGA('form_submit', { form_name: 'concours_application', source: clfReferralLabel() });
       document.getElementById('successModal').classList.add('clf-show');
-      if (!error && !isTestAccount(currentUser.email)) lockApplyForm();
+      if (!isTestAccount(currentUser.email)) lockApplyForm();
       else clfReenableSubmit();
 
       } catch (err) {
