@@ -349,6 +349,10 @@ async function clfSendPwReset(emailId, errEl, linkEl) {
   var authPanel    = document.getElementById('clf-authPanel');
   var myPage       = document.getElementById('clf-myPage');
 
+  /* 접수 마감 종료 — 로그인/가입 패널 전면 비표시 (로그인 불필요) */
+  if (authPanel) authPanel.style.setProperty('display', 'none', 'important');
+  authPanel = null;
+
   /* 로그인 후에만 노출: 모집요강 미리보기 / 다운로드 + 상세 안내 */
   function clfRevealGatedContent() {
     var acc = document.getElementById('detailAccordion');
