@@ -91,7 +91,7 @@
   tbody tr:last-child td{border-bottom:none;}
   tbody tr:hover{background:var(--paper);}
   td.num{color:var(--ink-dim);font-variant-numeric:tabular-nums;width:48%;letter-spacing:0.01em;}
-  td.nm{color:var(--ink);font-weight:400;}
+  td.nm{color:var(--ink);font-weight:300;letter-spacing:0.03em;}
   .no-result{display:none;text-align:center;padding:44px;color:var(--ink-dim);font-size:15px;}
   .list-note{margin-top:16px;font-size:13.5px;color:var(--ink-dim);word-break:keep-all;line-height:1.75;font-weight:300;}
   .list-note b{color:var(--gold-dk);font-weight:500;}
@@ -211,9 +211,9 @@
       <div class="roster-top">
         <div class="search">
           <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>
-          <input id="searchInput" type="text" data-i18n-ph="ph.search" placeholder="이름 또는 접수번호 검색" />
+          <input id="searchInput" type="text" data-i18n-ph="ph.search" placeholder="접수번호 검색" />
         </div>
-        <div class="roster-count" id="rosterCount"></div>
+        <div class="roster-count" id="rosterCount" style="display:none"></div>
       </div>
       <div class="table-box">
         <table>
@@ -458,7 +458,7 @@
       "g.p2":"After careful review, we are pleased to announce the <b>preliminary round passers</b> below. We applaud the effort and courage that brought you here. We look forward to seeing your music shine even brighter on the next stage \u2014 the finals \u2014 and on the journey beyond, toward Carnegie Hall in New York.",
       "g.sign":"\u2014 <b>Carnegie LEE Foundation</b>",
       "s.roster":"List of Passers",
-      "ph.search":"Search by name or entry number",
+      "ph.search":"Search by entry number",
       "th.num":"Entry No.",
       "th.name":"Name",
       "noResult":"No results found.",
@@ -542,6 +542,39 @@
 
   var input = document.getElementById('searchInput');
   var allRows = Array.prototype.slice.call(document.querySelectorAll('#listBody tr'));
+
+  // 이름 가운데 * 처리 (검색은 접수번호로만 동작)
+  function maskName(name){
+    name = name.trim();
+    if(name.indexOf(' ') !== -1){
+      // 영문/공백 포함 이름: 각 단어의 가운데를 * 처리
+      return name.split(/\s+/).map(function(w){
+        if(w.length <= 1) return w;
+        if(w.length === 2) return w.charAt(0) + '*';
+        return w.charAt(0) + '*'.repeat(w.length - 2) + w.charAt(w.length - 1);
+      }).join(' ');
+    }
+    if(name.indexOf('-') !== -1){
+      return name.split('-').map(function(w){
+        w = w.trim();
+        if(w.length <= 1) return w;
+        if(w.length === 2) return w.charAt(0) + '*';
+        return w.charAt(0) + '*'.repeat(w.length - 2) + w.charAt(w.length - 1);
+      }).join('-');
+    }
+    // 한글 이름 등
+    if(name.length <= 1) return name;
+    if(name.length === 2) return name.charAt(0) + '*';
+    return name.charAt(0) + '*'.repeat(name.length - 2) + name.charAt(name.length - 1);
+  }
+  allRows.forEach(function(r){
+    var cell = r.querySelector('.nm');
+    if(cell && !cell.hasAttribute('data-name')){
+      var orig = cell.textContent;
+      cell.setAttribute('data-name', orig);
+      cell.textContent = maskName(orig);
+    }
+  });
   var noResult = document.getElementById('noResult');
   var rosterCount = document.getElementById('rosterCount');
   var lastQuery = '';
@@ -557,7 +590,9 @@
     var q = this.value.trim().toLowerCase(); lastQuery=q;
     var shown = 0;
     allRows.forEach(function(r){
-      var ok = r.textContent.toLowerCase().indexOf(q) !== -1;
+      var numCell = r.querySelector('.num');
+      var hay = (numCell ? numCell.textContent : '').toLowerCase();
+      var ok = hay.indexOf(q) !== -1;
       r.style.display = ok ? '' : 'none';
       if(ok) shown++;
     });
