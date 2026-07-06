@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>본선 조 편성 및 세부 안내 | 카네기 LEE 재단 제1회 콩쿠르</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 <style>
   :root{
     --bg:#ffffff; --paper:#faf9f7; --paper2:#f5f3ef;
@@ -15,7 +17,6 @@
     --danger:#c0392b; --danger-bg:#fdf3f2; --danger-line:#f0cfc9;
     --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
   }
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;}
@@ -103,7 +104,8 @@
   .grp-arrive b{color:var(--gold-dk);font-weight:600;}
   @media (max-width:560px){.grp-arrive{margin-left:0;width:100%;text-align:center;}}
   .grp-names{padding:20px 26px;display:flex;flex-wrap:wrap;gap:9px;}
-  .grp-names .nm{font-size:14.5px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 13px;font-weight:400;letter-spacing:0.04em;}
+  .grp-names .nm{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:6px 8px 6px 13px;font-weight:400;letter-spacing:0.04em;}
+  .grp-names .nm .no{font-size:11.5px;font-weight:600;color:var(--gold-dk);background:#fff;border:1px solid var(--line-strong);border-radius:5px;padding:2px 6px;letter-spacing:0.02em;font-style:normal;white-space:nowrap;}
   .grp.hit{box-shadow:0 0 0 2px var(--gold);}
   .grp-names .nm.hit{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:500;}
   .no-result{display:none;text-align:center;padding:36px;color:var(--ink-dim);font-size:15px;border:1px solid var(--line);border-radius:14px;background:#fff;}
@@ -280,10 +282,6 @@
         <div class="at">공정성을 위해 개인 사정에 따른 <b>시간 및 조 변경은 절대 불가</b>합니다. 원활한 접수와 공간 확보를 위해 반드시 지정된 <b>‘2층 접수처 도착 시간’</b>에 맞춰 도착해 주십시오. <b>10분 이상 지각 시 실격 처리</b>될 수 있습니다.</div>
       </div>
 
-      <div class="group-search">
-        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>
-        <input id="nameSearch" type="text" placeholder="본인 이름으로 조 찾기 (예: 이*진)" />
-      </div>
       <p class="group-hint">※ 개인정보 보호를 위해 이름 가운데 글자는 * 로 표기됩니다.</p>
 
       <div id="groupList">
@@ -294,7 +292,7 @@
             <div class="grp-arrive">2층 접수처 도착 <b>10:20까지</b></div>
           </div>
           <div class="grp-names">
-            <span class="nm">곽*희</span><span class="nm">권*준</span><span class="nm">김*민</span><span class="nm">김*윤</span><span class="nm">김*아</span><span class="nm">김*원</span><span class="nm">김*영</span><span class="nm">김*조</span><span class="nm">김*훈</span><span class="nm">김*원</span><span class="nm">김*일</span><span class="nm">남*서</span><span class="nm">도*은</span><span class="nm">박*희</span><span class="nm">박*현</span><span class="nm">백*은</span><span class="nm">손*우</span><span class="nm">송*하</span><span class="nm">송*아</span><span class="nm">유*준</span><span class="nm">윤*성</span><span class="nm">이*진</span>
+            <span class="nm">곽*희<i class="no">A-1</i></span><span class="nm">권*준<i class="no">A-2</i></span><span class="nm">김*민<i class="no">A-3</i></span><span class="nm">김*윤<i class="no">A-4</i></span><span class="nm">김*아<i class="no">A-5</i></span><span class="nm">김*원<i class="no">A-6</i></span><span class="nm">김*영<i class="no">A-7</i></span><span class="nm">김*조<i class="no">A-8</i></span><span class="nm">김*훈<i class="no">A-9</i></span><span class="nm">김*원<i class="no">A-10</i></span><span class="nm">김*일<i class="no">A-11</i></span><span class="nm">남*서<i class="no">A-12</i></span><span class="nm">도*은<i class="no">A-13</i></span><span class="nm">박*희<i class="no">A-14</i></span><span class="nm">박*현<i class="no">A-15</i></span><span class="nm">백*은<i class="no">A-16</i></span><span class="nm">손*우<i class="no">A-17</i></span><span class="nm">송*하<i class="no">A-18</i></span><span class="nm">송*아<i class="no">A-19</i></span><span class="nm">유*준<i class="no">A-20</i></span><span class="nm">윤*성<i class="no">A-21</i></span><span class="nm">이*진<i class="no">A-22</i></span>
           </div>
         </div>
 
@@ -305,7 +303,7 @@
             <div class="grp-arrive">2층 접수처 도착 <b>11:55까지</b></div>
           </div>
           <div class="grp-names">
-            <span class="nm">이*찬</span><span class="nm">이*언</span><span class="nm">이*윤</span><span class="nm">임*혁</span><span class="nm">정*서</span><span class="nm">허*희</span><span class="nm">황*호</span><span class="nm">강*은</span><span class="nm">강*루</span><span class="nm">강*은</span><span class="nm">권*민</span><span class="nm">권*훈</span><span class="nm">남*주</span><span class="nm">박*은</span><span class="nm">박*나</span><span class="nm">배*연</span><span class="nm">서*아</span><span class="nm">소*림</span><span class="nm">신*지</span><span class="nm">심*준</span><span class="nm">윤*린</span><span class="nm">이*영</span>
+            <span class="nm">이*찬<i class="no">B-1</i></span><span class="nm">이*언<i class="no">B-2</i></span><span class="nm">이*윤<i class="no">B-3</i></span><span class="nm">임*혁<i class="no">B-4</i></span><span class="nm">정*서<i class="no">B-5</i></span><span class="nm">허*희<i class="no">B-6</i></span><span class="nm">황*호<i class="no">B-7</i></span><span class="nm">강*은<i class="no">B-8</i></span><span class="nm">강*루<i class="no">B-9</i></span><span class="nm">강*은<i class="no">B-10</i></span><span class="nm">권*민<i class="no">B-11</i></span><span class="nm">권*훈<i class="no">B-12</i></span><span class="nm">남*주<i class="no">B-13</i></span><span class="nm">박*은<i class="no">B-14</i></span><span class="nm">박*나<i class="no">B-15</i></span><span class="nm">배*연<i class="no">B-16</i></span><span class="nm">서*아<i class="no">B-17</i></span><span class="nm">소*림<i class="no">B-18</i></span><span class="nm">신*지<i class="no">B-19</i></span><span class="nm">심*준<i class="no">B-20</i></span><span class="nm">윤*린<i class="no">B-21</i></span><span class="nm">이*영<i class="no">B-22</i></span>
           </div>
         </div>
 
@@ -316,7 +314,7 @@
             <div class="grp-arrive">2층 접수처 도착 <b>14:35까지</b></div>
           </div>
           <div class="grp-names">
-            <span class="nm">이*혁</span><span class="nm">이*민</span><span class="nm">이*주</span><span class="nm">이*은</span><span class="nm">이*비</span><span class="nm">이*</span><span class="nm">이*현</span><span class="nm">이*기</span><span class="nm">이*린</span><span class="nm">이*성</span><span class="nm">이*정</span><span class="nm">임*은</span><span class="nm">장*라</span><span class="nm">정*찬</span><span class="nm">조*형</span><span class="nm">한*호</span><span class="nm">조***연</span><span class="nm">선*이</span><span class="nm">곽*민</span><span class="nm">구*선</span><span class="nm">김*의</span><span class="nm">김*래</span>
+            <span class="nm">이*혁<i class="no">C-1</i></span><span class="nm">이*민<i class="no">C-2</i></span><span class="nm">이*주<i class="no">C-3</i></span><span class="nm">이*은<i class="no">C-4</i></span><span class="nm">이*비<i class="no">C-5</i></span><span class="nm">이*<i class="no">C-6</i></span><span class="nm">이*현<i class="no">C-7</i></span><span class="nm">이*기<i class="no">C-8</i></span><span class="nm">이*린<i class="no">C-9</i></span><span class="nm">이*성<i class="no">C-10</i></span><span class="nm">이*정<i class="no">C-11</i></span><span class="nm">임*은<i class="no">C-12</i></span><span class="nm">장*라<i class="no">C-13</i></span><span class="nm">정*찬<i class="no">C-14</i></span><span class="nm">조*형<i class="no">C-15</i></span><span class="nm">한*호<i class="no">C-16</i></span><span class="nm">조***연<i class="no">C-17</i></span><span class="nm">선*이<i class="no">C-18</i></span><span class="nm">곽*민<i class="no">C-19</i></span><span class="nm">구*선<i class="no">C-20</i></span><span class="nm">김*의<i class="no">C-21</i></span><span class="nm">김*래<i class="no">C-22</i></span>
           </div>
         </div>
 
@@ -327,7 +325,7 @@
             <div class="grp-arrive">2층 접수처 도착 <b>16:10까지</b></div>
           </div>
           <div class="grp-names">
-            <span class="nm">김*윤</span><span class="nm">김*현</span><span class="nm">김*은</span><span class="nm">김*아</span><span class="nm">김*셉</span><span class="nm">김*희</span><span class="nm">김*중</span><span class="nm">김*민</span><span class="nm">나*유</span><span class="nm">맹*경</span><span class="nm">박*진</span><span class="nm">박*희</span><span class="nm">배*윤</span><span class="nm">배*정</span><span class="nm">백*준</span><span class="nm">서*</span><span class="nm">손*국</span><span class="nm">신*영</span><span class="nm">안*영</span><span class="nm">안*혁</span><span class="nm">양*호</span><span class="nm">오*울</span>
+            <span class="nm">김*윤<i class="no">D-1</i></span><span class="nm">김*현<i class="no">D-2</i></span><span class="nm">김*은<i class="no">D-3</i></span><span class="nm">김*아<i class="no">D-4</i></span><span class="nm">김*셉<i class="no">D-5</i></span><span class="nm">김*희<i class="no">D-6</i></span><span class="nm">김*중<i class="no">D-7</i></span><span class="nm">김*민<i class="no">D-8</i></span><span class="nm">나*유<i class="no">D-9</i></span><span class="nm">맹*경<i class="no">D-10</i></span><span class="nm">박*진<i class="no">D-11</i></span><span class="nm">박*희<i class="no">D-12</i></span><span class="nm">배*윤<i class="no">D-13</i></span><span class="nm">배*정<i class="no">D-14</i></span><span class="nm">백*준<i class="no">D-15</i></span><span class="nm">서*<i class="no">D-16</i></span><span class="nm">손*국<i class="no">D-17</i></span><span class="nm">신*영<i class="no">D-18</i></span><span class="nm">안*영<i class="no">D-19</i></span><span class="nm">안*혁<i class="no">D-20</i></span><span class="nm">양*호<i class="no">D-21</i></span><span class="nm">오*울<i class="no">D-22</i></span>
           </div>
         </div>
 
@@ -338,11 +336,10 @@
             <div class="grp-arrive">2층 접수처 도착 <b>17:45까지</b></div>
           </div>
           <div class="grp-names">
-            <span class="nm">오**더</span><span class="nm">이*현</span><span class="nm">이*환</span><span class="nm">이*</span><span class="nm">이*훈</span><span class="nm">이*진</span><span class="nm">이*규</span><span class="nm">이*서</span><span class="nm">이*나</span><span class="nm">장*혁</span><span class="nm">전*별</span><span class="nm">정*나</span><span class="nm">정*희</span><span class="nm">정*준</span><span class="nm">조*울</span><span class="nm">조*연</span><span class="nm">조*석</span><span class="nm">채*라</span><span class="nm">최*이</span><span class="nm">최*성</span><span class="nm">하*훈</span><span class="nm">황**우</span>
+            <span class="nm">오**더<i class="no">E-1</i></span><span class="nm">이*현<i class="no">E-2</i></span><span class="nm">이*환<i class="no">E-3</i></span><span class="nm">이*<i class="no">E-4</i></span><span class="nm">이*훈<i class="no">E-5</i></span><span class="nm">이*진<i class="no">E-6</i></span><span class="nm">이*규<i class="no">E-7</i></span><span class="nm">이*서<i class="no">E-8</i></span><span class="nm">이*나<i class="no">E-9</i></span><span class="nm">장*혁<i class="no">E-10</i></span><span class="nm">전*별<i class="no">E-11</i></span><span class="nm">정*나<i class="no">E-12</i></span><span class="nm">정*희<i class="no">E-13</i></span><span class="nm">정*준<i class="no">E-14</i></span><span class="nm">조*울<i class="no">E-15</i></span><span class="nm">조*연<i class="no">E-16</i></span><span class="nm">조*석<i class="no">E-17</i></span><span class="nm">채*라<i class="no">E-18</i></span><span class="nm">최*이<i class="no">E-19</i></span><span class="nm">최*성<i class="no">E-20</i></span><span class="nm">하*훈<i class="no">E-21</i></span><span class="nm">황**우<i class="no">E-22</i></span>
           </div>
         </div>
       </div>
-      <div class="no-result" id="noResult">해당하는 이름의 참가자를 찾을 수 없습니다. 접수 시 등록한 이름으로 다시 검색해 주세요.</div>
 
       <p class="list-note">※ 본 경연은 조별로 정해진 순서에 따라 진행되므로, 개인 사정에 의한 경연 시작 시간 변경 및 중간 참여는 일체 불가합니다. 모든 참가자는 반드시 <b>지정된 도착 시간</b>에 맞춰 접수해 주시기 바랍니다.</p>
 
@@ -416,10 +413,10 @@
         <div class="subgrid">
           <div class="k">제출 기한</div><div class="v"><span class="hl">2026년 7월 9일(목) 18:00 까지</span></div>
           <div class="k">제출 방법</div><div class="v"><a class="btn-link" href="https://docs.google.com/forms/d/e/1FAIpQLSchcamuqQ1b5WtpMWFf4XZV6c3br8Agnf1kIlfF9m_79cxyaQ/viewform?usp=send_form" target="_blank" rel="noopener">곡목 제출 폼 열기 →</a></div>
-          <div class="k">연주 형식</div><div class="v">지정곡 없는 <b>자유곡 1곡</b> · 무대 위 실제 연주 시간 <b>3분 내외</b></div>
+          <div class="k">연주 형식</div><div class="v">지정곡 없는 <b>자유곡 1곡</b> · 연주 시간 <b>5분 이내</b> (실제 연주 <b>3분 내외</b>)</div>
           <div class="k">곡목 제한</div><div class="v">1차 예선 제출 영상과 <b>동일한 곡으로는 연주 불가</b> <span style="color:var(--danger)">(적발 시 실격)</span></div>
         </div>
-        <div class="warn">폼 제출 마감 시간 이후에는 <b>어떠한 사유로도 곡목 수정 및 MR 교체가 절대 불가</b>하오니 신중하게 기재해 주시기 바랍니다. 심사위원이 충분히 평가했다고 판단하면 3분 이내라도 ‘종’을 쳐 연주를 중단시킬 수 있으며, 이 경우 <b style="color:var(--ink-soft)">감점은 없습니다.</b></div>
+        <div class="warn">폼 제출 마감 시간 이후에는 <b>어떠한 사유로도 곡목 수정 및 MR 교체가 절대 불가</b>하오니 신중하게 기재해 주시기 바랍니다. 본선 연주 시간은 <b style="color:var(--ink-soft)">5분 이내</b>이나 실제 연주는 <b style="color:var(--ink-soft)">3분 내외</b>로 진행되며, 심사위원이 기량을 충분히 파악했다고 판단하면 ‘종(Bell)’을 쳐 연주를 중단시킬 수 있습니다. 이는 <b style="color:var(--ink-soft)">감점 사항이 아니니 안심하셔도 됩니다.</b></div>
       </div>
 
       <div class="sec-label sec-gap"><span class="en">Audio</span><span class="ko">MR(반주 음원) 제출 및 예비용 지참</span><span class="fill"></span></div>
@@ -453,12 +450,12 @@
           <div class="vlabel">Venue</div>
           <div class="vname">마레보인 웨이브홀<span>Marevo in Wave</span></div>
           <div class="vaddr">서울특별시 서초구 잠원로 145-35, 2·3층 (잠원동 149-2)<br />한강시민공원 잠원지구 · 3호선 잠원역 인근</div>
-          <a class="map-btn" href="https://map.naver.com/p/search/마레보인 웨이브홀" target="_blank" rel="noopener">
+          <a class="map-btn" href="https://map.naver.com/p/search/마레보인%20웨이브홀" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
             네이버 지도로 열기
           </a>
         </div>
-        <a class="map" href="https://map.naver.com/p/search/마레보인 웨이브홀" target="_blank" rel="noopener" aria-label="네이버 지도에서 본선 장소 보기">
+        <a class="map" href="https://map.naver.com/p/search/마레보인%20웨이브홀" target="_blank" rel="noopener" aria-label="네이버 지도에서 본선 장소 보기">
           <div class="map-preview">
             <div class="mp-grid"></div>
             <div class="mp-road mp-road-h"></div>
@@ -540,7 +537,7 @@
         </div>
         <div class="qa">
           <button class="qa-q"><span><span class="qmark">Q</span>본선 연주 시간은 얼마인가요? 끝까지 연주할 수 있나요?</span><span class="plus"></span></button>
-          <div class="qa-a"><div class="qa-a-in">무대 위 실제 연주 시간은 <b>3분 내외</b>로 준비해 주십시오. 원활한 진행과 공정한 심사를 위해 3분 이내라도 심사위원이 충분히 평가했다고 판단하면 ‘종’을 쳐 연주를 중단시킬 수 있으며, 중간에 멈추더라도 <b>채점상 감점은 없습니다.</b></div></div>
+          <div class="qa-a"><div class="qa-a-in">본선 연주 시간은 <b>5분 이내</b>이나, 실제 연주 시간은 <b>3분 내외</b>로 진행됩니다. 심사위원이 기량을 충분히 파악했다고 판단하면 <b>‘종(Bell)’</b>을 쳐서 연주를 중단시킬 수 있으며, 이는 <b>감점 사항이 아니오니</b> 안심하십시오.</div></div>
         </div>
         <div class="qa">
           <button class="qa-q"><span><span class="qmark">Q</span>예선에서 제출한 곡을 본선에서 그대로 연주해도 되나요?</span><span class="plus"></span></button>
@@ -574,29 +571,6 @@
       panels.forEach(function(p){ p.classList.toggle('active', p.id==='tab-'+id); });
       window.scrollTo({top:0,behavior:'smooth'});
     });
-  });
-
-  // 이름으로 조 찾기
-  var nameSearch = document.getElementById('nameSearch');
-  var groups = Array.prototype.slice.call(document.querySelectorAll('#groupList .grp'));
-  var noResult = document.getElementById('noResult');
-  nameSearch.addEventListener('input', function(){
-    var q = this.value.trim().toLowerCase();
-    var anyHit = false;
-    groups.forEach(function(grp){
-      var names = Array.prototype.slice.call(grp.querySelectorAll('.nm'));
-      var grpHit = false;
-      names.forEach(function(n){
-        var match = q!=='' && n.textContent.toLowerCase().indexOf(q)!==-1;
-        n.classList.toggle('hit', match);
-        if(match){ grpHit = true; anyHit = true; }
-      });
-      grp.classList.toggle('hit', grpHit);
-      if(q===''){ grp.style.display=''; }
-      else { grp.style.display = grpHit ? '' : 'none'; }
-    });
-    if(q===''){ groups.forEach(function(g){ g.style.display=''; }); noResult.style.display='none'; }
-    else { noResult.style.display = anyHit ? 'none' : 'block'; }
   });
 
   // FAQ 아코디언
