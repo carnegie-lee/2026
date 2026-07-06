@@ -167,15 +167,16 @@
   .checklist .ci-txt span{font-size:13px;color:var(--ink-dim);line-height:1.65;word-break:keep-all;font-weight:300;}
 
   /* 오시는 길 */
-  .venue{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;}
+  .venue{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;text-decoration:none;color:inherit;transition:transform 0.2s;}
+  .venue:hover{transform:translateY(-2px);}
   @media (max-width:720px){.venue{grid-template-columns:1fr;}}
   .venue .info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 30px;display:flex;flex-direction:column;justify-content:center;}
   .venue .info .vlabel{font-size:12px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:12px;}
   .venue .info .vname{font-size:20px;color:var(--ink);margin-bottom:4px;font-weight:500;letter-spacing:-0.01em;}
   .venue .info .vname span{color:var(--ink-dim);font-size:14px;display:block;margin-top:3px;font-weight:300;}
-  .venue .info .vaddr{font-size:14.5px;color:var(--ink-dim);line-height:1.8;font-weight:300;margin-bottom:22px;word-break:keep-all;}
-  .venue .map{border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:250px;background:var(--paper);text-decoration:none;display:block;transition:box-shadow 0.2s,transform 0.2s;}
-  .venue .map:hover{box-shadow:0 8px 28px rgba(176,138,79,0.18);transform:translateY(-2px);}
+  .venue .info .vaddr{font-size:14.5px;color:var(--ink-dim);line-height:1.8;font-weight:300;word-break:keep-all;}
+  .venue .map{border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:250px;background:var(--paper);display:block;transition:box-shadow 0.2s;}
+  .venue:hover .map{box-shadow:0 8px 28px rgba(176,138,79,0.18);}
   .map-preview{position:relative;width:100%;height:100%;min-height:250px;background:linear-gradient(135deg,#f3efe7 0%,#ece7dc 100%);overflow:hidden;}
   .mp-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line-strong) 1px,transparent 1px),linear-gradient(90deg,var(--line-strong) 1px,transparent 1px);background-size:34px 34px;opacity:0.5;}
   .mp-road{position:absolute;background:#fff;box-shadow:0 0 0 1px var(--line-strong);}
@@ -186,11 +187,8 @@
   .mp-label{position:absolute;top:50%;left:50%;transform:translateX(-50%);margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center;z-index:2;}
   .mp-label span{display:block;font-size:11.5px;font-weight:300;color:var(--ink-dim);margin-top:3px;letter-spacing:0;}
   .mp-cta{position:absolute;bottom:14px;right:14px;background:var(--ink);color:#fff;font-size:13px;font-weight:400;padding:9px 16px;border-radius:22px;z-index:2;transition:background 0.15s;}
-  .venue .map:hover .mp-cta{background:var(--gold-dk);}
+  .venue:hover .mp-cta{background:var(--gold-dk);}
   @media (max-width:520px){.mp-label{font-size:13px;max-width:82%;white-space:normal;}}
-  .map-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:var(--ink);border:none;color:#fff;font-size:14px;font-weight:400;text-decoration:none;padding:12px 22px;border-radius:24px;transition:all 0.15s;}
-  .map-btn:hover{background:var(--gold-dk);}
-  .map-btn svg{width:15px;height:15px;fill:currentColor;}
 
   /* FAQ */
   .faq{border-top:2px solid var(--rule);}
@@ -245,24 +243,23 @@
   <div class="page-top">
     <div class="eyebrow">Finals · Group Assignment</div>
     <h1>본선 조 편성 및 세부 안내</h1>
-    <div class="subtitle">카네기 LEE 재단 제1회 콩쿠르 · 2026년 7월 13일(월) 마레보인 웨이브홀</div>
+    <div class="subtitle">카네기 LEE 재단 제1회 콩쿠르 · 2026년 7월 13일(월) 마레보인 웨이브</div>
     <div class="hr"></div>
   </div>
 
   <nav class="tabs">
     <div class="tabs-inner">
-      <button class="tab-btn active" data-tab="groups">조 편성표</button>
-      <button class="tab-btn" data-tab="rules">현장 규정</button>
-      <button class="tab-btn" data-tab="submit">곡목 · MR 제출</button>
+      <button class="tab-btn active" data-tab="rules">현장 규정 &amp; 제출</button>
+      <button class="tab-btn" data-tab="groups">조 편성표</button>
       <button class="tab-btn" data-tab="venue">오시는 길</button>
-      <button class="tab-btn" data-tab="faq">공지 &amp; FAQ</button>
+      <button class="tab-btn" data-tab="faq">문의 안내</button>
     </div>
   </nav>
 
   <main>
 
     <!-- ===================== 조 편성표 ===================== -->
-    <section class="panel active" id="tab-groups">
+    <section class="panel" id="tab-groups">
       <div class="greeting">
         <h2>1차 예선을 통과하신 본선 진출자 여러분, 진심으로 축하드립니다.</h2>
         <p>7월 13일(월) 치러질 본선 경연의 조 편성표와 현장 세부 운영 규정을 안내해 드립니다. 이번 본선 무대는 대기실(2층)과 심사 경연장(3층)이 분리 운영되는 만큼, 현장 혼선을 막기 위해 <b>참가자 동선 및 보호자 출입 통제 규정이 매우 엄격하게 적용</b>됩니다.</p>
@@ -270,8 +267,8 @@
       </div>
 
       <div class="keyinfo">
-        <div class="kcard"><div class="klabel">Date</div><div class="kval">2026년 7월 13일 (월)</div><div class="ksub">본선 경연 · 총 5개 조 (A~E)</div></div>
-        <div class="kcard"><div class="klabel">Venue</div><div class="kval">마레보인 웨이브홀</div><div class="ksub">서울 서초구 잠원로 145-35, 2·3층</div></div>
+        <div class="kcard"><div class="klabel">Date</div><div class="kval">2026년 7월 13일 (월)</div><div class="ksub">본선 경연 · 총 5개 조 (A~E)<br />결선 · 2026년 7월 16일(목) 오전</div></div>
+        <div class="kcard"><div class="klabel">Venue</div><div class="kval">마레보인 웨이브</div><div class="ksub">서울 서초구 잠원로 145-35, 2·3층</div></div>
         <div class="kcard"><div class="klabel">Structure</div><div class="kval">2층 접수·대기 / 3층 경연</div><div class="ksub">스태프 인솔에 따라 층간 이동</div></div>
       </div>
 
@@ -354,8 +351,8 @@
       </div>
     </section>
 
-    <!-- ===================== 현장 규정 ===================== -->
-    <section class="panel" id="tab-rules">
+    <!-- ============ 본선 규정 · 안내 (현장 규정 + 곡목/MR 제출 + 지참물 + FAQ 통합) ============ -->
+    <section class="panel active" id="tab-rules">
       <div class="sec-label"><span class="en">On-site</span><span class="ko">보호자 출입 및 참가자 동선 규정</span><span class="fill"></span></div>
 
       <div class="alert">
@@ -401,11 +398,8 @@
           </ul>
         </div>
       </div>
-    </section>
 
-    <!-- ===================== 곡목 · MR 제출 ===================== -->
-    <section class="panel" id="tab-submit">
-      <div class="sec-label"><span class="en">Repertoire</span><span class="ko">본선 연주 곡목 및 MR 제출</span><span class="fill"></span></div>
+      <div class="sec-label sec-gap"><span class="en">Repertoire</span><span class="ko">본선 연주 곡목 및 MR 제출</span><span class="fill"></span></div>
 
       <div class="submit">
         <span class="tag">기한 엄수 · 수정 절대 불가</span>
@@ -413,7 +407,7 @@
         <div class="subgrid">
           <div class="k">제출 기한</div><div class="v"><span class="hl">2026년 7월 9일(목) 18:00 까지</span></div>
           <div class="k">제출 방법</div><div class="v"><a class="btn-link" href="https://docs.google.com/forms/d/e/1FAIpQLSchcamuqQ1b5WtpMWFf4XZV6c3br8Agnf1kIlfF9m_79cxyaQ/viewform?usp=send_form" target="_blank" rel="noopener">곡목 제출 폼 열기 →</a></div>
-          <div class="k">연주 형식</div><div class="v">지정곡 없는 <b>자유곡 1곡</b> · 연주 시간 <b>5분 이내</b> (실제 연주 <b>3분 내외</b>)</div>
+          <div class="k">연주 형식</div><div class="v">지정곡 없는 <b>자유곡 1곡</b> · <b>전곡 암보 필수</b> · 연주 시간 <b>5분 이내</b> (실제 연주 <b>3분 내외</b>)</div>
           <div class="k">곡목 제한</div><div class="v">1차 예선 제출 영상과 <b>동일한 곡으로는 연주 불가</b> <span style="color:var(--danger)">(적발 시 실격)</span></div>
         </div>
         <div class="warn">폼 제출 마감 시간 이후에는 <b>어떠한 사유로도 곡목 수정 및 MR 교체가 절대 불가</b>하오니 신중하게 기재해 주시기 바랍니다. 본선 연주 시간은 <b style="color:var(--ink-soft)">5분 이내</b>이나 실제 연주는 <b style="color:var(--ink-soft)">3분 내외</b>로 진행되며, 심사위원이 기량을 충분히 파악했다고 판단하면 ‘종(Bell)’을 쳐 연주를 중단시킬 수 있습니다. 이는 <b style="color:var(--ink-soft)">감점 사항이 아니니 안심하셔도 됩니다.</b></div>
@@ -439,70 +433,6 @@
           <div class="rn">3</div>
           <div class="rt"><span class="danger">면책 조항</span> · 제출 파일의 오류·규격 미달, 혹은 당일 예비용 USB 미지참으로 발생하는 모든 재생 사고 및 경연 차질에 대하여 <b>본 재단은 일절 책임지지 않으며</b>, 그로 인한 불이익은 전적으로 참가자 본인에게 있습니다.</div>
         </div>
-      </div>
-    </section>
-
-    <!-- ===================== 오시는 길 ===================== -->
-    <section class="panel" id="tab-venue">
-      <div class="sec-label"><span class="en">Venue</span><span class="ko">본선 장소</span><span class="fill"></span></div>
-      <div class="venue">
-        <div class="info">
-          <div class="vlabel">Venue</div>
-          <div class="vname">마레보인 웨이브홀<span>Marevo in Wave</span></div>
-          <div class="vaddr">서울특별시 서초구 잠원로 145-35, 2·3층 (잠원동 149-2)<br />한강시민공원 잠원지구 · 3호선 잠원역 인근</div>
-          <a class="map-btn" href="https://map.naver.com/p/search/마레보인%20웨이브홀" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
-            네이버 지도로 열기
-          </a>
-        </div>
-        <a class="map" href="https://map.naver.com/p/search/마레보인%20웨이브홀" target="_blank" rel="noopener" aria-label="네이버 지도에서 본선 장소 보기">
-          <div class="map-preview">
-            <div class="mp-grid"></div>
-            <div class="mp-road mp-road-h"></div>
-            <div class="mp-road mp-road-v"></div>
-            <div class="mp-pin">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
-            </div>
-            <div class="mp-label">마레보인 웨이브홀<span>서초구 잠원로 145-35 · 3호선 잠원역 인근</span></div>
-            <div class="mp-cta">지도에서 길찾기 →</div>
-          </div>
-        </a>
-      </div>
-
-      <div class="sec-label sec-gap"><span class="en">Access</span><span class="ko">오시는 길 및 주차 안내</span><span class="fill"></span></div>
-      <div class="cards">
-        <div class="info-card">
-          <h3>대중교통</h3>
-          <ul>
-            <li><b>3호선 잠원역 1번 출구</b> 하차 후 도보 이동</li>
-            <li>셔틀버스는 운영되지 않습니다.</li>
-            <li>주차장이 협소하므로 <b>대중교통 이용을 권장</b>합니다.</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h3>자가용 · 주차</h3>
-          <ul>
-            <li>잠원 한강지구 <b>3~6주차장</b> 이용 가능 (3시간 무료)</li>
-            <li>자가용 이용 시 한강지구 주차장 주차 후 <b>도보 이동</b></li>
-            <li>주차 공간이 협소하니 가급적 대중교통을 이용해 주세요.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== 공지 & FAQ ===================== -->
-    <section class="panel" id="tab-faq">
-      <div class="sec-label"><span class="en">Contact</span><span class="ko">문의 안내</span><span class="fill"></span></div>
-
-      <div class="kakao-banner">
-        <div class="kb-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.6-2.5.7.1 1.4.2 2.1.2 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
-        </div>
-        <div class="kb-text">
-          <div class="kb-h">카카오톡 채널로 문의해 주세요</div>
-          <div class="kb-b">본 안내를 꼼꼼히 확인하신 후에도 추가 문의가 있으시면 <b>카카오톡 채널 [카네기 LEE 재단]</b>으로 남겨주세요. 담당자 확인 후 순차적으로 답변해 드립니다.</div>
-        </div>
-        <a class="kb-btn" href="https://pf.kakao.com/_KxobGX" target="_blank" rel="noopener">채널 문의하기 →</a>
       </div>
 
       <div class="sec-label sec-gap"><span class="en">Checklist</span><span class="ko">경연 당일 필수 지참물</span><span class="fill"></span></div>
@@ -547,6 +477,66 @@
           <button class="qa-q"><span><span class="qmark">Q</span>MR은 어떻게 제출하나요? 당일 USB도 꼭 가져가야 하나요?</span><span class="plus"></span></button>
           <div class="qa-a"><div class="qa-a-in">곡목 제출 폼에 <b>.mp3 형식</b> 파일을 사전 업로드하셔야 하며(파일명: 참가자이름_참가부문_곡명.mp3), 사전 제출을 완료하셨더라도 현장 시스템 오류에 대비해 동일한 mp3만 저장한 <b>예비용 USB를 당일 반드시 지참</b>해야 합니다. 마이크 및 스마트폰 앰프 직접 연결은 금지됩니다.</div></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== 오시는 길 ===================== -->
+    <section class="panel" id="tab-venue">
+      <div class="sec-label"><span class="en">Venue</span><span class="ko">본선 장소</span><span class="fill"></span></div>
+      <a class="venue" href="https://naver.me/FW6GCSe7" target="_blank" rel="noopener" aria-label="네이버 지도에서 본선 장소 보기">
+        <div class="info">
+          <div class="vlabel">Venue</div>
+          <div class="vname">마레보인 웨이브<span>Marevo in Wave</span></div>
+          <div class="vaddr">서울특별시 서초구 잠원로 145-35, 2·3층 (잠원동 149-2)<br />한강시민공원 잠원지구 · 3호선 잠원역 인근</div>
+        </div>
+        <div class="map">
+          <div class="map-preview">
+            <div class="mp-grid"></div>
+            <div class="mp-road mp-road-h"></div>
+            <div class="mp-road mp-road-v"></div>
+            <div class="mp-pin">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div class="mp-label">마레보인 웨이브<span>서초구 잠원로 145-35 · 3호선 잠원역 인근</span></div>
+            <div class="mp-cta">지도에서 길찾기 →</div>
+          </div>
+        </div>
+      </a>
+
+      <div class="sec-label sec-gap"><span class="en">Access</span><span class="ko">오시는 길 및 주차 안내</span><span class="fill"></span></div>
+      <div class="cards">
+        <div class="info-card">
+          <h3>대중교통</h3>
+          <ul>
+            <li><b>3호선 잠원역 1번 출구</b> 하차 후 도보 이동</li>
+            <li>셔틀버스는 운영되지 않습니다.</li>
+            <li>주차장이 협소하므로 <b>대중교통 이용을 권장</b>합니다.</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>자가용 · 주차</h3>
+          <ul>
+            <li>잠원 한강지구 <b>3~6주차장</b> 이용 가능 (3시간 무료)</li>
+            <li>자가용 이용 시 한강지구 주차장 주차 후 <b>도보 이동</b></li>
+            <li>주차 공간이 협소하니 가급적 대중교통을 이용해 주세요.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 공지 & FAQ ===================== -->
+    <section class="panel" id="tab-faq">
+      <div class="sec-label"><span class="en">Contact</span><span class="ko">문의 안내</span><span class="fill"></span></div>
+
+      <div class="kakao-banner">
+        <div class="kb-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.6-2.5.7.1 1.4.2 2.1.2 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+        </div>
+        <div class="kb-text">
+          <div class="kb-h">카카오톡 채널로 문의해 주세요</div>
+          <div class="kb-b">본 안내를 꼼꼼히 확인하신 후에도 추가 문의가 있으시면 <b>카카오톡 채널 [카네기 LEE 재단]</b>으로 남겨주세요. 담당자 확인 후 순차적으로 답변해 드립니다.</div>
+        </div>
+        <a class="kb-btn" href="https://pf.kakao.com/_KxobGX" target="_blank" rel="noopener">채널 문의하기 →</a>
       </div>
     </section>
 
