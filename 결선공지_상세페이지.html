@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>결선 조 편성 및 세부 안내 | 카네기 LEE 재단 콩쿠르</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    --bg:#ffffff; --paper:#faf9f7; --paper2:#f5f3ef;
+    --ink:#1c1c1c; --ink-soft:#484848; --ink-dim:#666666;
+    --gold:#b08a4f; --gold-dk:#9a7638; --gold-lt:#c9a970;
+    --line:#e9e6e0; --line-strong:#d9d5cd; --rule:#2a2a2a;
+    --kakao:#fee500; --kakao-ink:#191600;
+    --warn-bg:#fbf7ef; --warn-line:#e6d4a8;
+    --danger:#c0392b; --danger-bg:#fdf3f2; --danger-line:#f0cfc9;
+    --sans:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+
+  .site-header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:100;}
+  .head-in{max-width:1160px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;gap:20px;}
+  .logo{display:flex;align-items:center;text-decoration:none;}
+  .logo img{height:38px;width:auto;display:block;}
+  .head-right{margin-left:auto;display:flex;align-items:center;gap:14px;}
+  .hbtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-strong);background:#fff;border-radius:24px;padding:9px 18px;font-size:13.5px;font-weight:500;color:var(--ink);text-decoration:none;cursor:pointer;transition:all 0.15s;letter-spacing:0.01em;}
+  .hbtn:hover{border-color:var(--gold);color:var(--gold-dk);}
+  .hbtn svg{width:15px;height:15px;}
+  .hbtn.kakao{background:var(--kakao);border-color:var(--kakao);color:var(--kakao-ink);}
+  .hbtn.kakao:hover{filter:brightness(0.96);color:var(--kakao-ink);}
+  @media (max-width:860px){
+    .head-in{padding:14px 20px;}
+    .hbtn .lbl-full{display:none;}
+    .hbtn{padding:9px 12px;}
+  }
+
+  .page-top{max-width:1160px;margin:0 auto;padding:52px 40px 0;}
+  .page-top .eyebrow{font-size:12px;font-weight:600;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+  .page-top h1{font-size:37px;font-weight:600;letter-spacing:-0.01em;color:var(--ink);}
+  .page-top .subtitle{font-size:15px;font-weight:400;color:var(--ink-dim);margin-top:12px;letter-spacing:0.01em;}
+  .page-top .hr{height:2px;background:var(--rule);margin:28px 0 0;}
+  @media (max-width:860px){.page-top{padding:36px 20px 0;}.page-top h1{font-size:28px;}}
+
+  .tabs{max-width:1160px;margin:0 auto;padding:0 40px;border-bottom:1px solid var(--line);position:sticky;top:69px;background:#fff;z-index:90;}
+  .tabs-inner{display:flex;gap:4px;flex-wrap:wrap;}
+  .tab-btn{background:none;border:none;cursor:pointer;font-family:inherit;color:var(--ink-dim);font-size:15px;font-weight:400;letter-spacing:0.01em;padding:18px 22px;position:relative;transition:color 0.15s;white-space:nowrap;}
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{color:var(--ink);font-weight:600;}
+  .tab-btn.active::after{content:"";position:absolute;left:22px;right:22px;bottom:-1px;height:3px;background:var(--gold);border-radius:2px;}
+  @media (max-width:860px){
+    .tabs{padding:0 20px;top:65px;}
+    .tabs-inner{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+    .tabs-inner::-webkit-scrollbar{display:none;}
+    .tab-btn{padding:16px 15px;font-size:14.5px;}
+    .tab-btn.active::after{left:15px;right:15px;}
+  }
+
+  main{max-width:1160px;margin:0 auto;padding:0 40px;}
+  .panel{display:none;padding:46px 0 90px;animation:fade 0.3s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  .sec-label{display:flex;align-items:center;gap:12px;margin:0 0 22px;}
+  .sec-label .en{font-size:12px;font-weight:600;letter-spacing:0.16em;color:var(--gold);text-transform:uppercase;white-space:nowrap;}
+  .sec-label .ko{font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-0.01em;}
+  .sec-label .fill{height:1px;flex:1;background:var(--line);}
+  .sec-gap{margin-top:58px;}
+
+  .greeting{max-width:800px;margin-bottom:26px;}
+  .greeting h2{font-size:22px;font-weight:500;color:var(--ink);line-height:1.55;margin-bottom:22px;letter-spacing:-0.01em;word-break:keep-all;}
+  .greeting p{color:var(--ink-dim);font-size:15px;margin-bottom:16px;word-break:keep-all;line-height:2;font-weight:400;}
+  .greeting p b{color:var(--ink-soft);font-weight:500;}
+  .greeting p .danger{color:var(--danger);font-weight:600;}
+
+  /* 핵심 정보 카드 */
+  .keyinfo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:8px;}
+  @media (max-width:720px){.keyinfo{grid-template-columns:1fr;}}
+  .keyinfo .kcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px;}
+  .keyinfo .kcard .klabel{font-size:11.5px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:10px;}
+  .keyinfo .kcard .kval{font-size:16px;color:var(--ink);font-weight:500;line-height:1.5;word-break:keep-all;}
+  .keyinfo .kcard .ksub{font-size:13.5px;color:var(--ink-dim);font-weight:400;margin-top:6px;line-height:1.6;word-break:keep-all;}
+
+  /* 알림 배너 */
+  .alert{display:flex;gap:14px;background:var(--danger-bg);border:1px solid var(--danger-line);border-radius:14px;padding:20px 24px;margin-bottom:26px;align-items:flex-start;}
+  .alert .ai{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--danger);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .alert .at{font-size:14.5px;color:var(--ink-soft);line-height:1.8;word-break:keep-all;font-weight:400;}
+  .alert .at b{color:var(--danger);font-weight:600;}
+
+  /* 조 편성 */
+  .group-hint{font-size:13px;color:var(--ink-dim);margin:-6px 0 22px;font-weight:400;word-break:keep-all;}
+
+  .grp{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:16px;background:#fff;}
+  .grp-head{display:flex;align-items:center;gap:16px;padding:20px 26px;background:var(--paper2);border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .grp-badge{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:var(--gold);color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:0;}
+  .grp-time{font-size:17px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;}
+  .grp-time span{display:block;font-size:13px;font-weight:400;color:var(--ink-dim);margin-top:3px;letter-spacing:0.01em;}
+  .grp-arrive{margin-left:auto;font-size:13.5px;color:var(--ink-soft);background:#fff;border:1px solid var(--warn-line);border-radius:20px;padding:7px 15px;font-weight:400;white-space:nowrap;}
+  .grp-arrive b{color:var(--gold-dk);font-weight:600;}
+  @media (max-width:560px){.grp-arrive{margin-left:0;width:100%;text-align:center;}}
+
+  /* 명단 테이블 */
+  .roster{width:100%;border-collapse:collapse;font-size:14.5px;}
+  .roster th{background:var(--paper);color:var(--ink-soft);font-weight:500;font-size:12.5px;letter-spacing:0.04em;text-align:left;padding:13px 26px;border-bottom:1px solid var(--line);}
+  .roster td{padding:13px 26px;border-bottom:1px solid var(--line);color:var(--ink);word-break:keep-all;}
+  .roster tr:last-child td{border-bottom:none;}
+  .roster .c-no{width:70px;color:var(--gold-dk);font-weight:600;font-size:13px;white-space:nowrap;}
+  .roster .c-part{width:120px;color:var(--ink-dim);font-weight:400;}
+  .roster .c-name{font-weight:500;letter-spacing:0.04em;}
+  .roster tr:nth-child(even) td{background:var(--paper);}
+  @media (max-width:560px){
+    .roster th,.roster td{padding:11px 16px;}
+    .roster .c-no{width:54px;}
+    .roster .c-part{width:82px;font-size:13px;}
+  }
+
+  /* 규정 카드 리스트 */
+  .rules{display:flex;flex-direction:column;gap:12px;}
+  .rule{display:flex;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 24px;}
+  .rule .rn{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#fff;border:1.5px solid var(--gold);color:var(--gold-dk);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .rule .rt{font-size:14.5px;color:var(--ink-soft);line-height:1.85;word-break:keep-all;font-weight:400;}
+  .rule .rt b{color:var(--ink);font-weight:600;}
+  .rule .rt .danger{color:var(--danger);font-weight:600;}
+
+  /* 제출 정보 박스 */
+  .submit{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:16px;padding:32px 34px;margin-bottom:22px;}
+  .submit .tag{display:inline-block;font-size:12px;background:var(--gold);color:#fff;padding:6px 13px;border-radius:20px;font-weight:500;letter-spacing:0.02em;margin-bottom:16px;}
+  .submit h3{font-size:19px;color:var(--ink);font-weight:500;margin-bottom:20px;letter-spacing:-0.01em;}
+  .subgrid{display:grid;grid-template-columns:130px 1fr;gap:0;font-size:15px;font-weight:400;background:#fff;border:1px solid var(--warn-line);border-radius:12px;overflow:hidden;}
+  .subgrid .k{color:var(--ink-soft);font-size:13.5px;font-weight:500;padding:15px 18px;background:var(--paper);border-bottom:1px solid var(--line);}
+  .subgrid .v{color:var(--ink-soft);word-break:keep-all;padding:15px 18px;border-bottom:1px solid var(--line);line-height:1.7;}
+  .subgrid > div:nth-last-child(1),.subgrid > div:nth-last-child(2){border-bottom:none;}
+  .subgrid .v .hl{color:var(--gold-dk);font-weight:600;}
+  .subgrid .v b{color:var(--ink);font-weight:500;}
+  .subgrid .v .btn-link{display:inline-flex;align-items:center;gap:7px;background:var(--ink);color:#fff;text-decoration:none;padding:11px 20px;border-radius:22px;font-size:14px;font-weight:500;transition:background 0.15s;margin-top:2px;}
+  .subgrid .v .btn-link:hover{background:var(--gold-dk);}
+  .subgrid .v .btn-note{display:block;font-size:12.5px;color:var(--ink-dim);margin-top:8px;font-weight:400;}
+  @media (max-width:520px){.submit{padding:24px 20px;}.subgrid{grid-template-columns:92px 1fr;}}
+
+  .warn{background:#fff;border:1px solid var(--warn-line);border-radius:12px;padding:16px 18px;font-size:14px;color:var(--ink-dim);word-break:keep-all;line-height:1.85;font-weight:400;margin-top:18px;}
+  .warn b{color:var(--danger);font-weight:600;}
+
+  /* 정보 카드 그리드 */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:640px){.cards{grid-template-columns:1fr;}}
+  .info-card{border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:var(--paper);}
+  .info-card h3{font-size:16px;color:var(--ink);font-weight:500;margin-bottom:14px;letter-spacing:-0.01em;}
+  .info-card ul{list-style:none;}
+  .info-card li{position:relative;padding-left:16px;font-size:14.5px;color:var(--ink-dim);margin:10px 0;word-break:keep-all;line-height:1.8;font-weight:400;}
+  .info-card li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .info-card li b{color:var(--ink-soft);font-weight:500;}
+  .info-card li .danger{color:var(--danger);font-weight:600;}
+
+  /* 비포파티 카드 */
+  .party{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:14px;padding:28px 30px;}
+  .party h3{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:16px;letter-spacing:-0.01em;}
+  .party .p-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
+  .party .p-chip{font-size:13.5px;background:#fff;border:1px solid var(--line-strong);border-radius:20px;padding:7px 15px;color:var(--ink-soft);font-weight:400;}
+  .party .p-chip b{color:var(--gold-dk);font-weight:600;}
+  .party ul{list-style:none;}
+  .party li{position:relative;padding-left:16px;font-size:14.5px;color:var(--ink-dim);margin:11px 0;word-break:keep-all;line-height:1.85;font-weight:400;}
+  .party li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .party li b{color:var(--ink-soft);font-weight:600;}
+
+  /* 카카오 문의 배너 */
+  .kakao-banner{display:flex;align-items:center;gap:20px;background:var(--kakao);border-radius:18px;padding:26px 30px;flex-wrap:wrap;}
+  .kakao-banner .kb-icon{flex:0 0 auto;width:52px;height:52px;border-radius:14px;background:var(--kakao-ink);color:var(--kakao);display:flex;align-items:center;justify-content:center;}
+  .kakao-banner .kb-icon svg{width:28px;height:28px;}
+  .kakao-banner .kb-text{flex:1;min-width:220px;}
+  .kakao-banner .kb-h{font-size:17px;font-weight:700;color:var(--kakao-ink);letter-spacing:-0.01em;margin-bottom:6px;}
+  .kakao-banner .kb-b{font-size:14px;color:#4a4526;line-height:1.75;word-break:keep-all;font-weight:400;}
+  .kakao-banner .kb-b b{color:var(--kakao-ink);font-weight:700;}
+  .kakao-banner .kb-btn{flex:0 0 auto;background:var(--kakao-ink);color:var(--kakao);text-decoration:none;font-size:14.5px;font-weight:600;padding:14px 24px;border-radius:26px;transition:transform 0.15s,filter 0.15s;white-space:nowrap;}
+  .kakao-banner .kb-btn:hover{filter:brightness(1.3);transform:translateY(-1px);}
+  @media (max-width:640px){.kakao-banner{gap:14px;padding:22px;}.kakao-banner .kb-btn{width:100%;text-align:center;}}
+
+  /* 오시는 길 */
+  .venue{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;text-decoration:none;color:inherit;transition:transform 0.2s;}
+  .venue:hover{transform:translateY(-2px);}
+  @media (max-width:720px){.venue{grid-template-columns:1fr;}}
+  .venue .info{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 30px;display:flex;flex-direction:column;justify-content:center;}
+  .venue .info .vlabel{font-size:12px;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;font-weight:600;margin-bottom:12px;}
+  .venue .info .vname{font-size:20px;color:var(--ink);margin-bottom:4px;font-weight:500;letter-spacing:-0.01em;}
+  .venue .info .vname span{color:var(--ink-dim);font-size:14px;display:block;margin-top:3px;font-weight:400;}
+  .venue .info .vaddr{font-size:14.5px;color:var(--ink-dim);line-height:1.8;font-weight:400;word-break:keep-all;}
+  .venue .map{border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:250px;background:var(--paper);display:block;transition:box-shadow 0.2s;}
+  .venue:hover .map{box-shadow:0 8px 28px rgba(176,138,79,0.18);}
+  .map-preview{position:relative;width:100%;height:100%;min-height:250px;background:linear-gradient(135deg,#f3efe7 0%,#ece7dc 100%);overflow:hidden;}
+  .mp-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line-strong) 1px,transparent 1px),linear-gradient(90deg,var(--line-strong) 1px,transparent 1px);background-size:34px 34px;opacity:0.5;}
+  .mp-road{position:absolute;background:#fff;box-shadow:0 0 0 1px var(--line-strong);}
+  .mp-road-h{left:0;right:0;top:56%;height:18px;transform:rotate(-4deg);}
+  .mp-road-v{top:0;bottom:0;left:38%;width:15px;transform:rotate(3deg);}
+  .mp-pin{position:absolute;top:44%;left:50%;transform:translate(-50%,-100%);z-index:2;filter:drop-shadow(0 4px 6px rgba(0,0,0,0.25));}
+  .mp-pin svg{width:40px;height:40px;fill:var(--gold-dk);}
+  .mp-label{position:absolute;top:50%;left:50%;transform:translateX(-50%);margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 15px;font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.08);text-align:center;z-index:2;}
+  .mp-label span{display:block;font-size:11.5px;font-weight:400;color:var(--ink-dim);margin-top:3px;letter-spacing:0;}
+  .mp-cta{position:absolute;bottom:14px;right:14px;background:var(--ink);color:#fff;font-size:13px;font-weight:400;padding:9px 16px;border-radius:22px;z-index:2;transition:background 0.15s;}
+  .venue:hover .mp-cta{background:var(--gold-dk);}
+  @media (max-width:520px){.mp-label{font-size:13px;max-width:82%;white-space:normal;}}
+
+  /* FAQ */
+  .faq{border-top:2px solid var(--rule);}
+  .qa{border-bottom:1px solid var(--line);}
+  .qa-q{width:100%;text-align:left;background:transparent;border:none;color:var(--ink);font-family:inherit;font-size:15.5px;font-weight:500;padding:22px 6px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;letter-spacing:-0.005em;}
+  .qa-q .qmark{color:var(--gold);margin-right:10px;font-weight:600;}
+  .qa-q .plus{flex:0 0 auto;width:18px;height:18px;position:relative;transition:transform 0.3s;}
+  .qa-q .plus::before,.qa-q .plus::after{content:"";position:absolute;background:var(--ink);}
+  .qa-q .plus::before{top:8px;left:0;right:0;height:2px;}
+  .qa-q .plus::after{left:8px;top:0;bottom:0;width:2px;transition:transform 0.3s;}
+  .qa.open .qa-q .plus::after{transform:scaleY(0);}
+  .qa-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
+  .qa-a-in{padding:0 6px 24px 34px;color:var(--ink-dim);font-size:14.5px;line-height:1.9;word-break:keep-all;font-weight:400;}
+  .qa-a-in b{color:var(--ink-soft);font-weight:500;}
+
+  .list-note{margin-top:18px;font-size:13.5px;color:var(--ink-dim);word-break:keep-all;line-height:1.75;font-weight:400;}
+  .list-note b{color:var(--gold-dk);font-weight:500;}
+
+  .email-notice{display:flex;gap:16px;align-items:flex-start;background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:16px;padding:24px 28px;margin-top:22px;}
+  .email-notice .ei{flex:0 0 auto;width:40px;height:40px;border-radius:11px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .email-notice .ei svg{width:21px;height:21px;fill:currentColor;}
+  .email-notice .etxt{flex:1;}
+  .email-notice .etxt .eh{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;margin-bottom:6px;}
+  .email-notice .etxt .eb{font-size:14.5px;color:var(--ink-soft);line-height:1.8;word-break:keep-all;font-weight:400;}
+  .email-notice .etxt .eb b{color:var(--gold-dk);font-weight:600;}
+  @media (max-width:520px){.email-notice{padding:20px;gap:13px;}}
+
+  .site-footer{border-top:1px solid var(--line);background:var(--paper);padding:44px 40px 40px;margin-top:20px;}
+  .foot-inner{max-width:1160px;margin:0 auto;}
+  .foot-inner .flogo{margin-bottom:14px;}
+  .foot-inner .flogo img{height:32px;width:auto;display:block;}
+  .foot-inner .fline{font-size:13px;color:var(--ink-dim);letter-spacing:0.01em;line-height:1.9;word-break:keep-all;font-weight:400;}
+  .foot-inner .cr{font-size:11.5px;color:var(--ink-dim);letter-spacing:0.04em;margin-top:18px;}
+  @media (max-width:860px){.site-footer{padding:36px 20px;}}
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="head-in">
+      <a class="logo" href="#top"><img src="https://i.ifh.cc/Qms5DW.png" alt="카네기 LEE 재단" /></a>
+      <div class="head-right">
+        <a class="hbtn kakao" href="https://pf.kakao.com/_KxobGX" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.6-2.5.7.1 1.4.2 2.1.2 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+          <span class="lbl-full">카톡 문의</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div id="top"></div>
+  <div class="page-top">
+    <div class="eyebrow">Finals · Group Assignment</div>
+    <h1>결선 조 편성 및 세부 안내</h1>
+    <div class="subtitle">2026 카네기 LEE 재단 콩쿠르 · 2026년 7월 16일(목) 14:00 · 마레보인 웨이브 2층</div>
+    <div class="hr"></div>
+  </div>
+
+  <nav class="tabs">
+    <div class="tabs-inner">
+      <button class="tab-btn active" data-tab="groups">합격자 발표 &amp; 조 편성</button>
+      <button class="tab-btn" data-tab="rules">공지사항</button>
+      <button class="tab-btn" data-tab="venue">오시는 길</button>
+      <button class="tab-btn" data-tab="faq">문의 안내</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ===================== ① 합격자 발표 & 조 편성 ===================== -->
+    <section class="panel active" id="tab-groups">
+      <div class="greeting">
+        <h2>본선을 통과하신 결선 진출자 여러분, 진심으로 축하드립니다.</h2>
+        <p><b>7월 16일(목) 14:00</b> 치러질 결선 경연의 조 편성표와 현장 세부 운영 규정을 안내해 드립니다.</p>
+        <p>이번 결선 무대는 대기실과 심사 경연장이 <b>모두 2층, 같은 층</b>에서 운영되는 만큼, 현장 혼선을 막기 위해 참가자 동선 및 보호자 출입 통제 규정이 매우 엄격하게 적용됩니다.</p>
+        <p>경연 참여와 직결되는 매우 중요한 사항이오니, 각 탭의 안내를 반드시 끝까지 정독해 주시기 바랍니다. <span class="danger">미숙지로 인한 불이익은 주최 측에서 책임지지 않습니다.</span></p>
+      </div>
+
+      <div class="email-notice">
+        <div class="ei">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2zM7 9h10v2H7V9zm0-3h10v2H7V6z"/></svg>
+        </div>
+        <div class="etxt">
+          <div class="eh">조별 도착 시간 및 세부 타임테이블은 개별 문자(SMS)로 안내드립니다</div>
+          <div class="eb">조별 도착 시간 및 세부 연주 타임테이블은 <b>금일 중 결선 진출자분들께 개별 문자(SMS)</b>로 안내드립니다. 문자 수신 후 본인의 도착 시간을 반드시 확인해 주시기 바랍니다.</div>
+        </div>
+      </div>
+
+      <p class="group-hint" style="margin-top:22px;">※ 개인정보 보호를 위해 이름 가운데 글자는 * 로 표기됩니다. / 순번 = 연주 순서</p>
+
+      <div class="grp" data-group="A">
+        <div class="grp-head">
+          <div class="grp-badge">A</div>
+          <div class="grp-time">A조 · 기악 부문 (14명)<span>14:00 경연 시작</span></div>
+          <div class="grp-arrive">도착 시간 <b>개별 SMS 안내</b></div>
+        </div>
+        <table class="roster">
+          <thead><tr><th class="c-no">순번</th><th class="c-part">부문</th><th class="c-name">성명</th></tr></thead>
+          <tbody>
+            <tr><td class="c-no">A1</td><td class="c-part">피아노</td><td class="c-name">김*영</td></tr>
+            <tr><td class="c-no">A2</td><td class="c-part">피아노</td><td class="c-name">김*원</td></tr>
+            <tr><td class="c-no">A3</td><td class="c-part">피아노</td><td class="c-name">남*서</td></tr>
+            <tr><td class="c-no">A4</td><td class="c-part">피아노</td><td class="c-name">백*은</td></tr>
+            <tr><td class="c-no">A5</td><td class="c-part">피아노</td><td class="c-name">손*우</td></tr>
+            <tr><td class="c-no">A6</td><td class="c-part">피아노</td><td class="c-name">송*화</td></tr>
+            <tr><td class="c-no">A7</td><td class="c-part">피아노</td><td class="c-name">송*아</td></tr>
+            <tr><td class="c-no">A8</td><td class="c-part">클라리넷</td><td class="c-name">강*루</td></tr>
+            <tr><td class="c-no">A9</td><td class="c-part">클라리넷</td><td class="c-name">이*영</td></tr>
+            <tr><td class="c-no">A10</td><td class="c-part">리코더</td><td class="c-name">남*주</td></tr>
+            <tr><td class="c-no">A11</td><td class="c-part">첼로</td><td class="c-name">박*하</td></tr>
+            <tr><td class="c-no">A12</td><td class="c-part">첼로</td><td class="c-name">이*은</td></tr>
+            <tr><td class="c-no">A13</td><td class="c-part">바이올린</td><td class="c-name">이*정</td></tr>
+            <tr><td class="c-no">A14</td><td class="c-part">바이올린</td><td class="c-name">임*은</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grp" data-group="B">
+        <div class="grp-head">
+          <div class="grp-badge">B</div>
+          <div class="grp-time">B조 · 성악 부문 (16명)<span>A조 종료 후 진행</span></div>
+          <div class="grp-arrive">도착 시간 <b>개별 SMS 안내</b></div>
+        </div>
+        <table class="roster">
+          <thead><tr><th class="c-no">순번</th><th class="c-part">부문</th><th class="c-name">성명</th></tr></thead>
+          <tbody>
+            <tr><td class="c-no">B1</td><td class="c-part">성악</td><td class="c-name">SUN O*I</td></tr>
+            <tr><td class="c-no">B2</td><td class="c-part">성악</td><td class="c-name">김*아</td></tr>
+            <tr><td class="c-no">B3</td><td class="c-part">성악</td><td class="c-name">김*중</td></tr>
+            <tr><td class="c-no">B4</td><td class="c-part">성악</td><td class="c-name">나*유</td></tr>
+            <tr><td class="c-no">B5</td><td class="c-part">성악</td><td class="c-name">박*진</td></tr>
+            <tr><td class="c-no">B6</td><td class="c-part">성악</td><td class="c-name">백*준</td></tr>
+            <tr><td class="c-no">B7</td><td class="c-part">성악</td><td class="c-name">서*</td></tr>
+            <tr><td class="c-no">B8</td><td class="c-part">성악</td><td class="c-name">오*울</td></tr>
+            <tr><td class="c-no">B9</td><td class="c-part">성악</td><td class="c-name">오에*더</td></tr>
+            <tr><td class="c-no">B10</td><td class="c-part">성악</td><td class="c-name">이*진</td></tr>
+            <tr><td class="c-no">B11</td><td class="c-part">성악</td><td class="c-name">장*혁</td></tr>
+            <tr><td class="c-no">B12</td><td class="c-part">성악</td><td class="c-name">전*별</td></tr>
+            <tr><td class="c-no">B13</td><td class="c-part">성악</td><td class="c-name">정*준</td></tr>
+            <tr><td class="c-no">B14</td><td class="c-part">성악</td><td class="c-name">조*연</td></tr>
+            <tr><td class="c-no">B15</td><td class="c-part">성악</td><td class="c-name">채*라</td></tr>
+            <tr><td class="c-no">B16</td><td class="c-part">성악</td><td class="c-name">황보*우</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="list-note">편성 기준: <b>피아노 → 그 외 기악 → 성악</b> 순 · 부문 내 가나다순</p>
+
+      <div class="alert" style="margin-top:22px;margin-bottom:0;">
+        <div class="ai">!</div>
+        <div class="at">본 페이지는 <b>결선 진출자 명단 발표</b>이며, 조별 도착 시간 및 세부 연주 시간은 <b>금일 중 개별 문자(SMS)</b>로 안내드립니다. 안내된 시간 및 조 편성은 공정성을 위해 개인 사정에 따른 <b>변경이 절대 불가</b>합니다.</div>
+      </div>
+    </section>
+
+    <!-- ===================== ② 공지사항 (현장규정 & 제출) ===================== -->
+    <section class="panel" id="tab-rules">
+
+      <div class="sec-label"><span class="en">Overview</span><span class="ko">1. 결선 경연 개요</span><span class="fill"></span></div>
+      <div class="keyinfo">
+        <div class="kcard"><div class="klabel">Date</div><div class="kval">2026년 7월 16일 (목)</div><div class="ksub">14:00 심사 시작<br />18:00 비포파티(Before Party)<br /><span style="color:var(--gold-dk);font-weight:500;">※ 비포파티는 수상자(총 13인)만 참석</span></div></div>
+        <div class="kcard"><div class="klabel">Venue</div><div class="kval">마레보인 웨이브 2층</div><div class="ksub">서울 서초구 잠원로 145-35 (잠원동 149-2)<br />3호선 잠원역 인근</div></div>
+        <div class="kcard"><div class="klabel">Groups</div><div class="kval">총 30명 · 2개 조</div><div class="ksub">A조 기악 14명 · B조 성악 16명<br />조별 도착·타임테이블은 개별 SMS 안내</div></div>
+      </div>
+
+      <div class="sec-label sec-gap"><span class="en">Submission</span><span class="ko">2. [필수] 결선 연주곡 및 반주자 사전 제출</span><span class="fill"></span></div>
+      <div class="submit">
+        <span class="tag">기한 엄수 · 수정 절대 불가</span>
+        <h3>결선 곡목·반주자 제출 안내</h3>
+        <p style="font-size:14.5px;color:var(--ink-soft);line-height:1.85;word-break:keep-all;font-weight:400;margin-bottom:20px;">결선에 진출하신 30명의 참가자 전원은 경연 당일 혼선이 없도록 아래 버튼을 통해 <b style="color:var(--ink);font-weight:500;">결선 연주곡과 반주자 정보</b>를 반드시 사전에 제출해 주셔야 합니다.</p>
+        <div class="subgrid">
+          <div class="k">제출 기한</div><div class="v"><span class="hl">2026년 7월 15일(수) 정오 12:00까지</span></div>
+          <div class="k">제출 방법</div><div class="v"><a class="btn-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdU4QWMuxp4IiqcdMYrxwU7GYIeuINr5Ke1G-Q8FIHNm99S_g/viewform?usp=dialog" target="_blank" rel="noopener">결선 곡목·반주자 제출 폼 열기 →</a></div>
+          <div class="k">연주곡 안내</div><div class="v">본선에서 연주한 곡과 <b>동일한 곡으로 연주하셔도 무방</b>하며, 새로운 곡을 준비하셔도 무관합니다. 곡 선택(동일곡/신곡 여부)은 <b>심사 점수에 일절 영향을 주지 않습니다.</b></div>
+        </div>
+        <div class="warn">제출 마감 이후에는 <b>어떠한 사유로도 곡목 수정이 불가</b>하오니 신중하게 기재해 주시기 바랍니다. 기한 내 미제출 시 경연 진행에 차질이 생길 수 있으니 반드시 시간을 엄수해 주시기 바랍니다.</div>
+      </div>
+
+      <div class="sec-label sec-gap"><span class="en">Rules</span><span class="ko">3. 경연 규정 및 유의사항 (필독)</span><span class="fill"></span></div>
+      <div class="rules">
+        <div class="rule">
+          <div class="rn">1</div>
+          <div class="rt"><b>경연 시간</b> · 1인당 <b>5분 이내</b>(입·퇴장 시간 포함)입니다. 심사위원이 기량을 충분히 파악했다고 판단할 경우 타임벨(종)을 쳐서 연주를 중단시킬 수 있습니다. (감점 사항이 아니오니 안심하시기 바랍니다.)</div>
+        </div>
+        <div class="rule">
+          <div class="rn">2</div>
+          <div class="rt"><b>암보 규정</b> · 전곡 <b>암보(악보 없이 연주) 필수</b>입니다.</div>
+        </div>
+        <div class="rule">
+          <div class="rn">3</div>
+          <div class="rt"><b>반주자 규정 (엄수)</b> · 본 결선은 반드시 <b>피아노 반주자를 대동</b>해야 합니다. <span class="danger">(무반주 연주 및 MR 사용 절대 불가)</span></div>
+        </div>
+        <div class="rule">
+          <div class="rn">4</div>
+          <div class="rt"><b>연습(워밍업) 불가</b> · 본선과 달리 결선 당일에는 별도의 연습용 피아노 및 대기실 연습 시간이 전혀 제공되지 않습니다. 사전에 충분히 손을 풀고 오시기를 권장합니다.</div>
+        </div>
+        <div class="rule">
+          <div class="rn">5</div>
+          <div class="rt"><b>복장 규정</b> · 모든 참가자는 반드시 드레스(또는 정장)를 착용하고 무대에 올라야 합니다.</div>
+        </div>
+        <div class="rule">
+          <div class="rn">6</div>
+          <div class="rt"><b>신분증 지참 필수</b> · 본인 확인을 위한 신분증(학생증, 여권, 청소년증, 등본 등)을 반드시 지참해 주십시오.</div>
+        </div>
+        <div class="rule">
+          <div class="rn">7</div>
+          <div class="rt"><b>지각 시 실격</b> · 개별 안내된 도착 시간 기준 <span class="danger">10분 이상 지각 시 실격</span> 처리될 수 있습니다.</div>
+        </div>
+        <div class="rule">
+          <div class="rn">8</div>
+          <div class="rt"><b>관람 및 출입 안내 (비공개 심사)</b> · 본 결선은 공정하고 엄격한 심사를 위해 전면 비공개로 진행됩니다. 2층 행사장(대기실·경연장)에는 <b>참가자와 반주자만 입장 가능</b>하며, 보호자 및 동반인은 행사장 내 출입 및 대기가 일절 불가합니다. 참가자와 반주자분들은 도착 시 안내에 따라 2층으로 와주시기 바라며, 보호자님께서는 참가자를 배웅하신 후 <span class="danger">행사장 인근 카페 등 외부에서 대기</span>해 주시기 바랍니다.</div>
+        </div>
+      </div>
+
+      <div class="sec-label sec-gap"><span class="en">Awards</span><span class="ko">4. 시상 내역 및 특전</span><span class="fill"></span></div>
+      <div class="cards">
+        <div class="info-card">
+          <h3>전원 혜택</h3>
+          <ul>
+            <li>결선에 진출한 <b>30명 전원에게 상장</b>이 수여됩니다.</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>기업인상 (최대 10명)</h3>
+          <ul>
+            <li>특별 심사를 통해 최대 10명을 선정하여 각 <b>100만 원의 장학금</b>을 수여합니다.</li>
+            <li>최종 입상자 3인도 중복 수상이 가능하며, 심사 결과에 따라 최종 수상 인원은 10명 미만이 될 수 있습니다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sec-label sec-gap"><span class="en">Before Party</span><span class="ko">5. 비포파티(Before Party) 안내 — 수상자 필수 참석</span><span class="fill"></span></div>
+      <div class="party">
+        <h3>비포파티(Before Party)</h3>
+        <div class="p-meta">
+          <span class="p-chip">일시 <b>7/16(목) 18:00</b></span>
+          <span class="p-chip">참석 대상 <b>최종 입상자 3인 + 기업인상 10인 (총 13인)</b></span>
+        </div>
+        <ul>
+          <li>본 파티는 장학금을 후원해 주시는 <b>기업인과 직접 교류하는 핵심 행사</b>입니다.</li>
+          <li>결선 경연 종료 후 현장에서 수상자(총 13인)를 발표하며, <b>수상자분들은 이후 개인 일정을 비워두시고 18시 파티에 끝까지 참석</b>해 주시기 바랍니다.</li>
+          <li><b>최종 입상자 3인은 본 파티 무대에서 특별 기념 공연</b>을 진행할 예정입니다.</li>
+          <li>수상자 발표 및 세부 시간·동선은 개별 문자(SMS)로 함께 안내드립니다.</li>
+        </ul>
+      </div>
+
+      <div class="sec-label sec-gap"><span class="en">FAQ</span><span class="ko">6. 자주 묻는 질문</span><span class="fill"></span></div>
+      <div class="faq">
+        <div class="qa">
+          <button class="qa-q"><span><span class="qmark">Q</span>저녁(18:00 비포파티) 시간에 일정이 있으면 어떻게 하나요?</span><span class="plus"></span></button>
+          <div class="qa-a"><div class="qa-a-in">수상자 발표는 경연 당일 현장에서 이루어지며, 어느 분이 호명되실지 알 수 없기에 <b>결선 진출자 전원께서 당일 저녁 일정을 비워두시기를 부탁드립니다.</b> 비포파티는 장학금을 후원해 주시는 기업인들과 직접 만나 교류하고, 수상의 영예를 그 자리에서 함께 나누는 이번 콩쿠르의 하이라이트입니다. 특히 최종 입상자에게는 후원 기업인들 앞에서 기념 공연을 선보이는, 쉽게 얻기 힘든 특별한 무대 경험이 주어집니다. 참가자 여러분의 앞으로의 음악 여정에 큰 자산이 될 자리인 만큼 최대한 일정을 조율해 주시고, 부득이하게 참석이 어려운 경우에는 반드시 <b>사전에 카카오톡 채널 [카네기 LEE 재단]으로 미리 알려주시기 바랍니다.</b></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q"><span><span class="qmark">Q</span>결선 곡이 본선에서 연주한 곡과 같아도 되나요?</span><span class="plus"></span></button>
+          <div class="qa-a"><div class="qa-a-in">네, 가능합니다. 본선 연주곡과 <b>동일한 곡도, 새로운 곡도 모두 무방</b>하며 곡 선택은 심사 점수에 영향을 주지 않습니다.</div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q"><span><span class="qmark">Q</span>반주자를 아직 구하지 못했습니다. MR이나 무반주로 참가할 수 있나요?</span><span class="plus"></span></button>
+          <div class="qa-a"><div class="qa-a-in">불가합니다. 결선은 <b>반드시 피아노 반주자를 대동</b>해야 하며, 무반주 연주 및 MR 사용은 허용되지 않습니다. 반주자 섭외에 어려움이 있으신 경우 지체 없이 카카오톡 채널로 문의해 주시기 바랍니다.</div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q"><span><span class="qmark">Q</span>부모님(지도 선생님)이 함께 입장할 수 있나요?</span><span class="plus"></span></button>
+          <div class="qa-a"><div class="qa-a-in">불가합니다. 행사장에는 <b>참가자와 반주자만 입장</b>할 수 있으며, 보호자님께서는 인근 카페 등 외부에서 대기해 주시기 바랍니다.</div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q"><span><span class="qmark">Q</span>배정된 조나 시간을 변경할 수 있나요?</span><span class="plus"></span></button>
+          <div class="qa-a"><div class="qa-a-in">공정성을 위해 <b>개인 사정에 따른 시간 및 조 변경은 절대 불가</b>합니다.</div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q"><span><span class="qmark">Q</span>도착 시간은 언제, 어떻게 안내되나요?</span><span class="plus"></span></button>
+          <div class="qa-a"><div class="qa-a-in">조별 도착 시간 및 세부 연주 타임테이블은 <b>금일 중 결선 진출자분들께 개별 문자(SMS)</b>로 안내드립니다. 문자를 받지 못하신 경우 카카오톡 채널로 문의해 주시기 바랍니다.</div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q"><span><span class="qmark">Q</span>현장에서 연습할 수 있는 공간이 있나요?</span><span class="plus"></span></button>
+          <div class="qa-a"><div class="qa-a-in">없습니다. 결선 당일에는 <b>연습용 피아노 및 대기실 연습 시간이 제공되지 않으니</b>, 사전에 충분히 워밍업을 하고 와주시기 바랍니다.</div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q"><span><span class="qmark">Q</span>결과 발표는 언제, 어떻게 되나요?</span><span class="plus"></span></button>
+          <div class="qa-a"><div class="qa-a-in">결선 경연이 모두 종료된 후 <b>당일 현장에서 수상자(최종 입상자 3인 + 기업인상 수상자, 총 13인)</b>를 발표합니다. 심사위원단의 판정은 절대적이며, 심사 결과에 대한 이의 제기는 불가합니다.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ③ 오시는 길 ===================== -->
+    <section class="panel" id="tab-venue">
+      <div class="sec-label"><span class="en">Venue</span><span class="ko">결선 장소</span><span class="fill"></span></div>
+      <a class="venue" href="https://naver.me/FW6GCSe7" target="_blank" rel="noopener" aria-label="네이버 지도에서 결선 장소 보기">
+        <div class="info">
+          <div class="vlabel">Venue</div>
+          <div class="vname">마레보인 웨이브<span>Marevo in Wave</span></div>
+          <div class="vaddr">서울특별시 서초구 잠원로 145-35, 2층 (잠원동 149-2)<br />한강시민공원 잠원지구 · 3호선 잠원역 인근</div>
+        </div>
+        <div class="map">
+          <div class="map-preview">
+            <div class="mp-grid"></div>
+            <div class="mp-road mp-road-h"></div>
+            <div class="mp-road mp-road-v"></div>
+            <div class="mp-pin">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div class="mp-label">마레보인 웨이브<span>서초구 잠원로 145-35 · 3호선 잠원역 인근</span></div>
+            <div class="mp-cta">지도에서 길찾기 →</div>
+          </div>
+        </div>
+      </a>
+
+      <div class="sec-label sec-gap"><span class="en">Access</span><span class="ko">오시는 길 및 주차 안내</span><span class="fill"></span></div>
+      <div class="cards">
+        <div class="info-card">
+          <h3>대중교통</h3>
+          <ul>
+            <li><b>3호선 잠원역 1번 출구</b> 하차 후 도보 이동</li>
+            <li>셔틀버스는 운영되지 않습니다.</li>
+            <li>주차장이 협소하므로 <b>대중교통 이용을 권장</b>합니다.</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>자가용 · 주차</h3>
+          <ul>
+            <li>별도의 무료 주차는 제공되지 않으며, <b>주차 비용은 개인 부담</b>입니다.</li>
+            <li>자가용 이용 시 인근 유료 주차장 이용 후 <b>도보 이동</b></li>
+            <li>주차 공간이 협소하니 가급적 대중교통을 이용해 주세요.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ④ 문의 안내 ===================== -->
+    <section class="panel" id="tab-faq">
+      <div class="sec-label"><span class="en">Contact</span><span class="ko">문의 안내</span><span class="fill"></span></div>
+
+      <div class="kakao-banner">
+        <div class="kb-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.7-.7 2.6-.8 3-.1.5.2.5.4.4.2-.1 2.6-1.8 3.6-2.5.7.1 1.4.2 2.1.2 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+        </div>
+        <div class="kb-text">
+          <div class="kb-h">카카오톡 채널로 문의해 주세요</div>
+          <div class="kb-b">본 안내를 꼼꼼히 확인하신 후에도 추가 문의가 있으시면 <b>카카오톡 채널 [카네기 LEE 재단]</b>으로 남겨주세요. 담당자 확인 후 순차적으로 답변해 드립니다.</div>
+        </div>
+        <a class="kb-btn" href="https://pf.kakao.com/_KxobGX" target="_blank" rel="noopener">채널 문의하기 →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="foot-inner">
+      <div class="flogo"><img src="https://i.ifh.cc/Qms5DW.png" alt="카네기 LEE 재단" /></div>
+      <div class="fline">주최 · 주관 | 카네기 LEE 재단<br />문의 · 카카오톡 채널 [카네기 LEE 재단]</div>
+      <div class="cr">© 2026 Carnegie LEE Foundation. All rights reserved.</div>
+    </div>
+  </footer>
+
+<script>
+  // 탭 전환
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.panel');
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-tab');
+      tabBtns.forEach(function(b){ b.classList.toggle('active', b===btn); });
+      panels.forEach(function(p){ p.classList.toggle('active', p.id==='tab-'+id); });
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+
+  // FAQ 아코디언
+  document.querySelectorAll('.qa-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var qa = btn.parentElement, panel = btn.nextElementSibling;
+      if(qa.classList.contains('open')){ qa.classList.remove('open'); panel.style.maxHeight=null; }
+      else { qa.classList.add('open'); panel.style.maxHeight = panel.scrollHeight+'px'; }
+    });
+  });
+</script>
+</body>
+</html>
